@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>プラコロ ポケモン使用率</title>
+
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <style>
+
+        body {
+            font-family: sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background: #f8f8f8;
+        }
+
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+
+        .total {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+
+        .chart-container {
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+
+        th,
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+
+        th {
+            background: #f0f0f0;
+        }
+
+
+        .number {
+            text-align: right;
+        }
+
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <h1>
+        プラコロ ポケモン使用率
+    </h1>
+
+
+    <div class="total">
+
+        総使用数：
+        {{ total_usage }}
+
+    </div>
+
+
+    <!-- 円グラフ -->
+
+    <div class="chart-container">
+
+        <canvas id="usageChart"></canvas>
+
+    </div>
+
+
+    <!-- 使用率一覧 -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        順位
+                    </th>
+
+                    <th>
+                        ポケモン
+                    </th>
+
+                    <th class="number">
+                        使用回数
+                    </th>
+
+                    <th class="number">
+                        使用率
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for pokemon in stats %}
+
+                <tr>
+
+                    <td>
+                        {{ loop.index }}
+                    </td>
+
+                    <td>
+                        {{ pokemon.name }}
+                    </td>
+
+                    <td class="number">
+                        {{ pokemon.usage_count }}
+                    </td>
+
+                    <td class="number">
+                        {{ pokemon.usage_rate }}%
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <script>
+
+        // Flaskからデータを受け取る
+
+        const labels = [
+            {% for pokemon in stats %}
+                "{{ pokemon.name }}",
+            {% endfor %}
+        ];
+
+
+        const data = [
+            {% for pokemon in stats %}
+                {{ pokemon.usage_count }},
+            {% endfor %}
+        ];
+
+
+        // 円グラフを作成
+
+        const ctx = document
+            .getElementById("usageChart");
+
+
+        new Chart(ctx, {
+
+            type: "pie",
+
+            data: {
+
+                labels: labels,
+
+                datasets: [
+
+                    {
+                        data: data
+                    }
+
+                ]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                plugins: {
+
+                    legend: {
+
+                        position: "right"
+
+                    },
+
+                    tooltip: {
+
+                        callbacks: {
+
+                            label: function(context) {
+
+                                const total =
+                                    context.dataset.data
+                                    .reduce(
+                                        (a, b) => a + b,
+                                        0
+                                    );
+
+                                const value =
+                                    context.raw;
+
+                                const rate =
+                                    value / total * 100;
+
+                                return (
+                                    context.label
+                                    + ": "
+                                    + value
+                                    + "回 ("
+                                    + rate.toFixed(1)
+                                    + "%)"
+                                );
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>

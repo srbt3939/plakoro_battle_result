@@ -6,6 +6,38 @@
     <title>プラコロ戦績DB</title>
 </head>
 
+<div class="latest-message">
+
+    <h2>最後に登録したメッセージ</h2>
+
+    <p>
+        ID：{{ latest_message.id }}
+    </p>
+
+    <p>
+        Discord Message ID：
+        {{ latest_message.discord_message_id }}
+    </p>
+
+    <p>
+        対戦日：
+        {{ latest_message.battle_date }}
+    </p>
+
+    <p>
+        登録日時：
+        {{ latest_message.created_at }}
+    </p>
+
+    <details>
+        <summary>元のメッセージを表示</summary>
+
+        <pre>{{ latest_message.raw_content }}</pre>
+
+    </details>
+
+</div>
+
 <body>
 
 <h1>プラコロ戦績DB</h1>

@@ -142,9 +142,11 @@ def index():
 
     conn = get_connection()
 
+    # Battle一覧
     battles = conn.execute("""
         SELECT
             battles.id,
+            battles.battle_message_id,
             battles.battle_number,
 
             p1.name AS player1_pokemon,
@@ -163,14 +165,25 @@ def index():
         JOIN pokemon AS p2
             ON battles.player2_pokemon_id = p2.id
 
-        ORDER BY battles.id 
+        ORDER BY battles.id
     """).fetchall()
+
+
+    # 最後に登録したBattle Message
+    latest_message = conn.execute("""
+        SELECT *
+        FROM battle_messages
+        ORDER BY id DESC
+        LIMIT 1
+    """).fetchone()
+
 
     conn.close()
 
     return render_template(
-        "index.html",
-        battles=battles
+        "insert_index.html",
+        battles=battles,
+        latest_message=latest_message
     )
 
 
