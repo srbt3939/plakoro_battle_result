@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Battle Message登録</title>
+</head>
+
+<body>
+
+<h1>Battle Message登録</h1>
+
+<form method="post">
+
+    <p>
+        Discord Message ID<br>
+        <input type="text" name="discord_message_id" required>
+    </p>
+
+    <!-- <p>
+        Battle Type<br>
+        <input type="text" name="battle_type">
+    </p> -->
+
+    <p>
+        Battle Date<br>
+        <input type="date" name="battle_date">
+    </p>
+
+    <p>
+        Raw Content<br>
+        <textarea name="raw_content" rows="10" cols="60"></textarea>
+    </p>
+
+    <p>
+        Created At<br>
+        <input type="text" name="created_at" required>
+    </p>
+
+    <button type="submit">
+        登録
+    </button>
+
+</form>
+
+<a href="/">戻る</a>
+
+</body>
+</html>

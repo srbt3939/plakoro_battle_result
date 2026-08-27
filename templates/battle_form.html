@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Battle登録</title>
+</head>
+
+<body>
+
+<h1>Battle登録</h1>
+
+<form method="post">
+
+    <p>
+        Battle Message<br>
+
+        <select name="battle_message_id" required>
+
+            {% for message in messages %}
+
+            <option value="{{ message.id }}">
+                #{{ message.id }}
+                {{ message.battle_type }}
+                {{ message.battle_date }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+    </p>
+
+
+    <!-- <p>
+        Battle Number<br>
+
+        <input
+            type="number"
+            name="battle_number"
+            min="1"
+            required
+        >
+
+    </p> -->
+
+
+    <h2>Player 1</h2>
+
+    <p>
+        Pokémon<br>
+
+        <select name="player1_pokemon_id" required>
+
+            {% for p in pokemon %}
+
+            <option value="{{ p.id }}">
+                {{ p.name }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+    </p>
+
+
+    <p>
+        結果<br>
+
+        <select name="player1_result">
+
+            <option value="win">
+                勝利
+            </option>
+
+            <option value="lose">
+                敗北
+            </option>
+
+        </select>
+
+    </p>
+
+
+    <h2>Player 2</h2>
+
+    <p>
+        Pokémon<br>
+
+        <select name="player2_pokemon_id" required>
+
+            {% for p in pokemon %}
+
+            <option value="{{ p.id }}">
+                {{ p.name }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+    </p>
+
+
+    <p>
+        結果<br>
+
+        <select name="player2_result">
+
+            <option value="win">
+                勝利
+            </option>
+
+            <option value="lose">
+                敗北
+            </option>
+
+        </select>
+
+    </p>
+
+
+    <h2>先攻</h2>
+
+    <p>
+
+        <select name="first_player">
+
+            <option value="1">
+                Player 1
+            </option>
+
+            <option value="2">
+                Player 2
+            </option>
+
+        </select>
+
+    </p>
+
+
+    <button type="submit">
+        試合を登録
+    </button>
+
+</form>
+
+<a href="/">戻る</a>
+
+</body>
+</html>

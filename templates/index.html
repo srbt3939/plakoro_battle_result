@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>プラコロ戦績DB</title>
+</head>
+
+<body>
+
+<h1>プラコロ戦績DB</h1>
+
+<p>
+    <a href="/message">
+        Battle Message登録
+    </a>
+</p>
+
+<p>
+    <a href="/battle">
+        Battle登録
+    </a>
+</p>
+
+
+<h2>登録済み試合</h2>
+
+<table border="1">
+
+    <tr>
+        <th>ID</th>
+        <th>試合番号</th>
+        <th>Player 1</th>
+        <th>結果</th>
+        <th>先攻</th>
+        <th>Player 2</th>
+        <th>結果</th>
+    </tr>
+
+    {% for battle in battles %}
+
+    <tr>
+
+        <td>
+            {{ battle.id }}
+        </td>
+
+        <td>
+            {{ battle.battle_number }}
+        </td>
+
+        <td>
+            {{ battle.player1_pokemon }}
+        </td>
+
+        <td>
+            {{ battle.player1_result }}
+        </td>
+
+        <td>
+            {% if battle.first_player == 1 %}
+                ⇦
+            {% else %}
+                ➡
+            {% endif %}
+        </td>
+
+        <td>
+            {{ battle.player2_pokemon }}
+        </td>
+
+        <td>
+            {{ battle.player2_result }}
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+</body>
+
+</html>
