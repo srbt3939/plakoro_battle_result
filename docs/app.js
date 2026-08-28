@@ -45,10 +45,10 @@ async function main() {
         `${totalBattles}試合`;
 
 
-    document.getElementById(
-        "total-usage"
-    ).textContent =
-        usage.total_usage;
+    // document.getElementById(
+    //     "total-usage"
+    // ).textContent =
+    //     usage.total_usage;
 
 
     document.getElementById(
@@ -356,19 +356,21 @@ function createFirstSecondRanking(stats) {
 
     container.innerHTML = `
 
-        <div class="ranking-row">
+        <div class="first-second-row header">
 
-            <strong>ポケモン</strong>
+            <strong>
+                ポケモン
+            </strong>
 
-            <strong class="number">
+            <strong>
                 先攻
             </strong>
 
-            <strong class="number">
+            <strong>
                 後攻
             </strong>
 
-            <strong class="number">
+            <strong>
                 不明
             </strong>
 
@@ -381,21 +383,23 @@ function createFirstSecondRanking(stats) {
 
         container.innerHTML += `
 
-            <div class="ranking-row">
+            <div class="first-second-row">
 
                 <span class="pokemon-name">
                     ${p.name}
                 </span>
 
-                <span class="number">
+                <span>
+                    ${p.first_player.battles}戦
                     ${p.first_player.win_rate}%
                 </span>
 
-                <span class="number">
+                <span>
+                    ${p.second_player.battles}戦
                     ${p.second_player.win_rate}%
                 </span>
 
-                <span class="number">
+                <span>
                     ${p.unknown.battles}戦
                 </span>
 

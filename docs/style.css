@@ -236,6 +236,52 @@ main {
 }
 
 
+/* ========================= */
+/* 先攻・後攻戦績 */
+/* ========================= */
+
+.first-second-row {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(160px, 2fr)
+        1fr
+        1fr
+        1fr;
+
+    align-items: center;
+
+    padding: 12px 5px;
+
+    border-bottom: 1px solid #eee;
+
+    text-align: right;
+}
+
+
+.first-second-row > :first-child {
+
+    text-align: left;
+
+}
+
+
+.first-second-row.header {
+
+    color: #777;
+
+    font-size: 14px;
+
+}
+
+
+.first-second-row:last-child {
+
+    border-bottom: none;
+
+}
+
 /* ===================== */
 /* フッター */
 /* ===================== */
@@ -289,4 +335,15 @@ footer {
 
     }
 
+    .first-second-row {
+
+    grid-template-columns:
+        minmax(100px, 1.5fr)
+        1fr
+        1fr
+        0.8fr;
+
+    font-size: 13px;
+
+}
 }
