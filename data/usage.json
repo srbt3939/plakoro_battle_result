@@ -1,0 +1,89 @@
+{
+    "total_usage": 229,
+    "pokemon": [
+        {
+            "rank": 1,
+            "pokemon_id": 9,
+            "name": "カイロス",
+            "usage_count": 42,
+            "usage_rate": 18.3
+        },
+        {
+            "rank": 2,
+            "pokemon_id": 12,
+            "name": "ファイヤー",
+            "usage_count": 33,
+            "usage_rate": 14.4
+        },
+        {
+            "rank": 3,
+            "pokemon_id": 6,
+            "name": "ミュウ",
+            "usage_count": 30,
+            "usage_rate": 13.1
+        },
+        {
+            "rank": 4,
+            "pokemon_id": 10,
+            "name": "フリーザー",
+            "usage_count": 29,
+            "usage_rate": 12.7
+        },
+        {
+            "rank": 5,
+            "pokemon_id": 8,
+            "name": "イワーク",
+            "usage_count": 26,
+            "usage_rate": 11.4
+        },
+        {
+            "rank": 6,
+            "pokemon_id": 3,
+            "name": "ゼニガメ",
+            "usage_count": 19,
+            "usage_rate": 8.3
+        },
+        {
+            "rank": 7,
+            "pokemon_id": 1,
+            "name": "フシギダネ",
+            "usage_count": 11,
+            "usage_rate": 4.8
+        },
+        {
+            "rank": 8,
+            "pokemon_id": 7,
+            "name": "ベトベター",
+            "usage_count": 11,
+            "usage_rate": 4.8
+        },
+        {
+            "rank": 9,
+            "pokemon_id": 11,
+            "name": "サンダー",
+            "usage_count": 11,
+            "usage_rate": 4.8
+        },
+        {
+            "rank": 10,
+            "pokemon_id": 4,
+            "name": "ピカチュウ",
+            "usage_count": 10,
+            "usage_rate": 4.4
+        },
+        {
+            "rank": 11,
+            "pokemon_id": 2,
+            "name": "ヒトカゲ",
+            "usage_count": 4,
+            "usage_rate": 1.7
+        },
+        {
+            "rank": 12,
+            "pokemon_id": 5,
+            "name": "イーブイ",
+            "usage_count": 3,
+            "usage_rate": 1.3
+        }
+    ]
+}

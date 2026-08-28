@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>プラコロ バトルデータ</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js"
+    ></script>
+
+</head>
+
+
+<body>
+
+<header>
+
+    <h1>プラコロ バトルデータ</h1>
+
+    <p>
+        Discordコミュニティの対戦データ
+    </p>
+
+</header>
+
+
+<main>
+
+
+    <!-- ===================== -->
+    <!-- 概要 -->
+    <!-- ===================== -->
+
+    <section class="summary">
+
+        <div class="summary-card">
+
+            <span class="label">
+                総試合数
+            </span>
+
+            <span
+                id="total-battles"
+                class="value"
+            >
+                -
+            </span>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <span class="label">
+                ポケモン使用数
+            </span>
+
+            <span
+                id="total-usage"
+                class="value"
+            >
+                -
+            </span>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <span class="label">
+                使用ポケモン数
+            </span>
+
+            <span
+                id="pokemon-count"
+                class="value"
+            >
+                -
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===================== -->
+    <!-- 使用率 -->
+    <!-- ===================== -->
+
+    <section class="card">
+
+        <h2>
+            📊 ポケモン使用率
+        </h2>
+
+        <div class="chart-container">
+
+            <canvas id="usage-chart"></canvas>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===================== -->
+    <!-- 使用率ランキング -->
+    <!-- ===================== -->
+
+    <section class="card">
+
+        <h2>
+            🏆 使用率ランキング
+        </h2>
+
+        <div id="usage-ranking"></div>
+
+    </section>
+
+
+    <!-- ===================== -->
+    <!-- 勝率ランキング -->
+    <!-- ===================== -->
+
+    <section class="card">
+
+        <h2>
+            ⚔️ 勝率ランキング
+        </h2>
+
+        <div id="winrate-ranking"></div>
+
+    </section>
+
+
+    <!-- ===================== -->
+    <!-- 先攻・後攻 -->
+    <!-- ===================== -->
+
+    <section class="card">
+
+        <h2>
+            🎯 先攻・後攻戦績
+        </h2>
+
+        <div id="first-second-ranking"></div>
+
+    </section>
+
+
+    <!-- ===================== -->
+    <!-- 対戦カード -->
+    <!-- ===================== -->
+
+    <section class="card">
+
+        <h2>
+            🔥 対戦成績
+        </h2>
+
+        <div id="matchup-list"></div>
+
+    </section>
+
+
+</main>
+
+
+<footer>
+
+    <p>
+        Plakoro Battle Data
+    </p>
+
+</footer>
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
