@@ -92,8 +92,10 @@
         <td>
             {% if battle.first_player == 1 %}
                 ⇦
-            {% else %}
+            {% elif battle.first_player == 2 %}
                 ➡
+            {% else %}
+                不明
             {% endif %}
         </td>
 

@@ -34,6 +34,22 @@ def index():
         ORDER BY usage_count DESC
     """).fetchall()
 
+    turn_order_stats = conn.execute("""
+        SELECT
+            COUNT(*) AS total_games,
+            COALESCE(SUM(CASE
+                WHEN first_player = 1 AND player1_result = 'win' THEN 1
+                WHEN first_player = 2 AND player2_result = 'win' THEN 1
+                ELSE 0
+            END), 0) AS first_player_wins,
+            COALESCE(SUM(CASE
+                WHEN first_player = 2 AND player1_result = 'win' THEN 1
+                WHEN first_player = 1 AND player2_result = 'win' THEN 1
+                ELSE 0
+            END), 0) AS second_player_wins
+        FROM battles
+    """).fetchone()
+
     conn.close()
 
     # 全ポケモン使用数
@@ -60,10 +76,28 @@ def index():
             "usage_rate": round(usage_rate, 1)
         })
 
+    total_games = turn_order_stats["total_games"]
+
+    turn_order_result = {
+        "first_player_games": total_games,
+        "first_player_wins": turn_order_stats["first_player_wins"],
+        "first_player_win_rate": round(
+            turn_order_stats["first_player_wins"] / total_games * 100,
+            1
+        ) if total_games > 0 else 0,
+        "second_player_games": total_games,
+        "second_player_wins": turn_order_stats["second_player_wins"],
+        "second_player_win_rate": round(
+            turn_order_stats["second_player_wins"] / total_games * 100,
+            1
+        ) if total_games > 0 else 0
+    }
+
     return render_template(
         "review_index.html",
         stats=result,
-        total_usage=total_usage
+        total_usage=total_usage,
+        turn_order_result=turn_order_result
     )
 
 

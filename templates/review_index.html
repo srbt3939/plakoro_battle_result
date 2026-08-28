@@ -41,6 +41,22 @@
         }
 
 
+        .turn-order-container {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+
+
+        .turn-order-container h2 {
+            margin: 0;
+            padding: 16px 20px;
+            background: #f0f0f0;
+            font-size: 20px;
+        }
+
+
         .chart-container {
             max-width: 600px;
             margin: 0 auto 40px auto;
@@ -101,6 +117,46 @@
 
         総使用数：
         {{ total_usage }}
+
+    </div>
+
+
+    <div class="turn-order-container">
+
+        <h2>先攻・後攻の勝率</h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>区分</th>
+                    <th class="number">試合数</th>
+                    <th class="number">勝利数</th>
+                    <th class="number">勝率</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>先攻</td>
+                    <td class="number">{{ turn_order_result.first_player_games }}</td>
+                    <td class="number">{{ turn_order_result.first_player_wins }}</td>
+                    <td class="number">{{ turn_order_result.first_player_win_rate }}%</td>
+                </tr>
+
+                <tr>
+                    <td>後攻</td>
+                    <td class="number">{{ turn_order_result.second_player_games }}</td>
+                    <td class="number">{{ turn_order_result.second_player_wins }}</td>
+                    <td class="number">{{ turn_order_result.second_player_win_rate }}%</td>
+                </tr>
+
+            </tbody>
+
+        </table>
 
     </div>
 
