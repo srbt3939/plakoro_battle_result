@@ -898,7 +898,7 @@
                 "pokemon": "イワーク",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 51,
@@ -916,7 +916,7 @@
                 "pokemon": "ミュウ",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 52,
@@ -934,7 +934,7 @@
                 "pokemon": "ファイヤー",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 53,
@@ -952,7 +952,7 @@
                 "pokemon": "ベトベター",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 54,
@@ -970,7 +970,7 @@
                 "pokemon": "フリーザー",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 55,
@@ -988,7 +988,7 @@
                 "pokemon": "ミュウ",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 56,
@@ -1006,7 +1006,7 @@
                 "pokemon": "ファイヤー",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 57,
@@ -1024,7 +1024,7 @@
                 "pokemon": "サンダー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 58,
@@ -1042,7 +1042,7 @@
                 "pokemon": "ファイヤー",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 59,
@@ -1060,7 +1060,7 @@
                 "pokemon": "フシギダネ",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 60,
@@ -1078,7 +1078,7 @@
                 "pokemon": "フリーザー",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 61,
@@ -1096,7 +1096,7 @@
                 "pokemon": "ファイヤー",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 62,
@@ -1114,7 +1114,7 @@
                 "pokemon": "ファイヤー",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 63,
@@ -1132,7 +1132,7 @@
                 "pokemon": "ゼニガメ",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 64,
@@ -1150,7 +1150,7 @@
                 "pokemon": "サンダー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 65,
@@ -1168,7 +1168,7 @@
                 "pokemon": "フシギダネ",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 66,
@@ -1186,7 +1186,7 @@
                 "pokemon": "フシギダネ",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 67,
@@ -1204,7 +1204,7 @@
                 "pokemon": "フシギダネ",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 68,
@@ -1222,7 +1222,7 @@
                 "pokemon": "ファイヤー",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 69,
@@ -1240,7 +1240,7 @@
                 "pokemon": "ファイヤー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 70,
@@ -1258,7 +1258,7 @@
                 "pokemon": "ファイヤー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 71,
@@ -1276,7 +1276,7 @@
                 "pokemon": "ミュウ",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 72,
@@ -1294,7 +1294,7 @@
                 "pokemon": "ミュウ",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 73,
@@ -1312,7 +1312,7 @@
                 "pokemon": "イワーク",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 74,
@@ -1330,7 +1330,7 @@
                 "pokemon": "イワーク",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 75,
@@ -1348,7 +1348,7 @@
                 "pokemon": "イワーク",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 76,
@@ -1366,7 +1366,7 @@
                 "pokemon": "イワーク",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 77,
@@ -1384,7 +1384,7 @@
                 "pokemon": "ベトベター",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 78,
@@ -1402,7 +1402,7 @@
                 "pokemon": "ベトベター",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 79,
@@ -1420,7 +1420,7 @@
                 "pokemon": "ファイヤー",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 80,
@@ -1438,7 +1438,7 @@
                 "pokemon": "ファイヤー",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 81,
@@ -1456,7 +1456,7 @@
                 "pokemon": "ミュウ",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 82,
@@ -1474,7 +1474,7 @@
                 "pokemon": "ミュウ",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 83,
@@ -1492,7 +1492,7 @@
                 "pokemon": "ミュウ",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 84,
@@ -1510,7 +1510,7 @@
                 "pokemon": "フリーザー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 85,
@@ -1528,7 +1528,7 @@
                 "pokemon": "フリーザー",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 86,
@@ -1546,7 +1546,7 @@
                 "pokemon": "フリーザー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 87,
@@ -1564,7 +1564,7 @@
                 "pokemon": "サンダー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 88,
@@ -1582,7 +1582,7 @@
                 "pokemon": "サンダー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 89,
@@ -1600,7 +1600,7 @@
                 "pokemon": "カイロス",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 90,
@@ -1618,7 +1618,7 @@
                 "pokemon": "カイロス",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 91,
@@ -1636,7 +1636,7 @@
                 "pokemon": "ファイヤー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 92,
@@ -1654,7 +1654,7 @@
                 "pokemon": "ファイヤー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 93,
@@ -1672,7 +1672,7 @@
                 "pokemon": "ファイヤー",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 94,
@@ -1690,7 +1690,7 @@
                 "pokemon": "ファイヤー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 95,
@@ -1708,7 +1708,7 @@
                 "pokemon": "ファイヤー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 96,
@@ -1798,7 +1798,7 @@
                 "pokemon": "イワーク",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 101,
@@ -1816,7 +1816,7 @@
                 "pokemon": "イワーク",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 102,
@@ -1834,7 +1834,7 @@
                 "pokemon": "フリーザー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 103,
@@ -1852,7 +1852,7 @@
                 "pokemon": "フリーザー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 104,
@@ -1870,7 +1870,7 @@
                 "pokemon": "ファイヤー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 105,
@@ -1888,7 +1888,7 @@
                 "pokemon": "ファイヤー",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 106,
@@ -1906,7 +1906,7 @@
                 "pokemon": "ファイヤー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 107,
@@ -1924,7 +1924,7 @@
                 "pokemon": "ミュウ",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 108,
@@ -2032,7 +2032,7 @@
                 "pokemon": "ミュウ",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 114,
@@ -2050,7 +2050,7 @@
                 "pokemon": "ファイヤー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 115,
@@ -2068,7 +2068,7 @@
                 "pokemon": "サンダー",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 116,
@@ -2086,7 +2086,7 @@
                 "pokemon": "フリーザー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 117,
@@ -2104,7 +2104,7 @@
                 "pokemon": "ファイヤー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 118,
@@ -2122,7 +2122,7 @@
                 "pokemon": "フリーザー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         }
     ]
 }
