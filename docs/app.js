@@ -5,7 +5,7 @@
 async function loadJSON(file) {
 
     const response = await fetch(
-        `../data/${file}`
+        `data/${file}`
     );
 
     return await response.json();
