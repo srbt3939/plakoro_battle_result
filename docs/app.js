@@ -389,18 +389,28 @@ function createFirstSecondRanking(stats) {
                     ${p.name}
                 </span>
 
+
                 <span>
                     ${p.first_player.battles}戦
+                    ${p.first_player.wins}勝
+                    <br>
                     ${p.first_player.win_rate}%
                 </span>
 
+
                 <span>
                     ${p.second_player.battles}戦
+                    ${p.second_player.wins}勝
+                    <br>
                     ${p.second_player.win_rate}%
                 </span>
 
+
                 <span>
                     ${p.unknown.battles}戦
+                    ${p.unknown.wins}勝
+                    <br>
+                    ${p.unknown.win_rate}%
                 </span>
 
             </div>
@@ -410,6 +420,7 @@ function createFirstSecondRanking(stats) {
     });
 
 }
+
 
 
 // =========================
