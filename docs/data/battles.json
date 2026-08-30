@@ -2194,7 +2194,7 @@
                 "pokemon": "ミュウ",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 123,
@@ -2212,7 +2212,7 @@
                 "pokemon": "ミュウ",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 124,
@@ -2230,7 +2230,7 @@
                 "pokemon": "ミュウ",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 125,
@@ -2248,7 +2248,7 @@
                 "pokemon": "ファイヤー",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 126,
@@ -2266,7 +2266,7 @@
                 "pokemon": "ファイヤー",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 127,
@@ -2284,7 +2284,7 @@
                 "pokemon": "ファイヤー",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 128,
@@ -2302,7 +2302,7 @@
                 "pokemon": "フシギダネ",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 129,
@@ -2320,7 +2320,7 @@
                 "pokemon": "フシギダネ",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 130,
@@ -2338,7 +2338,7 @@
                 "pokemon": "フシギダネ",
                 "result": "lose"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 131,
@@ -2356,7 +2356,7 @@
                 "pokemon": "フシギダネ",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 132,
@@ -2374,7 +2374,7 @@
                 "pokemon": "ゼニガメ",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 133,
@@ -2392,7 +2392,7 @@
                 "pokemon": "ゼニガメ",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 134,
@@ -2410,7 +2410,7 @@
                 "pokemon": "ゼニガメ",
                 "result": "win"
             },
-            "first_player": ""
+            "first_player": null
         },
         {
             "id": 135,
