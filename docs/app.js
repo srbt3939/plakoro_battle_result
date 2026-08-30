@@ -101,6 +101,10 @@ async function main() {
         matchups.matchups
     );
 
+    setupMatchupFilter(
+        matchups.matchups
+    );
+    
 }
 
 
@@ -427,7 +431,10 @@ function createFirstSecondRanking(stats) {
 // 対戦成績
 // =========================
 
-function createMatchups(matchups) {
+function createMatchups(
+    matchups,
+    selectedPokemonId = ""
+) {
 
     const container =
         document.getElementById(
@@ -435,16 +442,87 @@ function createMatchups(matchups) {
         );
 
 
-    // 対戦数が多いものを表示
-    const ranking =
-        matchups
-            .filter(
-                m => m.battles >= 2
-            )
-            .slice(0, 30);
+    container.innerHTML = "";
 
 
-    ranking.forEach(m => {
+    let filtered =
+        matchups;
+
+
+    // =========================
+    // フィルター
+    // =========================
+
+    if (selectedPokemonId !== "") {
+
+        const id =
+            Number(
+                selectedPokemonId
+            );
+
+
+        filtered =
+            matchups.filter(m =>
+
+                m.pokemon1.id === id ||
+                m.pokemon2.id === id
+
+            );
+
+    }
+
+
+    // 対戦数が多い順
+    filtered =
+        [...filtered].sort(
+            (a, b) =>
+                b.battles -
+                a.battles
+        );
+
+
+    // =========================
+    // 表示
+    // =========================
+
+    filtered.forEach(m => {
+
+        let pokemon1 =
+            m.pokemon1;
+
+        let pokemon2 =
+            m.pokemon2;
+
+
+        let pokemon1WinRate =
+            m.pokemon1_win_rate;
+
+        let pokemon2WinRate =
+            m.pokemon2_win_rate;
+
+
+        // 選択されたポケモンを
+        // 左側に固定
+        if (
+            selectedPokemonId !== "" &&
+            String(pokemon2.id) ===
+                selectedPokemonId
+        ) {
+
+            pokemon1 =
+                m.pokemon2;
+
+            pokemon2 =
+                m.pokemon1;
+
+            pokemon1WinRate =
+                m.pokemon2_win_rate;
+
+            pokemon2WinRate =
+                m.pokemon1_win_rate;
+
+        }
+
 
         container.innerHTML += `
 
@@ -452,11 +530,11 @@ function createMatchups(matchups) {
 
                 <span class="matchup-pokemon">
 
-                    ${m.pokemon1.name}
+                    ${pokemon1.name}
 
                     <br>
 
-                    ${m.pokemon1_win_rate}%
+                    ${pokemon1WinRate}%
 
                 </span>
 
@@ -474,11 +552,11 @@ function createMatchups(matchups) {
 
                 <span class="matchup-pokemon">
 
-                    ${m.pokemon2.name}
+                    ${pokemon2.name}
 
                     <br>
 
-                    ${m.pokemon2_win_rate}%
+                    ${pokemon2WinRate}%
 
                 </span>
 
@@ -487,6 +565,23 @@ function createMatchups(matchups) {
         `;
 
     });
+
+
+    // =========================
+    // 該当データなし
+    // =========================
+
+    if (filtered.length === 0) {
+
+        container.innerHTML = `
+
+            <p>
+                対戦データがありません。
+            </p>
+
+        `;
+
+    }
 
 }
 

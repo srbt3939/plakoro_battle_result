@@ -235,6 +235,46 @@ main {
     font-weight: bold;
 }
 
+/* ========================= */
+/* 対戦成績フィルター */
+/* ========================= */
+
+.matchup-filter {
+
+    margin-bottom: 20px;
+
+}
+
+
+.matchup-filter label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: bold;
+
+}
+
+
+.matchup-filter select {
+
+    width: 100%;
+
+    max-width: 400px;
+
+    padding: 10px;
+
+    font-size: 16px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    background: white;
+
+}
+
 
 /* ========================= */
 /* 先攻・後攻戦績 */
