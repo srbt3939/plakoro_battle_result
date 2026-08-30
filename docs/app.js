@@ -426,6 +426,89 @@ function createFirstSecondRanking(stats) {
 }
 
 
+// =========================
+// 対戦成績フィルター
+// =========================
+
+function setupMatchupFilter(matchups) {
+
+    const select =
+        document.getElementById(
+            "matchup-pokemon"
+        );
+
+
+    // 登場するポケモンを取得
+    const pokemonMap = new Map();
+
+
+    matchups.forEach(m => {
+
+        pokemonMap.set(
+            m.pokemon1.pokemon_id,
+            m.pokemon1.name
+        );
+
+        pokemonMap.set(
+            m.pokemon2.pokemon_id,
+            m.pokemon2.name
+        );
+
+    });
+
+
+    // ポケモン名順
+    const pokemonList =
+        Array.from(
+            pokemonMap.entries()
+        ).sort(
+            (a, b) =>
+                a[1].localeCompare(
+                    b[1],
+                    "ja"
+                )
+        );
+
+
+    pokemonList.forEach(
+        ([id, name]) => {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+            option.value = id;
+
+            option.textContent = name;
+
+            select.appendChild(
+                option
+            );
+
+        }
+    );
+
+
+    // 選択変更時
+    select.addEventListener(
+        "change",
+        function() {
+
+            createMatchups(
+                matchups,
+                this.value
+            );
+
+        }
+    );
+
+}
+
+
+// =========================
+// 対戦成績
+// =========================
 
 // =========================
 // 対戦成績
@@ -464,15 +547,18 @@ function createMatchups(
         filtered =
             matchups.filter(m =>
 
-                m.pokemon1.id === id ||
-                m.pokemon2.id === id
+                m.pokemon1.pokemon_id === id ||
+                m.pokemon2.pokemon_id === id
 
             );
 
     }
 
 
+    // =========================
     // 対戦数が多い順
+    // =========================
+
     filtered =
         [...filtered].sort(
             (a, b) =>
@@ -501,11 +587,14 @@ function createMatchups(
             m.pokemon2_win_rate;
 
 
+        // =========================
         // 選択されたポケモンを
         // 左側に固定
+        // =========================
+
         if (
             selectedPokemonId !== "" &&
-            String(pokemon2.id) ===
+            String(pokemon2.pokemon_id) ===
                 selectedPokemonId
         ) {
 
