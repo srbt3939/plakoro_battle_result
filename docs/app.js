@@ -430,6 +430,13 @@ function createFirstSecondRanking(stats) {
 // 対戦成績フィルター
 // =========================
 
+function getPokemonId(pokemon) {
+
+    return pokemon?.pokemon_id ?? pokemon?.id;
+
+}
+
+
 function setupMatchupFilter(matchups) {
 
     const select =
@@ -445,12 +452,12 @@ function setupMatchupFilter(matchups) {
     matchups.forEach(m => {
 
         pokemonMap.set(
-            m.pokemon1.pokemon_id,
+            getPokemonId(m.pokemon1),
             m.pokemon1.name
         );
 
         pokemonMap.set(
-            m.pokemon2.pokemon_id,
+            getPokemonId(m.pokemon2),
             m.pokemon2.name
         );
 
@@ -542,8 +549,8 @@ function createMatchups(
         filtered =
             matchups.filter(m =>
 
-                m.pokemon1.pokemon_id === id ||
-                m.pokemon2.pokemon_id === id
+                getPokemonId(m.pokemon1) === id ||
+                getPokemonId(m.pokemon2) === id
 
             );
 
@@ -589,7 +596,7 @@ function createMatchups(
 
         if (
             selectedPokemonId !== "" &&
-            String(pokemon2.pokemon_id) ===
+            String(getPokemonId(pokemon2)) ===
                 selectedPokemonId
         ) {
 
