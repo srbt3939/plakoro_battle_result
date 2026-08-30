@@ -9,7 +9,7 @@ from pathlib import Path
 # =========================
 
 DB_PATH = "pokemon.db"
-OUTPUT_DIR = Path("data")
+OUTPUT_DIR = Path("docs/data")
 
 
 # =========================
