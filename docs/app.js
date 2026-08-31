@@ -606,17 +606,17 @@ function renderPokemonRanking() {
     ranking.forEach(
         (p, index) => {
 
-            // // 勝率ソート時は
-            // // 5試合未満を除外
-            // if (
-            //     currentSortKey ===
-            //         "win_rate" &&
-            //     p.battles < 5
-            // ) {
+            // 勝率ソート時は
+            // 5試合未満を除外
+            if (
+                currentSortKey ===
+                    "win_rate" &&
+                p.battles < 5
+            ) {
 
-            //     return;
+                return;
 
-            // }
+            }
 
 
             container.innerHTML += `
