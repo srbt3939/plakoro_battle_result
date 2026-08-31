@@ -344,6 +344,13 @@ function createUsageChart(pokemon) {
 let pokemonRankingData = [];
 
 
+// 現在のソート項目
+let currentSortKey = "usage_rate";
+
+// 現在のソート方向
+let currentSortOrder = "desc";
+
+
 // =========================
 // ランキング作成
 // =========================
@@ -365,9 +372,11 @@ function createPokemonRanking(
 
         return {
 
-            pokemon_id: p.pokemon_id,
+            pokemon_id:
+                p.pokemon_id,
 
-            name: p.name,
+            name:
+                p.name,
 
             usage_count:
                 p.usage_count,
@@ -390,13 +399,53 @@ function createPokemonRanking(
     });
 
 
-    pokemonRankingData = ranking;
+    pokemonRankingData =
+        ranking;
 
 
-    // 初期表示は使用率順
-    renderPokemonRanking(
-        "usage_rate"
-    );
+    // 初期表示
+    renderPokemonRanking();
+
+}
+
+
+// =========================
+// ソート変更
+// =========================
+
+function changeRankingSort(
+    sortKey
+) {
+
+    // 同じ項目をクリックした場合
+    // 昇順・降順を反転
+    if (
+        currentSortKey ===
+        sortKey
+    ) {
+
+        currentSortOrder =
+            currentSortOrder ===
+            "desc"
+                ? "asc"
+                : "desc";
+
+    }
+
+    // 別の項目をクリックした場合
+    else {
+
+        currentSortKey =
+            sortKey;
+
+        // 新しい項目は降順から
+        currentSortOrder =
+            "desc";
+
+    }
+
+
+    renderPokemonRanking();
 
 }
 
@@ -405,9 +454,7 @@ function createPokemonRanking(
 // ランキング表示
 // =========================
 
-function renderPokemonRanking(
-    sortKey
-) {
+function renderPokemonRanking() {
 
     const container =
         document.getElementById(
@@ -421,11 +468,77 @@ function renderPokemonRanking(
 
     const ranking =
         [...pokemonRankingData]
-            .sort(
-                (a, b) =>
-                    b[sortKey] -
-                    a[sortKey]
-            );
+            .filter(p => {
+
+                if (
+                    currentSortKey ===
+                    "win_rate"
+                ) {
+
+                    return p.battles >= 5;
+
+                }
+
+                return true;
+
+            })
+            .sort((a, b) => {
+
+                const valueA =
+                    a[currentSortKey];
+
+                const valueB =
+                    b[currentSortKey];
+
+
+                if (
+                    currentSortOrder ===
+                    "desc"
+                ) {
+
+                    return valueB - valueA;
+
+                }
+
+                else {
+
+                    return valueA - valueB;
+
+                }
+
+            });
+
+
+    // =========================
+    // 矢印
+    // =========================
+
+    const usageArrow =
+        currentSortKey ===
+        "usage_rate"
+
+            ? (
+                currentSortOrder ===
+                "desc"
+                    ? " ↓"
+                    : " ↑"
+            )
+
+            : "";
+
+
+    const winRateArrow =
+        currentSortKey ===
+        "win_rate"
+
+            ? (
+                currentSortOrder ===
+                "desc"
+                    ? " ↓"
+                    : " ↑"
+            )
+
+            : "";
 
 
     // =========================
@@ -440,35 +553,46 @@ function renderPokemonRanking(
                 順位
             </span>
 
+
             <span class="pokemon-name">
                 ポケモン
             </span>
+
 
             <span class="number">
                 使用数
             </span>
 
-            <button
-                class="sort-button"
-                onclick="
-                    renderPokemonRanking(
-                        'usage_rate'
-                    )
-                "
-            >
-                使用率
-            </button>
 
             <button
                 class="sort-button"
                 onclick="
-                    renderPokemonRanking(
+                    changeRankingSort(
+                        'usage_rate'
+                    )
+                "
+            >
+                使用率${usageArrow}
+            </button>
+
+
+            <button
+                class="sort-button"
+                onclick="
+                    changeRankingSort(
                         'win_rate'
                     )
                 "
             >
-                勝率
+                勝率${winRateArrow}
             </button>
+
+        </div>
+
+
+        <div class="ranking-note">
+
+            ※ 勝率は5試合以上のポケモンを対象
 
         </div>
 
@@ -476,38 +600,65 @@ function renderPokemonRanking(
 
 
     // =========================
-    // データ
+    // データ表示
     // =========================
 
     ranking.forEach(
         (p, index) => {
+
+            // 勝率ソート時は
+            // 5試合未満を除外
+            if (
+                currentSortKey ===
+                    "win_rate" &&
+                p.battles < 5
+            ) {
+
+                return;
+
+            }
+
 
             container.innerHTML += `
 
                 <div class="pokemon-ranking-row">
 
                     <span class="rank">
+
                         ${index + 1}
+
                     </span>
 
 
                     <span class="pokemon-name">
+
                         ${p.name}
+
                     </span>
 
 
                     <span class="number">
+
                         ${p.usage_count}
+
                     </span>
 
 
                     <span class="number">
+
                         ${p.usage_rate}%
+
                     </span>
 
 
                     <span class="number">
-                        ${p.win_rate}%
+
+                        ${
+                            p.battles >= 5
+                                ? p.win_rate + "%"
+                                : "-"
+                        }
+
                     </span>
 
                 </div>
