@@ -946,11 +946,11 @@ function createMatchups(
 
                 <span class="matchup-pokemon">
 
-                    ${pokemon1.name}
+                    <span class="pokemon-name-bold">${pokemon1.name}</span>
 
                     <br>
 
-                    ${pokemon1WinRate}%
+                    <span class="pokemon-rate">${pokemon1WinRate}%</span>
 
                 </span>
 
@@ -968,11 +968,11 @@ function createMatchups(
 
                 <span class="matchup-pokemon">
 
-                    ${pokemon2.name}
+                    <span class="pokemon-name-bold">${pokemon2.name}</span>
 
                     <br>
 
-                    ${pokemon2WinRate}%
+                    <span class="pokemon-rate">${pokemon2WinRate}%</span>
 
                 </span>
 

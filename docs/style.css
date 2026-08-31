@@ -225,6 +225,21 @@ main {
 .matchup-pokemon {
 
     font-weight: bold;
+
+}
+
+
+.pokemon-name-bold {
+
+    font-weight: bold;
+
+}
+
+
+.pokemon-rate {
+
+    font-weight: normal;
+
 }
 
 
