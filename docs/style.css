@@ -322,6 +322,108 @@ main {
 
 }
 
+/* ========================= */
+/* ポケモンランキング */
+/* ========================= */
+
+.pokemon-ranking-row {
+
+    display: grid;
+
+    grid-template-columns:
+        50px
+        minmax(120px, 1fr)
+        70px
+        80px
+        70px
+        80px;
+
+    align-items: center;
+
+    min-height: 50px;
+
+    border-bottom: 1px solid #eee;
+
+    column-gap: 10px;
+
+}
+
+
+.pokemon-ranking-row.header {
+
+    min-height: 40px;
+
+    font-size: 13px;
+
+    color: #777;
+
+    border-bottom: 2px solid #ddd;
+
+}
+
+
+.pokemon-ranking-row .rank {
+
+    text-align: center;
+
+    font-weight: bold;
+
+}
+
+
+.pokemon-ranking-row .pokemon-name {
+
+    font-weight: bold;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+}
+
+
+.pokemon-ranking-row .number {
+
+    text-align: right;
+
+    white-space: nowrap;
+
+}
+
+
+/* ========================= */
+/* スマホ対応 */
+/* ========================= */
+
+@media (max-width: 600px) {
+
+    .pokemon-ranking-row {
+
+        grid-template-columns:
+            35px
+            minmax(90px, 1fr)
+            55px
+            65px
+            55px
+            65px;
+
+        column-gap: 5px;
+
+        font-size: 14px;
+
+    }
+
+
+    .pokemon-ranking-row.header {
+
+        font-size: 11px;
+
+    }
+
+}
+
 /* ===================== */
 /* フッター */
 /* ===================== */

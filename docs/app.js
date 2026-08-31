@@ -67,19 +67,11 @@ async function main() {
 
 
     // =========================
-    // 使用率ランキング
+    // 使用率・勝率ランキング
     // =========================
 
-    createUsageRanking(
-        usage.pokemon
-    );
-
-
-    // =========================
-    // 勝率ランキング
-    // =========================
-
-    createWinRateRanking(
+    createPokemonRanking(
+        usage.pokemon,
         stats.pokemon
     );
 
@@ -215,133 +207,277 @@ function createUsageChart(pokemon) {
 // 使用率ランキング
 // =========================
 
-function createUsageRanking(pokemon) {
+// function createUsageRanking(pokemon) {
+
+//     const container =
+//         document.getElementById(
+//             "usage-ranking"
+//         );
+
+
+//     container.innerHTML = `
+
+//         <div class="ranking-row">
+
+//             <strong>順位</strong>
+//             <strong>ポケモン</strong>
+//             <strong class="number">
+//                 使用数
+//             </strong>
+//             <strong class="number">
+//                 使用率
+//             </strong>
+
+//         </div>
+
+//     `;
+
+
+//     pokemon.forEach((p, index) => {
+
+//         container.innerHTML += `
+
+//             <div class="ranking-row">
+
+//                 <span class="rank">
+//                     ${index + 1}
+//                 </span>
+
+//                 <span class="pokemon-name">
+//                     ${p.name}
+//                 </span>
+
+//                 <span class="number">
+//                     ${p.usage_count}
+//                 </span>
+
+//                 <span class="number">
+//                     ${p.usage_rate}%
+//                 </span>
+
+//             </div>
+
+//         `;
+
+//     });
+
+// }
+
+
+// // =========================
+// // 勝率ランキング
+// // =========================
+
+// function createWinRateRanking(stats) {
+
+//     const container =
+//         document.getElementById(
+//             "winrate-ranking"
+//         );
+
+
+//     // 最低5試合以上に限定
+//     const ranking =
+//         stats
+//             .filter(
+//                 p => p.total.battles >= 5
+//             )
+//             .sort(
+//                 (a, b) =>
+//                     b.total.win_rate -
+//                     a.total.win_rate
+//             );
+
+
+//     container.innerHTML = `
+
+//         <div class="ranking-row">
+
+//             <strong>順位</strong>
+//             <strong>ポケモン</strong>
+//             <strong class="number">
+//                 試合
+//             </strong>
+//             <strong class="number">
+//                 勝率
+//             </strong>
+
+//         </div>
+
+//     `;
+
+
+//     ranking.forEach((p, index) => {
+
+//         container.innerHTML += `
+
+//             <div class="ranking-row">
+
+//                 <span class="rank">
+//                     ${index + 1}
+//                 </span>
+
+//                 <span class="pokemon-name">
+//                     ${p.name}
+//                 </span>
+
+//                 <span class="number">
+//                     ${p.total.battles}
+//                 </span>
+
+//                 <span class="number">
+//                     ${p.total.win_rate}%
+//                 </span>
+
+//             </div>
+
+//         `;
+
+//     });
+
+// }
+
+// =========================
+// ポケモンランキング
+// =========================
+
+function createPokemonRanking(
+    usage,
+    stats
+) {
 
     const container =
         document.getElementById(
-            "usage-ranking"
+            "pokemon-ranking"
         );
 
 
-    container.innerHTML = `
+    // =========================
+    // 使用率をMap化
+    // =========================
 
-        <div class="ranking-row">
+    const usageMap = new Map();
 
-            <strong>順位</strong>
-            <strong>ポケモン</strong>
-            <strong class="number">
-                使用数
-            </strong>
-            <strong class="number">
-                使用率
-            </strong>
+    usage.forEach(p => {
 
-        </div>
-
-    `;
-
-
-    pokemon.forEach((p, index) => {
-
-        container.innerHTML += `
-
-            <div class="ranking-row">
-
-                <span class="rank">
-                    ${index + 1}
-                </span>
-
-                <span class="pokemon-name">
-                    ${p.name}
-                </span>
-
-                <span class="number">
-                    ${p.usage_count}
-                </span>
-
-                <span class="number">
-                    ${p.usage_rate}%
-                </span>
-
-            </div>
-
-        `;
+        usageMap.set(
+            p.pokemon_id,
+            p
+        );
 
     });
 
-}
 
+    // =========================
+    // 使用率順に並べる
+    // =========================
 
-// =========================
-// 勝率ランキング
-// =========================
-
-function createWinRateRanking(stats) {
-
-    const container =
-        document.getElementById(
-            "winrate-ranking"
-        );
-
-
-    // 最低5試合以上に限定
     const ranking =
-        stats
-            .filter(
-                p => p.total.battles >= 5
-            )
+        [...usage]
             .sort(
                 (a, b) =>
-                    b.total.win_rate -
-                    a.total.win_rate
+                    b.usage_count -
+                    a.usage_count
             );
 
 
+    // =========================
+    // ヘッダー
+    // =========================
+
     container.innerHTML = `
 
-        <div class="ranking-row">
+        <div class="pokemon-ranking-row header">
 
-            <strong>順位</strong>
-            <strong>ポケモン</strong>
-            <strong class="number">
+            <span class="rank">
+                順位
+            </span>
+
+            <span class="pokemon-name">
+                ポケモン
+            </span>
+
+            <span class="number">
+                使用数
+            </span>
+
+            <span class="number">
+                使用率
+            </span>
+
+            <span class="number">
                 試合
-            </strong>
-            <strong class="number">
+            </span>
+
+            <span class="number">
                 勝率
-            </strong>
+            </span>
 
         </div>
 
     `;
 
 
-    ranking.forEach((p, index) => {
+    // =========================
+    // データ表示
+    // =========================
 
-        container.innerHTML += `
+    ranking.forEach(
+        (p, index) => {
 
-            <div class="ranking-row">
+            const stat =
+                stats.find(
+                    s =>
+                        s.pokemon_id ===
+                        p.pokemon_id
+                );
 
-                <span class="rank">
-                    ${index + 1}
-                </span>
 
-                <span class="pokemon-name">
-                    ${p.name}
-                </span>
+            // statsに存在しない場合
+            if (!stat) {
+                return;
+            }
 
-                <span class="number">
-                    ${p.total.battles}
-                </span>
 
-                <span class="number">
-                    ${p.total.win_rate}%
-                </span>
+            container.innerHTML += `
 
-            </div>
+                <div class="pokemon-ranking-row">
 
-        `;
+                    <span class="rank">
+                        ${index + 1}
+                    </span>
 
-    });
+
+                    <span class="pokemon-name">
+                        ${p.name}
+                    </span>
+
+
+                    <span class="number">
+                        ${p.usage_count}
+                    </span>
+
+
+                    <span class="number">
+                        ${p.usage_rate}%
+                    </span>
+
+
+                    <span class="number">
+                        ${stat.total.battles}
+                    </span>
+
+
+                    <span class="number">
+                        ${stat.total.win_rate}%
+                    </span>
+
+                </div>
+
+            `;
+
+        }
+    );
 
 }
 
