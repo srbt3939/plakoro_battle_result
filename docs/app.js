@@ -520,11 +520,11 @@ function renderPokemonRanking() {
             ? (
                 currentSortOrder ===
                 "desc"
-                    ? " ↓"
-                    : " ↑"
+                    ? " ▼"
+                    : " ▲"
             )
 
-            : "";
+            : "▽";
 
 
     const winRateArrow =
@@ -534,11 +534,11 @@ function renderPokemonRanking() {
             ? (
                 currentSortOrder ===
                 "desc"
-                    ? " ↓"
-                    : " ↑"
+                    ? " ▼"
+                    : " ▲"
             )
 
-            : "";
+            : "▽";
 
 
     // =========================
