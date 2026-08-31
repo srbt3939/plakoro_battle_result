@@ -341,9 +341,72 @@ function createUsageChart(pokemon) {
 // ポケモンランキング
 // =========================
 
+let pokemonRankingData = [];
+
+
+// =========================
+// ランキング作成
+// =========================
+
 function createPokemonRanking(
     usage,
     stats
+) {
+
+    const ranking = usage.map(p => {
+
+        const stat =
+            stats.find(
+                s =>
+                    s.pokemon_id ===
+                    p.pokemon_id
+            );
+
+
+        return {
+
+            pokemon_id: p.pokemon_id,
+
+            name: p.name,
+
+            usage_count:
+                p.usage_count,
+
+            usage_rate:
+                p.usage_rate,
+
+            battles:
+                stat
+                    ? stat.total.battles
+                    : 0,
+
+            win_rate:
+                stat
+                    ? stat.total.win_rate
+                    : 0
+
+        };
+
+    });
+
+
+    pokemonRankingData = ranking;
+
+
+    // 初期表示は使用率順
+    renderPokemonRanking(
+        "usage_rate"
+    );
+
+}
+
+
+// =========================
+// ランキング表示
+// =========================
+
+function renderPokemonRanking(
+    sortKey
 ) {
 
     const container =
@@ -353,31 +416,15 @@ function createPokemonRanking(
 
 
     // =========================
-    // 使用率をMap化
-    // =========================
-
-    const usageMap = new Map();
-
-    usage.forEach(p => {
-
-        usageMap.set(
-            p.pokemon_id,
-            p
-        );
-
-    });
-
-
-    // =========================
-    // 使用率順に並べる
+    // ソート
     // =========================
 
     const ranking =
-        [...usage]
+        [...pokemonRankingData]
             .sort(
                 (a, b) =>
-                    b.usage_count -
-                    a.usage_count
+                    b[sortKey] -
+                    a[sortKey]
             );
 
 
@@ -401,17 +448,27 @@ function createPokemonRanking(
                 使用数
             </span>
 
-            <span class="number">
+            <button
+                class="sort-button"
+                onclick="
+                    renderPokemonRanking(
+                        'usage_rate'
+                    )
+                "
+            >
                 使用率
-            </span>
+            </button>
 
-            <span class="number">
-                試合
-            </span>
-
-            <span class="number">
+            <button
+                class="sort-button"
+                onclick="
+                    renderPokemonRanking(
+                        'win_rate'
+                    )
+                "
+            >
                 勝率
-            </span>
+            </button>
 
         </div>
 
@@ -419,25 +476,11 @@ function createPokemonRanking(
 
 
     // =========================
-    // データ表示
+    // データ
     // =========================
 
     ranking.forEach(
         (p, index) => {
-
-            const stat =
-                stats.find(
-                    s =>
-                        s.pokemon_id ===
-                        p.pokemon_id
-                );
-
-
-            // statsに存在しない場合
-            if (!stat) {
-                return;
-            }
-
 
             container.innerHTML += `
 
@@ -464,12 +507,7 @@ function createPokemonRanking(
 
 
                     <span class="number">
-                        ${stat.total.battles}
-                    </span>
-
-
-                    <span class="number">
-                        ${stat.total.win_rate}%
+                        ${p.win_rate}%
                     </span>
 
                 </div>
