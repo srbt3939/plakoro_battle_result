@@ -32,10 +32,10 @@
             "pokemon_id": 2,
             "name": "ヒトカゲ",
             "total": {
-                "battles": 7,
-                "wins": 5,
+                "battles": 8,
+                "wins": 6,
                 "losses": 2,
-                "win_rate": 71.4
+                "win_rate": 75.0
             },
             "first_player": {
                 "battles": 5,
@@ -44,10 +44,10 @@
                 "win_rate": 80.0
             },
             "second_player": {
-                "battles": 3,
-                "wins": 1,
+                "battles": 4,
+                "wins": 2,
                 "losses": 2,
-                "win_rate": 33.3
+                "win_rate": 50.0
             },
             "unknown": {
                 "battles": 0,
@@ -116,10 +116,10 @@
             "pokemon_id": 5,
             "name": "イーブイ",
             "total": {
-                "battles": 6,
-                "wins": 4,
-                "losses": 2,
-                "win_rate": 66.7
+                "battles": 11,
+                "wins": 6,
+                "losses": 5,
+                "win_rate": 54.5
             },
             "first_player": {
                 "battles": 4,
@@ -134,38 +134,38 @@
                 "win_rate": 0.0
             },
             "unknown": {
-                "battles": 0,
-                "wins": 0,
-                "losses": 0,
-                "win_rate": 0
+                "battles": 5,
+                "wins": 2,
+                "losses": 3,
+                "win_rate": 40.0
             }
         },
         {
             "pokemon_id": 6,
             "name": "ミュウ",
             "total": {
-                "battles": 37,
-                "wins": 23,
-                "losses": 14,
-                "win_rate": 62.2
+                "battles": 43,
+                "wins": 27,
+                "losses": 16,
+                "win_rate": 62.8
             },
             "first_player": {
-                "battles": 12,
-                "wins": 8,
-                "losses": 4,
-                "win_rate": 66.7
+                "battles": 16,
+                "wins": 11,
+                "losses": 5,
+                "win_rate": 68.8
             },
             "second_player": {
-                "battles": 11,
-                "wins": 4,
-                "losses": 7,
-                "win_rate": 36.4
+                "battles": 13,
+                "wins": 5,
+                "losses": 8,
+                "win_rate": 38.5
             },
             "unknown": {
-                "battles": 17,
+                "battles": 18,
                 "wins": 11,
-                "losses": 6,
-                "win_rate": 64.7
+                "losses": 7,
+                "win_rate": 61.1
             }
         },
         {
@@ -200,38 +200,38 @@
             "pokemon_id": 8,
             "name": "イワーク",
             "total": {
-                "battles": 37,
-                "wins": 16,
-                "losses": 21,
-                "win_rate": 43.2
+                "battles": 40,
+                "wins": 17,
+                "losses": 23,
+                "win_rate": 42.5
             },
             "first_player": {
-                "battles": 13,
+                "battles": 14,
                 "wins": 7,
-                "losses": 6,
-                "win_rate": 53.8
+                "losses": 7,
+                "win_rate": 50.0
             },
             "second_player": {
-                "battles": 15,
+                "battles": 16,
                 "wins": 7,
-                "losses": 8,
-                "win_rate": 46.7
+                "losses": 9,
+                "win_rate": 43.8
             },
             "unknown": {
-                "battles": 9,
-                "wins": 2,
+                "battles": 10,
+                "wins": 3,
                 "losses": 7,
-                "win_rate": 22.2
+                "win_rate": 30.0
             }
         },
         {
             "pokemon_id": 9,
             "name": "カイロス",
             "total": {
-                "battles": 59,
+                "battles": 60,
                 "wins": 31,
-                "losses": 28,
-                "win_rate": 52.5
+                "losses": 29,
+                "win_rate": 51.7
             },
             "first_player": {
                 "battles": 5,
@@ -240,10 +240,10 @@
                 "win_rate": 40.0
             },
             "second_player": {
-                "battles": 8,
+                "battles": 9,
                 "wins": 3,
-                "losses": 5,
-                "win_rate": 37.5
+                "losses": 6,
+                "win_rate": 33.3
             },
             "unknown": {
                 "battles": 46,
@@ -256,84 +256,84 @@
             "pokemon_id": 10,
             "name": "フリーザー",
             "total": {
-                "battles": 34,
-                "wins": 20,
-                "losses": 14,
-                "win_rate": 58.8
+                "battles": 40,
+                "wins": 22,
+                "losses": 18,
+                "win_rate": 55.0
             },
             "first_player": {
-                "battles": 10,
+                "battles": 11,
                 "wins": 6,
-                "losses": 4,
-                "win_rate": 60.0
+                "losses": 5,
+                "win_rate": 54.5
             },
             "second_player": {
-                "battles": 7,
+                "battles": 8,
                 "wins": 4,
-                "losses": 3,
-                "win_rate": 57.1
+                "losses": 4,
+                "win_rate": 50.0
             },
             "unknown": {
-                "battles": 17,
-                "wins": 10,
-                "losses": 7,
-                "win_rate": 58.8
+                "battles": 21,
+                "wins": 12,
+                "losses": 9,
+                "win_rate": 57.1
             }
         },
         {
             "pokemon_id": 11,
             "name": "サンダー",
             "total": {
-                "battles": 16,
-                "wins": 7,
-                "losses": 9,
-                "win_rate": 43.8
+                "battles": 24,
+                "wins": 13,
+                "losses": 11,
+                "win_rate": 54.2
             },
             "first_player": {
+                "battles": 12,
+                "wins": 7,
+                "losses": 5,
+                "win_rate": 58.3
+            },
+            "second_player": {
+                "battles": 7,
+                "wins": 2,
+                "losses": 5,
+                "win_rate": 28.6
+            },
+            "unknown": {
                 "battles": 8,
                 "wins": 4,
                 "losses": 4,
                 "win_rate": 50.0
-            },
-            "second_player": {
-                "battles": 3,
-                "wins": 2,
-                "losses": 1,
-                "win_rate": 66.7
-            },
-            "unknown": {
-                "battles": 5,
-                "wins": 1,
-                "losses": 4,
-                "win_rate": 20.0
             }
         },
         {
             "pokemon_id": 12,
             "name": "ファイヤー",
             "total": {
-                "battles": 50,
-                "wins": 27,
-                "losses": 23,
-                "win_rate": 54.0
+                "battles": 56,
+                "wins": 31,
+                "losses": 25,
+                "win_rate": 55.4
             },
             "first_player": {
-                "battles": 10,
-                "wins": 8,
+                "battles": 12,
+                "wins": 10,
                 "losses": 2,
-                "win_rate": 80.0
+                "win_rate": 83.3
             },
             "second_player": {
-                "battles": 16,
-                "wins": 6,
+                "battles": 18,
+                "wins": 8,
                 "losses": 10,
-                "win_rate": 37.5
+                "win_rate": 44.4
             },
             "unknown": {
-                "battles": 24,
+                "battles": 26,
                 "wins": 13,
-                "losses": 11,
-                "win_rate": 54.2
+                "losses": 13,
+                "win_rate": 50.0
             }
         },
         {
