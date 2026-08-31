@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>プラコロ戦績入力</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 20px;
+        background: #f4f5f7;
+        color: #222;
+        font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            sans-serif;
+    }
+
+    .container {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    h1 {
+        text-align: center;
+        margin: 0 0 24px;
+    }
+
+    .card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 20px;
+        margin-bottom: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .players {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    .player-card {
+        border: 2px solid #ddd;
+        border-radius: 14px;
+        padding: 16px;
+    }
+
+    .player-card h2 {
+        margin: 0 0 14px;
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .player-card select {
+        width: 100%;
+        padding: 13px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background: #fff;
+    }
+
+    .section-title {
+        font-weight: bold;
+        margin-bottom: 12px;
+    }
+
+    .button-group {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .button-group.two {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .choice-button {
+        padding: 14px 8px;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        background: #fff;
+        color: #222;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .choice-button:hover {
+        background: #f5f5f5;
+    }
+
+    .choice-button.selected {
+        background: #222;
+        color: #fff;
+        border-color: #222;
+    }
+
+    .generate-button {
+        width: 100%;
+        padding: 17px;
+        border: none;
+        border-radius: 12px;
+        background: #222;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .generate-button:active {
+        transform: scale(0.98);
+    }
+
+    .result {
+        display: none;
+    }
+
+    .result-text {
+        padding: 16px;
+        background: #f1f2f4;
+        border-radius: 10px;
+        word-break: break-all;
+        font-family: monospace;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .copy-button {
+        width: 100%;
+        margin-top: 12px;
+        padding: 14px;
+        border: none;
+        border-radius: 10px;
+        background: #4caf50;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .copy-button:active {
+        transform: scale(0.98);
+    }
+
+    .status {
+        margin-bottom: 16px;
+        padding: 10px 14px;
+        border-radius: 10px;
+        background: #eee;
+        color: #666;
+        font-size: 13px;
+        text-align: center;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            padding: 12px;
+        }
+
+        .players {
+            grid-template-columns: 1fr;
+        }
+
+        .card {
+            padding: 16px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<div class="container">
+
+```
+<h1>プラコロ戦績入力</h1>
+
+<div class="status" id="status">
+    emoji.jsonを読み込んでいます...
+</div>
+
+
+<!-- =========================
+     Player 1 / Player 2
+========================== -->
+
+<div class="card">
+
+    <div class="players">
+
+        <!-- Player 1 -->
+
+        <div class="player-card">
+
+            <h2>Player 1</h2>
+
+            <select id="player1Pokemon">
+                <option value="">
+                    ポケモンを選択
+                </option>
+            </select>
+
+        </div>
+
+
+        <!-- Player 2 -->
+
+        <div class="player-card">
+
+            <h2>Player 2</h2>
+
+            <select id="player2Pokemon">
+                <option value="">
+                    ポケモンを選択
+                </option>
+            </select>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     先行プレイヤー
+========================== -->
+
+<div class="card">
+
+    <div class="section-title">
+        先行プレイヤー
+    </div>
+
+    <div class="button-group">
+
+        <button
+            type="button"
+            class="choice-button"
+            data-first="player1">
+
+            Player 1
+
+        </button>
+
+        <button
+            type="button"
+            class="choice-button"
+            data-first="player2">
+
+            Player 2
+
+        </button>
+
+        <button
+            type="button"
+            class="choice-button"
+            data-first="unknown">
+
+            不明
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     Player 1 勝敗
+========================== -->
+
+<div class="card">
+
+    <div class="section-title">
+        Player 1 勝敗
+    </div>
+
+    <div class="button-group two">
+
+        <button
+            type="button"
+            class="choice-button"
+            data-result="win">
+
+            勝ち
+
+        </button>
+
+        <button
+            type="button"
+            class="choice-button"
+            data-result="lose">
+
+            負け
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     生成
+========================== -->
+
+<div class="card">
+
+    <button
+        type="button"
+        class="generate-button"
+        id="generateButton">
+
+        戦績文字列を生成
+
+    </button>
+
+</div>
+
+
+<!-- =========================
+     結果
+========================== -->
+
+<div
+    class="card result"
+    id="resultCard">
+
+    <div class="section-title">
+        Discord投稿用
+    </div>
+
+    <div
+        class="result-text"
+        id="resultText">
+    </div>
+
+    <button
+        type="button"
+        class="copy-button"
+        id="copyButton">
+
+        コピー
+
+    </button>
+
+</div>
+```
+
+</div>
+
+<script>
+
+    /*
+     * =========================================
+     * データ
+     * =========================================
+     */
+
+    let data = null;
+
+    let firstPlayer = null;
+
+    let player1Result = null;
+
+
+    /*
+     * =========================================
+     * emoji.json 読み込み
+     * =========================================
+     */
+
+    async function loadData() {
+
+        try {
+
+            const response =
+                await fetch("emoji.json");
+
+            if (!response.ok) {
+                throw new Error(
+                    "emoji.jsonの読み込みに失敗しました。"
+                );
+            }
+
+            data = await response.json();
+
+            /*
+             * データ構造チェック
+             */
+
+            if (!Array.isArray(data.pokemon)) {
+                throw new Error(
+                    "emoji.jsonのpokemonが配列ではありません。"
+                );
+            }
+
+            if (!data.symbols) {
+                throw new Error(
+                    "emoji.jsonにsymbolsがありません。"
+                );
+            }
+
+
+            createPokemonSelects();
+
+            document.getElementById("status").textContent =
+                `${data.pokemon.length}種類のポケモンを読み込みました。`;
+
+        } catch (error) {
+
+            console.error(error);
+
+            document.getElementById("status").textContent =
+                "emoji.jsonの読み込みに失敗しました。";
+
+            alert(error.message);
+
+        }
+
+    }
+
+
+    /*
+     * =========================================
+     * ポケモン選択肢作成
+     * =========================================
+     */
+
+    function createPokemonSelects() {
+
+        const selectIds = [
+            "player1Pokemon",
+            "player2Pokemon"
+        ];
+
+
+        selectIds.forEach(selectId => {
+
+            const select =
+                document.getElementById(selectId);
+
+
+            data.pokemon.forEach(pokemon => {
+
+                const option =
+                    document.createElement("option");
+
+                option.value =
+                    pokemon.id;
+
+                option.textContent =
+                    pokemon.name;
+
+                select.appendChild(option);
+
+            });
+
+        });
+
+    }
+
+
+    /*
+     * =========================================
+     * ポケモン取得
+     * =========================================
+     */
+
+    function getPokemon(id) {
+
+        return data.pokemon.find(
+            pokemon =>
+                String(pokemon.id) === String(id)
+        );
+
+    }
+
+
+    /*
+     * =========================================
+     * 先行プレイヤー選択
+     * =========================================
+     */
+
+    document
+        .querySelectorAll("[data-first]")
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    document
+                        .querySelectorAll("[data-first]")
+                        .forEach(btn => {
+                            btn.classList.remove(
+                                "selected"
+                            );
+                        });
+
+
+                    button.classList.add(
+                        "selected"
+                    );
+
+
+                    firstPlayer =
+                        button.dataset.first;
+
+                }
+            );
+
+        });
+
+
+    /*
+     * =========================================
+     * Player 1 勝敗選択
+     * =========================================
+     */
+
+    document
+        .querySelectorAll("[data-result]")
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    document
+                        .querySelectorAll("[data-result]")
+                        .forEach(btn => {
+                            btn.classList.remove(
+                                "selected"
+                            );
+                        });
+
+
+                    button.classList.add(
+                        "selected"
+                    );
+
+
+                    player1Result =
+                        button.dataset.result;
+
+                }
+            );
+
+        });
+
+
+    /*
+     * =========================================
+     * 戦績文字列生成
+     * =========================================
+     */
+
+    function generateBattleString() {
+
+        /*
+         * データ読み込み確認
+         */
+
+        if (!data) {
+
+            alert(
+                "emoji.jsonを読み込んでいます。"
+            );
+
+            return;
+
+        }
+
+
+        /*
+         * ポケモンID
+         */
+
+        const player1Id =
+            document.getElementById(
+                "player1Pokemon"
+            ).value;
+
+
+        const player2Id =
+            document.getElementById(
+                "player2Pokemon"
+            ).value;
+
+
+        /*
+         * 入力チェック
+         */
+
+        if (!player1Id) {
+
+            alert(
+                "Player 1のポケモンを選択してください。"
+            );
+
+            return;
+
+        }
+
+
+        if (!player2Id) {
+
+            alert(
+                "Player 2のポケモンを選択してください。"
+            );
+
+            return;
+
+        }
+
+
+        if (!firstPlayer) {
+
+            alert(
+                "先行プレイヤーを選択してください。"
+            );
+
+            return;
+
+        }
+
+
+        if (!player1Result) {
+
+            alert(
+                "Player 1の勝敗を選択してください。"
+            );
+
+            return;
+
+        }
+
+
+        /*
+         * ポケモン取得
+         */
+
+        const player1 =
+            getPokemon(player1Id);
+
+        const player2 =
+            getPokemon(player2Id);
+
+
+        if (!player1 || !player2) {
+
+            alert(
+                "ポケモンデータが見つかりません。"
+            );
+
+            return;
+
+        }
+
+
+        /*
+         * =====================================
+         * Player 2の勝敗
+         * =====================================
+         *
+         * 2人対戦なので、
+         * Player 1の勝敗から自動決定。
+         */
+
+        const player2Result =
+            player1Result === "win"
+                ? "lose"
+                : "win";
+
+
+        /*
+         * =====================================
+         * 先行・後攻の絵文字
+         * =====================================
+         */
+
+        let firstPokemon;
+        let secondPokemon;
+
+        let firstResult;
+        let secondResult;
+
+
+        if (firstPlayer === "player1") {
+
+            firstPokemon =
+                player1;
+
+            secondPokemon =
+                player2;
+
+            firstResult =
+                player1Result;
+
+            secondResult =
+                player2Result;
+
+        }
+
+
+        else if (firstPlayer === "player2") {
+
+            firstPokemon =
+                player2;
+
+            secondPokemon =
+                player1;
+
+            firstResult =
+                player2Result;
+
+            secondResult =
+                player1Result;
+
+        }
+
+
+        else {
+
+            /*
+             * 先行不明の場合
+             *
+             * ポケモンの順番は
+             * Player 1 → Player 2
+             * のままにする。
+             */
+
+            firstPokemon =
+                player1;
+
+            secondPokemon =
+                player2;
+
+            firstResult =
+                player1Result;
+
+            secondResult =
+                player2Result;
+
+        }
+
+
+        /*
+         * =====================================
+         * symbolsから絵文字取得
+         * =====================================
+         */
+
+        const symbols =
+            data.symbols;
+
+
+        /*
+         * 先行・後攻
+         *
+         * 不明の場合はunknown
+         */
+
+        let firstSymbol;
+
+        let secondSymbol;
+
+
+        if (firstPlayer === "player1") {
+
+            firstSymbol =
+                symbols.first;
+
+            secondSymbol =
+                symbols.second;
+
+        }
+
+        else if (firstPlayer === "player2") {
+
+            firstSymbol =
+                symbols.first;
+
+            secondSymbol =
+                symbols.second;
+
+        }
+
+        else {
+
+            firstSymbol =
+                symbols.unknown;
+
+            secondSymbol =
+                symbols.unknown;
+
+        }
+
+
+        /*
+         * 勝敗絵文字
+         */
+
+        const firstResultSymbol =
+            firstResult === "win"
+                ? symbols.win
+                : symbols.lose;
+
+
+        const secondResultSymbol =
+            secondResult === "win"
+                ? symbols.win
+                : symbols.lose;
+
+
+        /*
+         * =====================================
+         * Discord投稿文字列
+         * =====================================
+         *
+         * 現在の構造：
+         *
+         * 先行
+         * ポケモン
+         * 勝敗
+         * VS
+         * 勝敗
+         * ポケモン
+         * 後攻
+         *
+         */
+
+        const result =
+            `${firstSymbol} ${firstPokemon.emoji} ${firstResultSymbol} ` +
+            `${symbols.vs} ` +
+            `${secondResultSymbol} ${secondPokemon.emoji} ${secondSymbol}`;
+
+
+        /*
+         * 結果表示
+         */
+
+        document
+            .getElementById("resultText")
+            .textContent = result;
+
+
+        document
+            .getElementById("resultCard")
+            .style.display = "block";
+
+    }
+
+
+    /*
+     * =========================================
+     * 生成ボタン
+     * =========================================
+     */
+
+    document
+        .getElementById("generateButton")
+        .addEventListener(
+            "click",
+            generateBattleString
+        );
+
+
+    /*
+     * =========================================
+     * コピー
+     * =========================================
+     */
+
+    document
+        .getElementById("copyButton")
+        .addEventListener(
+            "click",
+            async () => {
+
+                const text =
+                    document
+                        .getElementById(
+                            "resultText"
+                        )
+                        .textContent;
+
+
+                try {
+
+                    await navigator.clipboard
+                        .writeText(text);
+
+
+                    const button =
+                        document.getElementById(
+                            "copyButton"
+                        );
+
+
+                    button.textContent =
+                        "コピーしました！";
+
+
+                    setTimeout(() => {
+
+                        button.textContent =
+                            "コピー";
+
+                    }, 1500);
+
+
+                } catch (error) {
+
+                    console.error(error);
+
+                    alert(
+                        "コピーに失敗しました。"
+                    );
+
+                }
+
+            }
+        );
+
+
+    /*
+     * =========================================
+     * 初期化
+     * =========================================
+     */
+
+    loadData();
+
+</script>
+
+</body>
+
+</html>
