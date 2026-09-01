@@ -393,6 +393,26 @@
 
 
 <!-- =========================
+     プレビュー
+========================== -->
+
+<div
+    class="card result preview-section"
+    id="previewCard">
+
+    <div class="preview-title">
+        絵文字プレビュー
+    </div>
+
+    <div
+        class="emoji-preview"
+        id="emojiPreview">
+    </div>
+
+</div>
+
+
+<!-- =========================
      結果
 ========================== -->
 
@@ -419,27 +439,6 @@
     </button>
 
 </div>
-
-
-<!-- =========================
-     プレビュー
-========================== -->
-
-<div
-    class="card result preview-section"
-    id="previewCard">
-
-    <div class="preview-title">
-        絵文字プレビュー
-    </div>
-
-    <div
-        class="emoji-preview"
-        id="emojiPreview">
-    </div>
-
-</div>
-
 
 </div>
 
@@ -1078,12 +1077,6 @@
 
         
         /*
-         * プレビュー更新
-         */
-
-        updateEmojiPreview(result);
-
-        /*
          * 結果表示
          */
 
@@ -1096,6 +1089,12 @@
             .getElementById("resultCard")
             .style.display = "block";
 
+
+        /*
+         * プレビュー更新
+         */
+
+        updateEmojiPreview(result);    
 
     }
 
