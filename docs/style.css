@@ -250,6 +250,37 @@ main {
     font-weight: normal;
 }
 
+
+.matchup-meter {
+
+    display: flex;
+
+    grid-column: 1 / -1;
+
+    height: 10px;
+
+    overflow: hidden;
+
+    border-radius: 5px;
+
+    background: #edf0f2;
+
+}
+
+
+.matchup-meter-pokemon1 {
+
+    background: #3f7cac;
+
+}
+
+
+.matchup-meter-pokemon2 {
+
+    background: #e38b45;
+
+}
+
 /* ========================= */
 /* 対戦成績フィルター */
 /* ========================= */

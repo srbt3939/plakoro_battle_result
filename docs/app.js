@@ -202,141 +202,6 @@ function createUsageChart(pokemon) {
 
 }
 
-
-// =========================
-// 使用率ランキング
-// =========================
-
-// function createUsageRanking(pokemon) {
-
-//     const container =
-//         document.getElementById(
-//             "usage-ranking"
-//         );
-
-
-//     container.innerHTML = `
-
-//         <div class="ranking-row">
-
-//             <strong>順位</strong>
-//             <strong>ポケモン</strong>
-//             <strong class="number">
-//                 使用数
-//             </strong>
-//             <strong class="number">
-//                 使用率
-//             </strong>
-
-//         </div>
-
-//     `;
-
-
-//     pokemon.forEach((p, index) => {
-
-//         container.innerHTML += `
-
-//             <div class="ranking-row">
-
-//                 <span class="rank">
-//                     ${index + 1}
-//                 </span>
-
-//                 <span class="pokemon-name">
-//                     ${p.name}
-//                 </span>
-
-//                 <span class="number">
-//                     ${p.usage_count}
-//                 </span>
-
-//                 <span class="number">
-//                     ${p.usage_rate}%
-//                 </span>
-
-//             </div>
-
-//         `;
-
-//     });
-
-// }
-
-
-// // =========================
-// // 勝率ランキング
-// // =========================
-
-// function createWinRateRanking(stats) {
-
-//     const container =
-//         document.getElementById(
-//             "winrate-ranking"
-//         );
-
-
-//     // 最低5試合以上に限定
-//     const ranking =
-//         stats
-//             .filter(
-//                 p => p.total.battles >= 5
-//             )
-//             .sort(
-//                 (a, b) =>
-//                     b.total.win_rate -
-//                     a.total.win_rate
-//             );
-
-
-//     container.innerHTML = `
-
-//         <div class="ranking-row">
-
-//             <strong>順位</strong>
-//             <strong>ポケモン</strong>
-//             <strong class="number">
-//                 試合
-//             </strong>
-//             <strong class="number">
-//                 勝率
-//             </strong>
-
-//         </div>
-
-//     `;
-
-
-//     ranking.forEach((p, index) => {
-
-//         container.innerHTML += `
-
-//             <div class="ranking-row">
-
-//                 <span class="rank">
-//                     ${index + 1}
-//                 </span>
-
-//                 <span class="pokemon-name">
-//                     ${p.name}
-//                 </span>
-
-//                 <span class="number">
-//                     ${p.total.battles}
-//                 </span>
-
-//                 <span class="number">
-//                     ${p.total.win_rate}%
-//                 </span>
-
-//             </div>
-
-//         `;
-
-//     });
-
-// }
-
 // =========================
 // ポケモンランキング
 // =========================
@@ -975,6 +840,25 @@ function createMatchups(
                     <span class="pokemon-rate">${pokemon2WinRate}%</span>
 
                 </span>
+
+
+                <div
+                    class="matchup-meter"
+                    role="img"
+                    aria-label="${pokemon1.name} ${pokemon1WinRate}%、${pokemon2.name} ${pokemon2WinRate}%"
+                >
+
+                    <span
+                        class="matchup-meter-pokemon1"
+                        style="width: ${pokemon1WinRate}%"
+                    ></span>
+
+                    <span
+                        class="matchup-meter-pokemon2"
+                        style="width: ${pokemon2WinRate}%"
+                    ></span>
+
+                </div>
 
             </div>
 
