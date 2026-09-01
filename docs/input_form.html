@@ -693,74 +693,23 @@
 
         /*
          * =====================================
-         * 先行・後攻の絵文字
+         * ポケモンと勝敗
          * =====================================
+         *
+         * 常に自分が左側、相手が右側
          */
 
-        let firstPokemon;
-        let secondPokemon;
+        const firstPokemon =
+            player1;
 
-        let firstResult;
-        let secondResult;
+        const secondPokemon =
+            player2;
 
+        const firstResult =
+            player1Result;
 
-        if (firstPlayer === "player1") {
-
-            firstPokemon =
-                player1;
-
-            secondPokemon =
-                player2;
-
-            firstResult =
-                player1Result;
-
-            secondResult =
-                player2Result;
-
-        }
-
-
-        else if (firstPlayer === "player2") {
-
-            firstPokemon =
-                player2;
-
-            secondPokemon =
-                player1;
-
-            firstResult =
-                player2Result;
-
-            secondResult =
-                player1Result;
-
-        }
-
-
-        else {
-
-            /*
-             * 先行不明の場合
-             *
-             * ポケモンの順番は
-             * 自分 → 相手
-             * のままにする。
-             */
-
-            firstPokemon =
-                player1;
-
-            secondPokemon =
-                player2;
-
-            firstResult =
-                player1Result;
-
-            secondResult =
-                player2Result;
-
-        }
+        const secondResult =
+            player2Result;
 
 
         /*
@@ -774,9 +723,12 @@
 
 
         /*
-         * 先行・後攻
+         * =====================================
+         * 先攻・後攻
+         * =====================================
          *
-         * 不明の場合はunknown
+         * 自分（左側）と相手（右側）の
+         * 攻撃順序を示す
          */
 
         let firstSymbol;
@@ -785,6 +737,10 @@
 
 
         if (firstPlayer === "player1") {
+
+            /*
+             * 自分が先攻、相手が後攻
+             */
 
             firstSymbol =
                 symbols.first;
@@ -796,15 +752,23 @@
 
         else if (firstPlayer === "player2") {
 
+            /*
+             * 自分が後攻、相手が先攻
+             */
+
             firstSymbol =
-                symbols.first;
+                symbols.second;
 
             secondSymbol =
-                symbols.second;
+                symbols.first;
 
         }
 
         else {
+
+            /*
+             * どちらが先攻か不明
+             */
 
             firstSymbol =
                 symbols.unknown;
