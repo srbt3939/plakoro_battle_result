@@ -1076,6 +1076,12 @@
             `${symbols.vs} ` +
             `${secondResultSymbol} ${secondPokemon.emoji} ${secondSymbol}`;
 
+        
+        /*
+         * プレビュー更新
+         */
+
+        updateEmojiPreview(result);
 
         /*
          * 結果表示
@@ -1090,12 +1096,6 @@
             .getElementById("resultCard")
             .style.display = "block";
 
-
-        /*
-         * プレビュー更新
-         */
-
-        updateEmojiPreview(result);
 
     }
 
