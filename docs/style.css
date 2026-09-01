@@ -450,9 +450,22 @@ main {
 
     align-items: center;
 
-    gap: 8px;
+    gap: 4px;
 
     min-width: 0;
+
+    flex-wrap: nowrap;
+
+}
+
+
+.pokemon-ranking-row .pokemon-name .pokemon-emoji {
+
+    height: 24px;
+
+    width: auto;
+
+    flex-shrink: 0;
 
 }
 
