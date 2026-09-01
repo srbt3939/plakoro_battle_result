@@ -184,6 +184,24 @@ main {
 .pokemon-name {
 
     font-weight: bold;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+}
+
+
+.pokemon-emoji {
+
+    height: 32px;
+
+    width: auto;
+
+    display: inline-block;
 }
 
 
@@ -233,6 +251,13 @@ main {
 
     font-weight: bold;
 
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
 }
 
 
@@ -421,11 +446,13 @@ main {
 
     font-weight: bold;
 
-    white-space: nowrap;
+    display: flex;
 
-    overflow: hidden;
+    align-items: center;
 
-    text-overflow: ellipsis;
+    gap: 8px;
+
+    min-width: 0;
 
 }
 

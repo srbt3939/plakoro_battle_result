@@ -1,4 +1,11 @@
 // =========================
+// グローバル変数
+// =========================
+
+let emojiData = null;
+
+
+// =========================
 // JSON読み込み
 // =========================
 
@@ -13,10 +20,42 @@ async function loadJSON(file) {
 
 
 // =========================
+// emoji.json読み込み
+// =========================
+
+async function loadEmojiData() {
+
+    try {
+
+        const response =
+            await fetch("emoji.json");
+
+        if (!response.ok) {
+            throw new Error(
+                "emoji.jsonの読み込みに失敗"
+            );
+        }
+
+        emojiData =
+            await response.json();
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+}
+
+
+// =========================
 // メイン
 // =========================
 
 async function main() {
+
+    // emoji.json読み込み
+    await loadEmojiData();
 
     const usage =
         await loadJSON("usage.json");
@@ -497,7 +536,10 @@ function renderPokemonRanking() {
 
                     <span class="pokemon-name">
 
-                        ${p.name}
+                        ${getPokemonDisplayHTML(
+                            p.name,
+                            p.pokemon_id
+                        )}
 
                     </span>
 
@@ -580,7 +622,10 @@ function createFirstSecondRanking(stats) {
             <div class="first-second-row">
 
                 <span class="pokemon-name">
-                    ${p.name}
+                    ${getPokemonDisplayHTML(
+                        p.name,
+                        p.pokemon_id
+                    )}
                 </span>
 
 
@@ -702,6 +747,60 @@ function setupMatchupFilter(matchups) {
 
 }
 
+
+// =========================
+// ヘルパー関数：ポケモンIDから絵文字情報取得
+// =========================
+
+function getEmojiByPokemonId(pokemonId) {
+
+    if (!emojiData || !emojiData.pokemon) {
+        return null;
+    }
+
+    return emojiData.pokemon.find(
+        p => p.id === pokemonId
+    );
+
+}
+
+
+// =========================
+// ヘルパー関数：ポケモン名と画像のHTML生成
+// =========================
+
+function getPokemonDisplayHTML(name, pokemonId) {
+
+    const emoji = getEmojiByPokemonId(
+        pokemonId
+    );
+
+    if (!emoji) {
+        return name;
+    }
+
+    const match = emoji.emoji.match(
+        /<:([^:]+):(\d+)>/
+    );
+
+    if (!match) {
+        return name;
+    }
+
+    const emojiId = match[2];
+
+    return `
+        <img
+            src="emoji_images/${emojiId}.webp"
+            alt="${name}"
+            class="pokemon-emoji"
+            onerror="this.style.display='none'"
+        >
+        <span>${name}</span>
+    `;
+
+}
+
 // =========================
 // 対戦成績
 // =========================
@@ -811,7 +910,10 @@ function createMatchups(
 
                 <span class="matchup-pokemon">
 
-                    <span class="pokemon-name-bold">${pokemon1.name}</span>
+                    <span class="pokemon-name-bold">${getPokemonDisplayHTML(
+                        pokemon1.name,
+                        pokemon1.id
+                    )}</span>
 
                     <br>
 
@@ -833,7 +935,10 @@ function createMatchups(
 
                 <span class="matchup-pokemon">
 
-                    <span class="pokemon-name-bold">${pokemon2.name}</span>
+                    <span class="pokemon-name-bold">${getPokemonDisplayHTML(
+                        pokemon2.name,
+                        pokemon2.id
+                    )}</span>
 
                     <br>
 
