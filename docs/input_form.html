@@ -165,6 +165,45 @@
         text-align: center;
     }
 
+    .preview-section {
+        display: none;
+    }
+
+    .preview-title {
+        font-weight: bold;
+        margin-bottom: 12px;
+    }
+
+    .emoji-preview {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 24px;
+        background: #f1f2f4;
+        border-radius: 10px;
+        min-height: 80px;
+        flex-wrap: wrap;
+    }
+
+    .emoji-img {
+        height: 48px;
+        width: auto;
+        display: inline-block;
+    }
+
+    .emoji-placeholder {
+        height: 48px;
+        width: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: #ddd;
+        border-radius: 6px;
+        font-size: 12px;
+        color: #999;
+    }
+
     @media (max-width: 600px) {
         body {
             padding: 12px;
@@ -181,6 +220,20 @@
         h1 {
             font-size: 24px;
             white-space: nowrap;
+        }
+
+        .emoji-preview {
+            gap: 8px;
+            padding: 16px;
+        }
+
+        .emoji-img {
+            height: 40px;
+        }
+
+        .emoji-placeholder {
+            height: 40px;
+            width: 40px;
         }
     }
 </style>
@@ -368,6 +421,26 @@
 </div>
 
 
+<!-- =========================
+     プレビュー
+========================== -->
+
+<div
+    class="card result preview-section"
+    id="previewCard">
+
+    <div class="preview-title">
+        絵文字プレビュー
+    </div>
+
+    <div
+        class="emoji-preview"
+        id="emojiPreview">
+    </div>
+
+</div>
+
+
 </div>
 
 <script>
@@ -494,6 +567,187 @@
             pokemon =>
                 String(pokemon.id) === String(id)
         );
+
+    }
+
+
+    /*
+     * =========================================
+     * 絵文字IDマッピング作成
+     * =========================================
+     */
+
+    function createEmojiIdMap() {
+
+        const emojiIdMap = {};
+
+        /*
+         * ポケモンの絵文字
+         */
+
+        data.pokemon.forEach(pokemon => {
+
+            const match =
+                pokemon.emoji.match(
+                    /<:([^:]+):(\d+)>/
+                );
+
+            if (match) {
+
+                const emojiName = match[1];
+
+                const emojiId = match[2];
+
+                emojiIdMap[emojiId] = {
+                    name: emojiName,
+                    format: pokemon.emoji
+                };
+
+            }
+
+        });
+
+
+        /*
+         * シンボルの絵文字
+         */
+
+        Object.entries(data.symbols).forEach(
+            ([key, value]) => {
+
+                if (value) {
+
+                    const match =
+                        value.match(
+                            /<:([^:]+):(\d+)>/
+                        );
+
+                    if (match) {
+
+                        const emojiName =
+                            match[1];
+
+                        const emojiId =
+                            match[2];
+
+                        emojiIdMap[emojiId] = {
+                            name: emojiName,
+                            format: value
+                        };
+
+                    }
+
+                }
+
+            }
+        );
+
+        return emojiIdMap;
+
+    }
+
+
+    /*
+     * =========================================
+     * プレビュー更新
+     * =========================================
+     */
+
+    function updateEmojiPreview(resultText) {
+
+        const previewContainer =
+            document.getElementById(
+                "emojiPreview"
+            );
+
+        previewContainer.innerHTML = "";
+
+        /*
+         * Discordフォーマットの絵文字を抽出
+         */
+
+        const emojiRegex =
+            /<:([^:]+):(\d+)>/g;
+
+        let match;
+
+        let hasEmoji = false;
+
+        while ((match = emojiRegex.exec(resultText)) !== null) {
+
+            hasEmoji = true;
+
+            const emojiName = match[1];
+
+            const emojiId = match[2];
+
+            /*
+             * img要素を作成
+             */
+
+            const img = document.createElement(
+                "img"
+            );
+
+            img.className = "emoji-img";
+
+            img.src = `emoji_images/${emojiId}.webp`;
+
+            img.alt = emojiName;
+
+            img.onerror = () => {
+
+                /*
+                 * 画像が見つからない場合
+                 */
+
+                const placeholder =
+                    document.createElement(
+                        "div"
+                    );
+
+                placeholder.className =
+                    "emoji-placeholder";
+
+                placeholder.textContent =
+                    "?";
+
+                placeholder.title =
+                    `${emojiName} (ID: ${emojiId})`;
+
+                img.replaceWith(
+                    placeholder
+                );
+
+            };
+
+            img.title =
+                `${emojiName} (ID: ${emojiId})`;
+
+            previewContainer.appendChild(img);
+
+        }
+
+        /*
+         * プレビューカードの表示/非表示
+         */
+
+        const previewCard =
+            document.getElementById(
+                "previewCard"
+            );
+
+        if (hasEmoji) {
+
+            previewCard.style.display = "block";
+
+        }
+
+        else {
+
+            previewCard.style.display = "none";
+
+        }
 
     }
 
@@ -835,6 +1089,13 @@
         document
             .getElementById("resultCard")
             .style.display = "block";
+
+
+        /*
+         * プレビュー更新
+         */
+
+        updateEmojiPreview(result);
 
     }
 
