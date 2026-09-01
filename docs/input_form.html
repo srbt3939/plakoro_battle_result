@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
+
+
 <title>プラコロ戦績入力</title>
 
 <style>
@@ -189,24 +190,24 @@
 ```
 <h1>プラコロ戦績入力</h1>
 
-<div class="status" id="status">
+<!-- <div class="status" id="status">
     emoji.jsonを読み込んでいます...
-</div>
+</div> -->
 
 
 <!-- =========================
-     Player 1 / Player 2
+     自分 / 相手
 ========================== -->
 
 <div class="card">
 
     <div class="players">
 
-        <!-- Player 1 -->
+        <!-- 自分 -->
 
         <div class="player-card">
 
-            <h2>Player 1</h2>
+            <h2>自分</h2>
 
             <select id="player1Pokemon">
                 <option value="">
@@ -217,11 +218,11 @@
         </div>
 
 
-        <!-- Player 2 -->
+        <!-- 相手 -->
 
         <div class="player-card">
 
-            <h2>Player 2</h2>
+            <h2>相手</h2>
 
             <select id="player2Pokemon">
                 <option value="">
@@ -253,7 +254,7 @@
             class="choice-button"
             data-first="player1">
 
-            Player 1
+            自分
 
         </button>
 
@@ -262,7 +263,7 @@
             class="choice-button"
             data-first="player2">
 
-            Player 2
+            相手
 
         </button>
 
@@ -281,13 +282,13 @@
 
 
 <!-- =========================
-     Player 1 勝敗
+     自分 勝敗
 ========================== -->
 
 <div class="card">
 
     <div class="section-title">
-        Player 1 勝敗
+        自分 勝敗
     </div>
 
     <div class="button-group two">
@@ -531,7 +532,7 @@
 
     /*
      * =========================================
-     * Player 1 勝敗選択
+     * 自分 勝敗選択
      * =========================================
      */
 
@@ -612,7 +613,7 @@
         if (!player1Id) {
 
             alert(
-                "Player 1のポケモンを選択してください。"
+                "自分のポケモンを選択してください。"
             );
 
             return;
@@ -623,7 +624,7 @@
         if (!player2Id) {
 
             alert(
-                "Player 2のポケモンを選択してください。"
+                "相手のポケモンを選択してください。"
             );
 
             return;
@@ -645,7 +646,7 @@
         if (!player1Result) {
 
             alert(
-                "Player 1の勝敗を選択してください。"
+                "自分の勝敗を選択してください。"
             );
 
             return;
@@ -677,11 +678,11 @@
 
         /*
          * =====================================
-         * Player 2の勝敗
+         * 相手の勝敗
          * =====================================
          *
          * 2人対戦なので、
-         * Player 1の勝敗から自動決定。
+         * 自分の勝敗から自動決定。
          */
 
         const player2Result =
@@ -743,7 +744,7 @@
              * 先行不明の場合
              *
              * ポケモンの順番は
-             * Player 1 → Player 2
+             * 自分 → 相手
              * のままにする。
              */
 
@@ -837,13 +838,13 @@
          *
          * 現在の構造：
          *
-         * 先行
-         * ポケモン
+         * 先攻or後攻
+         * 自分のポケモン
          * 勝敗
          * VS
          * 勝敗
-         * ポケモン
-         * 後攻
+         * 相手のポケモン
+         * 先攻or後攻
          *
          */
 
