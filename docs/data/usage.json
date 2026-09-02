@@ -1,75 +1,75 @@
 {
-    "total_usage": 352,
+    "total_usage": 358,
     "pokemon": [
         {
             "rank": 1,
             "pokemon_id": 9,
             "name": "カイロス",
             "usage_count": 60,
-            "usage_rate": 17.0
+            "usage_rate": 16.8
         },
         {
             "rank": 2,
             "pokemon_id": 12,
             "name": "ファイヤー",
             "usage_count": 56,
-            "usage_rate": 15.9
+            "usage_rate": 15.6
         },
         {
             "rank": 3,
             "pokemon_id": 6,
             "name": "ミュウ",
             "usage_count": 43,
-            "usage_rate": 12.2
+            "usage_rate": 12.0
         },
         {
             "rank": 4,
             "pokemon_id": 8,
             "name": "イワーク",
-            "usage_count": 40,
-            "usage_rate": 11.4
+            "usage_count": 41,
+            "usage_rate": 11.5
         },
         {
             "rank": 5,
             "pokemon_id": 10,
             "name": "フリーザー",
-            "usage_count": 40,
-            "usage_rate": 11.4
+            "usage_count": 41,
+            "usage_rate": 11.5
         },
         {
             "rank": 6,
             "pokemon_id": 11,
             "name": "サンダー",
             "usage_count": 24,
-            "usage_rate": 6.8
+            "usage_rate": 6.7
         },
         {
             "rank": 7,
             "pokemon_id": 3,
             "name": "ゼニガメ",
             "usage_count": 22,
-            "usage_rate": 6.2
+            "usage_rate": 6.1
         },
         {
             "rank": 8,
+            "pokemon_id": 4,
+            "name": "ピカチュウ",
+            "usage_count": 17,
+            "usage_rate": 4.7
+        },
+        {
+            "rank": 9,
             "pokemon_id": 7,
             "name": "ベトベター",
             "usage_count": 16,
             "usage_rate": 4.5
         },
         {
-            "rank": 9,
+            "rank": 10,
             "pokemon_id": 1,
             "name": "フシギダネ",
             "usage_count": 15,
-            "usage_rate": 4.3
-        },
-        {
-            "rank": 10,
-            "pokemon_id": 4,
-            "name": "ピカチュウ",
-            "usage_count": 15,
-            "usage_rate": 4.3
+            "usage_rate": 4.2
         },
         {
             "rank": 11,
@@ -82,8 +82,8 @@
             "rank": 12,
             "pokemon_id": 2,
             "name": "ヒトカゲ",
-            "usage_count": 8,
-            "usage_rate": 2.3
+            "usage_count": 10,
+            "usage_rate": 2.8
         },
         {
             "rank": 13,
