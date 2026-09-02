@@ -1,6 +1,7 @@
 import json
 import re
 import sqlite3
+from datetime import datetime, timezone
 from pathlib import Path
 
 
@@ -401,10 +402,11 @@ def parse_discord_message(content: str) -> list[dict]:
 
 def register_battles(
     db_path: str,
-    message_id: int,
-    player1_id: int,
-    player2_id: int,
+    message_id: int | str,
+    player1_id: int | None,
+    player2_id: int | None,
     content: str,
+    created_at: str | None = None,
 ) -> list[int]:
     """
     Discordメッセージから戦績を取得し、
@@ -426,6 +428,9 @@ def register_battles(
 
     content:
         Discordメッセージ本文
+
+    created_at:
+        Discordメッセージの作成日時。省略時はUTC現在時刻。
 
     Returns
     -------
@@ -469,9 +474,9 @@ def register_battles(
             """
             SELECT id
             FROM battle_messages
-            WHERE message_id = ?
+            WHERE discord_message_id = ?
             """,
-            (message_id,)
+            (str(message_id),)
         )
 
         existing = cursor.fetchone()
@@ -491,16 +496,16 @@ def register_battles(
         cursor.execute(
             """
             INSERT INTO battle_messages (
-                message_id,
-                player1_id,
-                player2_id
+                discord_message_id,
+                raw_content,
+                created_at
             )
             VALUES (?, ?, ?)
             """,
             (
-                message_id,
-                player1_id,
-                player2_id,
+                str(message_id),
+                content,
+                created_at or datetime.now(timezone.utc).isoformat(),
             )
         )
 
