@@ -4,22 +4,22 @@
             "pokemon_id": 1,
             "name": "フシギダネ",
             "total": {
-                "battles": 15,
-                "wins": 8,
-                "losses": 7,
-                "win_rate": 53.3
+                "battles": 22,
+                "wins": 13,
+                "losses": 9,
+                "win_rate": 59.1
             },
             "first_player": {
-                "battles": 3,
-                "wins": 2,
-                "losses": 1,
+                "battles": 6,
+                "wins": 4,
+                "losses": 2,
                 "win_rate": 66.7
             },
             "second_player": {
-                "battles": 4,
-                "wins": 2,
-                "losses": 2,
-                "win_rate": 50.0
+                "battles": 8,
+                "wins": 5,
+                "losses": 3,
+                "win_rate": 62.5
             },
             "unknown": {
                 "battles": 8,
@@ -60,22 +60,22 @@
             "pokemon_id": 3,
             "name": "ゼニガメ",
             "total": {
-                "battles": 22,
-                "wins": 11,
+                "battles": 24,
+                "wins": 13,
                 "losses": 11,
-                "win_rate": 50.0
+                "win_rate": 54.2
             },
             "first_player": {
-                "battles": 5,
-                "wins": 4,
+                "battles": 6,
+                "wins": 5,
                 "losses": 1,
-                "win_rate": 80.0
+                "win_rate": 83.3
             },
             "second_player": {
-                "battles": 6,
-                "wins": 1,
+                "battles": 7,
+                "wins": 2,
                 "losses": 5,
-                "win_rate": 16.7
+                "win_rate": 28.6
             },
             "unknown": {
                 "battles": 12,
@@ -116,16 +116,16 @@
             "pokemon_id": 5,
             "name": "イーブイ",
             "total": {
-                "battles": 11,
+                "battles": 12,
                 "wins": 6,
-                "losses": 5,
-                "win_rate": 54.5
+                "losses": 6,
+                "win_rate": 50.0
             },
             "first_player": {
-                "battles": 4,
+                "battles": 5,
                 "wins": 4,
-                "losses": 0,
-                "win_rate": 100.0
+                "losses": 1,
+                "win_rate": 80.0
             },
             "second_player": {
                 "battles": 2,
@@ -228,22 +228,22 @@
             "pokemon_id": 9,
             "name": "カイロス",
             "total": {
-                "battles": 60,
+                "battles": 64,
                 "wins": 31,
-                "losses": 29,
-                "win_rate": 51.7
+                "losses": 33,
+                "win_rate": 48.4
             },
             "first_player": {
-                "battles": 5,
+                "battles": 7,
                 "wins": 2,
-                "losses": 3,
-                "win_rate": 40.0
+                "losses": 5,
+                "win_rate": 28.6
             },
             "second_player": {
-                "battles": 9,
+                "battles": 11,
                 "wins": 3,
-                "losses": 6,
-                "win_rate": 33.3
+                "losses": 8,
+                "win_rate": 27.3
             },
             "unknown": {
                 "battles": 46,
