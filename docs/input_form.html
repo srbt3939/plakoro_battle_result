@@ -1016,12 +1016,6 @@
         const secondPokemon =
             player2;
 
-        const firstResult =
-            player1Result;
-
-        const secondResult =
-            player2Result;
-
 
         /*
          * =====================================
@@ -1091,19 +1085,13 @@
 
 
         /*
-         * 勝敗絵文字
+         * 自分と相手の勝敗を1つの絵文字で表現
          */
 
-        const firstResultSymbol =
-            firstResult === "win"
-                ? symbols.win
-                : symbols.lose;
-
-
-        const secondResultSymbol =
-            secondResult === "win"
-                ? symbols.win
-                : symbols.lose;
+        const battleResultSymbol =
+            player1Result === "win"
+                ? symbols["vs-win-lose"]
+                : symbols["vs-lose-win"];
 
 
         /*
@@ -1111,22 +1099,19 @@
          * Discord投稿文字列
          * =====================================
          *
-         * 現在の構造：
+         * 構造：
          *
          * 先攻or後攻
          * 自分のポケモン
-         * 勝敗
-         * VS
-         * 勝敗
+         * VS表記と戦績表記
          * 相手のポケモン
          * 先攻or後攻
          *
          */
 
         const result =
-            `${firstSymbol}${firstPokemon.emoji}${firstResultSymbol}` +
-            `${symbols.vs}` +
-            `${secondResultSymbol}${secondPokemon.emoji}${secondSymbol}`;
+            `${firstSymbol}${firstPokemon.emoji}${battleResultSymbol}` +
+            `${secondPokemon.emoji}${secondSymbol}`;
 
         
         /*

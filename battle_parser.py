@@ -67,12 +67,11 @@ def build_emoji_maps():
     # ポケモン
     battle_emojis.update(pokemon_by_emoji.keys())
 
-    # 先攻・後攻・勝敗・VS
+    # 先攻・後攻・勝敗表記
     battle_emojis.add(symbols["first"])
     battle_emojis.add(symbols["second"])
-    battle_emojis.add(symbols["win"])
-    battle_emojis.add(symbols["lose"])
-    battle_emojis.add(symbols["vs"])
+    battle_emojis.add(symbols["vs-win-lose"])
+    battle_emojis.add(symbols["vs-lose-win"])
 
     # 空文字などを除外
     battle_emojis.discard("")
@@ -107,22 +106,20 @@ def extract_battle_strings(content: str) -> list[str]:
     """
     Discordメッセージから戦績文字列を抽出する。
 
-    戦績は以下の7要素で構成される。
+    戦績は以下の5要素で構成される。
 
         ① 自分の先攻/後攻
         ② 自分のポケモン
-        ③ 自分の勝敗
-        ④ VS
-        ⑤ 相手の勝敗
-        ⑥ 相手のポケモン
-        ⑦ 相手の先攻/後攻
+        ③ VS表記と戦績表記
+        ④ 相手のポケモン
+        ⑤ 相手の先攻/後攻
 
     コメント、文章、改行、試合番号などは無視する。
 
     Returns:
         [
-            "7個の絵文字からなる戦績文字列",
-            "7個の絵文字からなる戦績文字列",
+            "5個の絵文字からなる戦績文字列",
+            "5個の絵文字からなる戦績文字列",
             ...
         ]
     """
@@ -153,23 +150,19 @@ def extract_battle_strings(content: str) -> list[str]:
         + ")"
     )
 
-    win_or_lose = (
-        rf"(?:{re.escape(symbols['win'])}"
-        rf"|{re.escape(symbols['lose'])})"
+    battle_result = (
+        rf"(?:{re.escape(symbols['vs-win-lose'])}"
+        rf"|{re.escape(symbols['vs-lose-win'])})"
     )
 
-    vs = re.escape(symbols["vs"])
-
     # --------------------------------------------------------
-    # 7要素が連続している部分だけを戦績として認識
+    # 5要素が連続している部分だけを戦績として認識
     #
     # ①先攻/後攻
     # ②ポケモン
-    # ③勝敗
-    # ④VS
-    # ⑤勝敗
-    # ⑥ポケモン
-    # ⑦先攻/後攻
+    # ③VS表記と勝敗
+    # ④ポケモン
+    # ⑤先攻/後攻
     #
     # Discordのカスタム絵文字は
     # <:name:id>
@@ -179,9 +172,7 @@ def extract_battle_strings(content: str) -> list[str]:
     pattern = re.compile(
         first_or_second
         + pokemon
-        + win_or_lose
-        + vs
-        + win_or_lose
+        + battle_result
         + pokemon
         + first_or_second
     )
@@ -195,7 +186,7 @@ def extract_battle_strings(content: str) -> list[str]:
 
 def parse_battle_string(battle_string: str) -> dict | None:
     """
-    7個の絵文字からなる戦績文字列を解析する。
+    5個の絵文字からなる戦績文字列を解析する。
 
     Returns:
         {
@@ -219,7 +210,7 @@ def parse_battle_string(battle_string: str) -> dict | None:
     pokemon_by_emoji = maps["pokemon_by_emoji"]
 
     # --------------------------------------------------------
-    # 戦績文字列から7個の絵文字を抽出
+    # 戦績文字列から5個の絵文字を抽出
     # --------------------------------------------------------
 
     emoji_pattern = re.compile(
@@ -230,30 +221,19 @@ def parse_battle_string(battle_string: str) -> dict | None:
         battle_string
     )
 
-    # 7個でなければ不正
-    if len(emojis) != 7:
+    # 5個でなければ不正
+    if len(emojis) != 5:
         return None
 
     # --------------------------------------------------------
-    # 7要素を展開
+    # 5要素を展開
     # --------------------------------------------------------
 
     my_first = emojis[0]
     my_pokemon = emojis[1]
-    my_result = emojis[2]
-
-    vs = emojis[3]
-
-    opponent_result = emojis[4]
-    opponent_pokemon = emojis[5]
-    opponent_first = emojis[6]
-
-    # --------------------------------------------------------
-    # VS確認
-    # --------------------------------------------------------
-
-    if vs != symbols["vs"]:
-        return None
+    battle_result = emojis[2]
+    opponent_pokemon = emojis[3]
+    opponent_first = emojis[4]
 
     # --------------------------------------------------------
     # 先攻/後攻確認
@@ -282,18 +262,12 @@ def parse_battle_string(battle_string: str) -> dict | None:
         return None
 
     # --------------------------------------------------------
-    # 勝敗確認
+    # 統合された勝敗表記を確認
     # --------------------------------------------------------
 
-    if my_result not in (
-        symbols["win"],
-        symbols["lose"],
-    ):
-        return None
-
-    if opponent_result not in (
-        symbols["win"],
-        symbols["lose"],
+    if battle_result not in (
+        symbols["vs-win-lose"],
+        symbols["vs-lose-win"],
     ):
         return None
 
@@ -317,15 +291,12 @@ def parse_battle_string(battle_string: str) -> dict | None:
     # 勝敗
     # --------------------------------------------------------
 
-    if my_result == symbols["win"]:
+    if battle_result == symbols["vs-win-lose"]:
         player1_result = "win"
+        player2_result = "lose"
     else:
         player1_result = "lose"
-
-    if opponent_result == symbols["win"]:
         player2_result = "win"
-    else:
-        player2_result = "lose"
 
     # --------------------------------------------------------
     # 結果
