@@ -123,7 +123,7 @@ async function main() {
         stats.pokemon
     );
 
-    createFirstSecondChart(
+    createFirstSecondOverall(
         stats.pokemon
     );
 
@@ -666,10 +666,10 @@ function createFirstSecondRanking(stats) {
 
 
 // =========================
-// 全体の先攻・後攻勝率グラフ
+// 全体の先攻・後攻勝率
 // =========================
 
-function createFirstSecondChart(stats) {
+function createFirstSecondOverall(stats) {
 
     const totals = stats.reduce(
         (result, pokemon) => {
@@ -689,89 +689,73 @@ function createFirstSecondChart(stats) {
     );
 
 
-    const winRates = [
-        totals.first.battles > 0
-            ? totals.first.wins / totals.first.battles * 100
-            : 0,
-        totals.second.battles > 0
-            ? totals.second.wins / totals.second.battles * 100
-            : 0
-    ];
+    const firstWinRate = totals.first.battles > 0
+        ? totals.first.wins / totals.first.battles * 100
+        : 0;
 
+    const secondWinRate = totals.second.battles > 0
+        ? totals.second.wins / totals.second.battles * 100
+        : 0;
 
-    const ctx = document.getElementById(
-        "first-second-chart"
+    const container = document.getElementById(
+        "first-second-overall"
     );
 
 
-    new Chart(ctx, {
+    container.innerHTML = `
 
-        type: "bar",
+        <div class="matchup-row first-second-overall">
 
-        data: {
+            <span class="matchup-pokemon">
+                先攻
+                <br>
+                <span class="pokemon-rate">
+                    ${firstWinRate.toFixed(1)}%
+                </span>
+                <br>
+                <span class="pokemon-rate">
+                    ${totals.first.battles}戦 ${totals.first.wins}勝
+                </span>
+            </span>
 
-            labels: ["先攻", "後攻"],
+            <span class="vs">
+                VS
+            </span>
 
-            datasets: [
+            <span class="matchup-pokemon">
+                後攻
+                <br>
+                <span class="pokemon-rate">
+                    ${secondWinRate.toFixed(1)}%
+                </span>
+                <br>
+                <span class="pokemon-rate">
+                    ${totals.second.battles}戦 ${totals.second.wins}勝
+                </span>
+            </span>
 
-                {
-                    label: "勝率",
-                    data: winRates,
-                    backgroundColor: ["#3f7cac", "#db6402"],
-                    borderRadius: 6,
-                    maxBarThickness: 100
-                }
+            <div
+                class="matchup-meter"
+                role="img"
+                aria-label="先攻 ${firstWinRate.toFixed(1)}%、後攻 ${secondWinRate.toFixed(1)}%"
+            >
+                <span
+                    class="matchup-meter-pokemon1"
+                    style="width: ${firstWinRate}%"
+                ></span>
+                <span
+                    class="matchup-meter-pokemon2"
+                    style="width: ${secondWinRate}%"
+                ></span>
+            </div>
 
-            ]
+        </div>
 
-        },
+        <p class="first-second-note">
+            「不明」を除外して集計
+        </p>
 
-        options: {
-
-            responsive: true,
-
-            scales: {
-
-                y: {
-                    beginAtZero: true,
-                    max: 100,
-                    ticks: {
-                        callback: value => `${value}%`
-                    }
-
-                }
-
-            },
-
-            plugins: {
-
-                legend: {
-                    display: false
-                },
-
-                tooltip: {
-
-                    callbacks: {
-
-                        label: context => {
-
-                            const side = context.dataIndex === 0
-                                ? totals.first
-                                : totals.second;
-
-                            return `${context.raw.toFixed(1)}% (${side.battles}戦 ${side.wins}勝)`;
-
-                        }
-
-                    }
-
-                }
-
-            }
-
-        }
-
-    });
+    `;
 
 }
 
