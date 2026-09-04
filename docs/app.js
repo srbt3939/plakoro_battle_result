@@ -123,6 +123,10 @@ async function main() {
         stats.pokemon
     );
 
+    createFirstSecondChart(
+        stats.pokemon
+    );
+
 
     // =========================
     // 対戦成績
@@ -655,6 +659,117 @@ function createFirstSecondRanking(stats) {
             </div>
 
         `;
+
+    });
+
+}
+
+
+// =========================
+// 全体の先攻・後攻勝率グラフ
+// =========================
+
+function createFirstSecondChart(stats) {
+
+    const totals = stats.reduce(
+        (result, pokemon) => {
+
+            result.first.battles += pokemon.first_player.battles;
+            result.first.wins += pokemon.first_player.wins;
+            result.second.battles += pokemon.second_player.battles;
+            result.second.wins += pokemon.second_player.wins;
+
+            return result;
+
+        },
+        {
+            first: { battles: 0, wins: 0 },
+            second: { battles: 0, wins: 0 }
+        }
+    );
+
+
+    const winRates = [
+        totals.first.battles > 0
+            ? totals.first.wins / totals.first.battles * 100
+            : 0,
+        totals.second.battles > 0
+            ? totals.second.wins / totals.second.battles * 100
+            : 0
+    ];
+
+
+    const ctx = document.getElementById(
+        "first-second-chart"
+    );
+
+
+    new Chart(ctx, {
+
+        type: "bar",
+
+        data: {
+
+            labels: ["先攻", "後攻"],
+
+            datasets: [
+
+                {
+                    label: "勝率",
+                    data: winRates,
+                    backgroundColor: ["#3f7cac", "#db6402"],
+                    borderRadius: 6,
+                    maxBarThickness: 100
+                }
+
+            ]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            scales: {
+
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: {
+                        callback: value => `${value}%`
+                    }
+
+                }
+
+            },
+
+            plugins: {
+
+                legend: {
+                    display: false
+                },
+
+                tooltip: {
+
+                    callbacks: {
+
+                        label: context => {
+
+                            const side = context.dataIndex === 0
+                                ? totals.first
+                                : totals.second;
+
+                            return `${context.raw.toFixed(1)}% (${side.battles}戦 ${side.wins}勝)`;
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
 
     });
 

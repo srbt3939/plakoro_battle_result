@@ -148,6 +148,14 @@ main {
 }
 
 
+.first-second-chart-container {
+
+    max-width: 560px;
+
+    margin-bottom: 30px;
+}
+
+
 /* ===================== */
 /* ランキング */
 /* ===================== */
