@@ -3473,6 +3473,348 @@
                 "result": "win"
             },
             "first_player": 1
+        },
+        {
+            "id": 194,
+            "battle_message_id": 58,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 8,
+                "pokemon": "イワーク",
+                "result": "lose"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 10,
+                "pokemon": "フリーザー",
+                "result": "win"
+            },
+            "first_player": 2
+        },
+        {
+            "id": 195,
+            "battle_message_id": 59,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 4,
+                "pokemon": "ピカチュウ",
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 10,
+                "pokemon": "フリーザー",
+                "result": "lose"
+            },
+            "first_player": 1
+        },
+        {
+            "id": 196,
+            "battle_message_id": 59,
+            "battle_number": 2,
+            "player1": {
+                "id": null,
+                "pokemon_id": 4,
+                "pokemon": "ピカチュウ",
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 10,
+                "pokemon": "フリーザー",
+                "result": "lose"
+            },
+            "first_player": 2
+        },
+        {
+            "id": 197,
+            "battle_message_id": 59,
+            "battle_number": 3,
+            "player1": {
+                "id": null,
+                "pokemon_id": 10,
+                "pokemon": "フリーザー",
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 12,
+                "pokemon": "ファイヤー",
+                "result": "lose"
+            },
+            "first_player": 2
+        },
+        {
+            "id": 198,
+            "battle_message_id": 60,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 12,
+                "pokemon": "ファイヤー",
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 7,
+                "pokemon": "ベトベター",
+                "result": "lose"
+            },
+            "first_player": 1
+        },
+        {
+            "id": 199,
+            "battle_message_id": 61,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 4,
+                "pokemon": "ピカチュウ",
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 7,
+                "pokemon": "ベトベター",
+                "result": "lose"
+            },
+            "first_player": 1
+        },
+        {
+            "id": 200,
+            "battle_message_id": 62,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 1,
+                "pokemon": "フシギダネ",
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 12,
+                "pokemon": "ファイヤー",
+                "result": "lose"
+            },
+            "first_player": 1
+        },
+        {
+            "id": 201,
+            "battle_message_id": 63,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 1,
+                "pokemon": "フシギダネ",
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 9,
+                "pokemon": "カイロス",
+                "result": "lose"
+            },
+            "first_player": 1
+        },
+        {
+            "id": 202,
+            "battle_message_id": 64,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 2,
+                "pokemon": "ヒトカゲ",
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 3,
+                "pokemon": "ゼニガメ",
+                "result": "lose"
+            },
+            "first_player": 1
+        },
+        {
+            "id": 203,
+            "battle_message_id": 65,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 7,
+                "pokemon": "ベトベター",
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 6,
+                "pokemon": "ミュウ",
+                "result": "lose"
+            },
+            "first_player": 1
+        },
+        {
+            "id": 204,
+            "battle_message_id": 66,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 9,
+                "pokemon": "カイロス",
+                "result": "lose"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 6,
+                "pokemon": "ミュウ",
+                "result": "win"
+            },
+            "first_player": 1
+        },
+        {
+            "id": 205,
+            "battle_message_id": 67,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 9,
+                "pokemon": "カイロス",
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 7,
+                "pokemon": "ベトベター",
+                "result": "lose"
+            },
+            "first_player": 1
+        },
+        {
+            "id": 206,
+            "battle_message_id": 68,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 3,
+                "pokemon": "ゼニガメ",
+                "result": "lose"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 9,
+                "pokemon": "カイロス",
+                "result": "win"
+            },
+            "first_player": 1
+        },
+        {
+            "id": 207,
+            "battle_message_id": 69,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 9,
+                "pokemon": "カイロス",
+                "result": "lose"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 8,
+                "pokemon": "イワーク",
+                "result": "win"
+            },
+            "first_player": 1
+        },
+        {
+            "id": 208,
+            "battle_message_id": 70,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 1,
+                "pokemon": "フシギダネ",
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 3,
+                "pokemon": "ゼニガメ",
+                "result": "lose"
+            },
+            "first_player": 1
+        },
+        {
+            "id": 209,
+            "battle_message_id": 71,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 4,
+                "pokemon": "ピカチュウ",
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 12,
+                "pokemon": "ファイヤー",
+                "result": "lose"
+            },
+            "first_player": 1
+        },
+        {
+            "id": 210,
+            "battle_message_id": 72,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 7,
+                "pokemon": "ベトベター",
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 11,
+                "pokemon": "サンダー",
+                "result": "lose"
+            },
+            "first_player": 1
+        },
+        {
+            "id": 211,
+            "battle_message_id": 73,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 10,
+                "pokemon": "フリーザー",
+                "result": "lose"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 9,
+                "pokemon": "カイロス",
+                "result": "win"
+            },
+            "first_player": 1
+        },
+        {
+            "id": 212,
+            "battle_message_id": 74,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 6,
+                "pokemon": "ミュウ",
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 9,
+                "pokemon": "カイロス",
+                "result": "lose"
+            },
+            "first_player": 1
         }
     ]
 }
