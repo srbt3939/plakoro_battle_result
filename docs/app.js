@@ -129,7 +129,6 @@ async function main() {
         usage.pokemon
     );
 
-
     // =========================
     // 使用率・勝率ランキング
     // =========================
@@ -713,8 +712,10 @@ function renderPokemonRanking() {
 
             container.innerHTML += `
 
-                <div class="pokemon-ranking-row">
-
+                <div
+                    class="pokemon-ranking-row"
+                    style="--usage-rate: ${p.usage_rate}%"
+                >
                     <span class="rank">
 
                         ${index + 1}
