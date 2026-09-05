@@ -7,13 +7,12 @@ let emojiData = null;
 const typeImageNames = {
     "あく": "dark",
     "かみなり": "electric",
-    "でんき": "electric",
     "くさ": "grass",
     "ちょう": "psychic",
     "ほのお": "fire",
     "みず": "water",
     "はがね": "steel",
-    "とう": "steel",
+    "とう": "fighting",
     "そら": "flying",
     "むしょく": "normal"
 };
