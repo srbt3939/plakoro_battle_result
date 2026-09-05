@@ -695,6 +695,14 @@ function createFirstSecondRanking(stats) {
                 ポケモン
             </strong>
 
+            <strong class="ranking-type-header">
+                タイプ
+            </strong>
+
+            <strong class="ranking-weakness-header">
+                弱点
+            </strong>
+
             <strong>
                 先攻
             </strong>
@@ -715,10 +723,23 @@ function createFirstSecondRanking(stats) {
             <div class="first-second-row">
 
                 <span class="pokemon-name">
-                    ${getPokemonDisplayHTML(
+                    ${getPokemonIdentityHTML(
                         p.name,
-                        p.pokemon_id,
-                        p
+                        p.pokemon_id
+                    )}
+                </span>
+
+
+                <span class="pokemon-type">
+                    ${getTypeImagesHTML(
+                        [p.type1, p.type2].filter(Boolean)
+                    )}
+                </span>
+
+
+                <span class="pokemon-weakness">
+                    ${getTypeImagesHTML(
+                        p.weaknesses
                     )}
                 </span>
 
