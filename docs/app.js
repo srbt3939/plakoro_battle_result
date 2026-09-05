@@ -14,6 +14,7 @@ const typeImageNames = {
     "みず": "water",
     "はがね": "steel",
     "とう": "steel",
+    "そら": "flying",
     "むしょく": "normal"
 };
 
@@ -928,10 +929,12 @@ function getPokemonDisplayHTML(name, pokemonId, details = {}) {
     const weaknessHTML = getTypeImagesHTML(weaknesses);
 
     return `
+        <span class="pokemon-meta-tabs">
+            ${typeHTML ? `<span class="pokemon-meta"><span class="pokemon-meta-label">タイプ:</span>${typeHTML}</span>` : ""}
+            ${weaknessHTML ? `<span class="pokemon-meta"><span class="pokemon-meta-label">弱点:</span>${weaknessHTML}</span>` : ""}
+        </span>
         ${pokemonImage}
         <span>${name}</span>
-        ${typeHTML ? `<span class="pokemon-meta">タイプ: ${typeHTML}</span>` : ""}
-        ${weaknessHTML ? `<span class="pokemon-meta">弱点: ${weaknessHTML}</span>` : ""}
     `;
 
 }
@@ -955,7 +958,6 @@ function getTypeImagesHTML(types) {
                         class="type-emoji"
                         onerror="this.style.display='none'"
                     >
-                    ${type}
                 </span>
             `;
         })
