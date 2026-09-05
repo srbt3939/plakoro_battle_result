@@ -102,7 +102,7 @@
         {
             "pokemon_id": 4,
             "name": "ピカチュウ",
-            "type1": "でんき",
+            "type1": "かみなり",
             "type2": null,
             "weaknesses": [
                 "とう"

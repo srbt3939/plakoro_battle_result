@@ -204,7 +204,7 @@
             "pokemon1": {
                 "id": 4,
                 "name": "ピカチュウ",
-                "type1": "でんき",
+                "type1": "かみなり",
                 "type2": null,
                 "weaknesses": [
                     "とう"
@@ -454,7 +454,7 @@
             "pokemon1": {
                 "id": 4,
                 "name": "ピカチュウ",
-                "type1": "でんき",
+                "type1": "かみなり",
                 "type2": null,
                 "weaknesses": [
                     "とう"
@@ -554,7 +554,7 @@
             "pokemon1": {
                 "id": 4,
                 "name": "ピカチュウ",
-                "type1": "でんき",
+                "type1": "かみなり",
                 "type2": null,
                 "weaknesses": [
                     "とう"
@@ -588,7 +588,7 @@
             "pokemon2": {
                 "id": 4,
                 "name": "ピカチュウ",
-                "type1": "でんき",
+                "type1": "かみなり",
                 "type2": null,
                 "weaknesses": [
                     "とう"
@@ -829,7 +829,7 @@
             "pokemon1": {
                 "id": 4,
                 "name": "ピカチュウ",
-                "type1": "でんき",
+                "type1": "かみなり",
                 "type2": null,
                 "weaknesses": [
                     "とう"
@@ -1004,7 +1004,7 @@
             "pokemon1": {
                 "id": 4,
                 "name": "ピカチュウ",
-                "type1": "でんき",
+                "type1": "かみなり",
                 "type2": null,
                 "weaknesses": [
                     "とう"
@@ -1138,7 +1138,7 @@
             "pokemon2": {
                 "id": 4,
                 "name": "ピカチュウ",
-                "type1": "でんき",
+                "type1": "かみなり",
                 "type2": null,
                 "weaknesses": [
                     "とう"
@@ -1188,7 +1188,7 @@
             "pokemon2": {
                 "id": 4,
                 "name": "ピカチュウ",
-                "type1": "でんき",
+                "type1": "かみなり",
                 "type2": null,
                 "weaknesses": [
                     "とう"
@@ -1204,7 +1204,7 @@
             "pokemon1": {
                 "id": 4,
                 "name": "ピカチュウ",
-                "type1": "でんき",
+                "type1": "かみなり",
                 "type2": null,
                 "weaknesses": [
                     "とう"
@@ -1229,7 +1229,7 @@
             "pokemon1": {
                 "id": 4,
                 "name": "ピカチュウ",
-                "type1": "でんき",
+                "type1": "かみなり",
                 "type2": null,
                 "weaknesses": [
                     "とう"
@@ -1429,7 +1429,7 @@
             "pokemon1": {
                 "id": 4,
                 "name": "ピカチュウ",
-                "type1": "でんき",
+                "type1": "かみなり",
                 "type2": null,
                 "weaknesses": [
                     "とう"
