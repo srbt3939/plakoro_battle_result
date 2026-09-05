@@ -270,6 +270,11 @@ main {
     font-weight: bold;
 }
 
+.matchup-meter-pokemon1.is-lower,
+.matchup-meter-pokemon2.is-lower {
+    background: #b0bcc2;
+}
+
 .pokemon-rate,
 .vs {
     color: var(--muted);

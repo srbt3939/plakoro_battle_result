@@ -1149,6 +1149,13 @@ function createMatchups(
         }
 
 
+        const pokemon1IsLower =
+            pokemon1WinRate < pokemon2WinRate;
+
+        const pokemon2IsLower =
+            pokemon2WinRate < pokemon1WinRate;
+
+
         container.innerHTML += `
 
             <div class="matchup-row">
@@ -1201,12 +1208,12 @@ function createMatchups(
                 >
 
                     <span
-                        class="matchup-meter-pokemon1"
+                        class="matchup-meter-pokemon1${pokemon1IsLower ? " is-lower" : ""}"
                         style="width: ${pokemon1WinRate}%"
                     ></span>
 
                     <span
-                        class="matchup-meter-pokemon2"
+                        class="matchup-meter-pokemon2${pokemon2IsLower ? " is-lower" : ""}"
                         style="width: ${pokemon2WinRate}%"
                     ></span>
 
