@@ -1,6 +1,7 @@
 # python
 import sqlite3
 import json
+from datetime import date, timedelta
 from pathlib import Path
 
 
@@ -152,6 +153,58 @@ def export_battles(conn):
 
 
 # =========================
+# ② 直近2週間の試合数
+# =========================
+
+def export_battle_trend(conn):
+
+    today = date.today()
+    start_date = today - timedelta(days=13)
+
+    rows = conn.execute("""
+        SELECT
+            bm.battle_date,
+            COUNT(b.id) AS battle_count
+
+        FROM battle_messages AS bm
+
+        JOIN battles AS b
+            ON b.battle_message_id = bm.id
+
+        WHERE bm.battle_date BETWEEN ? AND ?
+
+        GROUP BY bm.battle_date
+        ORDER BY bm.battle_date
+    """, (
+        start_date.isoformat(),
+        today.isoformat()
+    )).fetchall()
+
+    counts = {
+        row["battle_date"]: row["battle_count"]
+        for row in rows
+    }
+
+    days = [
+        {
+            "date": (start_date + timedelta(days=offset)).isoformat(),
+            "battle_count": counts.get(
+                (start_date + timedelta(days=offset)).isoformat(),
+                0
+            )
+        }
+        for offset in range(14)
+    ]
+
+    save_json(
+        "battle_trend.json",
+        {
+            "days": days
+        }
+    )
+
+
+# =========================
 # ② ポケモン使用率
 # =========================
 
@@ -219,7 +272,6 @@ def export_usage(conn):
             )
 
         })
-
 
     save_json(
         "usage.json",
@@ -759,6 +811,8 @@ def main():
     try:
 
         export_battles(conn)
+
+        export_battle_trend(conn)
 
         export_usage(conn)
 

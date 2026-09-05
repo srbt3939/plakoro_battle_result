@@ -82,6 +82,9 @@ async function main() {
     const battles =
         await loadJSON("battles.json");
 
+    const battleTrend =
+        await loadJSON("battle_trend.json");
+
 
     // =========================
     // 概要
@@ -107,6 +110,15 @@ async function main() {
         "pokemon-count"
     ).textContent =
         usage.pokemon.length;
+
+
+    // =========================
+    // 直近2週間の試合数
+    // =========================
+
+    createBattleTrendChart(
+        battleTrend.days
+    );
 
 
     // =========================
@@ -153,6 +165,95 @@ async function main() {
         matchups.matchups
     );
     
+}
+
+
+// =========================
+// 直近2週間の試合数
+// =========================
+
+function createBattleTrendChart(days) {
+
+    const labels =
+        days.map(
+            day => {
+                const [year, month, date] =
+                    day.date.split("-");
+
+                return `${Number(month)}/${Number(date)}`;
+            }
+        );
+
+    const data =
+        days.map(
+            day => day.battle_count
+        );
+
+    const ctx =
+        document.getElementById(
+            "battle-trend-chart"
+        );
+
+    new Chart(ctx, {
+
+        type: "line",
+
+        data: {
+
+            labels: labels,
+
+            datasets: [
+
+                {
+                    label: "試合数",
+                    data: data,
+                    borderColor: "#2f7892",
+                    backgroundColor: "rgba(47, 120, 146, 0.14)",
+                    fill: true,
+                    tension: 0.25,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                }
+
+            ]
+
+        },
+
+        options: {
+
+            responsive: true,
+            maintainAspectRatio: false,
+
+            scales: {
+
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        precision: 0
+                    }
+                }
+
+            },
+
+            plugins: {
+
+                legend: {
+                    display: false
+                },
+
+                tooltip: {
+                    callbacks: {
+                        label: context =>
+                            `${context.raw}試合`
+                    }
+                }
+
+            }
+
+        }
+
+    });
+
 }
 
 
@@ -263,6 +364,14 @@ function createUsageChart(pokemon) {
 // =========================
 
 let pokemonRankingData = [];
+
+let firstSecondRankingData = [];
+
+// 現在のソート項目（"first_win_rate" | "second_win_rate" | null）
+let firstSecondSortKey = null;
+
+// 現在のソート方向
+let firstSecondSortOrder = "desc";
 
 
 // 現在のソート項目
@@ -681,11 +790,125 @@ function renderPokemonRanking() {
 
 function createFirstSecondRanking(stats) {
 
+    firstSecondRankingData = stats;
+
+    renderFirstSecondRanking();
+
+}
+
+
+// =========================
+// 先攻・後攻ソート変更
+// =========================
+
+function changeFirstSecondSort(sortKey) {
+
+    if (
+        firstSecondSortKey ===
+        sortKey
+    ) {
+
+        firstSecondSortOrder =
+            firstSecondSortOrder ===
+            "desc"
+                ? "asc"
+                : "desc";
+
+    } else {
+
+        firstSecondSortKey =
+            sortKey;
+
+        firstSecondSortOrder =
+            "desc";
+
+    }
+
+
+    renderFirstSecondRanking();
+
+}
+
+
+// =========================
+// 先攻・後攻ランキング表示
+// =========================
+
+function renderFirstSecondRanking() {
+
     const container =
         document.getElementById(
             "first-second-ranking"
         );
 
+
+    // =========================
+    // ソート
+    // =========================
+
+    const stats =
+        firstSecondSortKey === null
+            ? firstSecondRankingData
+            : [...firstSecondRankingData].sort(
+                (a, b) => {
+
+                    const valueA =
+                        firstSecondSortKey === "first_win_rate"
+                            ? a.first_player.win_rate
+                            : a.second_player.win_rate;
+
+                    const valueB =
+                        firstSecondSortKey === "first_win_rate"
+                            ? b.first_player.win_rate
+                            : b.second_player.win_rate;
+
+
+                    const comparison =
+                        valueA - valueB;
+
+                    return firstSecondSortOrder === "desc"
+                        ? -comparison
+                        : comparison;
+
+                }
+            );
+
+
+    // =========================
+    // 矢印
+    // =========================
+
+    const firstArrow =
+        firstSecondSortKey ===
+        "first_win_rate"
+
+            ? (
+                firstSecondSortOrder ===
+                "desc"
+                    ? " ▼"
+                    : " ▲"
+            )
+
+            : "▽";
+
+
+    const secondArrow =
+        firstSecondSortKey ===
+        "second_win_rate"
+
+            ? (
+                firstSecondSortOrder ===
+                "desc"
+                    ? " ▼"
+                    : " ▲"
+            )
+
+            : "▽";
+
+
+    // =========================
+    // ヘッダー
+    // =========================
 
     container.innerHTML = `
 
@@ -703,18 +926,36 @@ function createFirstSecondRanking(stats) {
                 弱点
             </strong>
 
-            <strong>
-                先攻
-            </strong>
+            <button
+                class="sort-button"
+                onclick="
+                    changeFirstSecondSort(
+                        'first_win_rate'
+                    )
+                "
+            >
+                先攻${firstArrow}
+            </button>
 
-            <strong>
-                後攻
-            </strong>
+            <button
+                class="sort-button"
+                onclick="
+                    changeFirstSecondSort(
+                        'second_win_rate'
+                    )
+                "
+            >
+                後攻${secondArrow}
+            </button>
 
         </div>
 
     `;
 
+
+    // =========================
+    // データ表示
+    // =========================
 
     stats.forEach(p => {
 

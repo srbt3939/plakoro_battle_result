@@ -98,6 +98,11 @@ main {
     margin: auto;
 }
 
+.trend-chart-container {
+    position: relative;
+    height: 300px;
+}
+
 .pokemon-ranking-row,
 .first-second-row,
 .matchup-row {
@@ -255,6 +260,12 @@ main {
     background: var(--surface);
 }
 
+.first-second-row.header .sort-button {
+    color: var(--muted);
+    font-size: inherit;
+    font-weight: bold;
+}
+
 .matchup-row {
     display: grid;
     grid-template-columns: 1fr 100px 1fr;
@@ -370,6 +381,10 @@ main {
     .card h2 {
         margin-bottom: 15px;
         font-size: 18px;
+    }
+
+    .trend-chart-container {
+        height: 240px;
     }
 
     .pokemon-ranking-row {
