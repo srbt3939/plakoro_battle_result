@@ -191,7 +191,7 @@ main {
 
     gap: 8px;
 
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 
@@ -209,9 +209,7 @@ main {
 
     display: inline-flex;
 
-    flex-direction: column;
-
-    align-items: flex-start;
+    align-items: center;
 
     gap: 4px;
 
@@ -224,30 +222,11 @@ main {
 }
 
 
-.pokemon-meta-tabs {
-
-    display: inline-flex;
-
-    align-items: flex-start;
-
-    gap: 8px;
-
-    flex-basis: 100%;
-
-    order: -1;
-
-}
-
-
 .pokemon-meta-label {
 
     font-size: 0.8em;
 
     line-height: 1;
-
-    padding: 2px 5px;
-
-    border-bottom: 1px solid #ccc;
 
 }
 
@@ -324,7 +303,7 @@ main {
 
     gap: 8px;
 
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 
@@ -522,7 +501,7 @@ main {
 
     min-width: 0;
 
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 
 }
 
