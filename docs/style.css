@@ -165,7 +165,7 @@ main {
 
 .pokemon-ranking-row {
     display: grid;
-    grid-template-columns: 50px minmax(120px, 1fr) 70px 80px 70px 80px;
+    grid-template-columns: 50px minmax(150px, 1fr) 80px 90px 70px 80px 70px;
     align-items: center;
     min-width: 620px;
     min-height: 50px;
@@ -189,6 +189,15 @@ main {
     height: 24px;
 }
 
+.pokemon-type,
+.pokemon-weakness {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-width: 0;
+}
+
 .sort-button {
     padding: 0;
     color: var(--muted);
@@ -203,6 +212,11 @@ main {
 .sort-button:hover {
     color: var(--accent);
     text-decoration: underline;
+}
+
+.ranking-type-header,
+.ranking-weakness-header {
+    text-align: center;
 }
 
 .sort-meta-button {
@@ -348,7 +362,7 @@ main {
     }
 
     .pokemon-ranking-row {
-        grid-template-columns: 35px minmax(90px, 1fr) 55px 65px 55px 65px;
+        grid-template-columns: 35px minmax(110px, 1fr) 70px 80px 55px 65px 55px;
         column-gap: 5px;
         font-size: 14px;
     }

@@ -514,30 +514,32 @@ function renderPokemonRanking() {
 
 
             <span class="pokemon-name">
-                <span>ポケモン</span>
-
-                <button
-                    class="sort-button sort-meta-button"
-                    onclick="
-                        changeRankingSort(
-                            'type_sort'
-                        )
-                    "
-                >
-                    タイプ${typeArrow}
-                </button>
-
-                <button
-                    class="sort-button sort-meta-button"
-                    onclick="
-                        changeRankingSort(
-                            'weakness_sort'
-                        )
-                    "
-                >
-                    弱点${weaknessArrow}
-                </button>
+                ポケモン
             </span>
+
+
+            <button
+                class="sort-button ranking-type-header"
+                onclick="
+                    changeRankingSort(
+                        'type_sort'
+                    )
+                "
+            >
+                タイプ${typeArrow}
+            </button>
+
+
+            <button
+                class="sort-button ranking-weakness-header"
+                onclick="
+                    changeRankingSort(
+                        'weakness_sort'
+                    )
+                "
+            >
+                弱点${weaknessArrow}
+            </button>
 
 
             <span class="number">
@@ -613,10 +615,27 @@ function renderPokemonRanking() {
 
                     <span class="pokemon-name">
 
-                        ${getPokemonDisplayHTML(
+                        ${getPokemonIdentityHTML(
                             p.name,
-                            p.pokemon_id,
-                            p
+                            p.pokemon_id
+                        )}
+
+                    </span>
+
+
+                    <span class="pokemon-type">
+
+                        ${getTypeImagesHTML(
+                            [p.type1, p.type2].filter(Boolean)
+                        )}
+
+                    </span>
+
+
+                    <span class="pokemon-weakness">
+
+                        ${getTypeImagesHTML(
+                            p.weaknesses
                         )}
 
                     </span>
@@ -943,7 +962,7 @@ function getEmojiByPokemonId(pokemonId) {
 // ヘルパー関数：ポケモン名と画像のHTML生成
 // =========================
 
-function getPokemonDisplayHTML(name, pokemonId, details = {}) {
+function getPokemonIdentityHTML(name, pokemonId) {
 
     const emoji = getEmojiByPokemonId(
         pokemonId
@@ -968,6 +987,16 @@ function getPokemonDisplayHTML(name, pokemonId, details = {}) {
         }
     }
 
+    return `
+        ${pokemonImage}
+        <span>${name}</span>
+    `;
+
+}
+
+
+function getPokemonDisplayHTML(name, pokemonId, details = {}) {
+
     const types = [details.type1, details.type2]
         .filter(Boolean);
 
@@ -978,12 +1007,7 @@ function getPokemonDisplayHTML(name, pokemonId, details = {}) {
     const typeHTML = getTypeImagesHTML(types);
     const weaknessHTML = getTypeImagesHTML(weaknesses);
 
-    return `
-        ${pokemonImage}
-        <span>${name}</span>
-        ${typeHTML ? `<span class="pokemon-meta">${typeHTML}</span>` : ""}
-        ${weaknessHTML ? `<span class="pokemon-meta"><span class="pokemon-meta-label">弱点:</span>${weaknessHTML}</span>` : ""}
-    `;
+    return `${getPokemonIdentityHTML(name, pokemonId)}${typeHTML ? `<span class="pokemon-meta">${typeHTML}</span>` : ""}${weaknessHTML ? `<span class="pokemon-meta"><span class="pokemon-meta-label">弱点：</span>${weaknessHTML}</span>` : ""}`;
 
 }
 
