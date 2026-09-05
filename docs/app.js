@@ -982,7 +982,7 @@ function getPokemonDisplayHTML(name, pokemonId, details = {}) {
     return `
         ${pokemonImage}
         <span>${name}</span>
-        ${typeHTML ? `<span class="pokemon-meta"><span class="pokemon-meta-label">タイプ:</span>${typeHTML}</span>` : ""}
+        ${typeHTML ? `<span class="pokemon-meta">${typeHTML}</span>` : ""}
         ${weaknessHTML ? `<span class="pokemon-meta"><span class="pokemon-meta-label">弱点:</span>${weaknessHTML}</span>` : ""}
     `;
 

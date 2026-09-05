@@ -61,12 +61,6 @@ main {
     border: 1px solid var(--line);
     border-radius: 10px;
     box-shadow: 0 4px 14px rgba(38, 50, 56, 0.05);
-    transition: transform 160ms ease, box-shadow 160ms ease;
-}
-
-a.summary-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 7px 18px rgba(38, 50, 56, 0.1);
 }
 
 .label {
@@ -300,12 +294,6 @@ a.summary-card:hover {
     border: 1px solid var(--line);
     border-radius: 8px;
     cursor: pointer;
-}
-
-#pokemon-ranking,
-#first-second-ranking,
-#matchup-list {
-    overflow-x: auto;
 }
 
 .site-footer {
