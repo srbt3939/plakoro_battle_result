@@ -1,11 +1,11 @@
 {
-    "total_usage": 410,
+    "total_usage": 446,
     "pokemon": [
         {
             "rank": 1,
             "pokemon_id": 9,
             "name": "カイロス",
-            "usage_count": 71,
+            "usage_count": 77,
             "usage_rate": 17.3
         },
         {
@@ -13,84 +13,84 @@
             "pokemon_id": 12,
             "name": "ファイヤー",
             "usage_count": 60,
-            "usage_rate": 14.6
+            "usage_rate": 13.5
         },
         {
             "rank": 3,
-            "pokemon_id": 6,
-            "name": "ミュウ",
-            "usage_count": 46,
-            "usage_rate": 11.2
+            "pokemon_id": 10,
+            "name": "フリーザー",
+            "usage_count": 48,
+            "usage_rate": 10.8
         },
         {
             "rank": 4,
-            "pokemon_id": 10,
-            "name": "フリーザー",
-            "usage_count": 46,
-            "usage_rate": 11.2
+            "pokemon_id": 6,
+            "name": "ミュウ",
+            "usage_count": 47,
+            "usage_rate": 10.5
         },
         {
             "rank": 5,
             "pokemon_id": 8,
             "name": "イワーク",
             "usage_count": 43,
-            "usage_rate": 10.5
+            "usage_rate": 9.6
         },
         {
             "rank": 6,
             "pokemon_id": 3,
             "name": "ゼニガメ",
-            "usage_count": 27,
-            "usage_rate": 6.6
+            "usage_count": 31,
+            "usage_rate": 7.0
         },
         {
             "rank": 7,
-            "pokemon_id": 1,
-            "name": "フシギダネ",
-            "usage_count": 25,
-            "usage_rate": 6.1
+            "pokemon_id": 4,
+            "name": "ピカチュウ",
+            "usage_count": 30,
+            "usage_rate": 6.7
         },
         {
             "rank": 8,
-            "pokemon_id": 11,
-            "name": "サンダー",
-            "usage_count": 25,
-            "usage_rate": 6.1
+            "pokemon_id": 1,
+            "name": "フシギダネ",
+            "usage_count": 29,
+            "usage_rate": 6.5
         },
         {
             "rank": 9,
-            "pokemon_id": 4,
-            "name": "ピカチュウ",
-            "usage_count": 21,
-            "usage_rate": 5.1
+            "pokemon_id": 11,
+            "name": "サンダー",
+            "usage_count": 25,
+            "usage_rate": 5.6
         },
         {
             "rank": 10,
             "pokemon_id": 7,
             "name": "ベトベター",
-            "usage_count": 21,
-            "usage_rate": 5.1
+            "usage_count": 22,
+            "usage_rate": 4.9
         },
         {
             "rank": 11,
             "pokemon_id": 5,
             "name": "イーブイ",
-            "usage_count": 12,
-            "usage_rate": 2.9
+            "usage_count": 21,
+            "usage_rate": 4.7
         },
         {
             "rank": 12,
             "pokemon_id": 2,
             "name": "ヒトカゲ",
             "usage_count": 11,
-            "usage_rate": 2.7
+            "usage_rate": 2.5
         },
         {
             "rank": 13,
             "pokemon_id": 13,
             "name": "ゲンガー",
             "usage_count": 2,
-            "usage_rate": 0.5
+            "usage_rate": 0.4
         }
     ]
 }

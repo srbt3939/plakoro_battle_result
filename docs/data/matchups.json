@@ -77,6 +77,36 @@
         },
         {
             "pokemon1": {
+                "id": 9,
+                "name": "カイロス"
+            },
+            "pokemon2": {
+                "id": 10,
+                "name": "フリーザー"
+            },
+            "battles": 7,
+            "pokemon1_wins": 5,
+            "pokemon2_wins": 2,
+            "pokemon1_win_rate": 71.4,
+            "pokemon2_win_rate": 28.6
+        },
+        {
+            "pokemon1": {
+                "id": 3,
+                "name": "ゼニガメ"
+            },
+            "pokemon2": {
+                "id": 9,
+                "name": "カイロス"
+            },
+            "battles": 7,
+            "pokemon1_wins": 5,
+            "pokemon2_wins": 2,
+            "pokemon1_win_rate": 71.4,
+            "pokemon2_win_rate": 28.6
+        },
+        {
+            "pokemon1": {
                 "id": 8,
                 "name": "イワーク"
             },
@@ -137,21 +167,6 @@
         },
         {
             "pokemon1": {
-                "id": 3,
-                "name": "ゼニガメ"
-            },
-            "pokemon2": {
-                "id": 9,
-                "name": "カイロス"
-            },
-            "battles": 6,
-            "pokemon1_wins": 4,
-            "pokemon2_wins": 2,
-            "pokemon1_win_rate": 66.7,
-            "pokemon2_win_rate": 33.3
-        },
-        {
-            "pokemon1": {
                 "id": 6,
                 "name": "ミュウ"
             },
@@ -167,6 +182,21 @@
         },
         {
             "pokemon1": {
+                "id": 6,
+                "name": "ミュウ"
+            },
+            "pokemon2": {
+                "id": 7,
+                "name": "ベトベター"
+            },
+            "battles": 5,
+            "pokemon1_wins": 1,
+            "pokemon2_wins": 4,
+            "pokemon1_win_rate": 20.0,
+            "pokemon2_win_rate": 80.0
+        },
+        {
+            "pokemon1": {
                 "id": 1,
                 "name": "フシギダネ"
             },
@@ -179,21 +209,6 @@
             "pokemon2_wins": 2,
             "pokemon1_win_rate": 60.0,
             "pokemon2_win_rate": 40.0
-        },
-        {
-            "pokemon1": {
-                "id": 9,
-                "name": "カイロス"
-            },
-            "pokemon2": {
-                "id": 10,
-                "name": "フリーザー"
-            },
-            "battles": 5,
-            "pokemon1_wins": 4,
-            "pokemon2_wins": 1,
-            "pokemon1_win_rate": 80.0,
-            "pokemon2_win_rate": 20.0
         },
         {
             "pokemon1": {
@@ -287,21 +302,6 @@
         },
         {
             "pokemon1": {
-                "id": 6,
-                "name": "ミュウ"
-            },
-            "pokemon2": {
-                "id": 7,
-                "name": "ベトベター"
-            },
-            "battles": 4,
-            "pokemon1_wins": 1,
-            "pokemon2_wins": 3,
-            "pokemon1_win_rate": 25.0,
-            "pokemon2_win_rate": 75.0
-        },
-        {
-            "pokemon1": {
                 "id": 7,
                 "name": "ベトベター"
             },
@@ -329,6 +329,36 @@
             "pokemon2_wins": 0,
             "pokemon1_win_rate": 100.0,
             "pokemon2_win_rate": 0.0
+        },
+        {
+            "pokemon1": {
+                "id": 4,
+                "name": "ピカチュウ"
+            },
+            "pokemon2": {
+                "id": 5,
+                "name": "イーブイ"
+            },
+            "battles": 4,
+            "pokemon1_wins": 3,
+            "pokemon2_wins": 1,
+            "pokemon1_win_rate": 75.0,
+            "pokemon2_win_rate": 25.0
+        },
+        {
+            "pokemon1": {
+                "id": 1,
+                "name": "フシギダネ"
+            },
+            "pokemon2": {
+                "id": 4,
+                "name": "ピカチュウ"
+            },
+            "battles": 4,
+            "pokemon1_wins": 2,
+            "pokemon2_wins": 2,
+            "pokemon1_win_rate": 50.0,
+            "pokemon2_win_rate": 50.0
         },
         {
             "pokemon1": {
@@ -512,6 +542,21 @@
         },
         {
             "pokemon1": {
+                "id": 3,
+                "name": "ゼニガメ"
+            },
+            "pokemon2": {
+                "id": 5,
+                "name": "イーブイ"
+            },
+            "battles": 3,
+            "pokemon1_wins": 1,
+            "pokemon2_wins": 2,
+            "pokemon1_win_rate": 33.3,
+            "pokemon2_win_rate": 66.7
+        },
+        {
+            "pokemon1": {
                 "id": 6,
                 "name": "ミュウ"
             },
@@ -554,6 +599,21 @@
             "pokemon2_wins": 1,
             "pokemon1_win_rate": 50.0,
             "pokemon2_win_rate": 50.0
+        },
+        {
+            "pokemon1": {
+                "id": 4,
+                "name": "ピカチュウ"
+            },
+            "pokemon2": {
+                "id": 9,
+                "name": "カイロス"
+            },
+            "battles": 2,
+            "pokemon1_wins": 0,
+            "pokemon2_wins": 2,
+            "pokemon1_win_rate": 0.0,
+            "pokemon2_win_rate": 100.0
         },
         {
             "pokemon1": {
@@ -632,6 +692,21 @@
         },
         {
             "pokemon1": {
+                "id": 5,
+                "name": "イーブイ"
+            },
+            "pokemon2": {
+                "id": 9,
+                "name": "カイロス"
+            },
+            "battles": 2,
+            "pokemon1_wins": 0,
+            "pokemon2_wins": 2,
+            "pokemon1_win_rate": 0.0,
+            "pokemon2_win_rate": 100.0
+        },
+        {
+            "pokemon1": {
                 "id": 3,
                 "name": "ゼニガメ"
             },
@@ -659,21 +734,6 @@
             "pokemon2_wins": 0,
             "pokemon1_win_rate": 100.0,
             "pokemon2_win_rate": 0.0
-        },
-        {
-            "pokemon1": {
-                "id": 4,
-                "name": "ピカチュウ"
-            },
-            "pokemon2": {
-                "id": 9,
-                "name": "カイロス"
-            },
-            "battles": 1,
-            "pokemon1_wins": 0,
-            "pokemon2_wins": 1,
-            "pokemon1_win_rate": 0.0,
-            "pokemon2_win_rate": 100.0
         },
         {
             "pokemon1": {
