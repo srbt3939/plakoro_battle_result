@@ -3,6 +3,11 @@
         {
             "pokemon_id": 1,
             "name": "フシギダネ",
+            "type1": "くさ",
+            "type2": null,
+            "weaknesses": [
+                "ほのお"
+            ],
             "total": {
                 "battles": 29,
                 "wins": 18,
@@ -31,6 +36,11 @@
         {
             "pokemon_id": 2,
             "name": "ヒトカゲ",
+            "type1": "ほのお",
+            "type2": null,
+            "weaknesses": [
+                "みず"
+            ],
             "total": {
                 "battles": 11,
                 "wins": 9,
@@ -59,6 +69,11 @@
         {
             "pokemon_id": 3,
             "name": "ゼニガメ",
+            "type1": "みず",
+            "type2": null,
+            "weaknesses": [
+                "かみなり"
+            ],
             "total": {
                 "battles": 31,
                 "wins": 15,
@@ -87,6 +102,11 @@
         {
             "pokemon_id": 4,
             "name": "ピカチュウ",
+            "type1": "でんき",
+            "type2": null,
+            "weaknesses": [
+                "とう"
+            ],
             "total": {
                 "battles": 30,
                 "wins": 13,
@@ -115,6 +135,11 @@
         {
             "pokemon_id": 5,
             "name": "イーブイ",
+            "type1": "むしょく",
+            "type2": null,
+            "weaknesses": [
+                "とう"
+            ],
             "total": {
                 "battles": 21,
                 "wins": 9,
@@ -143,6 +168,11 @@
         {
             "pokemon_id": 6,
             "name": "ミュウ",
+            "type1": "ちょう",
+            "type2": null,
+            "weaknesses": [
+                "あく"
+            ],
             "total": {
                 "battles": 47,
                 "wins": 29,
@@ -171,6 +201,11 @@
         {
             "pokemon_id": 7,
             "name": "ベトベター",
+            "type1": "あく",
+            "type2": null,
+            "weaknesses": [
+                "とう"
+            ],
             "total": {
                 "battles": 22,
                 "wins": 9,
@@ -199,6 +234,11 @@
         {
             "pokemon_id": 8,
             "name": "イワーク",
+            "type1": "とう",
+            "type2": null,
+            "weaknesses": [
+                "くさ"
+            ],
             "total": {
                 "battles": 43,
                 "wins": 18,
@@ -227,6 +267,11 @@
         {
             "pokemon_id": 9,
             "name": "カイロス",
+            "type1": "くさ",
+            "type2": null,
+            "weaknesses": [
+                "そら"
+            ],
             "total": {
                 "battles": 77,
                 "wins": 38,
@@ -255,6 +300,11 @@
         {
             "pokemon_id": 10,
             "name": "フリーザー",
+            "type1": "みず",
+            "type2": null,
+            "weaknesses": [
+                "はがね"
+            ],
             "total": {
                 "battles": 48,
                 "wins": 26,
@@ -283,6 +333,11 @@
         {
             "pokemon_id": 11,
             "name": "サンダー",
+            "type1": "かみなり",
+            "type2": null,
+            "weaknesses": [
+                "とう"
+            ],
             "total": {
                 "battles": 25,
                 "wins": 13,
@@ -311,6 +366,11 @@
         {
             "pokemon_id": 12,
             "name": "ファイヤー",
+            "type1": "ほのお",
+            "type2": null,
+            "weaknesses": [
+                "みず"
+            ],
             "total": {
                 "battles": 60,
                 "wins": 32,
@@ -339,6 +399,11 @@
         {
             "pokemon_id": 13,
             "name": "ゲンガー",
+            "type1": "あく",
+            "type2": null,
+            "weaknesses": [
+                "ちょう"
+            ],
             "total": {
                 "battles": 2,
                 "wins": 1,
@@ -367,6 +432,11 @@
         {
             "pokemon_id": 14,
             "name": "メタグロス",
+            "type1": "はがね",
+            "type2": null,
+            "weaknesses": [
+                "ほのお"
+            ],
             "total": {
                 "battles": 0,
                 "wins": 0,
@@ -395,6 +465,11 @@
         {
             "pokemon_id": 15,
             "name": "ルカリオ",
+            "type1": "とう",
+            "type2": null,
+            "weaknesses": [
+                "ほのお"
+            ],
             "total": {
                 "battles": 0,
                 "wins": 0,

@@ -12,6 +12,26 @@ DB_PATH = "pokemon.db"
 OUTPUT_DIR = Path("docs/data")
 
 
+def parse_weaknesses(value):
+    if not value:
+        return []
+
+    try:
+        weaknesses = json.loads(value)
+    except (TypeError, json.JSONDecodeError):
+        return [value]
+
+    return weaknesses if isinstance(weaknesses, list) else [weaknesses]
+
+
+def pokemon_details(row):
+    return {
+        "type1": row["type1"],
+        "type2": row["type2"],
+        "weaknesses": parse_weaknesses(row["weaknesses"])
+    }
+
+
 # =========================
 # DB接続
 # =========================
@@ -60,9 +80,15 @@ def export_battles(conn):
 
             b.player1_pokemon_id,
             p1.name AS player1_pokemon,
+            p1.type1 AS player1_type1,
+            p1.type2 AS player1_type2,
+            p1.weaknesses AS player1_weaknesses,
 
             b.player2_pokemon_id,
             p2.name AS player2_pokemon,
+            p2.type1 AS player2_type1,
+            p2.type2 AS player2_type2,
+            p2.weaknesses AS player2_weaknesses,
 
             b.first_player,
 
@@ -97,6 +123,9 @@ def export_battles(conn):
                 "id": row["player1_id"],
                 "pokemon_id": row["player1_pokemon_id"],
                 "pokemon": row["player1_pokemon"],
+                "type1": row["player1_type1"],
+                "type2": row["player1_type2"],
+                "weaknesses": parse_weaknesses(row["player1_weaknesses"]),
                 "result": row["player1_result"]
             },
 
@@ -104,6 +133,9 @@ def export_battles(conn):
                 "id": row["player2_id"],
                 "pokemon_id": row["player2_pokemon_id"],
                 "pokemon": row["player2_pokemon"],
+                "type1": row["player2_type1"],
+                "type2": row["player2_type2"],
+                "weaknesses": parse_weaknesses(row["player2_weaknesses"]),
                 "result": row["player2_result"]
             },
 
@@ -129,6 +161,9 @@ def export_usage(conn):
         SELECT
             p.id,
             p.name,
+            p.type1,
+            p.type2,
+            p.weaknesses,
             COUNT(*) AS usage_count
 
         FROM pokemon AS p
@@ -174,6 +209,8 @@ def export_usage(conn):
 
             "name": row["name"],
 
+            **pokemon_details(row),
+
             "usage_count": usage_count,
 
             "usage_rate": round(
@@ -202,7 +239,10 @@ def export_pokemon_stats(conn):
     pokemon_rows = conn.execute("""
         SELECT
             id,
-            name
+            name,
+            type1,
+            type2,
+            weaknesses
         FROM pokemon
         ORDER BY id
     """).fetchall()
@@ -446,6 +486,8 @@ def export_pokemon_stats(conn):
 
             "name": pokemon["name"],
 
+            **pokemon_details(pokemon),
+
             "total": {
 
                 "battles": total_battles,
@@ -524,9 +566,15 @@ def export_matchups(conn):
 
             b.player1_pokemon_id AS p1_id,
             p1.name AS p1_name,
+            p1.type1 AS p1_type1,
+            p1.type2 AS p1_type2,
+            p1.weaknesses AS p1_weaknesses,
 
             b.player2_pokemon_id AS p2_id,
             p2.name AS p2_name,
+            p2.type1 AS p2_type1,
+            p2.type2 AS p2_type2,
+            p2.weaknesses AS p2_weaknesses,
 
             b.player1_result,
             b.player2_result
@@ -558,9 +606,19 @@ def export_matchups(conn):
 
             pokemon1_id = p1_id
             pokemon1_name = row["p1_name"]
+            pokemon1_details = {
+                "type1": row["p1_type1"],
+                "type2": row["p1_type2"],
+                "weaknesses": parse_weaknesses(row["p1_weaknesses"])
+            }
 
             pokemon2_id = p2_id
             pokemon2_name = row["p2_name"]
+            pokemon2_details = {
+                "type1": row["p2_type1"],
+                "type2": row["p2_type2"],
+                "weaknesses": parse_weaknesses(row["p2_weaknesses"])
+            }
 
             pokemon1_result = row["player1_result"]
             pokemon2_result = row["player2_result"]
@@ -569,9 +627,19 @@ def export_matchups(conn):
 
             pokemon1_id = p2_id
             pokemon1_name = row["p2_name"]
+            pokemon1_details = {
+                "type1": row["p2_type1"],
+                "type2": row["p2_type2"],
+                "weaknesses": parse_weaknesses(row["p2_weaknesses"])
+            }
 
             pokemon2_id = p1_id
             pokemon2_name = row["p1_name"]
+            pokemon2_details = {
+                "type1": row["p1_type1"],
+                "type2": row["p1_type2"],
+                "weaknesses": parse_weaknesses(row["p1_weaknesses"])
+            }
 
             pokemon1_result = row["player2_result"]
             pokemon2_result = row["player1_result"]
@@ -589,12 +657,14 @@ def export_matchups(conn):
 
                 "pokemon1": {
                     "id": pokemon1_id,
-                    "name": pokemon1_name
+                    "name": pokemon1_name,
+                    **pokemon1_details
                 },
 
                 "pokemon2": {
                     "id": pokemon2_id,
-                    "name": pokemon2_name
+                    "name": pokemon2_name,
+                    **pokemon2_details
                 },
 
                 "battles": 0,

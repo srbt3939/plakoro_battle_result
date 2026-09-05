@@ -4,6 +4,19 @@
 
 let emojiData = null;
 
+const typeImageNames = {
+    "あく": "dark",
+    "かみなり": "electric",
+    "でんき": "electric",
+    "くさ": "grass",
+    "ちょう": "psychic",
+    "ほのお": "fire",
+    "みず": "water",
+    "はがね": "steel",
+    "とう": "steel",
+    "むしょく": "normal"
+};
+
 
 // =========================
 // JSON読み込み
@@ -300,7 +313,16 @@ function createPokemonRanking(
             win_rate:
                 stat
                     ? stat.total.win_rate
-                    : 0
+                    : 0,
+
+            type1:
+                stat?.type1,
+
+            type2:
+                stat?.type2,
+
+            weaknesses:
+                stat?.weaknesses || []
 
         };
 
@@ -542,7 +564,8 @@ function renderPokemonRanking() {
 
                         ${getPokemonDisplayHTML(
                             p.name,
-                            p.pokemon_id
+                            p.pokemon_id,
+                            p
                         )}
 
                     </span>
@@ -628,7 +651,8 @@ function createFirstSecondRanking(stats) {
                 <span class="pokemon-name">
                     ${getPokemonDisplayHTML(
                         p.name,
-                        p.pokemon_id
+                        p.pokemon_id,
+                        p
                     )}
                 </span>
 
@@ -868,35 +892,74 @@ function getEmojiByPokemonId(pokemonId) {
 // ヘルパー関数：ポケモン名と画像のHTML生成
 // =========================
 
-function getPokemonDisplayHTML(name, pokemonId) {
+function getPokemonDisplayHTML(name, pokemonId, details = {}) {
 
     const emoji = getEmojiByPokemonId(
         pokemonId
     );
 
-    if (!emoji) {
-        return name;
+    let pokemonImage = "";
+
+    if (emoji) {
+        const match = emoji.emoji.match(
+            /<:([^:]+):(\d+)>/
+        );
+
+        if (match) {
+            pokemonImage = `
+                <img
+                    src="emoji_images/${match[2]}.webp"
+                    alt="${name}"
+                    class="pokemon-emoji"
+                    onerror="this.style.display='none'"
+                >
+            `;
+        }
     }
 
-    const match = emoji.emoji.match(
-        /<:([^:]+):(\d+)>/
-    );
+    const types = [details.type1, details.type2]
+        .filter(Boolean);
 
-    if (!match) {
-        return name;
-    }
+    const weaknesses = Array.isArray(details.weaknesses)
+        ? details.weaknesses
+        : [];
 
-    const emojiId = match[2];
+    const typeHTML = getTypeImagesHTML(types);
+    const weaknessHTML = getTypeImagesHTML(weaknesses);
 
     return `
-        <img
-            src="emoji_images/${emojiId}.webp"
-            alt="${name}"
-            class="pokemon-emoji"
-            onerror="this.style.display='none'"
-        >
+        ${pokemonImage}
         <span>${name}</span>
+        ${typeHTML ? `<span class="pokemon-meta">タイプ: ${typeHTML}</span>` : ""}
+        ${weaknessHTML ? `<span class="pokemon-meta">弱点: ${weaknessHTML}</span>` : ""}
     `;
+
+}
+
+
+function getTypeImagesHTML(types) {
+
+    return [...new Set(types)]
+        .map(type => {
+            const imageName = typeImageNames[type];
+
+            if (!imageName) {
+                return type;
+            }
+
+            return `
+                <span class="type-item">
+                    <img
+                        src="type_images/${imageName}.webp"
+                        alt="${type}"
+                        class="type-emoji"
+                        onerror="this.style.display='none'"
+                    >
+                    ${type}
+                </span>
+            `;
+        })
+        .join("");
 
 }
 
@@ -1011,7 +1074,8 @@ function createMatchups(
 
                     <span class="pokemon-name-bold">${getPokemonDisplayHTML(
                         pokemon1.name,
-                        pokemon1.id
+                        pokemon1.id,
+                        pokemon1
                     )}</span>
 
                     <br>
@@ -1036,7 +1100,8 @@ function createMatchups(
 
                     <span class="pokemon-name-bold">${getPokemonDisplayHTML(
                         pokemon2.name,
-                        pokemon2.id
+                        pokemon2.id,
+                        pokemon2
                     )}</span>
 
                     <br>

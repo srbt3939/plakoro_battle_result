@@ -8,12 +8,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -26,12 +36,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -44,12 +64,22 @@
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -62,12 +92,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -80,12 +120,22 @@
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -98,12 +148,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -116,12 +176,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -134,12 +204,22 @@
                 "id": null,
                 "pokemon_id": 2,
                 "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -152,12 +232,22 @@
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -170,12 +260,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -188,12 +288,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -206,12 +316,22 @@
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -224,12 +344,22 @@
                 "id": null,
                 "pokemon_id": 2,
                 "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -242,12 +372,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -260,12 +400,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -278,12 +428,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -296,12 +456,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -314,12 +484,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -332,12 +512,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -350,12 +540,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -368,12 +568,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -386,12 +596,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -404,12 +624,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -422,12 +652,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -440,12 +680,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -458,12 +708,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -476,12 +736,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -494,12 +764,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -512,12 +792,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -530,12 +820,22 @@
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -548,12 +848,22 @@
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -566,12 +876,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -584,12 +904,22 @@
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -602,12 +932,22 @@
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -620,12 +960,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -638,12 +988,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 2,
                 "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -656,12 +1016,22 @@
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -674,12 +1044,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -692,12 +1072,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -710,12 +1100,22 @@
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -728,12 +1128,22 @@
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -746,12 +1156,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -764,12 +1184,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -782,12 +1212,22 @@
                 "id": null,
                 "pokemon_id": 2,
                 "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 2,
                 "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -800,12 +1240,22 @@
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -818,12 +1268,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -836,12 +1296,22 @@
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -854,12 +1324,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -872,12 +1352,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -890,12 +1380,22 @@
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -908,12 +1408,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -926,12 +1436,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -944,12 +1464,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -962,12 +1492,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -980,12 +1520,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -998,12 +1548,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -1016,12 +1576,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1034,12 +1604,22 @@
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -1052,12 +1632,22 @@
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -1070,12 +1660,22 @@
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -1088,12 +1688,22 @@
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -1106,12 +1716,22 @@
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -1124,12 +1744,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1142,12 +1772,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1160,12 +1800,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -1178,12 +1828,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1196,12 +1856,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1214,12 +1884,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -1232,12 +1912,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1250,12 +1940,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1268,12 +1968,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -1286,12 +1996,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -1304,12 +2024,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1322,12 +2052,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1340,12 +2080,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -1358,12 +2108,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1376,12 +2136,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1394,12 +2164,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1412,12 +2192,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -1430,12 +2220,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -1448,12 +2248,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1466,12 +2276,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -1484,12 +2304,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1502,12 +2332,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1520,12 +2360,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -1538,12 +2388,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1556,12 +2416,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1574,12 +2444,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1592,12 +2472,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1610,12 +2500,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1628,12 +2528,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1646,12 +2556,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1664,12 +2584,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -1682,12 +2612,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1700,12 +2640,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1718,12 +2668,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -1736,12 +2696,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -1754,12 +2724,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -1772,12 +2752,22 @@
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -1790,12 +2780,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1808,12 +2808,22 @@
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1826,12 +2836,22 @@
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1844,12 +2864,22 @@
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1862,12 +2892,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1880,12 +2920,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -1898,12 +2948,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -1916,12 +2976,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -1934,12 +3004,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -1952,12 +3032,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -1970,12 +3060,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -1988,12 +3088,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -2006,12 +3116,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -2024,12 +3144,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -2042,12 +3172,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -2060,12 +3200,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -2078,12 +3228,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -2096,12 +3256,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -2114,12 +3284,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -2132,12 +3312,22 @@
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -2150,12 +3340,22 @@
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -2168,12 +3368,22 @@
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -2186,12 +3396,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -2204,12 +3424,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -2222,12 +3452,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -2240,12 +3480,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -2258,12 +3508,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -2276,12 +3536,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -2294,12 +3564,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -2312,12 +3592,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -2330,12 +3620,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -2348,12 +3648,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -2366,12 +3676,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -2384,12 +3704,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -2402,12 +3732,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -2420,12 +3760,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -2438,12 +3788,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -2456,12 +3816,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -2474,12 +3844,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -2492,12 +3872,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -2510,12 +3900,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -2528,12 +3928,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -2546,12 +3956,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -2564,12 +3984,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -2582,12 +4012,22 @@
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -2600,12 +4040,22 @@
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -2618,12 +4068,22 @@
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -2636,12 +4096,22 @@
                 "id": null,
                 "pokemon_id": 13,
                 "pokemon": "ゲンガー",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "ちょう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 2,
                 "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -2654,12 +4124,22 @@
                 "id": null,
                 "pokemon_id": 2,
                 "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 13,
                 "pokemon": "ゲンガー",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "ちょう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -2672,12 +4152,22 @@
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -2690,12 +4180,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -2708,12 +4208,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -2726,12 +4236,22 @@
                 "id": null,
                 "pokemon_id": 2,
                 "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -2744,12 +4264,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -2762,12 +4292,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -2780,12 +4320,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -2798,12 +4348,22 @@
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -2816,12 +4376,22 @@
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -2834,12 +4404,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -2852,12 +4432,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -2870,12 +4460,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -2888,12 +4488,22 @@
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -2906,12 +4516,22 @@
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -2924,12 +4544,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -2942,12 +4572,22 @@
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -2960,12 +4600,22 @@
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -2978,12 +4628,22 @@
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -2996,12 +4656,22 @@
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -3014,12 +4684,22 @@
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -3032,12 +4712,22 @@
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -3050,12 +4740,22 @@
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "first_player": null
@@ -3068,12 +4768,22 @@
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "first_player": null
@@ -3086,12 +4796,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 2,
                 "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -3104,12 +4824,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -3122,12 +4852,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -3140,12 +4880,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3158,12 +4908,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3176,12 +4936,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -3194,12 +4964,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3212,12 +4992,22 @@
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3230,12 +5020,22 @@
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -3248,12 +5048,22 @@
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3266,12 +5076,22 @@
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -3284,12 +5104,22 @@
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3302,12 +5132,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -3320,12 +5160,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 2,
                 "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -3338,12 +5188,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 2,
                 "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -3356,12 +5216,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -3374,12 +5244,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -3392,12 +5272,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -3410,12 +5300,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -3428,12 +5328,22 @@
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -3446,12 +5356,22 @@
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3464,12 +5384,22 @@
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -3482,12 +5412,22 @@
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -3500,12 +5440,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3518,12 +5468,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -3536,12 +5496,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -3554,12 +5524,22 @@
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3572,12 +5552,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3590,12 +5580,22 @@
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3608,12 +5608,22 @@
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3626,12 +5636,22 @@
                 "id": null,
                 "pokemon_id": 2,
                 "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3644,12 +5664,22 @@
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3662,12 +5692,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -3680,12 +5720,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3698,12 +5748,22 @@
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -3716,12 +5776,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 8,
                 "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -3734,12 +5804,22 @@
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3752,12 +5832,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 12,
                 "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3770,12 +5860,22 @@
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 11,
                 "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3788,12 +5888,22 @@
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -3806,12 +5916,22 @@
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3824,12 +5944,22 @@
                 "id": null,
                 "pokemon_id": 7,
                 "pokemon": "ベトベター",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 6,
                 "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3842,12 +5972,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3860,12 +6000,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 10,
                 "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -3878,12 +6028,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -3896,12 +6056,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -3914,12 +6084,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -3932,12 +6112,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3950,12 +6140,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -3968,12 +6168,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -3986,12 +6196,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -4004,12 +6224,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -4022,12 +6252,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -4040,12 +6280,22 @@
                 "id": null,
                 "pokemon_id": 4,
                 "pokemon": "ピカチュウ",
+                "type1": "でんき",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 1,
                 "pokemon": "フシギダネ",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -4058,12 +6308,22 @@
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
@@ -4076,12 +6336,22 @@
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "first_player": 2
@@ -4094,12 +6364,22 @@
                 "id": null,
                 "pokemon_id": 3,
                 "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
                 "result": "lose"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "win"
             },
             "first_player": 1
@@ -4112,12 +6392,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 2
@@ -4130,12 +6420,22 @@
                 "id": null,
                 "pokemon_id": 9,
                 "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
                 "result": "win"
             },
             "player2": {
                 "id": null,
                 "pokemon_id": 5,
                 "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
                 "result": "lose"
             },
             "first_player": 1
