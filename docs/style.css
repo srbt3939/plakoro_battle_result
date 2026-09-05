@@ -2,632 +2,316 @@
     box-sizing: border-box;
 }
 
+:root {
+    --page-background: #f3f6f8;
+    --surface: #ffffff;
+    --surface-muted: #f7f9fa;
+    --line: #e2e8ec;
+    --text: #263238;
+    --muted: #71808a;
+    --accent: #2f7892;
+    --accent-soft: #e7f2f5;
+}
 
 body {
-
     margin: 0;
-
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
-    background: #f5f5f5;
-
-    color: #333;
+    color: var(--text);
+    background: var(--page-background);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
-
 
 header {
-
-    background: white;
-
-    padding: 40px 20px;
-
+    padding: 34px 20px 30px;
     text-align: center;
-
-    border-bottom: 1px solid #ddd;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 2px 12px rgba(38, 50, 56, 0.05);
 }
-
 
 header h1 {
-
     margin: 0 0 10px;
-
-    font-size: 32px;
+    font-size: clamp(25px, 4vw, 32px);
+    letter-spacing: 0.02em;
 }
-
 
 header p {
-
     margin: 0;
-
-    color: #777;
+    color: var(--muted);
 }
 
-
 main {
-
     max-width: 1000px;
-
-    margin: 30px auto;
-
+    margin: 26px auto 40px;
     padding: 0 20px;
 }
 
-
-/* ===================== */
-/* 概要 */
-/* ===================== */
-
 .summary {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-
     margin-bottom: 30px;
 }
 
-
 .summary-card {
-
-    background: white;
-
-    padding: 25px;
-
-    border-radius: 12px;
-
+    padding: 20px;
+    color: inherit;
     text-align: center;
-
-    box-shadow:
-        0 2px 8px rgba(0,0,0,0.05);
+    text-decoration: none;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(38, 50, 56, 0.05);
+    transition: transform 160ms ease, box-shadow 160ms ease;
 }
 
+a.summary-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px rgba(38, 50, 56, 0.1);
+}
 
 .label {
-
     display: block;
-
-    color: #777;
-
     margin-bottom: 10px;
+    color: var(--muted);
 }
 
-
 .value {
-
     display: block;
-
-    font-size: 32px;
-
+    color: var(--accent);
+    font-size: 30px;
     font-weight: bold;
 }
 
-
-/* ===================== */
-/* カード */
-/* ===================== */
-
 .card {
-
-    background: white;
-
-    padding: 25px;
-
-    margin-bottom: 30px;
-
-    border-radius: 12px;
-
-    box-shadow:
-        0 2px 8px rgba(0,0,0,0.05);
+    margin-bottom: 24px;
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(38, 50, 56, 0.05);
 }
-
 
 .card h2 {
-
-    margin-top: 0;
-
-    margin-bottom: 20px;
+    margin: 0 0 20px;
+    padding-bottom: 12px;
+    color: #344b55;
+    font-size: 20px;
+    border-bottom: 2px solid var(--accent-soft);
 }
 
-
-/* ===================== */
-/* 円グラフ */
-/* ===================== */
-
 .chart-container {
-
     max-width: 650px;
-
     margin: auto;
 }
 
-
-/* ===================== */
-/* ランキング */
-/* ===================== */
-
-.ranking-row {
-
-    display: grid;
-
-    grid-template-columns:
-        50px 1fr 100px 100px;
-
-    align-items: center;
-
-    padding: 12px 5px;
-
-    border-bottom: 1px solid #eee;
+.pokemon-ranking-row,
+.first-second-row,
+.matchup-row {
+    border-bottom: 1px solid var(--line);
 }
 
-
-.ranking-row:last-child {
-
-    border-bottom: none;
+.pokemon-ranking-row:nth-child(even),
+.first-second-row:nth-child(even),
+.matchup-row:nth-child(even) {
+    background: var(--surface-muted);
 }
-
 
 .rank {
-
+    color: var(--muted);
     font-weight: bold;
-
-    color: #777;
 }
 
-
-.pokemon-name {
-
-    font-weight: bold;
-
+.pokemon-name,
+.pokemon-name-bold {
     display: flex;
-
     align-items: center;
-
-    gap: 8px;
-
-    flex-wrap: nowrap;
+    gap: 6px;
+    min-width: 0;
+    overflow: hidden;
+    font-weight: bold;
+    white-space: nowrap;
 }
-
 
 .pokemon-emoji {
-
-    height: 32px;
-
     width: auto;
-
-    display: inline-block;
+    height: 32px;
+    flex-shrink: 0;
 }
-
 
 .pokemon-meta {
-
     display: inline-flex;
-
     align-items: center;
-
     gap: 4px;
-
+    flex-shrink: 0;
+    color: var(--muted);
     font-size: 0.85em;
-
     font-weight: normal;
-
-    color: #555;
-
 }
-
 
 .pokemon-meta-label {
-
     font-size: 0.8em;
-
-    line-height: 1;
-
 }
 
-
-.type-item {
-
+.type-item,
+.type-emoji {
     display: inline-flex;
-
-    align-items: center;
-
+    flex-shrink: 0;
 }
-
 
 .type-emoji {
-
     width: 22px;
-
     height: 22px;
-
     object-fit: contain;
-
 }
-
 
 .number {
-
     text-align: right;
+    white-space: nowrap;
 }
-
-
-/* ===================== */
-/* 対戦成績 */
-/* ===================== */
-
-.matchup-row {
-
-    display: grid;
-
-    grid-template-columns:
-        1fr 100px 1fr;
-
-    align-items: center;
-
-    gap: 10px;
-
-    padding: 15px 5px;
-
-    border-bottom: 1px solid #eee;
-
-    text-align: center;
-}
-
-
-.matchup-row:last-child {
-
-    border-bottom: none;
-}
-
-
-.matchup-pokemon {
-
-    font-weight: bold;
-
-}
-
-
-.pokemon-name-bold {
-
-    font-weight: bold;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    flex-wrap: nowrap;
-}
-
-
-.pokemon-rate {
-
-    font-weight: normal;
-
-}
-
-
-.vs {
-
-    color: #999;
-
-    font-weight: normal;
-}
-
-
-.matchup-meter {
-
-    display: flex;
-
-    grid-column: 1 / -1;
-
-    height: 10px;
-
-    overflow: hidden;
-
-    border-radius: 5px;
-
-    background: #edf0f2;
-
-}
-
-
-.matchup-meter-pokemon1 {
-
-    background: #3f7cac;
-
-}
-
-
-.matchup-meter-pokemon2 {
-
-    background: #db6402;
-
-}
-
-/* ========================= */
-/* 対戦成績フィルター */
-/* ========================= */
-
-.matchup-filter {
-
-    margin-bottom: 20px;
-
-}
-
-
-.matchup-filter label {
-
-    display: block;
-
-    margin-bottom: 8px;
-
-    font-weight: bold;
-
-}
-
-
-.matchup-filter select {
-
-    width: 100%;
-
-    max-width: 400px;
-
-    padding: 10px;
-
-    font-size: 16px;
-
-    border: 1px solid #ccc;
-
-    border-radius: 8px;
-
-    background: white;
-
-}
-
-
-/* ========================= */
-/* 先攻・後攻戦績 */
-/* ========================= */
-
-.first-second-row {
-
-    display: grid;
-
-    grid-template-columns:
-        minmax(160px, 2fr)
-        1fr
-        1fr
-        1fr;
-
-    align-items: center;
-
-    padding: 12px 5px;
-
-    border-bottom: 1px solid #eee;
-
-    text-align: right;
-}
-
-
-.first-second-row > :first-child {
-
-    text-align: left;
-
-}
-
-
-.first-second-row.header {
-
-    color: #777;
-
-    font-size: 14px;
-
-}
-
-
-
-.first-second-row:last-child {
-
-    border-bottom: none;
-
-}
-
-/* ========================= */
-/* ポケモンランキング */
-/* ========================= */
 
 .pokemon-ranking-row {
-
     display: grid;
-
-    grid-template-columns:
-        50px
-        minmax(120px, 1fr)
-        70px
-        80px
-        70px
-        80px;
-
+    grid-template-columns: 50px minmax(120px, 1fr) 70px 80px 70px 80px;
     align-items: center;
-
+    min-width: 620px;
     min-height: 50px;
-
-    border-bottom: 1px solid #eee;
-
+    padding: 10px 6px;
     column-gap: 10px;
-
 }
-
 
 .pokemon-ranking-row.header {
-
     min-height: 40px;
-
+    color: var(--muted);
     font-size: 13px;
-
-    color: #777;
-
-    border-bottom: 2px solid #ddd;
-
+    background: var(--surface);
+    border-bottom: 2px solid var(--accent);
 }
-
 
 .pokemon-ranking-row .rank {
-
     text-align: center;
-
-    font-weight: bold;
-
 }
 
-
-.pokemon-ranking-row .pokemon-name {
-
-    font-weight: bold;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 4px;
-
-    min-width: 0;
-
-    flex-wrap: nowrap;
-
-}
-
-
-.pokemon-ranking-row .pokemon-name .pokemon-emoji {
-
+.pokemon-ranking-row .pokemon-emoji {
     height: 24px;
-
-    width: auto;
-
-    flex-shrink: 0;
-
 }
-
-
-.pokemon-ranking-row .number {
-
-    text-align: right;
-
-    white-space: nowrap;
-
-}
-
-
-/* ========================= */
-/* ランキング ソートボタン */
-/* ========================= */
 
 .sort-button {
-
-    border: none;
-
-    background: none;
-
     padding: 0;
-
+    color: var(--muted);
     font: inherit;
-
     font-weight: bold;
-
-    color: #777;
-
-    cursor: pointer;
-
     text-align: right;
-
+    background: none;
+    border: 0;
+    cursor: pointer;
 }
-
 
 .sort-button:hover {
-
-    color: #333;
-
+    color: var(--accent);
     text-decoration: underline;
-
 }
-
-
-/* ========================= */
-/* ランキング注釈 */
-/* ========================= */
 
 .ranking-note {
-
-    padding: 8px 0 12px 0;
-
+    padding: 8px 0 12px;
+    color: var(--muted);
     font-size: 12px;
-
-    color: #888;
-
 }
 
-
-/* ========================= */
-/* スマホ対応 */
-/* ========================= */
-
-@media (max-width: 600px) {
-
-    .pokemon-ranking-row {
-
-        grid-template-columns:
-            35px
-            minmax(90px, 1fr)
-            55px
-            65px
-            55px
-            65px;
-
-        column-gap: 5px;
-
-        font-size: 14px;
-
-    }
-
-
-    .pokemon-ranking-row.header {
-
-        font-size: 11px;
-
-    }
-
+.first-second-row {
+    display: grid;
+    grid-template-columns: minmax(160px, 2fr) 1fr 1fr 1fr;
+    align-items: center;
+    min-width: 520px;
+    padding: 12px 5px;
+    text-align: right;
 }
 
-/* ===================== */
-/* フッター */
-/* ===================== */
+.first-second-row > :first-child {
+    text-align: left;
+}
 
-/* footer {
+.first-second-row.header {
+    color: var(--muted);
+    font-size: 14px;
+    background: var(--surface);
+}
 
+.matchup-row {
+    display: grid;
+    grid-template-columns: 1fr 100px 1fr;
+    align-items: center;
+    min-width: 480px;
+    gap: 10px;
+    padding: 15px 5px;
     text-align: center;
+}
 
-    padding: 30px;
+.matchup-pokemon {
+    color: #344b55;
+    font-weight: bold;
+}
 
-    color: #999;
-} */
+.pokemon-rate,
+.vs {
+    color: var(--muted);
+    font-weight: normal;
+}
+
+.matchup-meter {
+    display: flex;
+    grid-column: 1 / -1;
+    height: 10px;
+    overflow: hidden;
+    background: var(--surface-muted);
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 1px rgba(38, 50, 56, 0.06);
+}
+
+.matchup-meter-pokemon1 {
+    background: #3f7cac;
+}
+
+.matchup-meter-pokemon2 {
+    background: #db6402;
+}
+
+.matchup-filter {
+    margin-bottom: 20px;
+}
+
+.matchup-filter label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.matchup-filter select {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    color: var(--text);
+    font-size: 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#pokemon-ranking,
+#first-second-ranking,
+#matchup-list {
+    overflow-x: auto;
+}
 
 .site-footer {
     margin-top: 60px;
     padding: 30px 20px;
-    background: #f5f5f5;
-    color: #666;
+    color: #66737a;
     text-align: center;
     font-size: 12px;
     line-height: 1.7;
-    border-top: 1px solid #ddd;
+    background: var(--page-background);
+    border-top: 1px solid var(--line);
 }
 
 .footer-inner {
@@ -639,67 +323,54 @@ main {
     margin: 6px 0;
 }
 
-.fan-site-notice {
-    font-weight: 500;
-}
-
-.copyright-notice {
-    color: #888;
-}
-
 .footer-credit {
     margin-top: 15px !important;
-    color: #999;
+    color: #89959b;
 }
 
-/* ===================== */
-/* スマホ */
-/* ===================== */
-
 @media (max-width: 700px) {
+    main {
+        margin-top: 18px;
+        padding: 0 12px;
+    }
+
+    header {
+        padding: 26px 16px 24px;
+    }
 
     .summary {
-
         grid-template-columns: 1fr;
-
+        gap: 10px;
+        margin-bottom: 18px;
     }
 
+    .card {
+        margin-bottom: 18px;
+        padding: 17px 14px;
+    }
 
-    .ranking-row {
+    .card h2 {
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
 
-        grid-template-columns:
-            40px 1fr 70px 70px;
-
+    .pokemon-ranking-row {
+        grid-template-columns: 35px minmax(90px, 1fr) 55px 65px 55px 65px;
+        column-gap: 5px;
         font-size: 14px;
-
     }
 
+    .pokemon-ranking-row.header {
+        font-size: 11px;
+    }
 
     .matchup-row {
-
-        grid-template-columns:
-            1fr 40px 1fr;
-
+        grid-template-columns: 1fr 40px 1fr;
         font-size: 14px;
-
-    }
-
-
-    header h1 {
-
-        font-size: 25px;
-
     }
 
     .first-second-row {
-
-    grid-template-columns:
-        minmax(100px, 1.5fr)
-        1fr
-        1fr
-        0.8fr;
-
-    font-size: 13px;
-
-}
+        grid-template-columns: minmax(100px, 1.5fr) 1fr 1fr 0.8fr;
+        font-size: 13px;
+    }
 }
