@@ -104,6 +104,11 @@ main {
     border-bottom: 1px solid var(--line);
 }
 
+#pokemon-ranking {
+    min-width: 0;
+    overflow-x: auto;
+}
+
 .pokemon-ranking-row:nth-child(even),
 .first-second-row:nth-child(even),
 .matchup-row:nth-child(even) {
@@ -196,6 +201,7 @@ main {
     justify-content: center;
     gap: 3px;
     min-width: 0;
+    overflow: hidden;
 }
 
 .sort-button {
@@ -390,6 +396,7 @@ main {
     .pokemon-type,
     .pokemon-weakness {
         gap: 1px;
+        flex-wrap: wrap;
     }
 
     .pokemon-ranking-row .sort-button {
