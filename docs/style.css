@@ -170,7 +170,7 @@ main {
 
 .pokemon-ranking-row {
     display: grid;
-    grid-template-columns: 50px minmax(150px, 1fr) 80px 90px 70px 80px 70px;
+    grid-template-columns: 50px minmax(150px, 1fr) 80px 90px 80px 80px 80px;
     align-items: center;
     min-width: 620px;
     min-height: 50px;
@@ -238,7 +238,7 @@ main {
 
 .first-second-row {
     display: grid;
-    grid-template-columns: minmax(160px, 2fr) 1fr 1fr 1fr;
+    grid-template-columns: minmax(160px, 2fr) 1fr 1fr;
     align-items: center;
     min-width: 520px;
     padding: 12px 5px;
@@ -368,7 +368,7 @@ main {
     }
 
     .pokemon-ranking-row {
-        grid-template-columns: 20px minmax(0, 1fr) 30px 34px 30px 38px 34px;
+        grid-template-columns: 20px minmax(0, 1fr) 30px 34px 34px 34px 34px;
         min-width: 0;
         min-height: 42px;
         padding: 8px 2px;
@@ -410,7 +410,7 @@ main {
     }
 
     .first-second-row {
-        grid-template-columns: minmax(100px, 1.5fr) 1fr 1fr 0.8fr;
+        grid-template-columns: minmax(100px, 1.5fr) 1fr 1fr;
         min-width: 0;
         font-size: 13px;
     }

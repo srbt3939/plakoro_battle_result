@@ -703,10 +703,6 @@ function createFirstSecondRanking(stats) {
                 後攻
             </strong>
 
-            <strong>
-                不明
-            </strong>
-
         </div>
 
     `;
@@ -740,14 +736,6 @@ function createFirstSecondRanking(stats) {
                     ${p.second_player.wins}勝
                     <br>
                     ${p.second_player.win_rate}%
-                </span>
-
-
-                <span>
-                    ${p.unknown.battles}戦
-                    ${p.unknown.wins}勝
-                    <br>
-                    ${p.unknown.win_rate}%
                 </span>
 
             </div>
