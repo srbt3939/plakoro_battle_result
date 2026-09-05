@@ -323,7 +323,16 @@ function createPokemonRanking(
                 stat?.type2,
 
             weaknesses:
-                stat?.weaknesses || []
+                stat?.weaknesses || [],
+
+            type_sort:
+                [stat?.type1, stat?.type2]
+                    .filter(Boolean)
+                    .join("/"),
+
+            weakness_sort:
+                (stat?.weaknesses || [])
+                    .join("/")
 
         };
 
@@ -422,20 +431,20 @@ function renderPokemonRanking() {
                     b[currentSortKey];
 
 
-                if (
-                    currentSortOrder ===
-                    "desc"
-                ) {
+                const isTextSort =
+                    currentSortKey === "type_sort" ||
+                    currentSortKey === "weakness_sort";
 
-                    return valueB - valueA;
+                const comparison = isTextSort
+                    ? String(valueA).localeCompare(
+                        String(valueB),
+                        "ja"
+                    )
+                    : valueA - valueB;
 
-                }
-
-                else {
-
-                    return valueA - valueB;
-
-                }
+                return currentSortOrder === "desc"
+                    ? -comparison
+                    : comparison;
 
             });
 
@@ -472,6 +481,26 @@ function renderPokemonRanking() {
             : "▽";
 
 
+    const typeArrow =
+        currentSortKey === "type_sort"
+            ? (
+                currentSortOrder === "desc"
+                    ? " ▼"
+                    : " ▲"
+            )
+            : "▽";
+
+
+    const weaknessArrow =
+        currentSortKey === "weakness_sort"
+            ? (
+                currentSortOrder === "desc"
+                    ? " ▼"
+                    : " ▲"
+            )
+            : "▽";
+
+
     // =========================
     // ヘッダー
     // =========================
@@ -486,7 +515,29 @@ function renderPokemonRanking() {
 
 
             <span class="pokemon-name">
-                ポケモン
+                <span>ポケモン</span>
+
+                <button
+                    class="sort-button sort-meta-button"
+                    onclick="
+                        changeRankingSort(
+                            'type_sort'
+                        )
+                    "
+                >
+                    タイプ${typeArrow}
+                </button>
+
+                <button
+                    class="sort-button sort-meta-button"
+                    onclick="
+                        changeRankingSort(
+                            'weakness_sort'
+                        )
+                    "
+                >
+                    弱点${weaknessArrow}
+                </button>
             </span>
 
 

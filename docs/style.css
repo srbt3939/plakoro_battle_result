@@ -211,6 +211,11 @@ a.summary-card:hover {
     text-decoration: underline;
 }
 
+.sort-meta-button {
+    flex-shrink: 0;
+    font-size: 0.9em;
+}
+
 .ranking-note {
     padding: 8px 0 12px;
     color: var(--muted);
