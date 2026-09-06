@@ -112,21 +112,10 @@ async function main() {
         usage.pokemon.length;
 
 
-    // =========================
-    // 直近2週間の試合数
-    // =========================
-
-    createBattleTrendChart(
-        battleTrend.days
-    );
-
-
-    // =========================
-    // 使用率円グラフ
-    // =========================
-
-    createUsageChart(
-        usage.pokemon
+    createRecentBattles(
+        battles.battles,
+        battleTrend.days,
+        totalBattles
     );
 
     // =========================
@@ -164,6 +153,84 @@ async function main() {
         matchups.matchups
     );
     
+}
+
+
+function createRecentBattles(battles, trendDays, totalBattles) {
+
+    const container = document.getElementById("recent-battles-carousel");
+    const dotsContainer = document.getElementById("recent-battles-dots");
+    const recent = [...battles]
+        .sort((a, b) => b.id - a.id)
+        .slice(0, 3);
+
+    container.innerHTML = `
+        <div class="carousel-slide recent-trend-slide">
+            <h3>📈 直近2週間の試合数</h3>
+            <div class="trend-chart-container">
+                <canvas id="battle-trend-chart"></canvas>
+            </div>
+        </div>
+        <div class="carousel-slide recent-battle-list">
+            <h3>🕒 直近3試合の結果</h3>
+            ${recent.map((battle, index) => formatRecentBattle(battle, totalBattles - index)).join("") || "<p>試合データがありません。</p>"}
+        </div>
+    `;
+
+    dotsContainer.innerHTML = ["直近2週間の試合数", "直近3試合の結果"]
+        .map((label, index) => `<button class="carousel-dot${index === 0 ? " is-active" : ""}" aria-label="${label}を表示" onclick="scrollRecentBattlesTo(${index})"></button>`)
+        .join("");
+
+    container.onscroll = () => updateRecentBattlesDot(Math.round(container.scrollLeft / container.clientWidth));
+    requestAnimationFrame(() => createBattleTrendChart(trendDays));
+
+}
+
+
+function formatRecentBattle(battle, battleNumber) {
+
+    const player1First = battle.first_player === 1;
+    const playerHTML = (player, isFirst) => `
+        <div class="recent-battle-player ${player.result === "win" ? "is-win" : "is-lose"}">
+            <span class="recent-battle-result">${player.result === "win" ? "WIN" : "LOSE"}</span>
+            ${getPokemonIdentityHTML(player.pokemon, player.pokemon_id)}
+            <span class="pokemon-type">${getTypeImagesHTML([player.type1, player.type2].filter(Boolean))}</span>
+            <span class="recent-battle-order">${isFirst ? "先攻" : "後攻"}</span>
+        </div>`;
+
+    return `
+        <div class="recent-battle-entry">
+            <div class="recent-battle-number">第${battleNumber}戦</div>
+            <div class="recent-battle-players">
+                ${playerHTML(battle.player1, player1First)}
+                <span class="vs">VS</span>
+                ${playerHTML(battle.player2, !player1First)}
+            </div>
+        </div>`;
+
+}
+
+
+function updateRecentBattlesDot(index) {
+    document.querySelectorAll(".carousel-dot").forEach((dot, dotIndex) => {
+        dot.classList.toggle("is-active", dotIndex === index);
+    });
+}
+
+
+function scrollRecentBattlesTo(index) {
+    const container = document.getElementById("recent-battles-carousel");
+    container.scrollTo({ left: container.clientWidth * index, behavior: "smooth" });
+    updateRecentBattlesDot(index);
+}
+
+
+function moveRecentBattles(direction) {
+    const container = document.getElementById("recent-battles-carousel");
+    const currentIndex = Math.round(container.scrollLeft / container.clientWidth);
+    const maxIndex = container.children.length - 1;
+    scrollRecentBattlesTo(Math.max(0, Math.min(currentIndex + direction, maxIndex)));
+
 }
 
 

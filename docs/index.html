@@ -92,21 +92,31 @@
     </section>
 
 
-    <!-- ===================== -->
-    <!-- 直近2週間の試合数 -->
-    <!-- ===================== -->
-
     <section class="card">
 
         <h2>
-            📈 直近2週間の報告があった試合数
+            🕒 直近の試合データ
         </h2>
 
-        <div class="trend-chart-container">
+        <div class="carousel-wrapper">
 
-            <canvas id="battle-trend-chart"></canvas>
+            <button
+                class="carousel-arrow"
+                onclick="moveRecentBattles(-1)"
+                aria-label="前のページ"
+            >‹</button>
+
+            <div id="recent-battles-carousel" class="recent-battles-carousel"></div>
+
+            <button
+                class="carousel-arrow"
+                onclick="moveRecentBattles(1)"
+                aria-label="次のページ"
+            >›</button>
 
         </div>
+
+        <div id="recent-battles-dots" class="carousel-dots"></div>
 
     </section>
 
