@@ -1,10 +1,6 @@
 {
     "days": [
         {
-            "date": "2026-08-24",
-            "battle_count": 6
-        },
-        {
             "date": "2026-08-25",
             "battle_count": 0
         },
@@ -54,7 +50,11 @@
         },
         {
             "date": "2026-09-06",
-            "battle_count": 4
+            "battle_count": 8
+        },
+        {
+            "date": "2026-09-07",
+            "battle_count": 0
         }
     ]
 }

@@ -75,22 +75,22 @@
                 "かみなり"
             ],
             "total": {
-                "battles": 31,
-                "wins": 15,
+                "battles": 35,
+                "wins": 19,
                 "losses": 16,
-                "win_rate": 48.4
+                "win_rate": 54.3
             },
             "first_player": {
-                "battles": 10,
-                "wins": 7,
-                "losses": 3,
-                "win_rate": 70.0
+                "battles": 13,
+                "wins": 8,
+                "losses": 5,
+                "win_rate": 61.5
             },
             "second_player": {
-                "battles": 10,
-                "wins": 2,
+                "battles": 13,
+                "wins": 5,
                 "losses": 8,
-                "win_rate": 20.0
+                "win_rate": 38.5
             },
             "unknown": {
                 "battles": 12,
@@ -273,22 +273,22 @@
                 "そら"
             ],
             "total": {
-                "battles": 78,
+                "battles": 80,
                 "wins": 39,
-                "losses": 39,
-                "win_rate": 50.0
+                "losses": 41,
+                "win_rate": 48.8
             },
             "first_player": {
-                "battles": 14,
+                "battles": 15,
                 "wins": 6,
-                "losses": 8,
-                "win_rate": 42.9
+                "losses": 9,
+                "win_rate": 40.0
             },
             "second_player": {
-                "battles": 18,
+                "battles": 19,
                 "wins": 7,
-                "losses": 11,
-                "win_rate": 38.9
+                "losses": 12,
+                "win_rate": 36.8
             },
             "unknown": {
                 "battles": 46,
