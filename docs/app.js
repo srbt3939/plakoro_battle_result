@@ -165,19 +165,19 @@ function createRecentBattles(battles, trendDays) {
         .reverse();
 
     container.innerHTML = `
+        <div class="carousel-slide recent-battle-list">
+            <h3>🕒 直近3試合の結果</h3>
+            ${recent.map(battle => formatRecentBattle(battle, battle.id)).join("") || "<p>試合データがありません。</p>"}
+        </div>
         <div class="carousel-slide recent-trend-slide">
             <h3>📈 直近2週間の試合数</h3>
             <div class="trend-chart-container">
                 <canvas id="battle-trend-chart"></canvas>
             </div>
         </div>
-        <div class="carousel-slide recent-battle-list">
-            <h3>🕒 直近3試合の結果</h3>
-            ${recent.map(battle => formatRecentBattle(battle, battle.id)).join("") || "<p>試合データがありません。</p>"}
-        </div>
     `;
 
-    dotsContainer.innerHTML = ["直近2週間の試合数", "直近3試合の結果"]
+    dotsContainer.innerHTML = ["直近3試合の結果", "直近2週間の試合数"]
         .map((label, index) => `<button class="carousel-dot${index === 0 ? " is-active" : ""}" aria-label="${label}を表示" onclick="scrollRecentBattlesTo(${index})"></button>`)
         .join("");
 
