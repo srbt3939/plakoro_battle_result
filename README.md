@@ -1,19 +1,50 @@
 # plakoro_battle_result
 
-## Discord Bot
+# ポケモンプラコロ 対戦戦績管理
 
-依存関係をインストールします。
+ポケモンプラコロの対戦結果を記録・集計するためのWebアプリケーションです。
 
-```bash
-python -m pip install -r requirements.txt
-```
+Discord上で報告された対戦結果をもとに、ポケモンごとの使用率・勝率・対戦相性などを確認できるようにすることを目的としています。
 
-`.env.example` を参考に環境変数を設定して起動します。
+## 概要
 
-```bash
-export DISCORD_BOT_TOKEN="Botトークン"
-python discord_bot.py
-```
+主な機能：
 
-Bot の Discord Developer Portal で **Message Content Intent** を有効にしてください。
-戦績メッセージの投稿者を Player 1 とし、本文でメンションされた最初のユーザーを Player 2 として登録します。メンションを使わない場合は `DEFAULT_PLAYER2_ID` を設定してください。
+- 対戦メッセージの登録
+- 対戦結果の登録
+- ポケモン情報の管理
+- プレイヤー情報の管理
+- ポケモンごとの使用率・勝率の集計
+- ポケモン同士の対戦成績の集計
+- 先攻・後攻別の成績集計
+- GitHub Pagesを利用した戦績公開
+
+将来的な機能：
+- Discord Botとの連携
+
+## システム構成
+
+```text
+Discord
+   │
+   │ 対戦結果
+   ▼
+Discord Bot（現在は手動）
+   │
+   ▼
+SQLite
+(pokemon.db)
+   │
+   ├── players
+   ├── pokemon
+   ├── battles
+   └── battle_messages
+   │
+   ▼
+JSONデータ生成
+   │
+   ▼
+GitHub Pages
+   │
+   ▼
+戦績確認サイト
