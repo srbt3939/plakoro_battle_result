@@ -89,7 +89,7 @@ def battle():
         first_player = request.form["first_player"]
 
         player1_result = request.form["player1_result"]
-        player2_result = request.form["player2_result"]
+        player2_result = {"win": "lose", "lose": "win"}[player1_result]
 
         conn.execute("""
             INSERT INTO battles (
