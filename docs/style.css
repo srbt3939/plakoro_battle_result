@@ -554,6 +554,40 @@ main {
         font-size: 18px;
     }
 
+    .carousel-wrapper {
+        margin: 0 -4px;
+    }
+
+    .recent-battle-list {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        padding: 14px 4px;
+    }
+
+    .recent-battle-list .recent-battle-entry {
+        display: none;
+    }
+
+    .recent-battle-list .recent-battle-entry:first-of-type {
+        display: block;
+    }
+
+    .recent-battle-entry {
+        padding: 10px 2px;
+    }
+
+    .recent-battle-players {
+        gap: 1px;
+    }
+
+    .recent-battle-player .pokemon-name {
+        font-size: 11px;
+    }
+
+    .recent-battle-player .pokemon-emoji {
+        height: 28px;
+    }
+
     .trend-chart-container {
         height: 240px;
     }

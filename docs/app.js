@@ -347,6 +347,10 @@ function createUsageChart(pokemon) {
                 "usage-chart"
             );
 
+    if (!ctx) {
+        return;
+    }
+
 
     new Chart(ctx, {
 
