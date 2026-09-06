@@ -9,7 +9,7 @@ from pathlib import Path
 # パス設定
 # ============================================================
 
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 EMOJI_JSON_PATH = BASE_DIR / "docs/emoji.json"
 

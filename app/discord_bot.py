@@ -5,11 +5,11 @@ from pathlib import Path
 
 import discord
 
-from battle_parser import parse_discord_message, register_battles
+from .battle_parser import parse_discord_message, register_battles
 
 
 BASE_DIR = Path(__file__).resolve().parent
-DB_PATH = os.getenv("BATTLE_DB_PATH", str(BASE_DIR / "pokemon.db"))
+DB_PATH = os.getenv("BATTLE_DB_PATH", str(BASE_DIR / "data" / "pokemon.db"))
 BOT_TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 DEFAULT_PLAYER2_ID = os.getenv("DEFAULT_PLAYER2_ID")
 

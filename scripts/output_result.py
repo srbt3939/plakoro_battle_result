@@ -9,8 +9,9 @@ from pathlib import Path
 # 設定
 # =========================
 
-DB_PATH = "pokemon.db"
-OUTPUT_DIR = Path("docs/data")
+BASE_DIR = Path(__file__).resolve().parent.parent
+DB_PATH = BASE_DIR / "data" / "pokemon.db"
+OUTPUT_DIR = BASE_DIR / "docs" / "data"
 
 
 def parse_weaknesses(value):

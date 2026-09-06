@@ -1,9 +1,11 @@
 from flask import Flask, render_template
 import sqlite3
+from pathlib import Path
 
-app = Flask(__name__)
+BASE_DIR = Path(__file__).resolve().parent.parent
+app = Flask(__name__, template_folder=str(BASE_DIR / "app" / "templates"))
 
-DB_PATH = "pokemon.db"
+DB_PATH = BASE_DIR / "data" / "pokemon.db"
 
 
 def get_connection():

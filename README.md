@@ -26,6 +26,39 @@ Discord上で報告された対戦結果をもとに、ポケモンごとの使�
 
 ```text
 Discord
+
+## ディレクトリ構成
+
+```text
+app/
+├── battle_parser.py   # Discordメッセージ解析・登録
+├── discord_bot.py     # Discord Bot
+├── insert_app.py      # 対戦結果登録画面
+├── result.py          # 集計確認画面
+└── templates/         # Flaskテンプレート
+data/
+├── pokemon.db         # 運用データベース
+└── pokemon_backup.db  # DBバックアップ
+scripts/
+└── output_result.py   # GitHub Pages用JSON生成
+docs/                  # GitHub Pages公開ファイル
+```
+
+## 実行
+
+```bash
+# 対戦結果登録画面
+python app/insert_app.py
+
+# 集計確認画面
+python app/result.py
+
+# GitHub Pages用データ生成
+python scripts/output_result.py
+
+# Discord Bot
+python -m app.discord_bot
+```
    │
    │ 対戦結果
    ▼
