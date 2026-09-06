@@ -576,7 +576,7 @@ main {
         display: none;
     }
 
-    .recent-battle-list .recent-battle-entry:first-of-type {
+    .recent-battle-list .recent-battle-entry:last-of-type {
         display: block;
     }
 

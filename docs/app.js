@@ -114,8 +114,7 @@ async function main() {
 
     createRecentBattles(
         battles.battles,
-        battleTrend.days,
-        totalBattles
+        battleTrend.days
     );
 
     // =========================
@@ -156,13 +155,14 @@ async function main() {
 }
 
 
-function createRecentBattles(battles, trendDays, totalBattles) {
+function createRecentBattles(battles, trendDays) {
 
     const container = document.getElementById("recent-battles-carousel");
     const dotsContainer = document.getElementById("recent-battles-dots");
     const recent = [...battles]
         .sort((a, b) => b.id - a.id)
-        .slice(0, 3);
+        .slice(0, 3)
+        .reverse();
 
     container.innerHTML = `
         <div class="carousel-slide recent-trend-slide">
@@ -173,7 +173,7 @@ function createRecentBattles(battles, trendDays, totalBattles) {
         </div>
         <div class="carousel-slide recent-battle-list">
             <h3>🕒 直近3試合の結果</h3>
-            ${recent.map((battle, index) => formatRecentBattle(battle, totalBattles - index)).join("") || "<p>試合データがありません。</p>"}
+            ${recent.map(battle => formatRecentBattle(battle, battle.id)).join("") || "<p>試合データがありません。</p>"}
         </div>
     `;
 
