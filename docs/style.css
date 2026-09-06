@@ -558,6 +558,14 @@ main {
         margin: 0 -4px;
     }
 
+    .carousel-arrow {
+        display: none;
+    }
+
+    .recent-battles-carousel {
+        width: 100%;
+    }
+
     .recent-battle-list {
         grid-template-columns: 1fr;
         gap: 4px;
