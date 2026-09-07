@@ -22,27 +22,36 @@ def get_connection():
 @app.route("/message", methods=["GET", "POST"])
 def message():
 
+    conn = get_connection()
+
+    seasons = conn.execute("""
+        SELECT *
+        FROM seasons
+        ORDER BY id
+    """).fetchall()
+
     if request.method == "POST":
 
         discord_message_id = request.form["discord_message_id"]
+        season_id = request.form["season_id"]
 
         battle_date = request.form["battle_date"]
 
         raw_content = request.form["raw_content"]
         created_at = request.form["created_at"]
 
-        conn = get_connection()
-
         conn.execute("""
             INSERT INTO battle_messages (
                 discord_message_id,
+                season_id,
                 battle_date,
                 raw_content,
                 created_at
             )
-            VALUES (?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?)
         """, (
             discord_message_id,
+            season_id,
             battle_date,
             raw_content,
             created_at
@@ -53,7 +62,12 @@ def message():
 
         return redirect("/")
 
-    return render_template("message_form.html")
+    conn.close()
+
+    return render_template(
+        "message_form.html",
+        seasons=seasons
+    )
 
 
 # =========================
