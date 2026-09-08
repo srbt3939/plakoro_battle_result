@@ -647,6 +647,14 @@ function renderPokemonRanking() {
 
             });
 
+    const maxUsageRate =
+        Math.max(
+            ...pokemonRankingData.map(
+                pokemon => pokemon.usage_rate
+            ),
+            0
+        );
+
 
     // =========================
     // 矢印
@@ -806,7 +814,11 @@ function renderPokemonRanking() {
 
                 <div
                     class="pokemon-ranking-row"
-                    style="--usage-rate: ${p.usage_rate}%"
+                    style="--usage-rate: ${
+                        maxUsageRate > 0
+                            ? p.usage_rate / maxUsageRate * 100
+                            : 0
+                    }%"
                 >
                     <span class="rank">
 
