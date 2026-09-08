@@ -4,6 +4,7 @@
             "id": 1,
             "battle_message_id": 1,
             "battle_number": 1,
+            "battle_date": "2026-08-09",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -32,6 +33,7 @@
             "id": 2,
             "battle_message_id": 2,
             "battle_number": 1,
+            "battle_date": "2026-08-09",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -60,6 +62,7 @@
             "id": 3,
             "battle_message_id": 3,
             "battle_number": 1,
+            "battle_date": "2026-08-09",
             "player1": {
                 "id": null,
                 "pokemon_id": 7,
@@ -88,6 +91,7 @@
             "id": 4,
             "battle_message_id": 3,
             "battle_number": 2,
+            "battle_date": "2026-08-09",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -116,6 +120,7 @@
             "id": 5,
             "battle_message_id": 4,
             "battle_number": 1,
+            "battle_date": "2026-08-09",
             "player1": {
                 "id": null,
                 "pokemon_id": 7,
@@ -144,6 +149,7 @@
             "id": 6,
             "battle_message_id": 4,
             "battle_number": 2,
+            "battle_date": "2026-08-09",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -172,6 +178,7 @@
             "id": 7,
             "battle_message_id": 5,
             "battle_number": 1,
+            "battle_date": "2026-08-10",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -200,6 +207,7 @@
             "id": 8,
             "battle_message_id": 5,
             "battle_number": 2,
+            "battle_date": "2026-08-10",
             "player1": {
                 "id": null,
                 "pokemon_id": 2,
@@ -228,6 +236,7 @@
             "id": 9,
             "battle_message_id": 5,
             "battle_number": 3,
+            "battle_date": "2026-08-10",
             "player1": {
                 "id": null,
                 "pokemon_id": 11,
@@ -256,6 +265,7 @@
             "id": 10,
             "battle_message_id": 5,
             "battle_number": 4,
+            "battle_date": "2026-08-10",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -284,6 +294,7 @@
             "id": 11,
             "battle_message_id": 5,
             "battle_number": 5,
+            "battle_date": "2026-08-10",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -312,6 +323,7 @@
             "id": 12,
             "battle_message_id": 6,
             "battle_number": 1,
+            "battle_date": "2026-08-10",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -340,6 +352,7 @@
             "id": 13,
             "battle_message_id": 6,
             "battle_number": 2,
+            "battle_date": "2026-08-10",
             "player1": {
                 "id": null,
                 "pokemon_id": 2,
@@ -368,6 +381,7 @@
             "id": 14,
             "battle_message_id": 6,
             "battle_number": 3,
+            "battle_date": "2026-08-10",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -396,6 +410,7 @@
             "id": 15,
             "battle_message_id": 6,
             "battle_number": 4,
+            "battle_date": "2026-08-10",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -424,6 +439,7 @@
             "id": 16,
             "battle_message_id": 6,
             "battle_number": 5,
+            "battle_date": "2026-08-10",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -452,6 +468,7 @@
             "id": 17,
             "battle_message_id": 6,
             "battle_number": 6,
+            "battle_date": "2026-08-10",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -480,6 +497,7 @@
             "id": 18,
             "battle_message_id": 6,
             "battle_number": 7,
+            "battle_date": "2026-08-10",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -508,6 +526,7 @@
             "id": 19,
             "battle_message_id": 7,
             "battle_number": 1,
+            "battle_date": "2026-08-11",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -536,6 +555,7 @@
             "id": 20,
             "battle_message_id": 7,
             "battle_number": 2,
+            "battle_date": "2026-08-11",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -564,6 +584,7 @@
             "id": 21,
             "battle_message_id": 7,
             "battle_number": 3,
+            "battle_date": "2026-08-11",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -592,6 +613,7 @@
             "id": 22,
             "battle_message_id": 7,
             "battle_number": 4,
+            "battle_date": "2026-08-11",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -620,6 +642,7 @@
             "id": 23,
             "battle_message_id": 7,
             "battle_number": 5,
+            "battle_date": "2026-08-11",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -648,6 +671,7 @@
             "id": 24,
             "battle_message_id": 7,
             "battle_number": 6,
+            "battle_date": "2026-08-11",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -676,6 +700,7 @@
             "id": 25,
             "battle_message_id": 7,
             "battle_number": 7,
+            "battle_date": "2026-08-11",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -704,6 +729,7 @@
             "id": 26,
             "battle_message_id": 8,
             "battle_number": 1,
+            "battle_date": "2026-08-11",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -732,6 +758,7 @@
             "id": 27,
             "battle_message_id": 8,
             "battle_number": 2,
+            "battle_date": "2026-08-11",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -760,6 +787,7 @@
             "id": 28,
             "battle_message_id": 8,
             "battle_number": 3,
+            "battle_date": "2026-08-11",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -788,6 +816,7 @@
             "id": 29,
             "battle_message_id": 9,
             "battle_number": 1,
+            "battle_date": "2026-08-11",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -816,6 +845,7 @@
             "id": 30,
             "battle_message_id": 9,
             "battle_number": 2,
+            "battle_date": "2026-08-11",
             "player1": {
                 "id": null,
                 "pokemon_id": 12,
@@ -844,6 +874,7 @@
             "id": 31,
             "battle_message_id": 9,
             "battle_number": 3,
+            "battle_date": "2026-08-11",
             "player1": {
                 "id": null,
                 "pokemon_id": 1,
@@ -872,6 +903,7 @@
             "id": 32,
             "battle_message_id": 10,
             "battle_number": 1,
+            "battle_date": "2026-08-12",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -900,6 +932,7 @@
             "id": 33,
             "battle_message_id": 10,
             "battle_number": 2,
+            "battle_date": "2026-08-12",
             "player1": {
                 "id": null,
                 "pokemon_id": 11,
@@ -928,6 +961,7 @@
             "id": 34,
             "battle_message_id": 10,
             "battle_number": 3,
+            "battle_date": "2026-08-12",
             "player1": {
                 "id": null,
                 "pokemon_id": 1,
@@ -956,6 +990,7 @@
             "id": 35,
             "battle_message_id": 10,
             "battle_number": 4,
+            "battle_date": "2026-08-12",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -984,6 +1019,7 @@
             "id": 36,
             "battle_message_id": 10,
             "battle_number": 5,
+            "battle_date": "2026-08-12",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -1012,6 +1048,7 @@
             "id": 37,
             "battle_message_id": 11,
             "battle_number": 1,
+            "battle_date": "2026-08-13",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -1040,6 +1077,7 @@
             "id": 38,
             "battle_message_id": 11,
             "battle_number": 2,
+            "battle_date": "2026-08-13",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -1068,6 +1106,7 @@
             "id": 39,
             "battle_message_id": 11,
             "battle_number": 3,
+            "battle_date": "2026-08-13",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -1096,6 +1135,7 @@
             "id": 40,
             "battle_message_id": 11,
             "battle_number": 4,
+            "battle_date": "2026-08-13",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -1124,6 +1164,7 @@
             "id": 41,
             "battle_message_id": 12,
             "battle_number": 1,
+            "battle_date": "2026-08-15",
             "player1": {
                 "id": null,
                 "pokemon_id": 12,
@@ -1152,6 +1193,7 @@
             "id": 42,
             "battle_message_id": 12,
             "battle_number": 2,
+            "battle_date": "2026-08-15",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -1180,6 +1222,7 @@
             "id": 43,
             "battle_message_id": 12,
             "battle_number": 3,
+            "battle_date": "2026-08-15",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -1208,6 +1251,7 @@
             "id": 44,
             "battle_message_id": 13,
             "battle_number": 1,
+            "battle_date": "2026-08-16",
             "player1": {
                 "id": null,
                 "pokemon_id": 2,
@@ -1236,6 +1280,7 @@
             "id": 45,
             "battle_message_id": 13,
             "battle_number": 2,
+            "battle_date": "2026-08-16",
             "player1": {
                 "id": null,
                 "pokemon_id": 12,
@@ -1264,6 +1309,7 @@
             "id": 46,
             "battle_message_id": 13,
             "battle_number": 3,
+            "battle_date": "2026-08-16",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -1292,6 +1338,7 @@
             "id": 47,
             "battle_message_id": 14,
             "battle_number": 1,
+            "battle_date": "2026-08-16",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -1320,6 +1367,7 @@
             "id": 48,
             "battle_message_id": 14,
             "battle_number": 2,
+            "battle_date": "2026-08-16",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -1348,6 +1396,7 @@
             "id": 49,
             "battle_message_id": 14,
             "battle_number": 3,
+            "battle_date": "2026-08-16",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -1376,6 +1425,7 @@
             "id": 50,
             "battle_message_id": 15,
             "battle_number": 1,
+            "battle_date": "2026-08-16",
             "player1": {
                 "id": null,
                 "pokemon_id": 12,
@@ -1404,6 +1454,7 @@
             "id": 51,
             "battle_message_id": 15,
             "battle_number": 2,
+            "battle_date": "2026-08-16",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -1432,6 +1483,7 @@
             "id": 52,
             "battle_message_id": 16,
             "battle_number": 1,
+            "battle_date": "2026-08-16",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -1460,6 +1512,7 @@
             "id": 53,
             "battle_message_id": 16,
             "battle_number": 2,
+            "battle_date": "2026-08-16",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -1488,6 +1541,7 @@
             "id": 54,
             "battle_message_id": 16,
             "battle_number": 3,
+            "battle_date": "2026-08-16",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -1516,6 +1570,7 @@
             "id": 55,
             "battle_message_id": 17,
             "battle_number": 1,
+            "battle_date": "2026-08-16",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -1544,6 +1599,7 @@
             "id": 56,
             "battle_message_id": 17,
             "battle_number": 2,
+            "battle_date": "2026-08-16",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -1572,6 +1628,7 @@
             "id": 57,
             "battle_message_id": 17,
             "battle_number": 3,
+            "battle_date": "2026-08-16",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -1600,6 +1657,7 @@
             "id": 58,
             "battle_message_id": 18,
             "battle_number": 1,
+            "battle_date": "2026-08-16",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -1628,6 +1686,7 @@
             "id": 59,
             "battle_message_id": 18,
             "battle_number": 2,
+            "battle_date": "2026-08-16",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -1656,6 +1715,7 @@
             "id": 60,
             "battle_message_id": 18,
             "battle_number": 3,
+            "battle_date": "2026-08-16",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -1684,6 +1744,7 @@
             "id": 61,
             "battle_message_id": 19,
             "battle_number": 1,
+            "battle_date": "2026-08-19",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -1712,6 +1773,7 @@
             "id": 62,
             "battle_message_id": 19,
             "battle_number": 2,
+            "battle_date": "2026-08-19",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -1740,6 +1802,7 @@
             "id": 63,
             "battle_message_id": 20,
             "battle_number": 1,
+            "battle_date": "2026-08-19",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -1768,6 +1831,7 @@
             "id": 64,
             "battle_message_id": 20,
             "battle_number": 2,
+            "battle_date": "2026-08-19",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -1796,6 +1860,7 @@
             "id": 65,
             "battle_message_id": 21,
             "battle_number": 1,
+            "battle_date": "2026-08-19",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -1824,6 +1889,7 @@
             "id": 66,
             "battle_message_id": 21,
             "battle_number": 2,
+            "battle_date": "2026-08-19",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -1852,6 +1918,7 @@
             "id": 67,
             "battle_message_id": 21,
             "battle_number": 3,
+            "battle_date": "2026-08-19",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -1880,6 +1947,7 @@
             "id": 68,
             "battle_message_id": 22,
             "battle_number": 1,
+            "battle_date": "2026-08-19",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -1908,6 +1976,7 @@
             "id": 69,
             "battle_message_id": 22,
             "battle_number": 2,
+            "battle_date": "2026-08-19",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -1936,6 +2005,7 @@
             "id": 70,
             "battle_message_id": 22,
             "battle_number": 3,
+            "battle_date": "2026-08-19",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -1964,6 +2034,7 @@
             "id": 71,
             "battle_message_id": 23,
             "battle_number": 1,
+            "battle_date": "2026-08-19",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -1992,6 +2063,7 @@
             "id": 72,
             "battle_message_id": 23,
             "battle_number": 2,
+            "battle_date": "2026-08-19",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2020,6 +2092,7 @@
             "id": 73,
             "battle_message_id": 24,
             "battle_number": 1,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2048,6 +2121,7 @@
             "id": 74,
             "battle_message_id": 24,
             "battle_number": 2,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2076,6 +2150,7 @@
             "id": 75,
             "battle_message_id": 24,
             "battle_number": 3,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2104,6 +2179,7 @@
             "id": 76,
             "battle_message_id": 24,
             "battle_number": 4,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2132,6 +2208,7 @@
             "id": 77,
             "battle_message_id": 25,
             "battle_number": 1,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2160,6 +2237,7 @@
             "id": 78,
             "battle_message_id": 25,
             "battle_number": 2,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2188,6 +2266,7 @@
             "id": 79,
             "battle_message_id": 26,
             "battle_number": 1,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2216,6 +2295,7 @@
             "id": 80,
             "battle_message_id": 26,
             "battle_number": 2,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2244,6 +2324,7 @@
             "id": 81,
             "battle_message_id": 27,
             "battle_number": 1,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2272,6 +2353,7 @@
             "id": 82,
             "battle_message_id": 27,
             "battle_number": 2,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2300,6 +2382,7 @@
             "id": 83,
             "battle_message_id": 27,
             "battle_number": 3,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2328,6 +2411,7 @@
             "id": 84,
             "battle_message_id": 27,
             "battle_number": 4,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2356,6 +2440,7 @@
             "id": 85,
             "battle_message_id": 27,
             "battle_number": 5,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2384,6 +2469,7 @@
             "id": 86,
             "battle_message_id": 27,
             "battle_number": 6,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2412,6 +2498,7 @@
             "id": 87,
             "battle_message_id": 27,
             "battle_number": 7,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2440,6 +2527,7 @@
             "id": 88,
             "battle_message_id": 27,
             "battle_number": 8,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2468,6 +2556,7 @@
             "id": 89,
             "battle_message_id": 28,
             "battle_number": 1,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2496,6 +2585,7 @@
             "id": 90,
             "battle_message_id": 28,
             "battle_number": 2,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -2524,6 +2614,7 @@
             "id": 91,
             "battle_message_id": 29,
             "battle_number": 1,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -2552,6 +2643,7 @@
             "id": 92,
             "battle_message_id": 29,
             "battle_number": 2,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -2580,6 +2672,7 @@
             "id": 93,
             "battle_message_id": 30,
             "battle_number": 1,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -2608,6 +2701,7 @@
             "id": 94,
             "battle_message_id": 30,
             "battle_number": 2,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -2636,6 +2730,7 @@
             "id": 95,
             "battle_message_id": 30,
             "battle_number": 3,
+            "battle_date": "2026-08-21",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -2664,6 +2759,7 @@
             "id": 96,
             "battle_message_id": 31,
             "battle_number": 1,
+            "battle_date": "2026-08-22",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -2692,6 +2788,7 @@
             "id": 97,
             "battle_message_id": 31,
             "battle_number": 2,
+            "battle_date": "2026-08-22",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -2720,6 +2817,7 @@
             "id": 98,
             "battle_message_id": 31,
             "battle_number": 3,
+            "battle_date": "2026-08-22",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -2748,6 +2846,7 @@
             "id": 99,
             "battle_message_id": 31,
             "battle_number": 4,
+            "battle_date": "2026-08-22",
             "player1": {
                 "id": null,
                 "pokemon_id": 12,
@@ -2776,6 +2875,7 @@
             "id": 100,
             "battle_message_id": 32,
             "battle_number": 1,
+            "battle_date": "2026-08-22",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2804,6 +2904,7 @@
             "id": 101,
             "battle_message_id": 32,
             "battle_number": 2,
+            "battle_date": "2026-08-22",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -2832,6 +2933,7 @@
             "id": 102,
             "battle_message_id": 32,
             "battle_number": 3,
+            "battle_date": "2026-08-22",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -2860,6 +2962,7 @@
             "id": 103,
             "battle_message_id": 32,
             "battle_number": 4,
+            "battle_date": "2026-08-22",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -2888,6 +2991,7 @@
             "id": 104,
             "battle_message_id": 32,
             "battle_number": 5,
+            "battle_date": "2026-08-22",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2916,6 +3020,7 @@
             "id": 105,
             "battle_message_id": 32,
             "battle_number": 6,
+            "battle_date": "2026-08-22",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2944,6 +3049,7 @@
             "id": 106,
             "battle_message_id": 32,
             "battle_number": 7,
+            "battle_date": "2026-08-22",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -2972,6 +3078,7 @@
             "id": 107,
             "battle_message_id": 32,
             "battle_number": 8,
+            "battle_date": "2026-08-22",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -3000,6 +3107,7 @@
             "id": 108,
             "battle_message_id": 33,
             "battle_number": 1,
+            "battle_date": "2026-08-23",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -3028,6 +3136,7 @@
             "id": 109,
             "battle_message_id": 33,
             "battle_number": 2,
+            "battle_date": "2026-08-23",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -3056,6 +3165,7 @@
             "id": 110,
             "battle_message_id": 33,
             "battle_number": 3,
+            "battle_date": "2026-08-23",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -3084,6 +3194,7 @@
             "id": 111,
             "battle_message_id": 33,
             "battle_number": 4,
+            "battle_date": "2026-08-23",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -3112,6 +3223,7 @@
             "id": 112,
             "battle_message_id": 33,
             "battle_number": 5,
+            "battle_date": "2026-08-23",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -3140,6 +3252,7 @@
             "id": 113,
             "battle_message_id": 34,
             "battle_number": 1,
+            "battle_date": "2026-08-24",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -3168,6 +3281,7 @@
             "id": 114,
             "battle_message_id": 34,
             "battle_number": 2,
+            "battle_date": "2026-08-24",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -3196,6 +3310,7 @@
             "id": 115,
             "battle_message_id": 34,
             "battle_number": 3,
+            "battle_date": "2026-08-24",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -3224,6 +3339,7 @@
             "id": 116,
             "battle_message_id": 35,
             "battle_number": 1,
+            "battle_date": "2026-08-24",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -3252,6 +3368,7 @@
             "id": 117,
             "battle_message_id": 35,
             "battle_number": 2,
+            "battle_date": "2026-08-24",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -3280,6 +3397,7 @@
             "id": 118,
             "battle_message_id": 35,
             "battle_number": 3,
+            "battle_date": "2026-08-24",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -3308,6 +3426,7 @@
             "id": 119,
             "battle_message_id": 36,
             "battle_number": 1,
+            "battle_date": "2026-08-28",
             "player1": {
                 "id": null,
                 "pokemon_id": 12,
@@ -3336,6 +3455,7 @@
             "id": 120,
             "battle_message_id": 37,
             "battle_number": 1,
+            "battle_date": "2026-08-28",
             "player1": {
                 "id": null,
                 "pokemon_id": 12,
@@ -3364,6 +3484,7 @@
             "id": 121,
             "battle_message_id": 38,
             "battle_number": 1,
+            "battle_date": "2026-08-28",
             "player1": {
                 "id": null,
                 "pokemon_id": 12,
@@ -3392,6 +3513,7 @@
             "id": 122,
             "battle_message_id": 39,
             "battle_number": 1,
+            "battle_date": "2026-08-28",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -3420,6 +3542,7 @@
             "id": 123,
             "battle_message_id": 39,
             "battle_number": 2,
+            "battle_date": "2026-08-28",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -3448,6 +3571,7 @@
             "id": 124,
             "battle_message_id": 39,
             "battle_number": 3,
+            "battle_date": "2026-08-28",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -3476,6 +3600,7 @@
             "id": 125,
             "battle_message_id": 39,
             "battle_number": 4,
+            "battle_date": "2026-08-28",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -3504,6 +3629,7 @@
             "id": 126,
             "battle_message_id": 39,
             "battle_number": 5,
+            "battle_date": "2026-08-28",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -3532,6 +3658,7 @@
             "id": 127,
             "battle_message_id": 39,
             "battle_number": 6,
+            "battle_date": "2026-08-28",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -3560,6 +3687,7 @@
             "id": 128,
             "battle_message_id": 39,
             "battle_number": 7,
+            "battle_date": "2026-08-28",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -3588,6 +3716,7 @@
             "id": 129,
             "battle_message_id": 40,
             "battle_number": 1,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -3616,6 +3745,7 @@
             "id": 130,
             "battle_message_id": 40,
             "battle_number": 2,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -3644,6 +3774,7 @@
             "id": 131,
             "battle_message_id": 40,
             "battle_number": 3,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -3672,6 +3803,7 @@
             "id": 132,
             "battle_message_id": 40,
             "battle_number": 4,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -3700,6 +3832,7 @@
             "id": 133,
             "battle_message_id": 40,
             "battle_number": 5,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -3728,6 +3861,7 @@
             "id": 134,
             "battle_message_id": 40,
             "battle_number": 6,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -3756,6 +3890,7 @@
             "id": 135,
             "battle_message_id": 41,
             "battle_number": 1,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -3784,6 +3919,7 @@
             "id": 136,
             "battle_message_id": 41,
             "battle_number": 2,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -3812,6 +3948,7 @@
             "id": 137,
             "battle_message_id": 41,
             "battle_number": 3,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -3840,6 +3977,7 @@
             "id": 138,
             "battle_message_id": 41,
             "battle_number": 4,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -3868,6 +4006,7 @@
             "id": 139,
             "battle_message_id": 41,
             "battle_number": 5,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -3896,6 +4035,7 @@
             "id": 140,
             "battle_message_id": 41,
             "battle_number": 6,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -3924,6 +4064,7 @@
             "id": 141,
             "battle_message_id": 42,
             "battle_number": 1,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -3952,6 +4093,7 @@
             "id": 142,
             "battle_message_id": 42,
             "battle_number": 2,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -3980,6 +4122,7 @@
             "id": 143,
             "battle_message_id": 42,
             "battle_number": 3,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -4008,6 +4151,7 @@
             "id": 144,
             "battle_message_id": 43,
             "battle_number": 1,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 12,
@@ -4036,6 +4180,7 @@
             "id": 145,
             "battle_message_id": 43,
             "battle_number": 2,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 12,
@@ -4064,6 +4209,7 @@
             "id": 146,
             "battle_message_id": 43,
             "battle_number": 3,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 12,
@@ -4092,6 +4238,7 @@
             "id": 147,
             "battle_message_id": 44,
             "battle_number": 1,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 13,
@@ -4120,6 +4267,7 @@
             "id": 148,
             "battle_message_id": 44,
             "battle_number": 2,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 2,
@@ -4148,6 +4296,7 @@
             "id": 149,
             "battle_message_id": 44,
             "battle_number": 3,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 12,
@@ -4176,6 +4325,7 @@
             "id": 150,
             "battle_message_id": 44,
             "battle_number": 4,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -4204,6 +4354,7 @@
             "id": 151,
             "battle_message_id": 44,
             "battle_number": 5,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -4232,6 +4383,7 @@
             "id": 152,
             "battle_message_id": 44,
             "battle_number": 6,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 2,
@@ -4260,6 +4412,7 @@
             "id": 153,
             "battle_message_id": 45,
             "battle_number": 1,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -4288,6 +4441,7 @@
             "id": 154,
             "battle_message_id": 45,
             "battle_number": 2,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -4316,6 +4470,7 @@
             "id": 155,
             "battle_message_id": 45,
             "battle_number": 3,
+            "battle_date": "2026-08-29",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -4344,6 +4499,7 @@
             "id": 156,
             "battle_message_id": 46,
             "battle_number": 1,
+            "battle_date": "2026-08-30",
             "player1": {
                 "id": null,
                 "pokemon_id": 12,
@@ -4372,6 +4528,7 @@
             "id": 157,
             "battle_message_id": 47,
             "battle_number": 1,
+            "battle_date": "2026-08-30",
             "player1": {
                 "id": null,
                 "pokemon_id": 12,
@@ -4400,6 +4557,7 @@
             "id": 158,
             "battle_message_id": 48,
             "battle_number": 1,
+            "battle_date": "2026-08-30",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -4428,6 +4586,7 @@
             "id": 159,
             "battle_message_id": 49,
             "battle_number": 1,
+            "battle_date": "2026-08-30",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -4456,6 +4615,7 @@
             "id": 160,
             "battle_message_id": 49,
             "battle_number": 2,
+            "battle_date": "2026-08-30",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -4484,6 +4644,7 @@
             "id": 161,
             "battle_message_id": 49,
             "battle_number": 3,
+            "battle_date": "2026-08-30",
             "player1": {
                 "id": null,
                 "pokemon_id": 7,
@@ -4512,6 +4673,7 @@
             "id": 162,
             "battle_message_id": 49,
             "battle_number": 4,
+            "battle_date": "2026-08-30",
             "player1": {
                 "id": null,
                 "pokemon_id": 7,
@@ -4540,6 +4702,7 @@
             "id": 163,
             "battle_message_id": 49,
             "battle_number": 5,
+            "battle_date": "2026-08-30",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -4568,6 +4731,7 @@
             "id": 164,
             "battle_message_id": 50,
             "battle_number": 1,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 11,
@@ -4596,6 +4760,7 @@
             "id": 165,
             "battle_message_id": 50,
             "battle_number": 2,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 11,
@@ -4624,6 +4789,7 @@
             "id": 166,
             "battle_message_id": 50,
             "battle_number": 3,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 11,
@@ -4652,6 +4818,7 @@
             "id": 167,
             "battle_message_id": 50,
             "battle_number": 4,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 5,
@@ -4680,6 +4847,7 @@
             "id": 168,
             "battle_message_id": 50,
             "battle_number": 5,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 5,
@@ -4708,6 +4876,7 @@
             "id": 169,
             "battle_message_id": 50,
             "battle_number": 6,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 5,
@@ -4736,6 +4905,7 @@
             "id": 170,
             "battle_message_id": 50,
             "battle_number": 7,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 5,
@@ -4764,6 +4934,7 @@
             "id": 171,
             "battle_message_id": 50,
             "battle_number": 8,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 5,
@@ -4792,6 +4963,7 @@
             "id": 172,
             "battle_message_id": 51,
             "battle_number": 1,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -4820,6 +4992,7 @@
             "id": 173,
             "battle_message_id": 51,
             "battle_number": 2,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -4848,6 +5021,7 @@
             "id": 174,
             "battle_message_id": 51,
             "battle_number": 3,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -4876,6 +5050,7 @@
             "id": 175,
             "battle_message_id": 51,
             "battle_number": 4,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -4904,6 +5079,7 @@
             "id": 176,
             "battle_message_id": 51,
             "battle_number": 5,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -4932,6 +5108,7 @@
             "id": 177,
             "battle_message_id": 51,
             "battle_number": 6,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -4960,6 +5137,7 @@
             "id": 178,
             "battle_message_id": 51,
             "battle_number": 7,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -4988,6 +5166,7 @@
             "id": 179,
             "battle_message_id": 52,
             "battle_number": 1,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 12,
@@ -5016,6 +5195,7 @@
             "id": 180,
             "battle_message_id": 52,
             "battle_number": 2,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 12,
@@ -5044,6 +5224,7 @@
             "id": 181,
             "battle_message_id": 53,
             "battle_number": 1,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 11,
@@ -5072,6 +5253,7 @@
             "id": 182,
             "battle_message_id": 53,
             "battle_number": 2,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 11,
@@ -5100,6 +5282,7 @@
             "id": 183,
             "battle_message_id": 53,
             "battle_number": 3,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 11,
@@ -5128,6 +5311,7 @@
             "id": 184,
             "battle_message_id": 54,
             "battle_number": 1,
+            "battle_date": "2026-08-31",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -5156,6 +5340,7 @@
             "id": 185,
             "battle_message_id": 55,
             "battle_number": 1,
+            "battle_date": "2026-09-02",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -5184,6 +5369,7 @@
             "id": 186,
             "battle_message_id": 56,
             "battle_number": 1,
+            "battle_date": "2026-09-02",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -5212,6 +5398,7 @@
             "id": 187,
             "battle_message_id": 57,
             "battle_number": 1,
+            "battle_date": "2026-09-03",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -5240,6 +5427,7 @@
             "id": 188,
             "battle_message_id": 57,
             "battle_number": 2,
+            "battle_date": "2026-09-03",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -5268,6 +5456,7 @@
             "id": 189,
             "battle_message_id": 57,
             "battle_number": 3,
+            "battle_date": "2026-09-03",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -5296,6 +5485,7 @@
             "id": 190,
             "battle_message_id": 57,
             "battle_number": 4,
+            "battle_date": "2026-09-03",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -5324,6 +5514,7 @@
             "id": 191,
             "battle_message_id": 57,
             "battle_number": 5,
+            "battle_date": "2026-09-03",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -5352,6 +5543,7 @@
             "id": 192,
             "battle_message_id": 57,
             "battle_number": 6,
+            "battle_date": "2026-09-03",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -5380,6 +5572,7 @@
             "id": 193,
             "battle_message_id": 57,
             "battle_number": 7,
+            "battle_date": "2026-09-03",
             "player1": {
                 "id": null,
                 "pokemon_id": 5,
@@ -5408,6 +5601,7 @@
             "id": 194,
             "battle_message_id": 58,
             "battle_number": 1,
+            "battle_date": "2026-09-03",
             "player1": {
                 "id": null,
                 "pokemon_id": 8,
@@ -5436,6 +5630,7 @@
             "id": 195,
             "battle_message_id": 59,
             "battle_number": 1,
+            "battle_date": "2026-09-03",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -5464,6 +5659,7 @@
             "id": 196,
             "battle_message_id": 59,
             "battle_number": 2,
+            "battle_date": "2026-09-03",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -5492,6 +5688,7 @@
             "id": 197,
             "battle_message_id": 59,
             "battle_number": 3,
+            "battle_date": "2026-09-03",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -5520,6 +5717,7 @@
             "id": 198,
             "battle_message_id": 60,
             "battle_number": 1,
+            "battle_date": "2026-09-04",
             "player1": {
                 "id": null,
                 "pokemon_id": 12,
@@ -5548,6 +5746,7 @@
             "id": 199,
             "battle_message_id": 61,
             "battle_number": 1,
+            "battle_date": "2026-09-04",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -5576,6 +5775,7 @@
             "id": 200,
             "battle_message_id": 62,
             "battle_number": 1,
+            "battle_date": "2026-09-04",
             "player1": {
                 "id": null,
                 "pokemon_id": 1,
@@ -5604,6 +5804,7 @@
             "id": 201,
             "battle_message_id": 63,
             "battle_number": 1,
+            "battle_date": "2026-09-04",
             "player1": {
                 "id": null,
                 "pokemon_id": 1,
@@ -5632,6 +5833,7 @@
             "id": 202,
             "battle_message_id": 64,
             "battle_number": 1,
+            "battle_date": "2026-09-04",
             "player1": {
                 "id": null,
                 "pokemon_id": 2,
@@ -5660,6 +5862,7 @@
             "id": 203,
             "battle_message_id": 65,
             "battle_number": 1,
+            "battle_date": "2026-09-04",
             "player1": {
                 "id": null,
                 "pokemon_id": 7,
@@ -5688,6 +5891,7 @@
             "id": 204,
             "battle_message_id": 66,
             "battle_number": 1,
+            "battle_date": "2026-09-04",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -5716,6 +5920,7 @@
             "id": 205,
             "battle_message_id": 67,
             "battle_number": 1,
+            "battle_date": "2026-09-04",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -5744,6 +5949,7 @@
             "id": 206,
             "battle_message_id": 68,
             "battle_number": 1,
+            "battle_date": "2026-09-04",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -5772,6 +5978,7 @@
             "id": 207,
             "battle_message_id": 69,
             "battle_number": 1,
+            "battle_date": "2026-09-04",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -5800,6 +6007,7 @@
             "id": 208,
             "battle_message_id": 70,
             "battle_number": 1,
+            "battle_date": "2026-09-04",
             "player1": {
                 "id": null,
                 "pokemon_id": 1,
@@ -5828,6 +6036,7 @@
             "id": 209,
             "battle_message_id": 71,
             "battle_number": 1,
+            "battle_date": "2026-09-04",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -5856,6 +6065,7 @@
             "id": 210,
             "battle_message_id": 72,
             "battle_number": 1,
+            "battle_date": "2026-09-04",
             "player1": {
                 "id": null,
                 "pokemon_id": 7,
@@ -5884,6 +6094,7 @@
             "id": 211,
             "battle_message_id": 73,
             "battle_number": 1,
+            "battle_date": "2026-09-04",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -5912,6 +6123,7 @@
             "id": 212,
             "battle_message_id": 74,
             "battle_number": 1,
+            "battle_date": "2026-09-04",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -5940,6 +6152,7 @@
             "id": 213,
             "battle_message_id": 75,
             "battle_number": 1,
+            "battle_date": "2026-09-04",
             "player1": {
                 "id": null,
                 "pokemon_id": 7,
@@ -5968,6 +6181,7 @@
             "id": 214,
             "battle_message_id": 76,
             "battle_number": 1,
+            "battle_date": "2026-09-04",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -5996,6 +6210,7 @@
             "id": 215,
             "battle_message_id": 76,
             "battle_number": 2,
+            "battle_date": "2026-09-04",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -6024,6 +6239,7 @@
             "id": 216,
             "battle_message_id": 77,
             "battle_number": 1,
+            "battle_date": "2026-09-04",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -6052,6 +6268,7 @@
             "id": 217,
             "battle_message_id": 77,
             "battle_number": 2,
+            "battle_date": "2026-09-04",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -6080,6 +6297,7 @@
             "id": 218,
             "battle_message_id": 78,
             "battle_number": 1,
+            "battle_date": "2026-09-05",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -6108,6 +6326,7 @@
             "id": 219,
             "battle_message_id": 79,
             "battle_number": 1,
+            "battle_date": "2026-09-05",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -6136,6 +6355,7 @@
             "id": 220,
             "battle_message_id": 80,
             "battle_number": 1,
+            "battle_date": "2026-09-05",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -6164,6 +6384,7 @@
             "id": 221,
             "battle_message_id": 81,
             "battle_number": 1,
+            "battle_date": "2026-09-05",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -6192,6 +6413,7 @@
             "id": 222,
             "battle_message_id": 82,
             "battle_number": 1,
+            "battle_date": "2026-09-05",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -6220,6 +6442,7 @@
             "id": 223,
             "battle_message_id": 82,
             "battle_number": 2,
+            "battle_date": "2026-09-05",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -6248,6 +6471,7 @@
             "id": 224,
             "battle_message_id": 83,
             "battle_number": 1,
+            "battle_date": "2026-09-05",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -6276,6 +6500,7 @@
             "id": 225,
             "battle_message_id": 84,
             "battle_number": 1,
+            "battle_date": "2026-09-05",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -6304,6 +6529,7 @@
             "id": 226,
             "battle_message_id": 85,
             "battle_number": 1,
+            "battle_date": "2026-09-05",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -6332,6 +6558,7 @@
             "id": 227,
             "battle_message_id": 85,
             "battle_number": 2,
+            "battle_date": "2026-09-05",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -6360,6 +6587,7 @@
             "id": 228,
             "battle_message_id": 85,
             "battle_number": 3,
+            "battle_date": "2026-09-05",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -6388,6 +6616,7 @@
             "id": 229,
             "battle_message_id": 86,
             "battle_number": 1,
+            "battle_date": "2026-09-05",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -6416,6 +6645,7 @@
             "id": 230,
             "battle_message_id": 86,
             "battle_number": 2,
+            "battle_date": "2026-09-05",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -6444,6 +6674,7 @@
             "id": 231,
             "battle_message_id": 87,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 11,
@@ -6472,6 +6703,7 @@
             "id": 232,
             "battle_message_id": 87,
             "battle_number": 2,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 11,
@@ -6500,6 +6732,7 @@
             "id": 233,
             "battle_message_id": 88,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 2,
@@ -6528,6 +6761,7 @@
             "id": 234,
             "battle_message_id": 89,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -6556,6 +6790,7 @@
             "id": 235,
             "battle_message_id": 90,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -6584,6 +6819,7 @@
             "id": 236,
             "battle_message_id": 91,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -6612,6 +6848,7 @@
             "id": 237,
             "battle_message_id": 92,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -6640,6 +6877,7 @@
             "id": 238,
             "battle_message_id": 93,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -6668,6 +6906,7 @@
             "id": 239,
             "battle_message_id": 94,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -6696,6 +6935,7 @@
             "id": 240,
             "battle_message_id": 95,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -6724,6 +6964,7 @@
             "id": 241,
             "battle_message_id": 96,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -6752,6 +6993,7 @@
             "id": 242,
             "battle_message_id": 97,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -6780,6 +7022,7 @@
             "id": 243,
             "battle_message_id": 98,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -6808,6 +7051,7 @@
             "id": 244,
             "battle_message_id": 99,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -6836,6 +7080,7 @@
             "id": 245,
             "battle_message_id": 100,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 9,
@@ -6864,6 +7109,7 @@
             "id": 246,
             "battle_message_id": 101,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -6892,6 +7138,7 @@
             "id": 247,
             "battle_message_id": 102,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -6920,6 +7167,7 @@
             "id": 248,
             "battle_message_id": 103,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 4,
@@ -6948,6 +7196,7 @@
             "id": 249,
             "battle_message_id": 104,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 2,
@@ -6976,6 +7225,7 @@
             "id": 250,
             "battle_message_id": 105,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 2,
@@ -7004,6 +7254,7 @@
             "id": 251,
             "battle_message_id": 106,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 2,
@@ -7032,6 +7283,7 @@
             "id": 252,
             "battle_message_id": 107,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 2,
@@ -7060,6 +7312,7 @@
             "id": 253,
             "battle_message_id": 108,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 2,
@@ -7088,6 +7341,7 @@
             "id": 254,
             "battle_message_id": 109,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 2,
@@ -7116,6 +7370,7 @@
             "id": 255,
             "battle_message_id": 110,
             "battle_number": 1,
+            "battle_date": "2026-09-06",
             "player1": {
                 "id": null,
                 "pokemon_id": 2,
@@ -7144,6 +7399,7 @@
             "id": 256,
             "battle_message_id": 111,
             "battle_number": 1,
+            "battle_date": "2026-09-07",
             "player1": {
                 "id": null,
                 "pokemon_id": 2,
@@ -7172,6 +7428,7 @@
             "id": 257,
             "battle_message_id": 112,
             "battle_number": 1,
+            "battle_date": "2026-09-07",
             "player1": {
                 "id": null,
                 "pokemon_id": 2,
@@ -7200,6 +7457,7 @@
             "id": 258,
             "battle_message_id": 113,
             "battle_number": 1,
+            "battle_date": "2026-09-07",
             "player1": {
                 "id": null,
                 "pokemon_id": 2,
@@ -7228,6 +7486,7 @@
             "id": 259,
             "battle_message_id": 114,
             "battle_number": 1,
+            "battle_date": "2026-09-07",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -7256,6 +7515,7 @@
             "id": 260,
             "battle_message_id": 114,
             "battle_number": 2,
+            "battle_date": "2026-09-07",
             "player1": {
                 "id": null,
                 "pokemon_id": 6,
@@ -7284,6 +7544,7 @@
             "id": 261,
             "battle_message_id": 115,
             "battle_number": 1,
+            "battle_date": "2026-09-07",
             "player1": {
                 "id": null,
                 "pokemon_id": 10,
@@ -7312,6 +7573,7 @@
             "id": 262,
             "battle_message_id": 116,
             "battle_number": 1,
+            "battle_date": "2026-09-07",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -7340,6 +7602,7 @@
             "id": 263,
             "battle_message_id": 117,
             "battle_number": 1,
+            "battle_date": "2026-09-07",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -7368,6 +7631,7 @@
             "id": 264,
             "battle_message_id": 118,
             "battle_number": 1,
+            "battle_date": "2026-09-07",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -7396,6 +7660,7 @@
             "id": 265,
             "battle_message_id": 118,
             "battle_number": 2,
+            "battle_date": "2026-09-07",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,
@@ -7424,6 +7689,7 @@
             "id": 266,
             "battle_message_id": 118,
             "battle_number": 3,
+            "battle_date": "2026-09-07",
             "player1": {
                 "id": null,
                 "pokemon_id": 3,

@@ -67,6 +67,8 @@ async function loadEmojiData() {
 
 async function main() {
 
+    const pageLoadedAt = new Date();
+
     // emoji.json読み込み
     await loadEmojiData();
 
@@ -84,7 +86,6 @@ async function main() {
 
     const battleTrend =
         await loadJSON("battle_trend.json");
-
 
     // =========================
     // 概要
@@ -114,7 +115,8 @@ async function main() {
 
     createRecentBattles(
         battles.battles,
-        battleTrend.days
+        battleTrend.days,
+        pageLoadedAt
     );
 
     // =========================
@@ -155,7 +157,7 @@ async function main() {
 }
 
 
-function createRecentBattles(battles, trendDays) {
+function createRecentBattles(battles, trendDays, pageLoadedAt) {
 
     const container = document.getElementById("recent-battles-carousel");
     const dotsContainer = document.getElementById("recent-battles-dots");
@@ -182,7 +184,7 @@ function createRecentBattles(battles, trendDays) {
         .join("");
 
     container.onscroll = () => updateRecentBattlesDot(Math.round(container.scrollLeft / container.clientWidth));
-    requestAnimationFrame(() => createBattleTrendChart(trendDays));
+    requestAnimationFrame(() => createBattleTrendChart(trendDays, pageLoadedAt));
 
 }
 
@@ -238,10 +240,29 @@ function moveRecentBattles(direction) {
 // 直近2週間の試合数
 // =========================
 
-function createBattleTrendChart(days) {
+function createBattleTrendChart(days, pageLoadedAt) {
+
+    const trendCounts = new Map(
+        days.map(day => [day.date, day.battle_count])
+    );
+
+    const displayDays = Array.from({ length: 14 }, (_, index) => {
+        const date = new Date(pageLoadedAt);
+        date.setDate(pageLoadedAt.getDate() - (13 - index));
+
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const dayOfMonth = String(date.getDate()).padStart(2, "0");
+        const dateKey = `${year}-${month}-${dayOfMonth}`;
+
+        return {
+            date: dateKey,
+            battle_count: trendCounts.get(dateKey) || 0
+        };
+    });
 
     const labels =
-        days.map(
+        displayDays.map(
             day => {
                 const [year, month, date] =
                     day.date.split("-");
@@ -251,7 +272,7 @@ function createBattleTrendChart(days) {
         );
 
     const data =
-        days.map(
+        displayDays.map(
             day => day.battle_count
         );
 
