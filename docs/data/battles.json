@@ -7811,6 +7811,174 @@
                 "result": "lose"
             },
             "first_player": 1
+        },
+        {
+            "id": 280,
+            "battle_message_id": 129,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 2,
+                "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 10,
+                "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
+                "result": "lose"
+            },
+            "first_player": 1
+        },
+        {
+            "id": 281,
+            "battle_message_id": 130,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 2,
+                "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 10,
+                "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
+                "result": "lose"
+            },
+            "first_player": 2
+        },
+        {
+            "id": 282,
+            "battle_message_id": 131,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 2,
+                "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 10,
+                "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
+                "result": "lose"
+            },
+            "first_player": 1
+        },
+        {
+            "id": 283,
+            "battle_message_id": 132,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 2,
+                "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 10,
+                "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
+                "result": "lose"
+            },
+            "first_player": 2
+        },
+        {
+            "id": 284,
+            "battle_message_id": 133,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 2,
+                "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 10,
+                "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
+                "result": "lose"
+            },
+            "first_player": 1
+        },
+        {
+            "id": 285,
+            "battle_message_id": 134,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "pokemon_id": 2,
+                "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": null,
+                "pokemon_id": 10,
+                "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
+                "result": "win"
+            },
+            "first_player": 2
         }
     ]
 }
