@@ -837,15 +837,10 @@ function renderPokemonRanking() {
 
                     <span class="pokemon-name">
 
-                        ${characterPagePaths[p.pokemon_id]
-                            ? `<a class="pokemon-detail-link" href="${characterPagePaths[p.pokemon_id]}">${getPokemonIdentityHTML(
-                                p.name,
-                                p.pokemon_id
-                            )}</a>`
-                            : getPokemonIdentityHTML(
-                                p.name,
-                                p.pokemon_id
-                            )}
+                        ${getPokemonIdentityHTML(
+                            p.name,
+                            p.pokemon_id
+                        )}
 
                     </span>
 
@@ -1355,10 +1350,16 @@ function getPokemonIdentityHTML(name, pokemonId) {
         }
     }
 
-    return `
+    const identityHTML = `
         ${pokemonImage}
         <span>${name}</span>
     `;
+
+    const detailPath = characterPagePaths[pokemonId];
+
+    return detailPath
+        ? `<a class="pokemon-detail-link" href="${detailPath}">${identityHTML}</a>`
+        : identityHTML;
 
 }
 
