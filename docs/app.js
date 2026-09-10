@@ -4,6 +4,10 @@
 
 let emojiData = null;
 
+const characterPagePaths = {
+    9: "characters/kairos.html"
+};
+
 const typeImageNames = {
     "あく": "dark",
     "かみなり": "electric",
@@ -16,6 +20,10 @@ const typeImageNames = {
     "そら": "flying",
     "むしょく": "normal"
 };
+
+function formatPercentage(value) {
+    return Number(value || 0).toFixed(1);
+}
 
 
 // =========================
@@ -829,10 +837,15 @@ function renderPokemonRanking() {
 
                     <span class="pokemon-name">
 
-                        ${getPokemonIdentityHTML(
-                            p.name,
-                            p.pokemon_id
-                        )}
+                        ${characterPagePaths[p.pokemon_id]
+                            ? `<a class="pokemon-detail-link" href="${characterPagePaths[p.pokemon_id]}">${getPokemonIdentityHTML(
+                                p.name,
+                                p.pokemon_id
+                            )}</a>`
+                            : getPokemonIdentityHTML(
+                                p.name,
+                                p.pokemon_id
+                            )}
 
                     </span>
 
@@ -864,7 +877,7 @@ function renderPokemonRanking() {
 
                     <span class="number">
 
-                        ${p.usage_rate}%
+                        ${formatPercentage(p.usage_rate)}%
 
                     </span>
 
@@ -873,7 +886,7 @@ function renderPokemonRanking() {
 
                         ${
                             p.battles >= 5
-                                ? p.win_rate + "%"
+                                ? formatPercentage(p.win_rate) + "%"
                                 : "-"
                         }
 
@@ -1094,7 +1107,7 @@ function renderFirstSecondRanking() {
                     ${p.first_player.battles}戦
                     ${p.first_player.wins}勝
                     <br>
-                    ${p.first_player.win_rate}%
+                    ${formatPercentage(p.first_player.win_rate)}%
                 </span>
 
 
@@ -1102,7 +1115,7 @@ function renderFirstSecondRanking() {
                     ${p.second_player.battles}戦
                     ${p.second_player.wins}勝
                     <br>
-                    ${p.second_player.win_rate}%
+                    ${formatPercentage(p.second_player.win_rate)}%
                 </span>
 
             </div>
@@ -1516,7 +1529,7 @@ function createMatchups(
 
                     <br>
 
-                    <span class="pokemon-rate">${pokemon1WinRate}%</span>
+                    <span class="pokemon-rate">${formatPercentage(pokemon1WinRate)}%</span>
 
                 </span>
 
@@ -1542,7 +1555,7 @@ function createMatchups(
 
                     <br>
 
-                    <span class="pokemon-rate">${pokemon2WinRate}%</span>
+                    <span class="pokemon-rate">${formatPercentage(pokemon2WinRate)}%</span>
 
                 </span>
 
@@ -1550,7 +1563,7 @@ function createMatchups(
                 <div
                     class="matchup-meter"
                     role="img"
-                    aria-label="${pokemon1.name} ${pokemon1WinRate}%、${pokemon2.name} ${pokemon2WinRate}%"
+                    aria-label="${pokemon1.name} ${formatPercentage(pokemon1WinRate)}%、${pokemon2.name} ${formatPercentage(pokemon2WinRate)}%"
                 >
 
                     <span

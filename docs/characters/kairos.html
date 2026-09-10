@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カイロス 対戦データ | ON PLA!</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="pokemon-detail-page" data-character-id="9" data-character-name="カイロス">
+<header class="detail-header">
+    <a class="back-link" href="../index.html">← バトルデータに戻る</a>
+    <div class="detail-title">
+        <div id="character-identity" class="detail-identity"></div>
+        <div>
+            <p class="eyebrow">CHARACTER RECORD</p>
+            <h1><span data-character-name>カイロス</span> 対戦データ</h1>
+            <p><span data-character-name>カイロス</span>を使用した試合の戦績と、対戦相手ごとの記録</p>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="detail-summary" aria-label="キャラクター総合戦績">
+        <div class="detail-stat detail-stat-primary">
+            <span class="detail-stat-label">総合勝率</span>
+            <strong id="character-win-rate">-</strong>
+            <span id="character-record" class="detail-stat-note">-</span>
+        </div>
+        <div class="detail-stat">
+            <span class="detail-stat-label">使用試合数</span>
+            <strong id="character-battles">-</strong>
+            <span class="detail-stat-note">全キャラクター中の使用記録</span>
+        </div>
+        <div class="detail-stat">
+            <span class="detail-stat-label">最多対戦相手</span>
+            <strong id="character-top-opponent">-</strong>
+            <span id="character-top-opponent-note" class="detail-stat-note">-</span>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>🎯 先攻・後攻の戦績</h2>
+        <div id="character-order-stats" class="order-stats"></div>
+    </section>
+
+    <section class="card">
+        <div class="section-heading-row">
+            <div>
+                <h2>⚔️ 対キャラクター戦績</h2>
+                <p class="section-note">対戦数の多い順。バーはカイロス側の勝率を表します。</p>
+            </div>
+        </div>
+        <div id="character-matchups" class="character-matchups"></div>
+    </section>
+
+    <section class="card">
+        <h2>🕒 <span data-character-name>カイロス</span>の直近の試合</h2>
+        <div id="character-recent-battles" class="character-recent-battles"></div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <p class="fan-site-notice">本サイトは、ポケットモンスターおよびポケモン関連コンテンツのファンサイトです。</p>
+        <p class="fan-site-notice">株式会社ポケモン、任天堂株式会社、株式会社ゲームフリーク、株式会社クリーチャーズ等の公式・関連企業とは一切関係ありません。</p>
+        <p class="copyright-notice">Pokémon、ポケットモンスターおよび関連する名称・画像等は、それぞれの権利者に帰属します。</p>
+        <p class="footer-credit">© ON PLA! プラコロ バトルデータ</p>
+    </div>
+</footer>
+<script src="character.js"></script>
+</body>
+</html>
