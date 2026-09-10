@@ -1,5 +1,5 @@
 {
-    "total_usage": 604,
+    "total_usage": 620,
     "pokemon": [
         {
             "rank": 1,
@@ -10,8 +10,8 @@
             "weaknesses": [
                 "そら"
             ],
-            "usage_count": 102,
-            "usage_rate": 16.9
+            "usage_count": 108,
+            "usage_rate": 17.4
         },
         {
             "rank": 2,
@@ -23,7 +23,7 @@
                 "みず"
             ],
             "usage_count": 76,
-            "usage_rate": 12.6
+            "usage_rate": 12.3
         },
         {
             "rank": 3,
@@ -34,8 +34,8 @@
             "weaknesses": [
                 "はがね"
             ],
-            "usage_count": 65,
-            "usage_rate": 10.8
+            "usage_count": 66,
+            "usage_rate": 10.6
         },
         {
             "rank": 4,
@@ -46,8 +46,8 @@
             "weaknesses": [
                 "あく"
             ],
-            "usage_count": 61,
-            "usage_rate": 10.1
+            "usage_count": 64,
+            "usage_rate": 10.3
         },
         {
             "rank": 5,
@@ -59,7 +59,7 @@
                 "かみなり"
             ],
             "usage_count": 54,
-            "usage_rate": 8.9
+            "usage_rate": 8.7
         },
         {
             "rank": 6,
@@ -70,8 +70,8 @@
             "weaknesses": [
                 "くさ"
             ],
-            "usage_count": 50,
-            "usage_rate": 8.3
+            "usage_count": 52,
+            "usage_rate": 8.4
         },
         {
             "rank": 7,
@@ -82,11 +82,23 @@
             "weaknesses": [
                 "ほのお"
             ],
-            "usage_count": 37,
+            "usage_count": 38,
             "usage_rate": 6.1
         },
         {
             "rank": 8,
+            "pokemon_id": 4,
+            "name": "ピカチュウ",
+            "type1": "かみなり",
+            "type2": null,
+            "weaknesses": [
+                "とう"
+            ],
+            "usage_count": 36,
+            "usage_rate": 5.8
+        },
+        {
+            "rank": 9,
             "pokemon_id": 11,
             "name": "サンダー",
             "type1": "かみなり",
@@ -95,18 +107,6 @@
                 "とう"
             ],
             "usage_count": 36,
-            "usage_rate": 6.0
-        },
-        {
-            "rank": 9,
-            "pokemon_id": 4,
-            "name": "ピカチュウ",
-            "type1": "かみなり",
-            "type2": null,
-            "weaknesses": [
-                "とう"
-            ],
-            "usage_count": 35,
             "usage_rate": 5.8
         },
         {
@@ -119,7 +119,7 @@
                 "みず"
             ],
             "usage_count": 32,
-            "usage_rate": 5.3
+            "usage_rate": 5.2
         },
         {
             "rank": 11,
@@ -131,7 +131,7 @@
                 "とう"
             ],
             "usage_count": 29,
-            "usage_rate": 4.8
+            "usage_rate": 4.7
         },
         {
             "rank": 12,
@@ -142,8 +142,8 @@
             "weaknesses": [
                 "とう"
             ],
-            "usage_count": 25,
-            "usage_rate": 4.1
+            "usage_count": 27,
+            "usage_rate": 4.4
         },
         {
             "rank": 13,
