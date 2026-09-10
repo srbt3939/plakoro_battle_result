@@ -13,6 +13,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DB_PATH = BASE_DIR / "data" / "pokemon.db"
 OUTPUT_DIR = BASE_DIR / "docs" / "data"
 
+# 集計対象のseason。新season開始時にここだけ変更する。
+ACTIVE_SEASON_ID = 1
+SEASON_ALLOWED_POKEMON_IDS = {
+    1: tuple(range(1, 13)),
+    2: tuple(range(1, 16))
+}
+
+ACTIVE_POKEMON_IDS = SEASON_ALLOWED_POKEMON_IDS[ACTIVE_SEASON_ID]
+ACTIVE_POKEMON_PLACEHOLDERS = ", ".join("?" for _ in ACTIVE_POKEMON_IDS)
+
 
 def parse_weaknesses(value):
     if not value:
@@ -99,16 +109,27 @@ def export_battles(conn):
 
         FROM battles AS b
 
+        JOIN battle_messages AS bm
+            ON b.battle_message_id = bm.id
+
         JOIN pokemon AS p1
             ON b.player1_pokemon_id = p1.id
 
         JOIN pokemon AS p2
             ON b.player2_pokemon_id = p2.id
 
+        WHERE bm.season_id = ?
+            AND b.player1_pokemon_id IN ({ACTIVE_POKEMON_PLACEHOLDERS})
+            AND b.player2_pokemon_id IN ({ACTIVE_POKEMON_PLACEHOLDERS})
+
         ORDER BY
             b.battle_message_id,
             b.battle_number
-    """).fetchall()
+    """.format(ACTIVE_POKEMON_PLACEHOLDERS=ACTIVE_POKEMON_PLACEHOLDERS), (
+        ACTIVE_SEASON_ID,
+        *ACTIVE_POKEMON_IDS,
+        *ACTIVE_POKEMON_IDS
+    )).fetchall()
 
 
     battles = []
@@ -141,7 +162,8 @@ def export_battles(conn):
                 "result": row["player2_result"]
             },
 
-            "first_player": row["first_player"]
+            "first_player": row["first_player"],
+            "season_id": ACTIVE_SEASON_ID
         })
 
 
@@ -172,11 +194,17 @@ def export_battle_trend(conn):
         JOIN battles AS b
             ON b.battle_message_id = bm.id
 
-        WHERE bm.battle_date BETWEEN ? AND ?
+        WHERE bm.season_id = ?
+            AND b.player1_pokemon_id IN ({ACTIVE_POKEMON_PLACEHOLDERS})
+            AND b.player2_pokemon_id IN ({ACTIVE_POKEMON_PLACEHOLDERS})
+            AND bm.battle_date BETWEEN ? AND ?
 
         GROUP BY bm.battle_date
         ORDER BY bm.battle_date
-    """, (
+    """.format(ACTIVE_POKEMON_PLACEHOLDERS=ACTIVE_POKEMON_PLACEHOLDERS), (
+        ACTIVE_SEASON_ID,
+        *ACTIVE_POKEMON_IDS,
+        *ACTIVE_POKEMON_IDS,
         start_date.isoformat(),
         today.isoformat()
     )).fetchall()
@@ -226,6 +254,13 @@ def export_usage(conn):
             ON p.id = b.player1_pokemon_id
             OR p.id = b.player2_pokemon_id
 
+        JOIN battle_messages AS bm
+            ON b.battle_message_id = bm.id
+
+        WHERE bm.season_id = ?
+            AND b.player1_pokemon_id IN ({ACTIVE_POKEMON_PLACEHOLDERS})
+            AND b.player2_pokemon_id IN ({ACTIVE_POKEMON_PLACEHOLDERS})
+
         GROUP BY
             p.id,
             p.name
@@ -233,7 +268,11 @@ def export_usage(conn):
         ORDER BY
             usage_count DESC,
             p.id
-    """).fetchall()
+    """.format(ACTIVE_POKEMON_PLACEHOLDERS=ACTIVE_POKEMON_PLACEHOLDERS), (
+        ACTIVE_SEASON_ID,
+        *ACTIVE_POKEMON_IDS,
+        *ACTIVE_POKEMON_IDS
+    )).fetchall()
 
 
     total_usage = sum(
@@ -289,6 +328,22 @@ def export_usage(conn):
 
 def export_pokemon_stats(conn):
 
+    conn.execute("DROP TABLE IF EXISTS active_season_battles")
+    conn.execute("""
+        CREATE TEMP TABLE active_season_battles AS
+        SELECT b.*
+        FROM battles AS b
+        JOIN battle_messages AS bm
+            ON b.battle_message_id = bm.id
+        WHERE bm.season_id = ?
+            AND b.player1_pokemon_id IN ({ACTIVE_POKEMON_PLACEHOLDERS})
+            AND b.player2_pokemon_id IN ({ACTIVE_POKEMON_PLACEHOLDERS})
+    """.format(ACTIVE_POKEMON_PLACEHOLDERS=ACTIVE_POKEMON_PLACEHOLDERS), (
+        ACTIVE_SEASON_ID,
+        *ACTIVE_POKEMON_IDS,
+        *ACTIVE_POKEMON_IDS
+    ))
+
     pokemon_rows = conn.execute("""
         SELECT
             id,
@@ -297,8 +352,17 @@ def export_pokemon_stats(conn):
             type2,
             weaknesses
         FROM pokemon
+        WHERE EXISTS (
+            SELECT 1
+            FROM active_season_battles AS b
+            WHERE (
+                    b.player1_pokemon_id = pokemon.id
+                    OR b.player2_pokemon_id = pokemon.id
+                )
+        )
+            AND id IN ({ACTIVE_POKEMON_PLACEHOLDERS})
         ORDER BY id
-    """).fetchall()
+        """.format(ACTIVE_POKEMON_PLACEHOLDERS=ACTIVE_POKEMON_PLACEHOLDERS), ACTIVE_POKEMON_IDS).fetchall()
 
 
     stats = []
@@ -331,11 +395,13 @@ def export_pokemon_stats(conn):
                     END
                 ) AS wins
 
-            FROM battles
+            FROM active_season_battles
 
             WHERE
-                player1_pokemon_id = ?
-                OR player2_pokemon_id = ?
+                (
+                    player1_pokemon_id = ?
+                    OR player2_pokemon_id = ?
+                )
         """, (
             pokemon_id,
             pokemon_id,
@@ -379,20 +445,13 @@ def export_pokemon_stats(conn):
                     END
                 ) AS wins
 
-            FROM battles
+            FROM active_season_battles
 
             WHERE
-
                 (
-                    first_player = 1
-                    AND player1_pokemon_id = ?
-                )
-
-                OR
-
-                (
-                    first_player = 2
-                    AND player2_pokemon_id = ?
+                    (first_player = 1 AND player1_pokemon_id = ?)
+                    OR
+                    (first_player = 2 AND player2_pokemon_id = ?)
                 )
         """, (
             pokemon_id,
@@ -437,20 +496,13 @@ def export_pokemon_stats(conn):
                     END
                 ) AS wins
 
-            FROM battles
+            FROM active_season_battles
 
             WHERE
-
                 (
-                    first_player = 1
-                    AND player2_pokemon_id = ?
-                )
-
-                OR
-
-                (
-                    first_player = 2
-                    AND player1_pokemon_id = ?
+                    (first_player = 1 AND player2_pokemon_id = ?)
+                    OR
+                    (first_player = 2 AND player1_pokemon_id = ?)
                 )
         """, (
             pokemon_id,
@@ -493,10 +545,9 @@ def export_pokemon_stats(conn):
                     END
                 ) AS wins
 
-            FROM battles
+            FROM active_season_battles
 
             WHERE
-
                 first_player IS NULL
 
                 AND
@@ -639,7 +690,18 @@ def export_matchups(conn):
 
         JOIN pokemon AS p2
             ON b.player2_pokemon_id = p2.id
-    """).fetchall()
+
+        JOIN battle_messages AS bm
+            ON b.battle_message_id = bm.id
+
+        WHERE bm.season_id = ?
+            AND b.player1_pokemon_id IN ({ACTIVE_POKEMON_PLACEHOLDERS})
+            AND b.player2_pokemon_id IN ({ACTIVE_POKEMON_PLACEHOLDERS})
+    """.format(ACTIVE_POKEMON_PLACEHOLDERS=ACTIVE_POKEMON_PLACEHOLDERS), (
+        ACTIVE_SEASON_ID,
+        *ACTIVE_POKEMON_IDS,
+        *ACTIVE_POKEMON_IDS
+    )).fetchall()
 
 
     matchups = {}
