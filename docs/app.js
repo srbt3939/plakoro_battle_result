@@ -742,7 +742,7 @@ function renderPokemonRanking() {
                     )
                 "
             >
-                タイプ${typeArrow}
+                ${typeArrow}タイプ
             </button>
 
 
@@ -754,7 +754,7 @@ function renderPokemonRanking() {
                     )
                 "
             >
-                弱点${weaknessArrow}
+                ${weaknessArrow}弱点
             </button>
 
 
@@ -771,7 +771,7 @@ function renderPokemonRanking() {
                     )
                 "
             >
-                使用率${usageArrow}
+                ${usageArrow}使用率
             </button>
 
 
@@ -783,7 +783,7 @@ function renderPokemonRanking() {
                     )
                 "
             >
-                勝率${winRateArrow}
+                ${winRateArrow}勝率
             </button>
 
         </div>
