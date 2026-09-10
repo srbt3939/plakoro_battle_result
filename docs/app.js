@@ -675,8 +675,8 @@ function renderPokemonRanking() {
             ? (
                 currentSortOrder ===
                 "desc"
-                    ? " ▼"
-                    : " ▲"
+                    ? "▼"
+                    : "▲"
             )
 
             : "▽";
@@ -689,8 +689,8 @@ function renderPokemonRanking() {
             ? (
                 currentSortOrder ===
                 "desc"
-                    ? " ▼"
-                    : " ▲"
+                    ? "▼"
+                    : "▲"
             )
 
             : "▽";
@@ -700,8 +700,8 @@ function renderPokemonRanking() {
         currentSortKey === "type_sort"
             ? (
                 currentSortOrder === "desc"
-                    ? " ▼"
-                    : " ▲"
+                    ? "▼"
+                    : "▲"
             )
             : "▽";
 
@@ -710,8 +710,8 @@ function renderPokemonRanking() {
         currentSortKey === "weakness_sort"
             ? (
                 currentSortOrder === "desc"
-                    ? " ▼"
-                    : " ▲"
+                    ? "▼"
+                    : "▲"
             )
             : "▽";
 
