@@ -194,6 +194,11 @@ main {
     height: 36px;
 }
 
+.recent-battle-player .pokemon-detail-link {
+    flex-direction: column;
+    gap: 2px;
+}
+
 .recent-battle-result {
     padding: 2px 6px;
     color: #fff;
