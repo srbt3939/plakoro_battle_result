@@ -14,7 +14,7 @@ DB_PATH = BASE_DIR / "data" / "pokemon.db"
 OUTPUT_DIR = BASE_DIR / "docs" / "data"
 
 # 集計対象のseason。新season開始時にここだけ変更する。
-ACTIVE_SEASON_ID = 1
+ACTIVE_SEASON_ID = 2
 SEASON_ALLOWED_POKEMON_IDS = {
     1: tuple(range(1, 13)),
     2: tuple(range(1, 16))
