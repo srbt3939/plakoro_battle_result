@@ -1,4 +1,3 @@
-import argparse
 import sqlite3
 import json
 from datetime import date, timedelta
@@ -13,18 +12,37 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DB_PATH = BASE_DIR / "data" / "pokemon.db"
 OUTPUT_DIR = BASE_DIR / "docs" / "data"
 
-# 通常運用時のデフォルト集計対象season。新season開始時にここだけ変更する。
-DEFAULT_SEASON_ID = 2
+# 集計対象のseason。新season開始時にここだけ変更する。
+# "all" にすると season_id を問わず全season合算で集計する
+# （対象ポケモンIDも全season分の和集合になる）。
+ACTIVE_SEASON_ID = "all"
 
 SEASON_ALLOWED_POKEMON_IDS = {
     1: tuple(range(1, 13)),
     2: tuple(range(1, 16))
 }
 
-# 実行時に resolve_season_and_pokemon_ids() で上書きされる。
-# "all" の場合は season による絞り込みを行わず、全season分のポケモンIDの和集合を対象にする。
-ACTIVE_SEASON_ID = DEFAULT_SEASON_ID
-ACTIVE_POKEMON_IDS = SEASON_ALLOWED_POKEMON_IDS[ACTIVE_SEASON_ID]
+
+def resolve_pokemon_ids(season_id):
+    """
+    season_id: 通常のseason_id、または "all"
+
+    "all" のときは SEASON_ALLOWED_POKEMON_IDS の全season分の和集合を返す。
+    """
+
+    if season_id == "all":
+
+        all_ids = set()
+
+        for ids in SEASON_ALLOWED_POKEMON_IDS.values():
+            all_ids.update(ids)
+
+        return tuple(sorted(all_ids))
+
+    return SEASON_ALLOWED_POKEMON_IDS[season_id]
+
+
+ACTIVE_POKEMON_IDS = resolve_pokemon_ids(ACTIVE_SEASON_ID)
 ACTIVE_POKEMON_PLACEHOLDERS = ", ".join("?" for _ in ACTIVE_POKEMON_IDS)
 
 
@@ -52,31 +70,6 @@ def pokemon_details(row):
 # season切り替え関連
 # =========================
 
-def resolve_season_and_pokemon_ids(season_arg):
-    """
-    season_arg: "all" または season_idを表す文字列/整数
-
-    戻り値: (season_id_for_query, pokemon_ids)
-        season_id_for_query は "all" の場合そのまま "all" を返す（絞り込みなしの合図として使う）
-    """
-
-    if str(season_arg).lower() == "all":
-
-        all_ids = set()
-
-        for ids in SEASON_ALLOWED_POKEMON_IDS.values():
-            all_ids.update(ids)
-
-        return "all", tuple(sorted(all_ids))
-
-    season_id = int(season_arg)
-
-    if season_id not in SEASON_ALLOWED_POKEMON_IDS:
-        raise ValueError(f"未知のseason_idです: {season_id}")
-
-    return season_id, SEASON_ALLOWED_POKEMON_IDS[season_id]
-
-
 def get_season_filter_sql():
     """
     season絞り込みのSQL断片とパラメータを返す。
@@ -87,34 +80,6 @@ def get_season_filter_sql():
         return "", []
 
     return "AND bm.season_id = ?", [ACTIVE_SEASON_ID]
-
-
-def output_filename(base_name):
-    """
-    全season合算モードのときは既存の season 別出力を上書きしないよう
-    ファイル名に "_all" サフィックスを付ける。
-    """
-
-    if ACTIVE_SEASON_ID == "all":
-        stem, _, ext = base_name.rpartition(".")
-        return f"{stem}_all.{ext}"
-
-    return base_name
-
-
-def parse_args():
-    parser = argparse.ArgumentParser(description="ポケモン対戦データをJSONにエクスポートする")
-
-    parser.add_argument(
-        "--season",
-        default=str(DEFAULT_SEASON_ID),
-        help=(
-            "集計対象のseason_id。'all' を指定すると season_id を問わず全season合算で集計する"
-            " (デフォルト: %(default)s)"
-        )
-    )
-
-    return parser.parse_args()
 
 
 # =========================
@@ -248,7 +213,7 @@ def export_battles(conn):
 
 
     save_json(
-        output_filename("battles.json"),
+        "battles.json",
         {
             "battles": battles
         }
@@ -308,7 +273,7 @@ def export_battle_trend(conn):
     ]
 
     save_json(
-        output_filename("battle_trend.json"),
+        "battle_trend.json",
         {
             "days": days
         }
@@ -398,7 +363,7 @@ def export_usage(conn):
         })
 
     save_json(
-        output_filename("usage.json"),
+        "usage.json",
         {
             "total_usage": total_usage,
             "pokemon": pokemon
@@ -738,7 +703,7 @@ def export_pokemon_stats(conn):
 
 
     save_json(
-        output_filename("pokemon_stats.json"),
+        "pokemon_stats.json",
         {
             "pokemon": stats
         }
@@ -939,7 +904,7 @@ def export_matchups(conn):
 
 
     save_json(
-        output_filename("matchups.json"),
+        "matchups.json",
         {
             "matchups": result
         }
@@ -951,13 +916,6 @@ def export_matchups(conn):
 # =========================
 
 def main():
-
-    global ACTIVE_SEASON_ID, ACTIVE_POKEMON_IDS, ACTIVE_POKEMON_PLACEHOLDERS
-
-    args = parse_args()
-
-    ACTIVE_SEASON_ID, ACTIVE_POKEMON_IDS = resolve_season_and_pokemon_ids(args.season)
-    ACTIVE_POKEMON_PLACEHOLDERS = ", ".join("?" for _ in ACTIVE_POKEMON_IDS)
 
     if ACTIVE_SEASON_ID == "all":
         print("全season合算モードでJSON出力を開始します。")
