@@ -69,9 +69,11 @@
         <th>ID</th>
         <th>試合番号</th>
         <th>Player 1</th>
+        <th>Pokémon</th>
         <th>結果</th>
         <th>先攻</th>
         <th>Player 2</th>
+        <th>Pokémon</th>
         <th>結果</th>
     </tr>
 
@@ -85,6 +87,10 @@
 
         <td>
             {{ battle.battle_number }}
+        </td>
+
+        <td>
+            {{ battle.player1_name or "-" }}
         </td>
 
         <td>
@@ -103,6 +109,10 @@
             {% else %}
                 不明
             {% endif %}
+        </td>
+
+        <td>
+            {{ battle.player2_name or "-" }}
         </td>
 
         <td>

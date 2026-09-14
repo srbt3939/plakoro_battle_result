@@ -230,6 +230,37 @@
 
                 <div class="battle-field pokemon-field">
 
+                    <label for="player1">
+                        Player（任意）
+                    </label>
+
+                    <select
+                        id="player1"
+                        name="player1_id"
+                    >
+
+                        <option value="">
+                            未選択
+                        </option>
+
+                        {% for pl in players %}
+
+                        <option value="{{ pl.id }}">
+                            {{ pl.name }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="battle-row">
+
+                <div class="battle-field pokemon-field">
+
                     <label for="player1_pokemon">
                         Pokémon
                     </label>
@@ -262,6 +293,37 @@
         <div class="player-card">
 
             <h2>Player 2</h2>
+
+            <div class="battle-row">
+
+                <div class="battle-field pokemon-field">
+
+                    <label for="player2">
+                        Player（任意）
+                    </label>
+
+                    <select
+                        id="player2"
+                        name="player2_id"
+                    >
+
+                        <option value="">
+                            未選択
+                        </option>
+
+                        {% for pl in players %}
+
+                        <option value="{{ pl.id }}">
+                            {{ pl.name }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+            </div>
 
             <div class="battle-row">
 

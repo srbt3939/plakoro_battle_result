@@ -13,8 +13,8 @@
 <form method="post">
 
     <p>
-        Discord User ID<br>
-        <input type="text" name="discord_user_id" required>
+        Discord user ID<br>
+        <input type="text" name="discord_message_id" required>
     </p>
 
     <p>
@@ -24,7 +24,7 @@
 
     <p>
         Created At<br>
-        <input type="date" name="created_at" required>
+        <input type="date" name="Created_at" required>
     </p>
 
     <button type="submit">
@@ -32,6 +32,30 @@
     </button>
 
 </form>
+
+<h2>登録済みPlayer</h2>
+
+<table border="1">
+
+    <tr>
+        <th>ID</th>
+        <th>Discord User ID</th>
+        <th>Name</th>
+        <th>登録日</th>
+    </tr>
+
+    {% for p in players %}
+
+    <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.discord_user_id }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.created_at }}</td>
+    </tr>
+
+    {% endfor %}
+
+</table>
 
 <a href="/">戻る</a>
 

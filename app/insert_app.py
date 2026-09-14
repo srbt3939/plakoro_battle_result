@@ -93,12 +93,23 @@ def battle():
         ORDER BY id DESC
     """).fetchall()
 
+    # Player一覧
+    players = conn.execute("""
+        SELECT *
+        FROM players
+        ORDER BY id
+    """).fetchall()
+
     if request.method == "POST":
 
         battle_message_id = request.form["battle_message_id"]
 
         player1_pokemon_id = request.form["player1_pokemon_id"]
         player2_pokemon_id = request.form["player2_pokemon_id"]
+
+        # プレイヤーは空欄可
+        player1_id = request.form["player1_id"] or None
+        player2_id = request.form["player2_id"] or None
 
         first_player = request.form["first_player"]
 
@@ -111,6 +122,8 @@ def battle():
                 battle_number,
                 player1_pokemon_id,
                 player2_pokemon_id,
+                player1_id,
+                player2_id,
                 first_player,
                 player1_result,
                 player2_result
@@ -122,6 +135,8 @@ def battle():
                 ?,
                 ?,
                 ?,
+                ?,
+                ?,
                 ?
             FROM battles
             WHERE battle_message_id = ?
@@ -129,6 +144,8 @@ def battle():
             battle_message_id,
             player1_pokemon_id,
             player2_pokemon_id,
+            player1_id,
+            player2_id,
             first_player,
             player1_result,
             player2_result,
@@ -145,7 +162,8 @@ def battle():
     return render_template(
         "battle_form.html",
         pokemon=pokemon,
-        messages=messages
+        messages=messages,
+        players=players
     )
 
 
@@ -180,12 +198,20 @@ def player():
         conn.commit()
         conn.close()
 
-        return redirect("/")
+        return redirect("/player")
+
+    # 登録済みPlayer一覧
+    players = conn.execute("""
+        SELECT *
+        FROM players
+        ORDER BY id
+    """).fetchall()
 
     conn.close()
 
     return render_template(
-        "player_form.html"
+        "player_form.html",
+        players=players
     )
 
 
@@ -208,6 +234,9 @@ def index():
             p1.name AS player1_pokemon,
             p2.name AS player2_pokemon,
 
+            player1.name AS player1_name,
+            player2.name AS player2_name,
+
             battles.first_player,
 
             battles.player1_result,
@@ -220,6 +249,12 @@ def index():
 
         JOIN pokemon AS p2
             ON battles.player2_pokemon_id = p2.id
+
+        LEFT JOIN players AS player1
+            ON battles.player1_id = player1.id
+
+        LEFT JOIN players AS player2
+            ON battles.player2_id = player2.id
 
         ORDER BY battles.id
     """).fetchall()
