@@ -150,6 +150,46 @@ def battle():
 
 
 # =========================
+# Player登録
+# =========================
+
+@app.route("/player", methods=["GET", "POST"])
+def player():
+
+    conn = get_connection()
+
+    if request.method == "POST":
+
+        discord_user_id = request.form["discord_user_id"]
+        name = request.form["name"]
+        created_at = request.form["created_at"]
+
+        conn.execute("""
+            INSERT INTO players (
+                discord_user_id,
+                name,
+                created_at
+            )
+            VALUES (?, ?, ?)
+        """, (
+            discord_user_id,
+            name,
+            created_at
+        ))
+
+        conn.commit()
+        conn.close()
+
+        return redirect("/")
+
+    conn.close()
+
+    return render_template(
+        "player_form.html"
+    )
+
+
+# =========================
 # トップ
 # =========================
 
