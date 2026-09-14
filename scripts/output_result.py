@@ -128,7 +128,10 @@ def export_battles(conn):
             b.battle_number,
 
             b.player1_id,
+            pl1.name AS player1_name,
+
             b.player2_id,
+            pl2.name AS player2_name,
 
             b.player1_pokemon_id,
             p1.name AS player1_pokemon,
@@ -160,6 +163,12 @@ def export_battles(conn):
         JOIN pokemon AS p2
             ON b.player2_pokemon_id = p2.id
 
+        LEFT JOIN players AS pl1
+            ON b.player1_id = pl1.id
+
+        LEFT JOIN players AS pl2
+            ON b.player2_id = pl2.id
+
         WHERE b.player1_pokemon_id IN ({ph})
             AND b.player2_pokemon_id IN ({ph})
             {season_clause}
@@ -186,6 +195,7 @@ def export_battles(conn):
 
             "player1": {
                 "id": row["player1_id"],
+                "name": row["player1_name"],
                 "pokemon_id": row["player1_pokemon_id"],
                 "pokemon": row["player1_pokemon"],
                 "type1": row["player1_type1"],
@@ -196,6 +206,7 @@ def export_battles(conn):
 
             "player2": {
                 "id": row["player2_id"],
+                "name": row["player2_name"],
                 "pokemon_id": row["player2_pokemon_id"],
                 "pokemon": row["player2_pokemon"],
                 "type1": row["player2_type1"],

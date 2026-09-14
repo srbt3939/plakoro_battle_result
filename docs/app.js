@@ -203,6 +203,7 @@ function formatRecentBattle(battle, battleNumber) {
     const playerHTML = (player, isFirst) => `
         <div class="recent-battle-player ${player.result === "win" ? "is-win" : "is-lose"}">
             <span class="recent-battle-result">${player.result === "win" ? "WIN" : "LOSE"}</span>
+            ${player.name ? `<span class="recent-battle-name">${player.name}</span>` : ""}
             ${getPokemonIdentityHTML(player.pokemon, player.pokemon_id)}
             <span class="pokemon-type">${getTypeImagesHTML([player.type1, player.type2].filter(Boolean))}</span>
             <span class="recent-battle-order">${isFirst ? "先攻" : "後攻"}</span>

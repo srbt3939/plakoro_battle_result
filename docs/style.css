@@ -47,7 +47,7 @@ main {
 
 .summary {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 20px;
     margin-bottom: 30px;
 }
@@ -188,6 +188,12 @@ main {
 .recent-battle-player .pokemon-name {
     justify-content: center;
     font-size: 13px;
+}
+
+.recent-battle-name {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: bold;
 }
 
 .recent-battle-player .pokemon-emoji {
@@ -921,11 +927,11 @@ main {
         padding: 14px 4px;
     }
 
-    .recent-battle-list .recent-battle-entry {
+    .recent-battles-carousel .recent-battle-list .recent-battle-entry {
         display: none;
     }
 
-    .recent-battle-list .recent-battle-entry:last-of-type {
+    .recent-battles-carousel .recent-battle-list .recent-battle-entry:last-of-type {
         display: block;
     }
 
