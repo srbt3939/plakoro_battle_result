@@ -1,5 +1,5 @@
 {
-    "total_usage": 91,
+    "total_usage": 97,
     "pokemon": [
         {
             "rank": 1,
@@ -11,7 +11,7 @@
                 "ちょう"
             ],
             "usage_count": 23,
-            "usage_rate": 25.3
+            "usage_rate": 23.7
         },
         {
             "rank": 2,
@@ -22,7 +22,7 @@
             "weaknesses": [
                 "ほのお"
             ],
-            "usage_count": 15,
+            "usage_count": 16,
             "usage_rate": 16.5
         },
         {
@@ -35,7 +35,7 @@
                 "ほのお"
             ],
             "usage_count": 12,
-            "usage_rate": 13.2
+            "usage_rate": 12.4
         },
         {
             "rank": 4,
@@ -47,7 +47,7 @@
                 "そら"
             ],
             "usage_count": 11,
-            "usage_rate": 12.1
+            "usage_rate": 11.3
         },
         {
             "rank": 5,
@@ -59,7 +59,7 @@
                 "とう"
             ],
             "usage_count": 8,
-            "usage_rate": 8.8
+            "usage_rate": 8.2
         },
         {
             "rank": 6,
@@ -71,7 +71,7 @@
                 "かみなり"
             ],
             "usage_count": 7,
-            "usage_rate": 7.7
+            "usage_rate": 7.2
         },
         {
             "rank": 7,
@@ -83,10 +83,34 @@
                 "みず"
             ],
             "usage_count": 7,
-            "usage_rate": 7.7
+            "usage_rate": 7.2
         },
         {
             "rank": 8,
+            "pokemon_id": 10,
+            "name": "フリーザー",
+            "type1": "みず",
+            "type2": null,
+            "weaknesses": [
+                "はがね"
+            ],
+            "usage_count": 3,
+            "usage_rate": 3.1
+        },
+        {
+            "rank": 9,
+            "pokemon_id": 11,
+            "name": "サンダー",
+            "type1": "かみなり",
+            "type2": null,
+            "weaknesses": [
+                "とう"
+            ],
+            "usage_count": 3,
+            "usage_rate": 3.1
+        },
+        {
+            "rank": 10,
             "pokemon_id": 2,
             "name": "ヒトカゲ",
             "type1": "ほのお",
@@ -95,10 +119,22 @@
                 "みず"
             ],
             "usage_count": 2,
-            "usage_rate": 2.2
+            "usage_rate": 2.1
         },
         {
-            "rank": 9,
+            "rank": 11,
+            "pokemon_id": 7,
+            "name": "ベトベター",
+            "type1": "あく",
+            "type2": null,
+            "weaknesses": [
+                "とう"
+            ],
+            "usage_count": 2,
+            "usage_rate": 2.1
+        },
+        {
+            "rank": 12,
             "pokemon_id": 8,
             "name": "イワーク",
             "type1": "とう",
@@ -107,31 +143,19 @@
                 "くさ"
             ],
             "usage_count": 2,
-            "usage_rate": 2.2
+            "usage_rate": 2.1
         },
         {
-            "rank": 10,
-            "pokemon_id": 10,
-            "name": "フリーザー",
-            "type1": "みず",
+            "rank": 13,
+            "pokemon_id": 1,
+            "name": "フシギダネ",
+            "type1": "くさ",
             "type2": null,
             "weaknesses": [
-                "はがね"
+                "ほのお"
             ],
-            "usage_count": 2,
-            "usage_rate": 2.2
-        },
-        {
-            "rank": 11,
-            "pokemon_id": 11,
-            "name": "サンダー",
-            "type1": "かみなり",
-            "type2": null,
-            "weaknesses": [
-                "とう"
-            ],
-            "usage_count": 2,
-            "usage_rate": 2.2
+            "usage_count": 1,
+            "usage_rate": 1.0
         }
     ]
 }
