@@ -502,12 +502,12 @@
         },
         {
             "pokemon1": {
-                "id": 1,
-                "name": "フシギダネ",
-                "type1": "くさ",
+                "id": 7,
+                "name": "ベトベター",
+                "type1": "あく",
                 "type2": null,
                 "weaknesses": [
-                    "ほのお"
+                    "とう"
                 ]
             },
             "pokemon2": {

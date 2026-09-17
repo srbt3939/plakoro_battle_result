@@ -1,39 +1,6 @@
 {
     "pokemon": [
         {
-            "pokemon_id": 1,
-            "name": "フシギダネ",
-            "type1": "くさ",
-            "type2": null,
-            "weaknesses": [
-                "ほのお"
-            ],
-            "total": {
-                "battles": 1,
-                "wins": 0,
-                "losses": 1,
-                "win_rate": 0.0
-            },
-            "first_player": {
-                "battles": 0,
-                "wins": 0,
-                "losses": 0,
-                "win_rate": 0
-            },
-            "second_player": {
-                "battles": 1,
-                "wins": 0,
-                "losses": 1,
-                "win_rate": 0.0
-            },
-            "unknown": {
-                "battles": 0,
-                "wins": 0,
-                "losses": 0,
-                "win_rate": 0
-            }
-        },
-        {
             "pokemon_id": 2,
             "name": "ヒトカゲ",
             "type1": "ほのお",
@@ -141,9 +108,9 @@
                 "とう"
             ],
             "total": {
-                "battles": 2,
+                "battles": 3,
                 "wins": 0,
-                "losses": 2,
+                "losses": 3,
                 "win_rate": 0.0
             },
             "first_player": {
@@ -153,9 +120,9 @@
                 "win_rate": 0.0
             },
             "second_player": {
-                "battles": 1,
+                "battles": 2,
                 "wins": 0,
-                "losses": 1,
+                "losses": 2,
                 "win_rate": 0.0
             },
             "unknown": {

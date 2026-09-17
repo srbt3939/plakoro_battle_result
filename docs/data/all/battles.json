@@ -11737,12 +11737,12 @@
             "player2": {
                 "id": 5,
                 "name": "スリバチ",
-                "pokemon_id": 1,
-                "pokemon": "フシギダネ",
-                "type1": "くさ",
+                "pokemon_id": 7,
+                "pokemon": "ベトベター",
+                "type1": "あく",
                 "type2": null,
                 "weaknesses": [
-                    "ほのお"
+                    "とう"
                 ],
                 "result": "lose"
             },
