@@ -93,6 +93,41 @@ main {
     border-bottom: 2px solid var(--accent-soft);
 }
 
+.section-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--accent-soft);
+}
+
+.section-header-row h2 {
+    margin: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.season-select-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.season-select-label select {
+    padding: 6px 10px;
+    color: var(--text);
+    font-size: 14px;
+    background: var(--surface);
+    border: 1px solid #c8d3d8;
+    border-radius: 6px;
+}
+
 .carousel-wrapper {
     display: flex;
     align-items: center;

@@ -5,7 +5,7 @@
 let emojiData = null;
 
 const characterPagePaths = {
-    9: "characters/Pincer.html",
+    9: "characters/kairos.html",
     12: "characters/Moltres.html"
 };
 
@@ -31,10 +31,10 @@ function formatPercentage(value) {
 // JSON読み込み
 // =========================
 
-async function loadJSON(file) {
+async function loadJSON(file, season) {
 
     const response = await fetch(
-        `data/${file}`
+        `data/${season}/${file}`
     );
 
     return await response.json();
@@ -74,27 +74,22 @@ async function loadEmojiData() {
 // メイン
 // =========================
 
-async function main() {
-
-    const pageLoadedAt = new Date();
-
-    // emoji.json読み込み
-    await loadEmojiData();
+async function loadAndRenderSeason(season, pageLoadedAt) {
 
     const usage =
-        await loadJSON("usage.json");
+        await loadJSON("usage.json", season);
 
     const stats =
-        await loadJSON("pokemon_stats.json");
+        await loadJSON("pokemon_stats.json", season);
 
     const matchups =
-        await loadJSON("matchups.json");
+        await loadJSON("matchups.json", season);
 
     const battles =
-        await loadJSON("battles.json");
+        await loadJSON("battles.json", season);
 
     const battleTrend =
-        await loadJSON("battle_trend.json");
+        await loadJSON("battle_trend.json", season);
 
     // =========================
     // 概要
@@ -162,7 +157,44 @@ async function main() {
     setupMatchupFilter(
         matchups.matchups
     );
-    
+
+}
+
+
+async function main() {
+
+    const pageLoadedAt = new Date();
+
+    // emoji.json読み込み
+    await loadEmojiData();
+
+    const seasonSelect =
+        document.getElementById(
+            "season-select"
+        );
+
+    const initialSeason =
+        seasonSelect ? seasonSelect.value : "all";
+
+    await loadAndRenderSeason(
+        initialSeason,
+        pageLoadedAt
+    );
+
+    if (seasonSelect) {
+
+        seasonSelect.addEventListener(
+            "change",
+            () => {
+                loadAndRenderSeason(
+                    seasonSelect.value,
+                    pageLoadedAt
+                );
+            }
+        );
+
+    }
+
 }
 
 
@@ -1238,6 +1270,14 @@ function setupMatchupFilter(matchups) {
         );
 
 
+    // シーズン切り替え時に前回分の選択肢が残らないようリセット
+    select.innerHTML = `
+        <option value="">
+            すべてのポケモン
+        </option>
+    `;
+
+
     // 登場するポケモンを取得
     const pokemonMap = new Map();
 
@@ -1291,17 +1331,16 @@ function setupMatchupFilter(matchups) {
 
 
     // 選択変更時
-    select.addEventListener(
-        "change",
-        function() {
+    // （onchangeへの代入により、シーズン切替のたびに
+    //   setupMatchupFilterが呼ばれても listener が重複登録されない）
+    select.onchange = function() {
 
-            createMatchups(
-                matchups,
-                this.value
-            );
+        createMatchups(
+            matchups,
+            this.value
+        );
 
-        }
-    );
+    };
 
 }
 

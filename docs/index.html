@@ -60,7 +60,7 @@
             </span>
 
         </div>
-         
+
         <!-- <div class="summary-card">
 
             <span class="label">
@@ -158,7 +158,20 @@
 
     <section class="card">
 
-        <h2>📊 ポケモンランキング</h2>
+        <div class="section-header-row">
+
+            <h2>📊 ポケモンランキング</h2>
+
+            <label class="season-select-label" for="season-select">
+                シーズン
+                <select id="season-select">
+                    <option value="season_1">シーズン1</option>
+                    <option value="season_2">シーズン2</option>
+                    <option value="all" selected>全シーズン</option>
+                </select>
+            </label>
+
+        </div>
 
         <div id="pokemon-ranking"></div>
 

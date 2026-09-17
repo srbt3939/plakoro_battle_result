@@ -29,7 +29,7 @@ const typeImageNames = {
 async function loadJSON(file) {
 
     const response = await fetch(
-        `data/${file}`
+        `data/all/${file}`
     );
 
     return await response.json();
