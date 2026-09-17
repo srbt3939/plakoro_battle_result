@@ -115,10 +115,10 @@ async function main() {
     //     usage.total_usage;
 
 
-    document.getElementById(
-        "pokemon-count"
-    ).textContent =
-        usage.pokemon.length;
+    // document.getElementById(
+    //     "pokemon-count"
+    // ).textContent =
+    //     usage.pokemon.length;
 
 
     createRecentBattles(
