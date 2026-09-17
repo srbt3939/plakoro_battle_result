@@ -12,15 +12,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DB_PATH = BASE_DIR / "data" / "pokemon.db"
 OUTPUT_DIR = BASE_DIR / "docs" / "data"
 
-# 集計対象のseason。新season開始時にここだけ変更する。
-# "all" にすると season_id を問わず全season合算で集計する
-# （対象ポケモンIDも全season分の和集合になる）。
-ACTIVE_SEASON_ID = "all"
-
+# 集計対象のseason。新season開始時は SEASON_ALLOWED_POKEMON_IDS に
+# そのseasonのポケモンID範囲を追加するだけでよい（ここは自動で追従する）。
+# season_id ごとに docs/data/season_{id}/ 以下へ、
+# 全season合算は docs/data/all/ 以下へ出力する。
 SEASON_ALLOWED_POKEMON_IDS = {
     1: tuple(range(1, 13)),
     2: tuple(range(1, 16))
 }
+
+SEASONS_TO_EXPORT = list(SEASON_ALLOWED_POKEMON_IDS.keys()) + ["all"]
+
+# 現在処理中のseason（configure_seasonで切り替える）
+ACTIVE_SEASON_ID = None
+ACTIVE_POKEMON_IDS = ()
+ACTIVE_POKEMON_PLACEHOLDERS = ""
 
 
 def resolve_pokemon_ids(season_id):
@@ -42,8 +48,20 @@ def resolve_pokemon_ids(season_id):
     return SEASON_ALLOWED_POKEMON_IDS[season_id]
 
 
-ACTIVE_POKEMON_IDS = resolve_pokemon_ids(ACTIVE_SEASON_ID)
-ACTIVE_POKEMON_PLACEHOLDERS = ", ".join("?" for _ in ACTIVE_POKEMON_IDS)
+def configure_season(season_id):
+    """
+    以降のexport_*呼び出しとsave_jsonの出力先を、指定したseasonに切り替える。
+    season_id: 通常のseason_id、または "all"
+    """
+
+    global ACTIVE_SEASON_ID, ACTIVE_POKEMON_IDS, ACTIVE_POKEMON_PLACEHOLDERS, OUTPUT_DIR
+
+    ACTIVE_SEASON_ID = season_id
+    ACTIVE_POKEMON_IDS = resolve_pokemon_ids(season_id)
+    ACTIVE_POKEMON_PLACEHOLDERS = ", ".join("?" for _ in ACTIVE_POKEMON_IDS)
+
+    folder_name = "all" if season_id == "all" else f"season_{season_id}"
+    OUTPUT_DIR = BASE_DIR / "docs" / "data" / folder_name
 
 
 def parse_weaknesses(value):
@@ -98,7 +116,7 @@ def get_connection():
 
 def save_json(filename, data):
 
-    OUTPUT_DIR.mkdir(exist_ok=True)
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     path = OUTPUT_DIR / filename
 
@@ -928,35 +946,36 @@ def export_matchups(conn):
 
 def main():
 
-    if ACTIVE_SEASON_ID == "all":
-        print("全season合算モードでJSON出力を開始します。")
-    else:
-        print(f"season_id={ACTIVE_SEASON_ID} を対象にJSON出力を開始します。")
-
-    print()
-
-
     conn = get_connection()
-
 
     try:
 
-        export_battles(conn)
+        for season_id in SEASONS_TO_EXPORT:
 
-        export_battle_trend(conn)
+            configure_season(season_id)
 
-        export_usage(conn)
+            if season_id == "all":
+                print("全season合算モードでJSON出力を開始します。")
+            else:
+                print(f"season_id={season_id} を対象にJSON出力を開始します。")
 
-        export_pokemon_stats(conn)
+            export_battles(conn)
 
-        export_matchups(conn)
+            export_battle_trend(conn)
+
+            export_usage(conn)
+
+            export_pokemon_stats(conn)
+
+            export_matchups(conn)
+
+            print()
 
     finally:
 
         conn.close()
 
 
-    print()
     print("JSON出力が完了しました。")
 
 
