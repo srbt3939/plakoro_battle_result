@@ -5,7 +5,8 @@
 let emojiData = null;
 
 const characterPagePaths = {
-    9: "characters/kairos.html"
+    9: "characters/kairos.html",
+    12: "characters/Moltres.html"
 };
 
 const typeImageNames = {
