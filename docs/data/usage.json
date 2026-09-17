@@ -1,5 +1,5 @@
 {
-    "total_usage": 723,
+    "total_usage": 727,
     "pokemon": [
         {
             "rank": 1,
@@ -10,8 +10,8 @@
             "weaknesses": [
                 "そら"
             ],
-            "usage_count": 124,
-            "usage_rate": 17.2
+            "usage_count": 126,
+            "usage_rate": 17.3
         },
         {
             "rank": 2,
@@ -47,7 +47,7 @@
                 "あく"
             ],
             "usage_count": 65,
-            "usage_rate": 9.0
+            "usage_rate": 8.9
         },
         {
             "rank": 5,
@@ -59,7 +59,7 @@
                 "かみなり"
             ],
             "usage_count": 64,
-            "usage_rate": 8.9
+            "usage_rate": 8.8
         },
         {
             "rank": 6,
@@ -71,7 +71,7 @@
                 "くさ"
             ],
             "usage_count": 54,
-            "usage_rate": 7.5
+            "usage_rate": 7.4
         },
         {
             "rank": 7,
@@ -107,7 +107,7 @@
                 "とう"
             ],
             "usage_count": 38,
-            "usage_rate": 5.3
+            "usage_rate": 5.2
         },
         {
             "rank": 10,
@@ -154,8 +154,8 @@
             "weaknesses": [
                 "ちょう"
             ],
-            "usage_count": 21,
-            "usage_rate": 2.9
+            "usage_count": 23,
+            "usage_rate": 3.2
         },
         {
             "rank": 14,
