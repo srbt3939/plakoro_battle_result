@@ -1,5 +1,5 @@
 {
-    "total_usage": 97,
+    "total_usage": 133,
     "pokemon": [
         {
             "rank": 1,
@@ -10,11 +10,35 @@
             "weaknesses": [
                 "ちょう"
             ],
-            "usage_count": 23,
-            "usage_rate": 23.7
+            "usage_count": 28,
+            "usage_rate": 21.1
         },
         {
             "rank": 2,
+            "pokemon_id": 14,
+            "name": "メタグロス",
+            "type1": "はがね",
+            "type2": null,
+            "weaknesses": [
+                "ほのお"
+            ],
+            "usage_count": 17,
+            "usage_rate": 12.8
+        },
+        {
+            "rank": 3,
+            "pokemon_id": 7,
+            "name": "ベトベター",
+            "type1": "あく",
+            "type2": null,
+            "weaknesses": [
+                "とう"
+            ],
+            "usage_count": 16,
+            "usage_rate": 12.0
+        },
+        {
+            "rank": 4,
             "pokemon_id": 15,
             "name": "ルカリオ",
             "type1": "とう",
@@ -23,22 +47,10 @@
                 "ほのお"
             ],
             "usage_count": 16,
-            "usage_rate": 16.5
+            "usage_rate": 12.0
         },
         {
-            "rank": 3,
-            "pokemon_id": 14,
-            "name": "メタグロス",
-            "type1": "はがね",
-            "type2": null,
-            "weaknesses": [
-                "ほのお"
-            ],
-            "usage_count": 12,
-            "usage_rate": 12.4
-        },
-        {
-            "rank": 4,
+            "rank": 5,
             "pokemon_id": 9,
             "name": "カイロス",
             "type1": "くさ",
@@ -46,11 +58,11 @@
             "weaknesses": [
                 "そら"
             ],
-            "usage_count": 11,
-            "usage_rate": 11.3
+            "usage_count": 14,
+            "usage_rate": 10.5
         },
         {
-            "rank": 5,
+            "rank": 6,
             "pokemon_id": 4,
             "name": "ピカチュウ",
             "type1": "かみなり",
@@ -58,11 +70,11 @@
             "weaknesses": [
                 "とう"
             ],
-            "usage_count": 8,
-            "usage_rate": 8.2
+            "usage_count": 10,
+            "usage_rate": 7.5
         },
         {
-            "rank": 6,
+            "rank": 7,
             "pokemon_id": 3,
             "name": "ゼニガメ",
             "type1": "みず",
@@ -70,11 +82,11 @@
             "weaknesses": [
                 "かみなり"
             ],
-            "usage_count": 7,
-            "usage_rate": 7.2
+            "usage_count": 9,
+            "usage_rate": 6.8
         },
         {
-            "rank": 7,
+            "rank": 8,
             "pokemon_id": 12,
             "name": "ファイヤー",
             "type1": "ほのお",
@@ -83,19 +95,7 @@
                 "みず"
             ],
             "usage_count": 7,
-            "usage_rate": 7.2
-        },
-        {
-            "rank": 8,
-            "pokemon_id": 7,
-            "name": "ベトベター",
-            "type1": "あく",
-            "type2": null,
-            "weaknesses": [
-                "とう"
-            ],
-            "usage_count": 3,
-            "usage_rate": 3.1
+            "usage_rate": 5.3
         },
         {
             "rank": 9,
@@ -106,8 +106,8 @@
             "weaknesses": [
                 "はがね"
             ],
-            "usage_count": 3,
-            "usage_rate": 3.1
+            "usage_count": 5,
+            "usage_rate": 3.8
         },
         {
             "rank": 10,
@@ -119,10 +119,22 @@
                 "とう"
             ],
             "usage_count": 3,
-            "usage_rate": 3.1
+            "usage_rate": 2.3
         },
         {
             "rank": 11,
+            "pokemon_id": 1,
+            "name": "フシギダネ",
+            "type1": "くさ",
+            "type2": null,
+            "weaknesses": [
+                "ほのお"
+            ],
+            "usage_count": 2,
+            "usage_rate": 1.5
+        },
+        {
+            "rank": 12,
             "pokemon_id": 2,
             "name": "ヒトカゲ",
             "type1": "ほのお",
@@ -131,10 +143,22 @@
                 "みず"
             ],
             "usage_count": 2,
-            "usage_rate": 2.1
+            "usage_rate": 1.5
         },
         {
-            "rank": 12,
+            "rank": 13,
+            "pokemon_id": 5,
+            "name": "イーブイ",
+            "type1": "むしょく",
+            "type2": null,
+            "weaknesses": [
+                "とう"
+            ],
+            "usage_count": 2,
+            "usage_rate": 1.5
+        },
+        {
+            "rank": 14,
             "pokemon_id": 8,
             "name": "イワーク",
             "type1": "とう",
@@ -143,7 +167,7 @@
                 "くさ"
             ],
             "usage_count": 2,
-            "usage_rate": 2.1
+            "usage_rate": 1.5
         }
     ]
 }
