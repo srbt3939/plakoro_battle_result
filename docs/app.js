@@ -508,7 +508,7 @@ let firstSecondSortOrder = "desc";
 
 
 // 現在のソート項目
-let currentSortKey = "usage_rate";
+let currentSortKey = "win_rate";
 
 // 現在のソート方向
 let currentSortOrder = "desc";
