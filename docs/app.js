@@ -631,6 +631,23 @@ function changeRankingSort(
 }
 
 
+// プルダウンからの並び替え変更
+// （選ぶたびに降順から開始する）
+function setRankingSort(
+    sortKey
+) {
+
+    currentSortKey =
+        sortKey;
+
+    currentSortOrder =
+        "desc";
+
+    renderPokemonRanking();
+
+}
+
+
 // =========================
 // ランキング表示
 // =========================
@@ -769,7 +786,7 @@ function renderPokemonRanking() {
 
 
             <button
-                class="sort-button ranking-type-header"
+                class="sort-button ranking-type-header${currentSortKey === "type_sort" ? " active" : ""}"
                 onclick="
                     changeRankingSort(
                         'type_sort'
@@ -781,7 +798,7 @@ function renderPokemonRanking() {
 
 
             <button
-                class="sort-button ranking-weakness-header"
+                class="sort-button ranking-weakness-header${currentSortKey === "weakness_sort" ? " active" : ""}"
                 onclick="
                     changeRankingSort(
                         'weakness_sort'
@@ -798,7 +815,7 @@ function renderPokemonRanking() {
 
 
             <button
-                class="sort-button"
+                class="sort-button${currentSortKey === "usage_rate" ? " active" : ""}"
                 onclick="
                     changeRankingSort(
                         'usage_rate'
@@ -810,7 +827,7 @@ function renderPokemonRanking() {
 
 
             <button
-                class="sort-button"
+                class="sort-button${currentSortKey === "win_rate" ? " active" : ""}"
                 onclick="
                     changeRankingSort(
                         'win_rate'
@@ -927,6 +944,18 @@ function renderPokemonRanking() {
 
         }
     );
+
+
+    // プルダウンの表示を現在のソート状態に合わせる
+    // （見出しクリックで変更された場合もズレないように）
+    const sortSelect =
+        document.getElementById(
+            "ranking-sort-select"
+        );
+
+    if (sortSelect) {
+        sortSelect.value = currentSortKey;
+    }
 
 }
 
