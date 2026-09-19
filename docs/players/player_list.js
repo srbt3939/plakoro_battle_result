@@ -37,8 +37,9 @@ function renderPlayerList(players) {
     container.innerHTML =
         sorted.length
             ? sorted.map(player => `
-                <a class="player-index-row" href="player.html?id=${player.id}">
-                    ${player.name}
+                <a class="player-card" href="player.html?id=${player.id}">
+                    <span class="player-card-avatar">🧑</span>
+                    <span class="player-card-name">${player.name}</span>
                 </a>
             `).join("")
             : "<p>登録されているプレイヤーがいません。</p>";
