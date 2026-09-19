@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プレイヤー 対戦データ | ON PLA!</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="pokemon-detail-page">
+<header class="detail-header">
+    <a class="back-link" href="index.html">← プレイヤーランキングに戻る</a>
+    <div class="detail-title">
+        <div id="player-identity" class="detail-identity"></div>
+        <div>
+            <p class="eyebrow">PLAYER RECORD</p>
+            <h1><span data-player-name>プレイヤー</span> 対戦データ</h1>
+            <p><span data-player-name>プレイヤー</span>の対戦成績と、使用ポケモンごとの記録</p>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="detail-summary" aria-label="プレイヤー総合戦績">
+        <div class="detail-stat detail-stat-primary">
+            <span class="detail-stat-label">総合勝率</span>
+            <strong id="player-win-rate">-</strong>
+            <span id="player-record" class="detail-stat-note">-</span>
+        </div>
+        <div class="detail-stat">
+            <span class="detail-stat-label">対戦数</span>
+            <strong id="player-battles">-</strong>
+            <span class="detail-stat-note">選択中のシーズンでの対戦記録</span>
+        </div>
+        <div class="detail-stat">
+            <span class="detail-stat-label">最多使用ポケモン</span>
+            <strong id="player-top-pokemon">-</strong>
+            <span id="player-top-pokemon-note" class="detail-stat-note">-</span>
+        </div>
+    </section>
+
+    <section class="card">
+        <div class="section-header-row">
+            <h2>🎯 先攻・後攻の戦績</h2>
+            <label class="season-select-label" for="season-select">
+                シーズン
+                <select id="season-select">
+                    <option value="season_1">シーズン1</option>
+                    <option value="season_2">シーズン2</option>
+                    <option value="all" selected>全シーズン</option>
+                </select>
+            </label>
+        </div>
+        <div id="player-order-stats" class="order-stats"></div>
+    </section>
+
+    <section class="card">
+        <div class="section-heading-row">
+            <div>
+                <h2>⚔️ 使用ポケモン別成績</h2>
+                <p class="section-note">使用数の多い順。バーはそのポケモンでの勝率を表します。</p>
+            </div>
+        </div>
+        <div id="player-pokemon-usage" class="character-matchups"></div>
+    </section>
+
+    <section class="card">
+        <h2>🕒 <span data-player-name>プレイヤー</span>の直近の試合</h2>
+        <div id="player-recent-battles" class="recent-battle-list"></div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <p class="fan-site-notice">本サイトは、ポケットモンスターおよびポケモン関連コンテンツのファンサイトです。</p>
+        <p class="fan-site-notice">株式会社ポケモン、任天堂株式会社、株式会社ゲームフリーク、株式会社クリーチャーズ等の公式・関連企業とは一切関係ありません。</p>
+        <p class="copyright-notice">Pokémon、ポケットモンスターおよび関連する名称・画像等は、それぞれの権利者に帰属します。</p>
+        <p class="footer-credit">© ON PLA! プラコロ バトルデータ</p>
+    </div>
+</footer>
+<script src="player_detail.js"></script>
+</body>
+</html>

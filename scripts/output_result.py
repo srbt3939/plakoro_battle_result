@@ -941,6 +941,46 @@ def export_matchups(conn):
 
 
 # =========================
+# Player一覧
+# （seasonに紐づかないため、season別フォルダではなく
+#  docs/data/ 直下に1つだけ出力する）
+# =========================
+
+def export_players(conn):
+
+    rows = conn.execute("""
+        SELECT
+            id,
+            name
+        FROM players
+        ORDER BY name COLLATE NOCASE
+    """).fetchall()
+
+    players = [
+        {
+            "id": row["id"],
+            "name": row["name"]
+        }
+        for row in rows
+    ]
+
+    path = BASE_DIR / "docs" / "data" / "players.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(
+            {
+                "players": players
+            },
+            f,
+            ensure_ascii=False,
+            indent=4
+        )
+
+    print(f"出力: {path}")
+
+
+# =========================
 # メイン
 # =========================
 
@@ -949,6 +989,9 @@ def main():
     conn = get_connection()
 
     try:
+
+        # Player一覧はseason非依存なので1回だけ出力
+        export_players(conn)
 
         for season_id in SEASONS_TO_EXPORT:
 
