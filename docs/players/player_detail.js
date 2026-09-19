@@ -281,8 +281,8 @@ function formatBattleEntry(record) {
     const sideHTML = (side, isSideFirst) => `
         <div class="recent-battle-player ${side.result === "win" ? "is-win" : "is-lose"}">
             <span class="recent-battle-result">${side.result === "win" ? "WIN" : "LOSE"}</span>
-            ${side.name ? `<span class="recent-battle-name">${side.name}</span>` : ""}
-            ${getIdentityHTML(side.pokemon, side.pokemon_id)}
+            ` + // ${side.name ? `<span class="recent-battle-name">${side.name}</span>` : ""}
+            `${getIdentityHTML(side.pokemon, side.pokemon_id)}
             <span class="pokemon-type">${getTypeHTML([side.type1, side.type2])}</span>
             <span class="recent-battle-order">${isSideFirst ? "先攻" : "後攻"}</span>
         </div>`;
