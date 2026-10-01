@@ -521,7 +521,7 @@
         try {
 
             const response =
-                await fetch("emoji.json");
+                await fetch("data/emoji.json");
 
             if (!response.ok) {
                 throw new Error(
@@ -550,15 +550,21 @@
 
             createPokemonSelects();
 
-            document.getElementById("status").textContent =
-                `${data.pokemon.length}種類のポケモンを読み込みました。`;
+            const statusElement = document.getElementById("status");
+            if (statusElement) {
+                statusElement.textContent =
+                    `${data.pokemon.length}種類のポケモンを読み込みました。`;
+            }
 
         } catch (error) {
 
             console.error(error);
 
-            document.getElementById("status").textContent =
-                "emoji.jsonの読み込みに失敗しました。";
+            const statusElement = document.getElementById("status");
+            if (statusElement) {
+                statusElement.textContent =
+                    "emoji.jsonの読み込みに失敗しました。";
+            }
 
             alert(error.message);
 
@@ -743,7 +749,7 @@
 
             img.className = "emoji-img";
 
-            img.src = `emoji_images/${emojiId}.webp`;
+            img.src = `assets/images/emoji_images/${emojiId}.webp`;
 
             img.alt = emojiName;
 

@@ -26,22 +26,57 @@ Discord上で報告された対戦結果をもとに、ポケモンごとの使�
 
 ```text
 Discord
+   │ 対戦結果
+   ▼
+Discord Bot（現在は手動）
+   │
+   ▼
+SQLite (data/pokemon.db)
+   │
+   ▼
+JSONデータ生成 (scripts/output_result.py)
+   │
+   ▼
+GitHub Pages (docs/)
+```
 
 ## ディレクトリ構成
 
 ```text
 app/
-├── battle_parser.py   # Discordメッセージ解析・登録
-├── discord_bot.py     # Discord Bot
-├── insert_app.py      # 対戦結果登録画面
-├── result.py          # 集計確認画面
-└── templates/         # Flaskテンプレート
+├── battle_parser.py
+├── discord_bot.py
+├── insert_app.py
+└── templates/
+      ├── battle_form.html
+      ├── insert_index.html
+      ├── message_form.html
+      └── player_form.html
 data/
-├── pokemon.db         # 運用データベース
-└── pokemon_backup.db  # DBバックアップ
+└── pokemon.db
 scripts/
-└── output_result.py   # GitHub Pages用JSON生成
-docs/                  # GitHub Pages公開ファイル
+└── output_result.py
+docs/
+├── index.html                 # GitHub Pagesのトップ
+├── recent_battles.html
+├── input_form.html
+├── assets/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   ├── app.js
+│   │   ├── recent_battles.js
+│   │   ├── characters/
+│   │   │   └── character.js
+│   │   └── players/
+│   │       ├── player_list.js
+│   │       └── player_detail.js
+│   └── images/
+│       ├── emoji_images/
+│       └── type_images/
+├── data/                      # 集計JSONとemoji.json
+├── characters/                # ポケモン別ページ
+└── players/                   # プレイヤー別ページ
 ```
 
 ## 実行
@@ -59,25 +94,3 @@ python scripts/output_result.py
 # Discord Bot
 python -m app.discord_bot
 ```
-   │
-   │ 対戦結果
-   ▼
-Discord Bot（現在は手動）
-   │
-   ▼
-SQLite
-(pokemon.db)
-   │
-   ├── players
-   ├── pokemon
-   ├── battles
-   └── battle_messages
-   │
-   ▼
-JSONデータ生成
-   │
-   ▼
-GitHub Pages
-   │
-   ▼
-戦績確認サイト

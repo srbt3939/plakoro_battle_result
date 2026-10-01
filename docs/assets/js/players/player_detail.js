@@ -40,7 +40,7 @@ async function loadJSON(file, season) {
 async function loadEmojiData() {
 
     const response =
-        await fetch(`${ASSET_PATH}emoji.json`);
+        await fetch(`${ASSET_PATH}data/emoji.json`);
 
     if (!response.ok) {
         throw new Error("emoji.jsonの読み込みに失敗");
@@ -71,7 +71,7 @@ function getIdentityHTML(name, pokemonId, className = "") {
     );
 
     const image = imageMatch
-        ? `<img src="${ASSET_PATH}emoji_images/${imageMatch[2]}.webp" alt="${name}" class="pokemon-emoji" onerror="this.style.display='none'">`
+        ? `<img src="${ASSET_PATH}assets/images/emoji_images/${imageMatch[2]}.webp" alt="${name}" class="pokemon-emoji" onerror="this.style.display='none'">`
         : "";
 
     return `<span class="pokemon-name-bold ${className}">${image}<span>${name}</span></span>`;
@@ -86,7 +86,7 @@ function getTypeHTML(types) {
         const imageName = typeImageNames[type];
 
         return imageName
-            ? `<img src="${ASSET_PATH}type_images/${imageName}.webp" alt="${type}" class="type-emoji">`
+            ? `<img src="${ASSET_PATH}assets/images/type_images/${imageName}.webp" alt="${type}" class="type-emoji">`
             : "";
 
     }).join("");
@@ -187,7 +187,22 @@ function renderSummary(records) {
         topPokemon ? `${topPokemon.count}戦使用` : "-";
 
     document.getElementById("player-identity").innerHTML =
-        `<span class="player-avatar">🧑</span>`;
+        `<span class="player-avatar">🚹</span>`;
+
+}
+
+
+function renderRecentWinRate(records) {
+
+    const recent = [...records]
+        .sort((a, b) => b.battle.id - a.battle.id)
+        .slice(0, 10);
+    const wins = recent.filter(record => record.self.result === "win").length;
+
+    document.getElementById("player-recent-win-rate").textContent =
+        `${formatRate(wins, recent.length)}%`;
+    document.getElementById("player-recent-record").textContent =
+        `${recent.length}戦中 ${wins}勝 ${recent.length - wins}敗`;
 
 }
 
@@ -340,6 +355,7 @@ async function loadAndRender(season) {
 
     setPlayerName(name);
     renderSummary(records);
+    renderRecentWinRate(records);
     renderOrderStats(records);
     renderPokemonUsage(records);
     renderRecentBattles(records);

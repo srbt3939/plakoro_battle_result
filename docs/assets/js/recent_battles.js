@@ -45,7 +45,7 @@ async function loadEmojiData() {
     try {
 
         const response =
-            await fetch("emoji.json");
+            await fetch("data/emoji.json");
 
         if (!response.ok) {
             throw new Error(
@@ -102,7 +102,7 @@ function getPokemonIdentityHTML(name, pokemonId) {
         if (match) {
             pokemonImage = `
                 <img
-                    src="emoji_images/${match[2]}.webp"
+                    src="assets/images/emoji_images/${match[2]}.webp"
                     alt="${name}"
                     class="pokemon-emoji"
                     onerror="this.style.display='none'"
@@ -138,7 +138,7 @@ function getTypeImagesHTML(types) {
             return `
                 <span class="type-item">
                     <img
-                        src="type_images/${imageName}.webp"
+                        src="assets/images/type_images/${imageName}.webp"
                         alt="${type}"
                         class="type-emoji"
                         onerror="this.style.display='none'"

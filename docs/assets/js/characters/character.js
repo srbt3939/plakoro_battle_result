@@ -35,7 +35,7 @@ function getIdentityHTML(name, pokemonId, className = "") {
     const emoji = getEmoji(pokemonId);
     const imageMatch = emoji?.emoji?.match(/<:([^:]+):(\d+)>/);
     const image = imageMatch
-        ? `<img src="${ASSET_PATH}emoji_images/${imageMatch[2]}.webp" alt="${name}" class="pokemon-emoji" onerror="this.style.display='none'">`
+        ? `<img src="${ASSET_PATH}assets/images/emoji_images/${imageMatch[2]}.webp" alt="${name}" class="pokemon-emoji" onerror="this.style.display='none'">`
         : "";
 
     return `<span class="pokemon-name-bold ${className}">${image}<span>${name}</span></span>`;
@@ -45,7 +45,7 @@ function getTypeHTML(types) {
     return [...new Set(types.filter(Boolean))].map(type => {
         const imageName = typeImageNames[type];
         return imageName
-            ? `<img src="${ASSET_PATH}type_images/${imageName}.webp" alt="${type}" class="type-emoji">`
+            ? `<img src="${ASSET_PATH}assets/images/type_images/${imageName}.webp" alt="${type}" class="type-emoji">`
             : "";
     }).join("");
 }
@@ -128,7 +128,7 @@ function renderRecentBattles(battles) {
 async function main() {
     try {
         const [emoji, battleData, matchupData] = await Promise.all([
-            loadJSON("emoji.json", ".."),
+            loadJSON("emoji.json"),
             loadJSON("battles.json"),
             loadJSON("matchups.json")
         ]);

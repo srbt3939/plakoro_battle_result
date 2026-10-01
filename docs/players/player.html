@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>プレイヤー 対戦データ | ON PLA!</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body class="pokemon-detail-page">
 <header class="detail-header">
-    <a class="back-link" href="index.html">← プレイヤーランキングに戻る</a>
+    <a class="back-link" href="index.html">← プレイヤー一覧に戻る</a>
     <div class="detail-title">
         <div id="player-identity" class="detail-identity"></div>
         <div>
             <p class="eyebrow">PLAYER RECORD</p>
             <h1><span data-player-name>プレイヤー</span> 対戦データ</h1>
             <p><span data-player-name>プレイヤー</span>の対戦成績と、使用ポケモンごとの記録</p>
+            ※このページはプレビュー版です。今後、機能追加やデザイン変更が行われる可能性があります。
         </div>
     </div>
 </header>
@@ -25,6 +26,11 @@
             <span class="detail-stat-label">総合勝率</span>
             <strong id="player-win-rate">-</strong>
             <span id="player-record" class="detail-stat-note">-</span>
+        </div>
+        <div class="detail-stat">
+            <span class="detail-stat-label">直近10戦の勝率</span>
+            <strong id="player-recent-win-rate">-</strong>
+            <span id="player-recent-record" class="detail-stat-note">-</span>
         </div>
         <div class="detail-stat">
             <span class="detail-stat-label">対戦数</span>
@@ -45,8 +51,8 @@
                 シーズン
                 <select id="season-select">
                     <option value="season_1">シーズン1</option>
-                    <option value="season_2">シーズン2</option>
-                    <option value="all" selected>全シーズン</option>
+                    <option value="season_2" selected>シーズン2</option>
+                    <option value="all">全シーズン</option>
                 </select>
             </label>
         </div>
@@ -77,6 +83,6 @@
         <p class="footer-credit">© ON PLA! プラコロ バトルデータ</p>
     </div>
 </footer>
-<script src="player_detail.js"></script>
+<script src="../assets/js/players/player_detail.js"></script>
 </body>
 </html>

@@ -470,6 +470,12 @@ main {
     line-height: 1;
 }
 
+.player-card-avatar img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
 .player-card-name {
     max-width: 100%;
     overflow: hidden;
@@ -722,7 +728,7 @@ main {
 
 .detail-summary {
     display: grid;
-    grid-template-columns: 1.2fr 1fr 1fr;
+    grid-template-columns: 1.2fr repeat(3, 1fr);
     gap: 14px;
     margin-bottom: 24px;
 }
@@ -765,8 +771,16 @@ main {
 }
 
 .detail-stat .pokemon-name-bold {
+    flex-wrap: wrap;
     margin: 7px 0;
+    overflow: visible;
     color: var(--accent);
+    white-space: normal;
+}
+
+.detail-stat .pokemon-name-bold > span {
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
 
 .section-heading-row {
