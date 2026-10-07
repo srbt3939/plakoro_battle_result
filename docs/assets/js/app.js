@@ -6,6 +6,7 @@ let emojiData = null;
 
 const characterPagePaths = {
     9: "characters/Pincer.html",
+    10: "characters/Articuno.html",
     12: "characters/Moltres.html"
 };
 
