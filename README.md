@@ -75,7 +75,7 @@ docs/
 │       ├── emoji_images/
 │       └── type_images/
 ├── data/                      # 集計JSONとemoji.json
-├── characters/                # ポケモン別ページ
+├── characters/                # キャラクター共通の対戦詳細ページ
 └── players/                   # プレイヤー別ページ
 ```
 

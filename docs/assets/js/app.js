@@ -4,12 +4,6 @@
 
 let emojiData = null;
 
-const characterPagePaths = {
-    9: "characters/Pincer.html",
-    10: "characters/Articuno.html",
-    12: "characters/Moltres.html"
-};
-
 const typeImageNames = {
     "あく": "dark",
     "かみなり": "electric",
@@ -1426,11 +1420,7 @@ function getPokemonIdentityHTML(name, pokemonId) {
         <span>${name}</span>
     `;
 
-    const detailPath = characterPagePaths[pokemonId];
-
-    return detailPath
-        ? `<a class="pokemon-detail-link" href="${detailPath}">${identityHTML}</a>`
-        : identityHTML;
+    return `<a class="pokemon-detail-link" href="characters/character.html?id=${encodeURIComponent(pokemonId)}">${identityHTML}</a>`;
 
 }
 

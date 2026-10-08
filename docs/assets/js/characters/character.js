@@ -1,6 +1,8 @@
-const page = document.body;
-const characterId = Number(page.dataset.characterId);
-const characterName = page.dataset.characterName;
+const requestedCharacterId = new URLSearchParams(window.location.search).get("id");
+const characterId = /^\d+$/.test(requestedCharacterId || "")
+    ? Number(requestedCharacterId)
+    : null;
+let characterName = "";
 const DATA_PATH = "../data";
 const ASSET_PATH = "../";
 
@@ -65,6 +67,16 @@ function formatPercentage(value) {
     return Number(value || 0).toFixed(1);
 }
 
+function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[character]);
+}
+
 function setCharacterNames() {
     document.querySelectorAll("span[data-character-name]").forEach(element => {
         element.textContent = characterName;
@@ -102,6 +114,31 @@ function renderOrderStats(battles) {
     }).join("");
 }
 
+function renderPlayerRanking(battles, players) {
+    const playerNames = new Map(players.map(player => [player.id, player.name]));
+    const usageByPlayer = new Map();
+
+    battles.forEach(battle => {
+        const { player } = getCharacterSide(battle);
+        if (player.id == null || !playerNames.has(player.id)) {
+            return;
+        }
+
+        usageByPlayer.set(player.id, (usageByPlayer.get(player.id) || 0) + 1);
+    });
+
+    const ranking = [...usageByPlayer.entries()]
+        .map(([id, count]) => ({ id, count, name: playerNames.get(id) }))
+        .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, "ja"))
+        .slice(0, 3);
+
+    document.getElementById("character-player-ranking").innerHTML = ranking.length
+        ? ranking.map((player, index) => {
+            return `<a class="character-player-card" href="../players/player.html?id=${encodeURIComponent(player.id)}"><span class="character-player-rank">${index + 1}位</span><span class="character-player-name">${escapeHTML(player.name)}</span><span class="character-player-usage">${player.count}試合</span></a>`;
+        }).join("")
+        : "<p>プレイヤー別の使用データがありません。</p>";
+}
+
 function renderMatchups(matchups) {
     const sorted = [...matchups].sort((a, b) => b.battles - a.battles);
     document.getElementById("character-matchups").innerHTML = sorted.length ? sorted.map(matchup => {
@@ -127,12 +164,19 @@ function renderRecentBattles(battles) {
 
 async function main() {
     try {
-        const [emoji, battleData, matchupData] = await Promise.all([
+        const [emoji, battleData, matchupData, allBattleData, playerData] = await Promise.all([
             loadJSON("emoji.json"),
             loadJSON("battles.json"),
-            loadJSON("matchups.json")
+            loadJSON("matchups.json"),
+            loadJSON("all/battles.json"),
+            loadJSON("players.json")
         ]);
         emojiData = emoji;
+        const character = emojiData.pokemon?.find(pokemon => pokemon.id === characterId);
+        if (!Number.isSafeInteger(characterId) || !character) {
+            throw new Error("キャラクターIDが指定されていないか、存在しないキャラクターです");
+        }
+        characterName = character.name;
         setCharacterNames();
 
         const battles = battleData.battles.filter(battle =>
@@ -141,14 +185,21 @@ async function main() {
         const matchups = matchupData.matchups.filter(matchup =>
             matchup.pokemon1.id === characterId || matchup.pokemon2.id === characterId
         );
+        const allCharacterBattles = allBattleData.battles.filter(battle =>
+            battle.player1.pokemon_id === characterId || battle.player2.pokemon_id === characterId
+        );
 
         renderSummary(battles, matchups);
         renderOrderStats(battles);
+        renderPlayerRanking(allCharacterBattles, playerData.players);
         renderMatchups(matchups);
         renderRecentBattles(battles);
     } catch (error) {
         console.error(error);
-        document.querySelector("main").innerHTML = "<p class=\"load-error\">データを読み込めませんでした。</p>";
+        const message = error.message.includes("キャラクターID")
+            ? error.message
+            : "データを読み込めませんでした。";
+        document.querySelector("main").innerHTML = `<p class="load-error">${message}</p>`;
     }
 }
 
