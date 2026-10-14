@@ -94,21 +94,45 @@
             font-size: 20px;
         }
 
+        .battle-list {
+            display: grid;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .battle-entry {
+            padding: 20px 24px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            box-shadow: 0 4px 14px rgba(38, 50, 56, 0.05);
+        }
+
+        .battle-entry h2 {
+            margin: 0 0 16px;
+            color: #344b55;
+            font-size: 18px;
+        }
+
         .battle-row {
             display: flex;
             align-items: flex-end;
             gap: 15px;
         }
 
+        .battle-fields {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
         .battle-field {
             display: flex;
             flex-direction: column;
-            flex-shrink: 0;
             gap: 5px;
         }
 
         .pokemon-field {
-            flex: 1;
             min-width: 0;
         }
 
@@ -151,6 +175,27 @@
             background: #25657b;
         }
 
+        form > .add-battle-button {
+            margin-bottom: 16px;
+            color: var(--accent);
+            background: var(--surface);
+            border: 1px solid var(--accent);
+        }
+
+        form > .add-battle-button:hover {
+            background: var(--accent-soft);
+        }
+
+        .remove-battle-button {
+            margin-top: 14px;
+            padding: 7px 12px;
+            color: #8a3c3c;
+            background: #fff;
+            border: 1px solid #d8bebe;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
         body > a {
             display: block;
             width: fit-content;
@@ -183,9 +228,12 @@
                 padding: 16px;
             }
 
-            .battle-row {
-                align-items: stretch;
-                flex-direction: column;
+            .battle-fields {
+                grid-template-columns: 1fr;
+            }
+
+            .battle-entry {
+                padding: 16px;
             }
         }
     </style>
@@ -218,204 +266,143 @@
     </p>
 
 
-    <!-- Player 1 / Player 2 -->
+    <!-- 対戦参加プレイヤー -->
     <div class="players">
 
-        <!-- Player 1 -->
         <div class="player-card">
-
             <h2>Player 1</h2>
-
-            <div class="battle-row">
-
-                <div class="battle-field pokemon-field">
-
-                    <label for="player1">
-                        Player（任意）
-                    </label>
-
-                    <select
-                        id="player1"
-                        name="player1_id"
-                    >
-
-                        <option value="">
-                            未選択
-                        </option>
-
-                        {% for pl in players %}
-
-                        <option value="{{ pl.id }}">
-                            {{ pl.name }}
-                        </option>
-
-                        {% endfor %}
-
-                    </select>
-
-                </div>
-
-            </div>
-
-            <div class="battle-row">
-
-                <div class="battle-field pokemon-field">
-
-                    <label for="player1_pokemon">
-                        Pokémon
-                    </label>
-
-                    <select
-                        id="player1_pokemon"
-                        name="player1_pokemon_id"
-                        required
-                    >
-
-                        {% for p in pokemon %}
-
-                        <option value="{{ p.id }}">
-                            {{ p.name }}
-                        </option>
-
-                        {% endfor %}
-
-                    </select>
-
-                </div>
-
-
-            </div>
-
+            <label for="player1">Player（任意）</label>
+            <select id="player1" name="player1_id">
+                <option value="">未選択</option>
+                {% for pl in players %}
+                <option value="{{ pl.id }}">{{ pl.name }}</option>
+                {% endfor %}
+            </select>
         </div>
 
-
-        <!-- Player 2 -->
         <div class="player-card">
-
             <h2>Player 2</h2>
-
-            <div class="battle-row">
-
-                <div class="battle-field pokemon-field">
-
-                    <label for="player2">
-                        Player（任意）
-                    </label>
-
-                    <select
-                        id="player2"
-                        name="player2_id"
-                    >
-
-                        <option value="">
-                            未選択
-                        </option>
-
-                        {% for pl in players %}
-
-                        <option value="{{ pl.id }}">
-                            {{ pl.name }}
-                        </option>
-
-                        {% endfor %}
-
-                    </select>
-
-                </div>
-
-            </div>
-
-            <div class="battle-row">
-
-                <div class="battle-field pokemon-field">
-
-                    <label for="player2_pokemon">
-                        Pokémon
-                    </label>
-
-                    <select
-                        id="player2_pokemon"
-                        name="player2_pokemon_id"
-                        required
-                    >
-
-                        {% for p in pokemon %}
-
-                        <option value="{{ p.id }}">
-                            {{ p.name }}
-                        </option>
-
-                        {% endfor %}
-
-                    </select>
-
-                </div>
-
-
-            </div>
-
+            <label for="player2">Player（任意）</label>
+            <select id="player2" name="player2_id">
+                <option value="">未選択</option>
+                {% for pl in players %}
+                <option value="{{ pl.id }}">{{ pl.name }}</option>
+                {% endfor %}
+            </select>
         </div>
-
     </div>
 
+    <div id="battle-entries" class="battle-list">
+        <section class="battle-entry">
+            <h2>試合 1</h2>
+            <div class="battle-fields">
+                <div class="battle-field">
+                    <label>Player 1 Pokémon</label>
+                    <select name="player1_pokemon_id" required>
+                        {% for p in pokemon %}
+                        <option value="{{ p.id }}">{{ p.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="battle-field">
+                    <label>Player 2 Pokémon</label>
+                    <select name="player2_pokemon_id" required>
+                        {% for p in pokemon %}
+                        <option value="{{ p.id }}">{{ p.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="battle-field">
+                    <label>対戦結果（Player 1視点）</label>
+                    <select name="player1_result" required>
+                        <option value="win">勝利</option>
+                        <option value="lose">敗北</option>
+                    </select>
+                </div>
+                <div class="battle-field">
+                    <label>先攻</label>
+                    <select name="first_player">
+                        <option value="1">Player 1</option>
+                        <option value="2">Player 2</option>
+                        <option value="">不明</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+    </div>
 
-    <!-- 対戦結果 -->
-    <p class="result-card">
+    <button class="add-battle-button" type="button" id="add-battle">
+        ＋ 試合を追加
+    </button>
 
-        <label for="player1_result">
-            対戦結果（Player 1視点）
-        </label>
-
-        <select
-            id="player1_result"
-            name="player1_result"
-            required
-        >
-
-            <option value="win">
-                勝利
-            </option>
-
-            <option value="lose">
-                敗北
-            </option>
-
-        </select>
-
-    </p>
-
-
-    <!-- 先攻 -->
-    <p>
-        <label for="first_player">
-            先攻
-        </label>
-
-        <select name="first_player">
-
-            <option value="1">
-                Player 1
-            </option>
-
-            <option value="2">
-                Player 2
-            </option>
-
-            <option value="">
-                不明
-            </option>
-
-        </select>
-
-    </p>
-
-
-    <!-- 登録 -->
     <button type="submit">
-        試合を登録
+        試合をまとめて登録
     </button>
 
 </form>
+
+<template id="battle-entry-template">
+    <section class="battle-entry">
+        <h2></h2>
+        <div class="battle-fields">
+            <div class="battle-field">
+                <label>Player 1 Pokémon</label>
+                <select name="player1_pokemon_id" required>
+                    {% for p in pokemon %}
+                    <option value="{{ p.id }}">{{ p.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="battle-field">
+                <label>Player 2 Pokémon</label>
+                <select name="player2_pokemon_id" required>
+                    {% for p in pokemon %}
+                    <option value="{{ p.id }}">{{ p.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="battle-field">
+                <label>対戦結果（Player 1視点）</label>
+                <select name="player1_result" required>
+                    <option value="win">勝利</option>
+                    <option value="lose">敗北</option>
+                </select>
+            </div>
+            <div class="battle-field">
+                <label>先攻</label>
+                <select name="first_player">
+                    <option value="1">Player 1</option>
+                    <option value="2">Player 2</option>
+                    <option value="">不明</option>
+                </select>
+            </div>
+        </div>
+        <button class="remove-battle-button" type="button">この試合を削除</button>
+    </section>
+</template>
+
+<script>
+    const battleEntries = document.getElementById("battle-entries");
+    const battleTemplate = document.getElementById("battle-entry-template");
+
+    function updateBattleNumbers() {
+        battleEntries.querySelectorAll(".battle-entry h2").forEach((heading, index) => {
+            heading.textContent = `試合 ${index + 1}`;
+        });
+    }
+
+    document.getElementById("add-battle").addEventListener("click", () => {
+        battleEntries.append(battleTemplate.content.cloneNode(true));
+        updateBattleNumbers();
+    });
+
+    battleEntries.addEventListener("click", (event) => {
+        if (event.target.closest(".remove-battle-button")) {
+            event.target.closest(".battle-entry").remove();
+            updateBattleNumbers();
+        }
+    });
+</script>
 
 <a href="/">
     戻る

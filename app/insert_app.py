@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, abort, render_template, request, redirect
 import sqlite3
 from pathlib import Path
 
@@ -103,54 +103,69 @@ def battle():
     if request.method == "POST":
 
         battle_message_id = request.form["battle_message_id"]
-
-        player1_pokemon_id = request.form["player1_pokemon_id"]
-        player2_pokemon_id = request.form["player2_pokemon_id"]
-
-        # プレイヤーは空欄可
         player1_id = request.form["player1_id"] or None
         player2_id = request.form["player2_id"] or None
 
-        first_player = request.form["first_player"]
+        player1_pokemon_ids = request.form.getlist("player1_pokemon_id")
+        player2_pokemon_ids = request.form.getlist("player2_pokemon_id")
+        first_players = request.form.getlist("first_player")
+        player1_results = request.form.getlist("player1_result")
 
-        player1_result = request.form["player1_result"]
-        player2_result = {"win": "lose", "lose": "win"}[player1_result]
+        battle_count = len(player1_pokemon_ids)
+        if (
+            battle_count == 0
+            or len(player2_pokemon_ids) != battle_count
+            or len(first_players) != battle_count
+            or len(player1_results) != battle_count
+            or any(result not in ("win", "lose") for result in player1_results)
+            or any(first not in ("", "1", "2") for first in first_players)
+        ):
+            conn.close()
+            abort(400)
 
-        conn.execute("""
-            INSERT INTO battles (
+        for player1_pokemon_id, player2_pokemon_id, first_player, player1_result in zip(
+            player1_pokemon_ids,
+            player2_pokemon_ids,
+            first_players,
+            player1_results
+        ):
+            player2_result = {"win": "lose", "lose": "win"}[player1_result]
+
+            conn.execute("""
+                INSERT INTO battles (
+                    battle_message_id,
+                    battle_number,
+                    player1_pokemon_id,
+                    player2_pokemon_id,
+                    player1_id,
+                    player2_id,
+                    first_player,
+                    player1_result,
+                    player2_result
+                )
+                SELECT
+                    ?,
+                    COALESCE(MAX(battle_number), 0) + 1,
+                    ?,
+                    ?,
+                    ?,
+                    ?,
+                    ?,
+                    ?,
+                    ?
+                FROM battles
+                WHERE battle_message_id = ?
+            """, (
                 battle_message_id,
-                battle_number,
                 player1_pokemon_id,
                 player2_pokemon_id,
                 player1_id,
                 player2_id,
-                first_player,
+                first_player or None,
                 player1_result,
-                player2_result
-            )
-            SELECT
-                ?,
-                COALESCE(MAX(battle_number), 0) + 1,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?
-            FROM battles
-            WHERE battle_message_id = ?
-        """, (
-            battle_message_id,
-            player1_pokemon_id,
-            player2_pokemon_id,
-            player1_id,
-            player2_id,
-            first_player,
-            player1_result,
-            player2_result,
-            battle_message_id
-        ))
+                player2_result,
+                battle_message_id
+            ))
 
         conn.commit()
         conn.close()
