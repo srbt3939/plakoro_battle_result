@@ -1,18 +1,6 @@
 {
     "days": [
         {
-            "date": "2026-09-28",
-            "battle_count": 0
-        },
-        {
-            "date": "2026-09-29",
-            "battle_count": 12
-        },
-        {
-            "date": "2026-09-30",
-            "battle_count": 28
-        },
-        {
             "date": "2026-10-01",
             "battle_count": 2
         },
@@ -50,10 +38,22 @@
         },
         {
             "date": "2026-10-10",
-            "battle_count": 2
+            "battle_count": 14
         },
         {
             "date": "2026-10-11",
+            "battle_count": 2
+        },
+        {
+            "date": "2026-10-12",
+            "battle_count": 0
+        },
+        {
+            "date": "2026-10-13",
+            "battle_count": 0
+        },
+        {
+            "date": "2026-10-14",
             "battle_count": 0
         }
     ]
