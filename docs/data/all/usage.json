@@ -1,5 +1,5 @@
 {
-    "total_usage": 1265,
+    "total_usage": 1287,
     "pokemon": [
         {
             "rank": 1,
@@ -11,7 +11,7 @@
                 "そら"
             ],
             "usage_count": 178,
-            "usage_rate": 14.1
+            "usage_rate": 13.8
         },
         {
             "rank": 2,
@@ -23,7 +23,7 @@
                 "はがね"
             ],
             "usage_count": 115,
-            "usage_rate": 9.1
+            "usage_rate": 8.9
         },
         {
             "rank": 3,
@@ -34,7 +34,7 @@
             "weaknesses": [
                 "みず"
             ],
-            "usage_count": 108,
+            "usage_count": 110,
             "usage_rate": 8.5
         },
         {
@@ -46,7 +46,7 @@
             "weaknesses": [
                 "あく"
             ],
-            "usage_count": 99,
+            "usage_count": 101,
             "usage_rate": 7.8
         },
         {
@@ -58,8 +58,8 @@
             "weaknesses": [
                 "とう"
             ],
-            "usage_count": 95,
-            "usage_rate": 7.5
+            "usage_count": 99,
+            "usage_rate": 7.7
         },
         {
             "rank": 6,
@@ -70,7 +70,7 @@
             "weaknesses": [
                 "かみなり"
             ],
-            "usage_count": 92,
+            "usage_count": 94,
             "usage_rate": 7.3
         },
         {
@@ -82,11 +82,23 @@
             "weaknesses": [
                 "くさ"
             ],
-            "usage_count": 91,
-            "usage_rate": 7.2
+            "usage_count": 94,
+            "usage_rate": 7.3
         },
         {
             "rank": 8,
+            "pokemon_id": 13,
+            "name": "ゲンガー",
+            "type1": "あく",
+            "type2": null,
+            "weaknesses": [
+                "ちょう"
+            ],
+            "usage_count": 72,
+            "usage_rate": 5.6
+        },
+        {
+            "rank": 9,
             "pokemon_id": 1,
             "name": "フシギダネ",
             "type1": "くさ",
@@ -95,18 +107,6 @@
                 "ほのお"
             ],
             "usage_count": 71,
-            "usage_rate": 5.6
-        },
-        {
-            "rank": 9,
-            "pokemon_id": 13,
-            "name": "ゲンガー",
-            "type1": "あく",
-            "type2": null,
-            "weaknesses": [
-                "ちょう"
-            ],
-            "usage_count": 70,
             "usage_rate": 5.5
         },
         {
@@ -119,10 +119,22 @@
                 "ほのお"
             ],
             "usage_count": 64,
-            "usage_rate": 5.1
+            "usage_rate": 5.0
         },
         {
             "rank": 11,
+            "pokemon_id": 7,
+            "name": "ベトベター",
+            "type1": "あく",
+            "type2": null,
+            "weaknesses": [
+                "とう"
+            ],
+            "usage_count": 60,
+            "usage_rate": 4.7
+        },
+        {
+            "rank": 12,
             "pokemon_id": 2,
             "name": "ヒトカゲ",
             "type1": "ほのお",
@@ -131,10 +143,10 @@
                 "みず"
             ],
             "usage_count": 59,
-            "usage_rate": 4.7
+            "usage_rate": 4.6
         },
         {
-            "rank": 12,
+            "rank": 13,
             "pokemon_id": 5,
             "name": "イーブイ",
             "type1": "むしょく",
@@ -142,19 +154,7 @@
             "weaknesses": [
                 "とう"
             ],
-            "usage_count": 58,
-            "usage_rate": 4.6
-        },
-        {
-            "rank": 13,
-            "pokemon_id": 7,
-            "name": "ベトベター",
-            "type1": "あく",
-            "type2": null,
-            "weaknesses": [
-                "とう"
-            ],
-            "usage_count": 58,
+            "usage_count": 59,
             "usage_rate": 4.6
         },
         {
@@ -166,8 +166,8 @@
             "weaknesses": [
                 "ほのお"
             ],
-            "usage_count": 55,
-            "usage_rate": 4.3
+            "usage_count": 58,
+            "usage_rate": 4.5
         },
         {
             "rank": 15,
@@ -178,7 +178,7 @@
             "weaknesses": [
                 "とう"
             ],
-            "usage_count": 52,
+            "usage_count": 53,
             "usage_rate": 4.1
         }
     ]
