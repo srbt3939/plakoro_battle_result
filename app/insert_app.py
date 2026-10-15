@@ -1,6 +1,12 @@
-from flask import Flask, abort, render_template, request, redirect
+import re
+from flask import Flask, abort, render_template, request, redirect, url_for
 import sqlite3
 from pathlib import Path
+
+if __package__:
+    from .battle_parser import parse_discord_message
+else:
+    from battle_parser import parse_discord_message
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,7 +46,7 @@ def message():
         raw_content = request.form["raw_content"]
         created_at = request.form["created_at"]
 
-        conn.execute("""
+        cursor = conn.execute("""
             INSERT INTO battle_messages (
                 discord_message_id,
                 season_id,
@@ -57,10 +63,11 @@ def message():
             created_at
         ))
 
+        message_id = cursor.lastrowid
         conn.commit()
         conn.close()
 
-        return redirect("/")
+        return redirect(url_for("battle", message_id=message_id))
 
     conn.close()
 
@@ -101,6 +108,14 @@ def battle():
     """).fetchall()
 
     if request.method == "POST":
+        if request.form.get("action") == "load_message":
+            message_id = request.form.get("battle_message_id", type=int)
+            if message_id is None or not any(
+                message["id"] == message_id for message in messages
+            ):
+                conn.close()
+                abort(400)
+            return redirect(url_for("battle", message_id=message_id))
 
         battle_message_id = request.form["battle_message_id"]
         player1_id = request.form["player1_id"] or None
@@ -172,13 +187,59 @@ def battle():
 
         return redirect("/")
 
+    selected_message_id = request.args.get("message_id", type=int)
+    selected_message = next(
+        (message for message in messages if message["id"] == selected_message_id),
+        None,
+    )
+    initial_battles = []
+    parsed_battle_count = 0
+
+    if selected_message is not None:
+        raw_content = selected_message["raw_content"] or ""
+        parsed_battles = parse_discord_message(raw_content)
+        parsed_battle_count = len(parsed_battles)
+        player_names = re.split(
+            r"\s*(?:vs|ｖｓ)\s*",
+            next((line.strip() for line in raw_content.splitlines() if line.strip()), ""),
+            maxsplit=1,
+            flags=re.IGNORECASE,
+        )
+        players_by_name = {player["name"].casefold(): player["id"] for player in players}
+
+        player1_id = players_by_name.get(player_names[0].casefold()) if len(player_names) == 2 else None
+        player2_id = players_by_name.get(player_names[1].casefold()) if len(player_names) == 2 else None
+
+        initial_battles = [
+            {
+                **battle,
+                "player1_id": player1_id,
+                "player2_id": player2_id,
+            }
+            for battle in parsed_battles
+        ]
+
+    if not initial_battles:
+        initial_battles = [{
+            "player1_pokemon_id": None,
+            "player2_pokemon_id": None,
+            "first_player": None,
+            "player1_result": None,
+            "player1_id": None,
+            "player2_id": None,
+        }]
+
     conn.close()
 
     return render_template(
         "battle_form.html",
         pokemon=pokemon,
         messages=messages,
-        players=players
+        players=players,
+        selected_message_id=selected_message_id,
+        initial_battles=initial_battles,
+        parsed_battle_count=parsed_battle_count,
+        selected_message=selected_message,
     )
 
 

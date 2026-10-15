@@ -243,6 +243,12 @@
 
 <h1>Battle登録</h1>
 
+<p>
+    登録済みメッセージを選んで「メッセージから仮入力」を押すと、本文の絵文字から読み取れた戦績を入力欄に反映します。
+    本文先頭が「プレイヤー名 vs プレイヤー名」で、登録済みの名前と一致する場合はプレイヤーも選択します。
+    自動入力は候補なので、内容を確認・修正してから登録してください。
+</p>
+
 <form method="post">
 
     <!-- Battle Message -->
@@ -250,21 +256,32 @@
         Battle Message<br>
 
         <select name="battle_message_id" required>
-
-            {% for message in messages %}
-
-            <option value="{{ message.id }}">
-                #{{ message.id }}
-                {{ message.battle_type }}
-                {{ message.battle_date }}
+            <option value="" {% if not selected_message_id %}selected{% endif %} disabled>
+                メッセージを選択
             </option>
-
+            {% for message in messages %}
+            <option value="{{ message.id }}"
+                {% if message.id == selected_message_id %}selected{% endif %}>
+                #{{ message.id }}
+                {{ message.battle_date or "日付なし" }}
+            </option>
             {% endfor %}
-
         </select>
-
+        <button type="submit" name="action" value="load_message" formnovalidate>
+            メッセージから仮入力
+        </button>
     </p>
 
+    {% if selected_message %}
+    <p>選択中のメッセージ：#{{ selected_message_id }}（{{ parsed_battle_count }}試合を読み取りました）</p>
+    {% if parsed_battle_count == 0 %}
+    <p>戦績を読み取れませんでした。空の入力欄に手動で入力してください。</p>
+    {% endif %}
+    <details>
+        <summary>メッセージ本文を確認</summary>
+        <pre>{{ selected_message.raw_content }}</pre>
+    </details>
+    {% endif %}
 
     <!-- 対戦参加プレイヤー -->
     <div class="players">
@@ -275,7 +292,10 @@
             <select id="player1" name="player1_id">
                 <option value="">未選択</option>
                 {% for pl in players %}
-                <option value="{{ pl.id }}">{{ pl.name }}</option>
+                <option value="{{ pl.id }}"
+                    {% if initial_battles[0].player1_id == pl.id %}selected{% endif %}>
+                    {{ pl.name }}
+                </option>
                 {% endfor %}
             </select>
         </div>
@@ -286,49 +306,69 @@
             <select id="player2" name="player2_id">
                 <option value="">未選択</option>
                 {% for pl in players %}
-                <option value="{{ pl.id }}">{{ pl.name }}</option>
+                <option value="{{ pl.id }}"
+                    {% if initial_battles[0].player2_id == pl.id %}selected{% endif %}>
+                    {{ pl.name }}
+                </option>
                 {% endfor %}
             </select>
         </div>
     </div>
 
     <div id="battle-entries" class="battle-list">
+        {% for battle in initial_battles %}
         <section class="battle-entry">
-            <h2>試合 1</h2>
+            <h2>試合 {{ loop.index }}</h2>
             <div class="battle-fields">
                 <div class="battle-field">
                     <label>Player 1 Pokémon</label>
                     <select name="player1_pokemon_id" required>
+                        <option value="" {% if not battle.player1_pokemon_id %}selected{% endif %} disabled>
+                            選択してください
+                        </option>
                         {% for p in pokemon %}
-                        <option value="{{ p.id }}">{{ p.name }}</option>
+                        <option value="{{ p.id }}"
+                            {% if battle.player1_pokemon_id == p.id %}selected{% endif %}>
+                            {{ p.name }}
+                        </option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="battle-field">
                     <label>Player 2 Pokémon</label>
                     <select name="player2_pokemon_id" required>
+                        <option value="" {% if not battle.player2_pokemon_id %}selected{% endif %} disabled>
+                            選択してください
+                        </option>
                         {% for p in pokemon %}
-                        <option value="{{ p.id }}">{{ p.name }}</option>
+                        <option value="{{ p.id }}"
+                            {% if battle.player2_pokemon_id == p.id %}selected{% endif %}>
+                            {{ p.name }}
+                        </option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="battle-field">
                     <label>対戦結果（Player 1視点）</label>
                     <select name="player1_result" required>
-                        <option value="win">勝利</option>
-                        <option value="lose">敗北</option>
+                        <option value="" {% if not battle.player1_result %}selected{% endif %} disabled>
+                            選択してください
+                        </option>
+                        <option value="win" {% if battle.player1_result == "win" %}selected{% endif %}>勝利</option>
+                        <option value="lose" {% if battle.player1_result == "lose" %}selected{% endif %}>敗北</option>
                     </select>
                 </div>
                 <div class="battle-field">
                     <label>先攻</label>
                     <select name="first_player">
-                        <option value="1">Player 1</option>
-                        <option value="2">Player 2</option>
-                        <option value="">不明</option>
+                        <option value="" {% if not battle.first_player %}selected{% endif %}>不明</option>
+                        <option value="1" {% if battle.first_player == 1 %}selected{% endif %}>Player 1</option>
+                        <option value="2" {% if battle.first_player == 2 %}selected{% endif %}>Player 2</option>
                     </select>
                 </div>
             </div>
         </section>
+        {% endfor %}
     </div>
 
     <button class="add-battle-button" type="button" id="add-battle">
@@ -348,6 +388,7 @@
             <div class="battle-field">
                 <label>Player 1 Pokémon</label>
                 <select name="player1_pokemon_id" required>
+                    <option value="" selected disabled>選択してください</option>
                     {% for p in pokemon %}
                     <option value="{{ p.id }}">{{ p.name }}</option>
                     {% endfor %}
@@ -356,6 +397,7 @@
             <div class="battle-field">
                 <label>Player 2 Pokémon</label>
                 <select name="player2_pokemon_id" required>
+                    <option value="" selected disabled>選択してください</option>
                     {% for p in pokemon %}
                     <option value="{{ p.id }}">{{ p.name }}</option>
                     {% endfor %}
@@ -364,6 +406,7 @@
             <div class="battle-field">
                 <label>対戦結果（Player 1視点）</label>
                 <select name="player1_result" required>
+                    <option value="" selected disabled>選択してください</option>
                     <option value="win">勝利</option>
                     <option value="lose">敗北</option>
                 </select>
@@ -371,9 +414,9 @@
             <div class="battle-field">
                 <label>先攻</label>
                 <select name="first_player">
+                    <option value="">不明</option>
                     <option value="1">Player 1</option>
                     <option value="2">Player 2</option>
-                    <option value="">不明</option>
                 </select>
             </div>
         </div>

@@ -11,7 +11,16 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-EMOJI_JSON_PATH = BASE_DIR / "docs/emoji.json"
+EMOJI_JSON_PATH = BASE_DIR / "docs/data/emoji.json"
+
+CUSTOM_EMOJI_PATTERN = re.compile(r"<a?:([^:>]+):\d+>")
+
+
+def normalize_emoji_name(name: str) -> str:
+    name = re.sub(r"^\d+", "", name)
+    if name.startswith("moji_"):
+        return "emoji_" + name[len("moji_"):]
+    return name
 
 
 # ============================================================
@@ -39,6 +48,7 @@ def build_emoji_maps():
         {
             "symbols": ...,
             "pokemon_by_emoji": ...,
+            "pokemon_by_name": ...,
             "emoji_pattern": ...
         }
     """
@@ -56,6 +66,18 @@ def build_emoji_maps():
     pokemon_by_emoji = {
         pokemon["emoji"]: pokemon["id"]
         for pokemon in data["pokemon"]
+    }
+    pokemon_by_name = {
+        normalize_emoji_name(CUSTOM_EMOJI_PATTERN.fullmatch(emoji).group(1)): pokemon_id
+        for emoji, pokemon_id in pokemon_by_emoji.items()
+    }
+    first_or_second_by_name = {
+        normalize_emoji_name(CUSTOM_EMOJI_PATTERN.fullmatch(symbols["first"]).group(1)): 1,
+        normalize_emoji_name(CUSTOM_EMOJI_PATTERN.fullmatch(symbols["second"]).group(1)): 2,
+    }
+    result_by_name = {
+        normalize_emoji_name(CUSTOM_EMOJI_PATTERN.fullmatch(symbols["vs-win-lose"]).group(1)): "win",
+        normalize_emoji_name(CUSTOM_EMOJI_PATTERN.fullmatch(symbols["vs-lose-win"]).group(1)): "lose",
     }
 
     # --------------------------------------------------------
@@ -94,6 +116,9 @@ def build_emoji_maps():
     return {
         "symbols": symbols,
         "pokemon_by_emoji": pokemon_by_emoji,
+        "pokemon_by_name": pokemon_by_name,
+        "first_or_second_by_name": first_or_second_by_name,
+        "result_by_name": result_by_name,
         "emoji_pattern": emoji_pattern,
     }
 
@@ -106,20 +131,20 @@ def extract_battle_strings(content: str) -> list[str]:
     """
     Discordメッセージから戦績文字列を抽出する。
 
-    戦績は以下の5要素で構成される。
+    戦績は以下の4要素、旧形式では5要素で構成される。
 
         ① 自分の先攻/後攻
         ② 自分のポケモン
         ③ VS表記と戦績表記
         ④ 相手のポケモン
-        ⑤ 相手の先攻/後攻
+        ⑤ 相手の先攻/後攻（旧形式のみ）
 
     コメント、文章、改行、試合番号などは無視する。
 
     Returns:
         [
-            "5個の絵文字からなる戦績文字列",
-            "5個の絵文字からなる戦績文字列",
+            "戦績絵文字からなる文字列",
+            "戦績絵文字からなる文字列",
             ...
         ]
     """
@@ -128,56 +153,57 @@ def extract_battle_strings(content: str) -> list[str]:
         return []
 
     maps = build_emoji_maps()
+    first_or_second = maps["first_or_second_by_name"]
+    pokemon_by_name = maps["pokemon_by_name"]
+    result_by_name = maps["result_by_name"]
 
-    symbols = maps["symbols"]
-    emoji_pattern = maps["emoji_pattern"]
+    recognized_names = set(first_or_second) | set(pokemon_by_name) | set(result_by_name)
+    recognized_emojis = [
+        (match.group(0), normalize_emoji_name(match.group(1)))
+        for match in CUSTOM_EMOJI_PATTERN.finditer(content)
+        if normalize_emoji_name(match.group(1)) in recognized_names
+    ]
 
-    # --------------------------------------------------------
-    # 戦績の各要素
-    # --------------------------------------------------------
+    battle_strings = []
+    index = 0
+    while index < len(recognized_emojis):
+        remaining = recognized_emojis[index:]
+        names = [emoji[1] for emoji in remaining]
 
-    first_or_second = (
-        rf"(?:{re.escape(symbols['first'])}"
-        rf"|{re.escape(symbols['second'])})"
-    )
-
-    pokemon = (
-        rf"(?:"
-        + "|".join(
-            re.escape(emoji)
-            for emoji in maps["pokemon_by_emoji"].keys()
+        # Older messages include the second player's first/second marker.
+        is_four_emoji_battle = (
+            len(names) >= 4
+            and names[0] in first_or_second
+            and names[1] in pokemon_by_name
+            and names[2] in result_by_name
+            and names[3] in pokemon_by_name
         )
-        + ")"
-    )
+        next_battle_follows = (
+            len(names) >= 8
+            and names[4] in first_or_second
+            and names[5] in pokemon_by_name
+            and names[6] in result_by_name
+            and names[7] in pokemon_by_name
+        )
 
-    battle_result = (
-        rf"(?:{re.escape(symbols['vs-win-lose'])}"
-        rf"|{re.escape(symbols['vs-lose-win'])})"
-    )
+        if (
+            len(names) >= 5
+            and names[0] in first_or_second
+            and names[1] in pokemon_by_name
+            and names[2] in result_by_name
+            and names[3] in pokemon_by_name
+            and names[4] in first_or_second
+            and not next_battle_follows
+        ):
+            battle_strings.append("".join(emoji[0] for emoji in remaining[:5]))
+            index += 5
+        elif is_four_emoji_battle:
+            battle_strings.append("".join(emoji[0] for emoji in remaining[:4]))
+            index += 4
+        else:
+            index += 1
 
-    # --------------------------------------------------------
-    # 5要素が連続している部分だけを戦績として認識
-    #
-    # ①先攻/後攻
-    # ②ポケモン
-    # ③VS表記と勝敗
-    # ④ポケモン
-    # ⑤先攻/後攻
-    #
-    # Discordのカスタム絵文字は
-    # <:name:id>
-    # という文字列なので、これを直接判定する。
-    # --------------------------------------------------------
-
-    pattern = re.compile(
-        first_or_second
-        + pokemon
-        + battle_result
-        + pokemon
-        + first_or_second
-    )
-
-    return pattern.findall(content)
+    return battle_strings
 
 
 # ============================================================
@@ -186,7 +212,7 @@ def extract_battle_strings(content: str) -> list[str]:
 
 def parse_battle_string(battle_string: str) -> dict | None:
     """
-    5個の絵文字からなる戦績文字列を解析する。
+    4個または5個の絵文字からなる戦績文字列を解析する。
 
     Returns:
         {
@@ -206,69 +232,57 @@ def parse_battle_string(battle_string: str) -> dict | None:
 
     maps = build_emoji_maps()
 
-    symbols = maps["symbols"]
-    pokemon_by_emoji = maps["pokemon_by_emoji"]
-
     # --------------------------------------------------------
-    # 戦績文字列から5個の絵文字を抽出
+    # 戦績文字列から絵文字を抽出
     # --------------------------------------------------------
 
-    emoji_pattern = re.compile(
-        maps["emoji_pattern"]
-    )
+    emojis = [
+        normalize_emoji_name(name)
+        for name in CUSTOM_EMOJI_PATTERN.findall(battle_string)
+    ]
 
-    emojis = emoji_pattern.findall(
-        battle_string
-    )
-
-    # 5個でなければ不正
-    if len(emojis) != 5:
+    # 4要素形式の現行メッセージと、5要素形式の旧メッセージを受け付ける。
+    if len(emojis) not in (4, 5):
         return None
 
     # --------------------------------------------------------
-    # 5要素を展開
+    # 解析した要素を展開
     # --------------------------------------------------------
 
     my_first = emojis[0]
     my_pokemon = emojis[1]
     battle_result = emojis[2]
     opponent_pokemon = emojis[3]
-    opponent_first = emojis[4]
+    opponent_first = emojis[4] if len(emojis) == 5 else None
 
     # --------------------------------------------------------
     # 先攻/後攻確認
     # --------------------------------------------------------
 
-    if my_first not in (
-        symbols["first"],
-        symbols["second"],
-    ):
+    first_or_second = maps["first_or_second_by_name"]
+    if my_first not in first_or_second:
         return None
 
-    if opponent_first not in (
-        symbols["first"],
-        symbols["second"],
-    ):
+    if opponent_first is not None and opponent_first not in first_or_second:
         return None
 
     # --------------------------------------------------------
     # ポケモン確認
     # --------------------------------------------------------
 
-    if my_pokemon not in pokemon_by_emoji:
+    pokemon_by_name = maps["pokemon_by_name"]
+    if my_pokemon not in pokemon_by_name:
         return None
 
-    if opponent_pokemon not in pokemon_by_emoji:
+    if opponent_pokemon not in pokemon_by_name:
         return None
 
     # --------------------------------------------------------
     # 統合された勝敗表記を確認
     # --------------------------------------------------------
 
-    if battle_result not in (
-        symbols["vs-win-lose"],
-        symbols["vs-lose-win"],
-    ):
+    result_by_name = maps["result_by_name"]
+    if battle_result not in result_by_name:
         return None
 
     # --------------------------------------------------------
@@ -282,21 +296,14 @@ def parse_battle_string(battle_string: str) -> dict | None:
     # 自分が後攻ならfirst_player=2。
     # --------------------------------------------------------
 
-    if my_first == symbols["first"]:
-        first_player = 1
-    else:
-        first_player = 2
+    first_player = first_or_second[my_first]
 
     # --------------------------------------------------------
     # 勝敗
     # --------------------------------------------------------
 
-    if battle_result == symbols["vs-win-lose"]:
-        player1_result = "win"
-        player2_result = "lose"
-    else:
-        player1_result = "lose"
-        player2_result = "win"
+    player1_result = result_by_name[battle_result]
+    player2_result = {"win": "lose", "lose": "win"}[player1_result]
 
     # --------------------------------------------------------
     # 結果
@@ -306,10 +313,10 @@ def parse_battle_string(battle_string: str) -> dict | None:
         "first_player": first_player,
 
         "player1_pokemon_id":
-            pokemon_by_emoji[my_pokemon],
+            pokemon_by_name[my_pokemon],
 
         "player2_pokemon_id":
-            pokemon_by_emoji[opponent_pokemon],
+            pokemon_by_name[opponent_pokemon],
 
         "player1_result":
             player1_result,
@@ -351,20 +358,11 @@ def parse_discord_message(content: str) -> list[dict]:
         ]
     """
 
-    battle_strings = extract_battle_strings(content)
-
-    results = []
-
-    for battle_string in battle_strings:
-
-        result = parse_battle_string(
-            battle_string
-        )
-
-        if result is not None:
-            results.append(result)
-
-    return results
+    return [
+        result
+        for battle_string in extract_battle_strings(content)
+        if (result := parse_battle_string(battle_string)) is not None
+    ]
 
 
 # ============================================================
