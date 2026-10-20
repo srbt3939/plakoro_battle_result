@@ -1,5 +1,5 @@
 {
-    "total_usage": 695,
+    "total_usage": 706,
     "pokemon": [
         {
             "rank": 1,
@@ -10,11 +10,23 @@
             "weaknesses": [
                 "ちょう"
             ],
-            "usage_count": 80,
+            "usage_count": 81,
             "usage_rate": 11.5
         },
         {
             "rank": 2,
+            "pokemon_id": 14,
+            "name": "メタグロス",
+            "type1": "はがね",
+            "type2": null,
+            "weaknesses": [
+                "ほのお"
+            ],
+            "usage_count": 71,
+            "usage_rate": 10.1
+        },
+        {
+            "rank": 3,
             "pokemon_id": 4,
             "name": "ピカチュウ",
             "type1": "かみなり",
@@ -23,19 +35,7 @@
                 "とう"
             ],
             "usage_count": 69,
-            "usage_rate": 9.9
-        },
-        {
-            "rank": 3,
-            "pokemon_id": 14,
-            "name": "メタグロス",
-            "type1": "はがね",
-            "type2": null,
-            "weaknesses": [
-                "ほのお"
-            ],
-            "usage_count": 69,
-            "usage_rate": 9.9
+            "usage_rate": 9.8
         },
         {
             "rank": 4,
@@ -46,8 +46,8 @@
             "weaknesses": [
                 "そら"
             ],
-            "usage_count": 65,
-            "usage_rate": 9.4
+            "usage_count": 67,
+            "usage_rate": 9.5
         },
         {
             "rank": 5,
@@ -59,7 +59,7 @@
                 "ほのお"
             ],
             "usage_count": 62,
-            "usage_rate": 8.9
+            "usage_rate": 8.8
         },
         {
             "rank": 6,
@@ -71,7 +71,7 @@
                 "はがね"
             ],
             "usage_count": 49,
-            "usage_rate": 7.1
+            "usage_rate": 6.9
         },
         {
             "rank": 7,
@@ -83,7 +83,7 @@
                 "かみなり"
             ],
             "usage_count": 45,
-            "usage_rate": 6.5
+            "usage_rate": 6.4
         },
         {
             "rank": 8,
@@ -95,7 +95,7 @@
                 "くさ"
             ],
             "usage_count": 44,
-            "usage_rate": 6.3
+            "usage_rate": 6.2
         },
         {
             "rank": 9,
@@ -106,8 +106,8 @@
             "weaknesses": [
                 "あく"
             ],
-            "usage_count": 37,
-            "usage_rate": 5.3
+            "usage_count": 39,
+            "usage_rate": 5.5
         },
         {
             "rank": 10,
@@ -118,8 +118,8 @@
             "weaknesses": [
                 "みず"
             ],
-            "usage_count": 35,
-            "usage_rate": 5.0
+            "usage_count": 39,
+            "usage_rate": 5.5
         },
         {
             "rank": 11,
@@ -155,7 +155,7 @@
                 "ほのお"
             ],
             "usage_count": 32,
-            "usage_rate": 4.6
+            "usage_rate": 4.5
         },
         {
             "rank": 14,
@@ -167,7 +167,7 @@
                 "とう"
             ],
             "usage_count": 25,
-            "usage_rate": 3.6
+            "usage_rate": 3.5
         },
         {
             "rank": 15,
