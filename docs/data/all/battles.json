@@ -20676,6 +20676,719 @@
             },
             "first_player": 2,
             "season_id": 2
+        },
+        {
+            "id": 670,
+            "battle_message_id": 263,
+            "battle_number": 1,
+            "player1": {
+                "id": 12,
+                "name": "古凧丸",
+                "pokemon_id": 4,
+                "pokemon": "ピカチュウ",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": 17,
+                "name": "ahiru",
+                "pokemon_id": 3,
+                "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
+                "result": "lose"
+            },
+            "first_player": 1,
+            "season_id": 2
+        },
+        {
+            "id": 671,
+            "battle_message_id": 263,
+            "battle_number": 2,
+            "player1": {
+                "id": 12,
+                "name": "古凧丸",
+                "pokemon_id": 4,
+                "pokemon": "ピカチュウ",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": 17,
+                "name": "ahiru",
+                "pokemon_id": 3,
+                "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
+                "result": "win"
+            },
+            "first_player": 2,
+            "season_id": 2
+        },
+        {
+            "id": 672,
+            "battle_message_id": 263,
+            "battle_number": 3,
+            "player1": {
+                "id": 12,
+                "name": "古凧丸",
+                "pokemon_id": 4,
+                "pokemon": "ピカチュウ",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": 17,
+                "name": "ahiru",
+                "pokemon_id": 3,
+                "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
+                "result": "win"
+            },
+            "first_player": 2,
+            "season_id": 2
+        },
+        {
+            "id": 673,
+            "battle_message_id": 263,
+            "battle_number": 4,
+            "player1": {
+                "id": 12,
+                "name": "古凧丸",
+                "pokemon_id": 13,
+                "pokemon": "ゲンガー",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "ちょう"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": 17,
+                "name": "ahiru",
+                "pokemon_id": 13,
+                "pokemon": "ゲンガー",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "ちょう"
+                ],
+                "result": "lose"
+            },
+            "first_player": 1,
+            "season_id": 2
+        },
+        {
+            "id": 674,
+            "battle_message_id": 263,
+            "battle_number": 5,
+            "player1": {
+                "id": 12,
+                "name": "古凧丸",
+                "pokemon_id": 13,
+                "pokemon": "ゲンガー",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "ちょう"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": 17,
+                "name": "ahiru",
+                "pokemon_id": 13,
+                "pokemon": "ゲンガー",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "ちょう"
+                ],
+                "result": "win"
+            },
+            "first_player": 2,
+            "season_id": 2
+        },
+        {
+            "id": 675,
+            "battle_message_id": 264,
+            "battle_number": 1,
+            "player1": {
+                "id": 17,
+                "name": "ahiru",
+                "pokemon_id": 3,
+                "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": 3,
+                "name": "マウエス",
+                "pokemon_id": 13,
+                "pokemon": "ゲンガー",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "ちょう"
+                ],
+                "result": "lose"
+            },
+            "first_player": 2,
+            "season_id": 2
+        },
+        {
+            "id": 676,
+            "battle_message_id": 265,
+            "battle_number": 1,
+            "player1": {
+                "id": 8,
+                "name": "Kosuke",
+                "pokemon_id": 10,
+                "pokemon": "フリーザー",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "はがね"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": 16,
+                "name": "Nabu",
+                "pokemon_id": 14,
+                "pokemon": "メタグロス",
+                "type1": "はがね",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
+                "result": "win"
+            },
+            "first_player": 1,
+            "season_id": 2
+        },
+        {
+            "id": 677,
+            "battle_message_id": 265,
+            "battle_number": 2,
+            "player1": {
+                "id": 8,
+                "name": "Kosuke",
+                "pokemon_id": 8,
+                "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": 16,
+                "name": "Nabu",
+                "pokemon_id": 15,
+                "pokemon": "ルカリオ",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
+                "result": "lose"
+            },
+            "first_player": 1,
+            "season_id": 2
+        },
+        {
+            "id": 678,
+            "battle_message_id": 265,
+            "battle_number": 3,
+            "player1": {
+                "id": 8,
+                "name": "Kosuke",
+                "pokemon_id": 8,
+                "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": 16,
+                "name": "Nabu",
+                "pokemon_id": 15,
+                "pokemon": "ルカリオ",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
+                "result": "lose"
+            },
+            "first_player": 2,
+            "season_id": 2
+        },
+        {
+            "id": 679,
+            "battle_message_id": 266,
+            "battle_number": 1,
+            "player1": {
+                "id": 6,
+                "name": "せこう",
+                "pokemon_id": 15,
+                "pokemon": "ルカリオ",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": 15,
+                "name": "kiwami",
+                "pokemon_id": 14,
+                "pokemon": "メタグロス",
+                "type1": "はがね",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
+                "result": "win"
+            },
+            "first_player": 1,
+            "season_id": 2
+        },
+        {
+            "id": 680,
+            "battle_message_id": 267,
+            "battle_number": 1,
+            "player1": {
+                "id": 17,
+                "name": "ahiru",
+                "pokemon_id": 6,
+                "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": 15,
+                "name": "kiwami",
+                "pokemon_id": 14,
+                "pokemon": "メタグロス",
+                "type1": "はがね",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
+                "result": "lose"
+            },
+            "first_player": 2,
+            "season_id": 2
+        },
+        {
+            "id": 681,
+            "battle_message_id": 268,
+            "battle_number": 1,
+            "player1": {
+                "id": 3,
+                "name": "マウエス",
+                "pokemon_id": 12,
+                "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": 16,
+                "name": "Nabu",
+                "pokemon_id": 14,
+                "pokemon": "メタグロス",
+                "type1": "はがね",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
+                "result": "lose"
+            },
+            "first_player": 1,
+            "season_id": 2
+        },
+        {
+            "id": 682,
+            "battle_message_id": 269,
+            "battle_number": 1,
+            "player1": {
+                "id": 8,
+                "name": "Kosuke",
+                "pokemon_id": 12,
+                "pokemon": "ファイヤー",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": 6,
+                "name": "せこう",
+                "pokemon_id": 13,
+                "pokemon": "ゲンガー",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "ちょう"
+                ],
+                "result": "lose"
+            },
+            "first_player": 1,
+            "season_id": 2
+        },
+        {
+            "id": 683,
+            "battle_message_id": 270,
+            "battle_number": 1,
+            "player1": {
+                "id": 17,
+                "name": "ahiru",
+                "pokemon_id": 3,
+                "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": 6,
+                "name": "せこう",
+                "pokemon_id": 13,
+                "pokemon": "ゲンガー",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "ちょう"
+                ],
+                "result": "win"
+            },
+            "first_player": 1,
+            "season_id": 2
+        },
+        {
+            "id": 684,
+            "battle_message_id": 270,
+            "battle_number": 2,
+            "player1": {
+                "id": 17,
+                "name": "ahiru",
+                "pokemon_id": 3,
+                "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": 6,
+                "name": "せこう",
+                "pokemon_id": 13,
+                "pokemon": "ゲンガー",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "ちょう"
+                ],
+                "result": "win"
+            },
+            "first_player": 2,
+            "season_id": 2
+        },
+        {
+            "id": 685,
+            "battle_message_id": 271,
+            "battle_number": 1,
+            "player1": {
+                "id": 8,
+                "name": "Kosuke",
+                "pokemon_id": 2,
+                "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": 17,
+                "name": "ahiru",
+                "pokemon_id": 13,
+                "pokemon": "ゲンガー",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "ちょう"
+                ],
+                "result": "lose"
+            },
+            "first_player": 1,
+            "season_id": 2
+        },
+        {
+            "id": 686,
+            "battle_message_id": 271,
+            "battle_number": 2,
+            "player1": {
+                "id": 8,
+                "name": "Kosuke",
+                "pokemon_id": 2,
+                "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": 17,
+                "name": "ahiru",
+                "pokemon_id": 13,
+                "pokemon": "ゲンガー",
+                "type1": "あく",
+                "type2": null,
+                "weaknesses": [
+                    "ちょう"
+                ],
+                "result": "lose"
+            },
+            "first_player": 2,
+            "season_id": 2
+        },
+        {
+            "id": 687,
+            "battle_message_id": 271,
+            "battle_number": 3,
+            "player1": {
+                "id": 8,
+                "name": "Kosuke",
+                "pokemon_id": 2,
+                "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": 17,
+                "name": "ahiru",
+                "pokemon_id": 4,
+                "pokemon": "ピカチュウ",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
+                "result": "lose"
+            },
+            "first_player": 1,
+            "season_id": 2
+        },
+        {
+            "id": 688,
+            "battle_message_id": 271,
+            "battle_number": 4,
+            "player1": {
+                "id": 8,
+                "name": "Kosuke",
+                "pokemon_id": 2,
+                "pokemon": "ヒトカゲ",
+                "type1": "ほのお",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": 17,
+                "name": "ahiru",
+                "pokemon_id": 4,
+                "pokemon": "ピカチュウ",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
+                "result": "win"
+            },
+            "first_player": 2,
+            "season_id": 2
+        },
+        {
+            "id": 689,
+            "battle_message_id": 272,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "name": null,
+                "pokemon_id": 9,
+                "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "name": null,
+                "pokemon_id": 5,
+                "pokemon": "イーブイ",
+                "type1": "むしょく",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
+                "result": "lose"
+            },
+            "first_player": 2,
+            "season_id": 2
+        },
+        {
+            "id": 690,
+            "battle_message_id": 272,
+            "battle_number": 2,
+            "player1": {
+                "id": null,
+                "name": null,
+                "pokemon_id": 4,
+                "pokemon": "ピカチュウ",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "name": null,
+                "pokemon_id": 3,
+                "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
+                "result": "lose"
+            },
+            "first_player": 2,
+            "season_id": 2
+        },
+        {
+            "id": 691,
+            "battle_message_id": 272,
+            "battle_number": 3,
+            "player1": {
+                "id": null,
+                "name": null,
+                "pokemon_id": 3,
+                "pokemon": "ゼニガメ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "かみなり"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": null,
+                "name": null,
+                "pokemon_id": 15,
+                "pokemon": "ルカリオ",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
+                "result": "win"
+            },
+            "first_player": 2,
+            "season_id": 2
+        },
+        {
+            "id": 692,
+            "battle_message_id": 272,
+            "battle_number": 4,
+            "player1": {
+                "id": null,
+                "name": null,
+                "pokemon_id": 9,
+                "pokemon": "カイロス",
+                "type1": "くさ",
+                "type2": null,
+                "weaknesses": [
+                    "そら"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "name": null,
+                "pokemon_id": 14,
+                "pokemon": "メタグロス",
+                "type1": "はがね",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
+                "result": "lose"
+            },
+            "first_player": 1,
+            "season_id": 2
         }
     ]
 }
