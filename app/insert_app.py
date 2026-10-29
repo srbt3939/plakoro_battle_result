@@ -1,3 +1,4 @@
+import json
 import re
 from flask import Flask, abort, render_template, request, redirect, url_for
 import sqlite3
@@ -10,7 +11,12 @@ else:
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-app = Flask(__name__, template_folder=str(BASE_DIR / "app" / "templates"))
+app = Flask(
+    __name__,
+    template_folder=str(BASE_DIR / "app" / "templates"),
+    static_folder=str(BASE_DIR / "docs" / "assets"),
+    static_url_path="/static",
+)
 
 DB_PATH = BASE_DIR / "data" / "pokemon.db"
 
@@ -92,6 +98,23 @@ def battle():
         FROM pokemon
         ORDER BY id
     """).fetchall()
+    emoji_data = json.loads(
+        (BASE_DIR / "docs" / "data" / "emoji.json").read_text(encoding="utf-8")
+    )
+    pokemon_emoji_ids = {
+        pokemon_data["id"]: re.fullmatch(
+            r"<a?:[^:>]+:(\d+)>",
+            pokemon_data["emoji"],
+        ).group(1)
+        for pokemon_data in emoji_data["pokemon"]
+    }
+    battle_symbol_emoji_ids = {
+        symbol: re.fullmatch(
+            r"<a?:[^:>]+:(\d+)>",
+            emoji_data["symbols"][symbol],
+        ).group(1)
+        for symbol in ("first", "second", "win", "lose")
+    }
 
     # Battle Message一覧
     messages = conn.execute("""
@@ -234,6 +257,8 @@ def battle():
     return render_template(
         "battle_form.html",
         pokemon=pokemon,
+        pokemon_emoji_ids=pokemon_emoji_ids,
+        battle_symbol_emoji_ids=battle_symbol_emoji_ids,
         messages=messages,
         players=players,
         selected_message_id=selected_message_id,
@@ -331,6 +356,13 @@ def index():
 
         LEFT JOIN players AS player2
             ON battles.player2_id = player2.id
+
+        WHERE battles.id IN (
+            SELECT id
+            FROM battles
+            ORDER BY id DESC
+            LIMIT 50
+        )
 
         ORDER BY battles.id
     """).fetchall()

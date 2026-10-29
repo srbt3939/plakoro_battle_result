@@ -1,6 +1,7 @@
 import sqlite3
 import tempfile
 import unittest
+import re
 from pathlib import Path
 from unittest.mock import patch
 
@@ -99,13 +100,96 @@ class BattleParserTests(unittest.TestCase):
         html = response.get_data(as_text=True)
         self.assertEqual(response.status_code, 200)
         self.assertIn("2試合を読み取りました", html)
-        self.assertRegex(html, r'<option value="15"\s+selected>')
-        self.assertRegex(html, r'<option value="4"\s+selected>')
+        self.assertRegex(html, r'<option value="15"[^>]*selected>')
+        self.assertRegex(html, r'<option value="4"[^>]*selected>')
         self.assertRegex(html, r'<option value="1"\s+selected>\s*Kai')
         self.assertRegex(html, r'<option value="2"\s+selected>\s*Mina')
+        self.assertIn('data-emoji-id="1544186357923188746"', html)
+        self.assertIn('data-emoji-id="1536404559155433603"', html)
+        self.assertIn('data-emoji-id="1538096814773768212"', html)
+        self.assertIn('data-emoji-id="1538096705478860810"', html)
+        self.assertIn('data-emoji-id="1538123163836227634"', html)
+        self.assertIn('data-emoji-id="1538123084114952193"', html)
+        self.assertEqual(html.count('class="battle-emoji-row"'), 3)
+        self.assertEqual(html.count('<div class="emoji-preview"'), 12)
+        emoji_response = client.get(
+            "/static/images/emoji_images/1544186357923188746.webp"
+        )
+        self.assertEqual(emoji_response.status_code, 200)
+        emoji_response.close()
+        for emoji_id in (
+            "1538096814773768212",
+            "1538096705478860810",
+            "1538123163836227634",
+            "1538123084114952193",
+        ):
+            emoji_response = client.get(
+                f"/static/images/emoji_images/{emoji_id}.webp"
+            )
+            self.assertEqual(emoji_response.status_code, 200)
+            emoji_response.close()
         self.assertEqual(registration.status_code, 302)
         self.assertEqual(registration.headers["Location"], "/battle?message_id=2")
         self.assertIn("2試合を読み取りました", redirected_form.get_data(as_text=True))
+
+    def test_index_shows_only_the_latest_50_battles(self):
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "test.db"
+            with sqlite3.connect(db_path) as conn:
+                conn.executescript("""
+                    CREATE TABLE pokemon (id INTEGER PRIMARY KEY, name TEXT);
+                    CREATE TABLE players (id INTEGER PRIMARY KEY, name TEXT);
+                    CREATE TABLE battle_messages (
+                        id INTEGER PRIMARY KEY,
+                        discord_message_id TEXT,
+                        season_id INTEGER,
+                        battle_date TEXT,
+                        raw_content TEXT,
+                        created_at TEXT
+                    );
+                    CREATE TABLE battles (
+                        id INTEGER PRIMARY KEY,
+                        battle_message_id INTEGER,
+                        battle_number INTEGER,
+                        player1_pokemon_id INTEGER,
+                        player2_pokemon_id INTEGER,
+                        player1_id INTEGER,
+                        player2_id INTEGER,
+                        first_player INTEGER,
+                        player1_result TEXT,
+                        player2_result TEXT
+                    );
+                """)
+                conn.executemany(
+                    "INSERT INTO pokemon (id, name) VALUES (?, ?)",
+                    [(1, "フシギダネ"), (2, "ヒトカゲ")],
+                )
+                conn.execute(
+                    "INSERT INTO battle_messages (id, battle_date) VALUES (1, '2026-10-20')"
+                )
+                conn.executemany(
+                    """
+                    INSERT INTO battles (
+                        id, battle_message_id, battle_number,
+                        player1_pokemon_id, player2_pokemon_id, first_player,
+                        player1_result, player2_result
+                    )
+                    VALUES (?, 1, ?, 1, 2, 1, 'win', 'lose')
+                    """,
+                    [(battle_id, battle_id) for battle_id in range(1, 53)],
+                )
+
+            with patch.object(insert_app, "DB_PATH", db_path):
+                response = insert_app.app.test_client().get("/")
+
+        self.assertEqual(response.status_code, 200)
+        table = response.get_data(as_text=True).split('<table border="1">', 1)[1]
+        rows = re.findall(r"<tr>(.*?)</tr>", table, re.DOTALL)
+        battle_ids = [
+            re.search(r"<td>\s*(\d+)\s*</td>", row, re.DOTALL).group(1)
+            for row in rows[1:]
+        ]
+        self.assertEqual(battle_ids, [str(battle_id) for battle_id in range(3, 53)])
 
     def test_parses_legacy_five_emoji_format(self):
         content = (

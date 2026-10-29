@@ -136,6 +136,31 @@
             min-width: 0;
         }
 
+        .emoji-preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 40px;
+            min-width: 40px;
+        }
+
+        .battle-emoji-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 14px;
+            padding: 8px 12px;
+            background: var(--surface-muted);
+            border-radius: 8px;
+        }
+
+        .emoji-preview img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+        }
+
         label,
         form > p {
             color: var(--muted);
@@ -246,7 +271,7 @@
 <p>
     登録済みメッセージを選んで「メッセージから仮入力」を押すと、本文の絵文字から読み取れた戦績を入力欄に反映します。
     本文先頭が「プレイヤー名 vs プレイヤー名」で、登録済みの名前と一致する場合はプレイヤーも選択します。
-    自動入力は候補なので、内容を確認・修正してから登録してください。
+    選択したポケモンは絵文字でも表示されます。自動入力は候補なので、内容を確認・修正してから登録してください。
 </p>
 
 <form method="post">
@@ -322,12 +347,12 @@
             <div class="battle-fields">
                 <div class="battle-field">
                     <label>Player 1 Pokémon</label>
-                    <select name="player1_pokemon_id" required>
+                    <select class="emoji-select" name="player1_pokemon_id" required>
                         <option value="" {% if not battle.player1_pokemon_id %}selected{% endif %} disabled>
                             選択してください
                         </option>
                         {% for p in pokemon %}
-                        <option value="{{ p.id }}"
+                        <option value="{{ p.id }}" data-emoji-id="{{ pokemon_emoji_ids[p.id] }}"
                             {% if battle.player1_pokemon_id == p.id %}selected{% endif %}>
                             {{ p.name }}
                         </option>
@@ -336,12 +361,12 @@
                 </div>
                 <div class="battle-field">
                     <label>Player 2 Pokémon</label>
-                    <select name="player2_pokemon_id" required>
+                    <select class="emoji-select" name="player2_pokemon_id" required>
                         <option value="" {% if not battle.player2_pokemon_id %}selected{% endif %} disabled>
                             選択してください
                         </option>
                         {% for p in pokemon %}
-                        <option value="{{ p.id }}"
+                        <option value="{{ p.id }}" data-emoji-id="{{ pokemon_emoji_ids[p.id] }}"
                             {% if battle.player2_pokemon_id == p.id %}selected{% endif %}>
                             {{ p.name }}
                         </option>
@@ -350,22 +375,28 @@
                 </div>
                 <div class="battle-field">
                     <label>対戦結果（Player 1視点）</label>
-                    <select name="player1_result" required>
+                    <select class="emoji-select" name="player1_result" required>
                         <option value="" {% if not battle.player1_result %}selected{% endif %} disabled>
                             選択してください
                         </option>
-                        <option value="win" {% if battle.player1_result == "win" %}selected{% endif %}>勝利</option>
-                        <option value="lose" {% if battle.player1_result == "lose" %}selected{% endif %}>敗北</option>
+                        <option value="win" data-emoji-id="{{ battle_symbol_emoji_ids.win }}" {% if battle.player1_result == "win" %}selected{% endif %}>勝利</option>
+                        <option value="lose" data-emoji-id="{{ battle_symbol_emoji_ids.lose }}" {% if battle.player1_result == "lose" %}selected{% endif %}>敗北</option>
                     </select>
                 </div>
                 <div class="battle-field">
                     <label>先攻</label>
-                    <select name="first_player">
+                    <select class="emoji-select" name="first_player">
                         <option value="" {% if not battle.first_player %}selected{% endif %}>不明</option>
-                        <option value="1" {% if battle.first_player == 1 %}selected{% endif %}>Player 1</option>
-                        <option value="2" {% if battle.first_player == 2 %}selected{% endif %}>Player 2</option>
+                        <option value="1" data-emoji-id="{{ battle_symbol_emoji_ids.first }}" {% if battle.first_player == 1 %}selected{% endif %}>Player 1</option>
+                        <option value="2" data-emoji-id="{{ battle_symbol_emoji_ids.second }}" {% if battle.first_player == 2 %}selected{% endif %}>Player 2</option>
                     </select>
                 </div>
+            </div>
+            <div class="battle-emoji-row" aria-label="試合の絵文字">
+                <div class="emoji-preview" data-emoji-slot="first_player" aria-live="polite"></div>
+                <div class="emoji-preview" data-emoji-slot="player1_pokemon_id" aria-live="polite"></div>
+                <div class="emoji-preview" data-emoji-slot="player1_result" aria-live="polite"></div>
+                <div class="emoji-preview" data-emoji-slot="player2_pokemon_id" aria-live="polite"></div>
             </div>
         </section>
         {% endfor %}
@@ -387,38 +418,44 @@
         <div class="battle-fields">
             <div class="battle-field">
                 <label>Player 1 Pokémon</label>
-                <select name="player1_pokemon_id" required>
+                <select class="emoji-select" name="player1_pokemon_id" required>
                     <option value="" selected disabled>選択してください</option>
                     {% for p in pokemon %}
-                    <option value="{{ p.id }}">{{ p.name }}</option>
+                    <option value="{{ p.id }}" data-emoji-id="{{ pokemon_emoji_ids[p.id] }}">{{ p.name }}</option>
                     {% endfor %}
                 </select>
             </div>
             <div class="battle-field">
                 <label>Player 2 Pokémon</label>
-                <select name="player2_pokemon_id" required>
+                <select class="emoji-select" name="player2_pokemon_id" required>
                     <option value="" selected disabled>選択してください</option>
                     {% for p in pokemon %}
-                    <option value="{{ p.id }}">{{ p.name }}</option>
+                    <option value="{{ p.id }}" data-emoji-id="{{ pokemon_emoji_ids[p.id] }}">{{ p.name }}</option>
                     {% endfor %}
                 </select>
             </div>
             <div class="battle-field">
                 <label>対戦結果（Player 1視点）</label>
-                <select name="player1_result" required>
+                <select class="emoji-select" name="player1_result" required>
                     <option value="" selected disabled>選択してください</option>
-                    <option value="win">勝利</option>
-                    <option value="lose">敗北</option>
+                    <option value="win" data-emoji-id="{{ battle_symbol_emoji_ids.win }}">勝利</option>
+                    <option value="lose" data-emoji-id="{{ battle_symbol_emoji_ids.lose }}">敗北</option>
                 </select>
             </div>
             <div class="battle-field">
                 <label>先攻</label>
-                <select name="first_player">
+                <select class="emoji-select" name="first_player">
                     <option value="">不明</option>
-                    <option value="1">Player 1</option>
-                    <option value="2">Player 2</option>
+                    <option value="1" data-emoji-id="{{ battle_symbol_emoji_ids.first }}">Player 1</option>
+                    <option value="2" data-emoji-id="{{ battle_symbol_emoji_ids.second }}">Player 2</option>
                 </select>
             </div>
+        </div>
+        <div class="battle-emoji-row" aria-label="試合の絵文字">
+            <div class="emoji-preview" data-emoji-slot="first_player" aria-live="polite"></div>
+            <div class="emoji-preview" data-emoji-slot="player1_pokemon_id" aria-live="polite"></div>
+            <div class="emoji-preview" data-emoji-slot="player1_result" aria-live="polite"></div>
+            <div class="emoji-preview" data-emoji-slot="player2_pokemon_id" aria-live="polite"></div>
         </div>
         <button class="remove-battle-button" type="button">この試合を削除</button>
     </section>
@@ -427,6 +464,24 @@
 <script>
     const battleEntries = document.getElementById("battle-entries");
     const battleTemplate = document.getElementById("battle-entry-template");
+    const emojiImagePath = {{ url_for('static', filename='images/emoji_images/') | tojson }};
+
+    function updateEmojiPreview(select) {
+        const preview = select.closest(".battle-entry")
+            .querySelector(`[data-emoji-slot="${select.name}"]`);
+        const option = select.selectedOptions[0];
+        const emojiId = option?.dataset.emojiId;
+        preview.replaceChildren();
+
+        if (emojiId) {
+            const image = document.createElement("img");
+            image.src = `${emojiImagePath}${emojiId}.webp`;
+            image.alt = option.textContent.trim();
+            preview.append(image);
+        }
+    }
+
+    battleEntries.querySelectorAll(".emoji-select").forEach(updateEmojiPreview);
 
     function updateBattleNumbers() {
         battleEntries.querySelectorAll(".battle-entry h2").forEach((heading, index) => {
@@ -443,6 +498,12 @@
         if (event.target.closest(".remove-battle-button")) {
             event.target.closest(".battle-entry").remove();
             updateBattleNumbers();
+        }
+    });
+
+    battleEntries.addEventListener("change", (event) => {
+        if (event.target.matches(".emoji-select")) {
+            updateEmojiPreview(event.target);
         }
     });
 </script>
