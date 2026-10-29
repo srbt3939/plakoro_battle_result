@@ -1,5 +1,5 @@
 {
-    "total_usage": 1522,
+    "total_usage": 1614,
     "pokemon": [
         {
             "rank": 1,
@@ -10,8 +10,8 @@
             "weaknesses": [
                 "そら"
             ],
-            "usage_count": 207,
-            "usage_rate": 13.6
+            "usage_count": 218,
+            "usage_rate": 13.5
         },
         {
             "rank": 2,
@@ -22,23 +22,11 @@
             "weaknesses": [
                 "かみなり"
             ],
-            "usage_count": 136,
-            "usage_rate": 8.9
+            "usage_count": 149,
+            "usage_rate": 9.2
         },
         {
             "rank": 3,
-            "pokemon_id": 10,
-            "name": "フリーザー",
-            "type1": "みず",
-            "type2": null,
-            "weaknesses": [
-                "はがね"
-            ],
-            "usage_count": 130,
-            "usage_rate": 8.5
-        },
-        {
-            "rank": 4,
             "pokemon_id": 12,
             "name": "ファイヤー",
             "type1": "ほのお",
@@ -46,8 +34,20 @@
             "weaknesses": [
                 "みず"
             ],
-            "usage_count": 124,
-            "usage_rate": 8.1
+            "usage_count": 135,
+            "usage_rate": 8.4
+        },
+        {
+            "rank": 4,
+            "pokemon_id": 10,
+            "name": "フリーザー",
+            "type1": "みず",
+            "type2": null,
+            "weaknesses": [
+                "はがね"
+            ],
+            "usage_count": 132,
+            "usage_rate": 8.2
         },
         {
             "rank": 5,
@@ -58,8 +58,8 @@
             "weaknesses": [
                 "とう"
             ],
-            "usage_count": 120,
-            "usage_rate": 7.9
+            "usage_count": 130,
+            "usage_rate": 8.1
         },
         {
             "rank": 6,
@@ -70,7 +70,7 @@
             "weaknesses": [
                 "あく"
             ],
-            "usage_count": 110,
+            "usage_count": 116,
             "usage_rate": 7.2
         },
         {
@@ -82,8 +82,8 @@
             "weaknesses": [
                 "くさ"
             ],
-            "usage_count": 101,
-            "usage_rate": 6.6
+            "usage_count": 102,
+            "usage_rate": 6.3
         },
         {
             "rank": 8,
@@ -94,8 +94,8 @@
             "weaknesses": [
                 "ちょう"
             ],
-            "usage_count": 89,
-            "usage_rate": 5.8
+            "usage_count": 98,
+            "usage_rate": 6.1
         },
         {
             "rank": 9,
@@ -106,8 +106,8 @@
             "weaknesses": [
                 "ほのお"
             ],
-            "usage_count": 81,
-            "usage_rate": 5.3
+            "usage_count": 87,
+            "usage_rate": 5.4
         },
         {
             "rank": 10,
@@ -118,7 +118,7 @@
             "weaknesses": [
                 "ほのお"
             ],
-            "usage_count": 78,
+            "usage_count": 83,
             "usage_rate": 5.1
         },
         {
@@ -130,7 +130,7 @@
             "weaknesses": [
                 "みず"
             ],
-            "usage_count": 74,
+            "usage_count": 79,
             "usage_rate": 4.9
         },
         {
@@ -142,8 +142,8 @@
             "weaknesses": [
                 "とう"
             ],
-            "usage_count": 74,
-            "usage_rate": 4.9
+            "usage_count": 78,
+            "usage_rate": 4.8
         },
         {
             "rank": 13,
@@ -154,8 +154,8 @@
             "weaknesses": [
                 "とう"
             ],
-            "usage_count": 71,
-            "usage_rate": 4.7
+            "usage_count": 73,
+            "usage_rate": 4.5
         },
         {
             "rank": 14,
@@ -166,7 +166,7 @@
             "weaknesses": [
                 "ほのお"
             ],
-            "usage_count": 68,
+            "usage_count": 72,
             "usage_rate": 4.5
         },
         {
@@ -178,8 +178,8 @@
             "weaknesses": [
                 "とう"
             ],
-            "usage_count": 59,
-            "usage_rate": 3.9
+            "usage_count": 62,
+            "usage_rate": 3.8
         }
     ]
 }
