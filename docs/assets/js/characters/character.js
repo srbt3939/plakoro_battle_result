@@ -49,9 +49,17 @@ function getTypeHTML(types) {
     return [...new Set(types.filter(Boolean))].map(type => {
         const imageName = typeImageNames[type];
         return imageName
-            ? `<img src="${ASSET_PATH}assets/images/type_images/${imageName}.webp" alt="${type}" class="type-emoji">`
+            ? `<span class="type-item"><img src="${ASSET_PATH}assets/images/type_images/${imageName}.webp" alt="${type}" class="type-emoji" onerror="this.style.display='none'"></span>`
             : "";
     }).join("");
+}
+
+function getPokemonDisplayHTML(pokemon) {
+    const typeHTML = getTypeHTML([pokemon.type1, pokemon.type2]);
+    const weaknessHTML = getTypeHTML(pokemon.weaknesses || []);
+    return `${getIdentityHTML(pokemon.name, pokemon.id)}`
+        + `${typeHTML ? `<span class="pokemon-meta">${typeHTML}</span>` : ""}`
+        + `${weaknessHTML ? `<span class="pokemon-meta"><span class="pokemon-meta-label">弱点：</span>${weaknessHTML}</span>` : ""}`;
 }
 
 function getCharacterSide(battle) {
@@ -145,12 +153,31 @@ function renderMatchups(matchups) {
     const sorted = [...matchups].sort((a, b) => b.battles - a.battles);
     document.getElementById("character-matchups").innerHTML = sorted.length ? sorted.map(matchup => {
         const characterIsFirst = matchup.pokemon1.id === characterId;
-        const opponent = characterIsFirst ? matchup.pokemon2 : matchup.pokemon1;
-        const characterWins = characterIsFirst ? matchup.pokemon1_wins : matchup.pokemon2_wins;
-        const opponentWins = matchup.battles - characterWins;
-        const rate = characterIsFirst ? matchup.pokemon1_win_rate : matchup.pokemon2_win_rate;
-        const opponentRate = 100 - rate;
-        return `<article class="character-matchup-row"><div class="character-matchup-main"><div>${getIdentityHTML(opponent.name, opponent.id)}<span class="matchup-types">${getTypeHTML([opponent.type1, opponent.type2])}</span></div><span class="matchup-count">${matchup.battles}戦</span><strong>${formatPercentage(rate)}%</strong></div><div class="detail-meter matchup-meter-large"><span style="width:${rate}%"></span></div><div class="character-matchup-foot"><span>${characterName} ${characterWins}勝</span><span>${opponent.name} ${opponentWins}勝（${formatPercentage(opponentRate)}%）</span></div></article>`;
+        const pokemon1 = characterIsFirst ? matchup.pokemon1 : matchup.pokemon2;
+        const pokemon2 = characterIsFirst ? matchup.pokemon2 : matchup.pokemon1;
+        const pokemon1WinRate = characterIsFirst ? matchup.pokemon1_win_rate : matchup.pokemon2_win_rate;
+        const pokemon2WinRate = characterIsFirst ? matchup.pokemon2_win_rate : matchup.pokemon1_win_rate;
+        const pokemon1IsLower = pokemon1WinRate < pokemon2WinRate;
+        const pokemon2IsLower = pokemon2WinRate < pokemon1WinRate;
+        return `
+            <div class="matchup-row">
+                <span class="matchup-pokemon">
+                    <span class="pokemon-name-bold">${getPokemonDisplayHTML(pokemon1)}</span>
+                    <br>
+                    <span class="pokemon-rate">${formatPercentage(pokemon1WinRate)}%</span>
+                </span>
+                <span class="vs">VS<br>${matchup.battles}戦</span>
+                <span class="matchup-pokemon">
+                    <span class="pokemon-name-bold">${getPokemonDisplayHTML(pokemon2)}</span>
+                    <br>
+                    <span class="pokemon-rate">${formatPercentage(pokemon2WinRate)}%</span>
+                </span>
+                <div class="matchup-meter" role="img" aria-label="${pokemon1.name} ${formatPercentage(pokemon1WinRate)}%、${pokemon2.name} ${formatPercentage(pokemon2WinRate)}%">
+                    <span class="matchup-meter-pokemon1${pokemon1IsLower ? " is-lower" : ""}" style="width: ${pokemon1WinRate}%"></span>
+                    <span class="matchup-meter-pokemon2${pokemon2IsLower ? " is-lower" : ""}" style="width: ${pokemon2WinRate}%"></span>
+                </div>
+            </div>
+        `;
     }).join("") : "<p>対戦データがありません。</p>";
 }
 
