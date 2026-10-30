@@ -3,6 +3,7 @@
 // =========================
 
 let emojiData = null;
+const DATA_VERSION = "2026-10-30-usage-fix";
 
 const typeImageNames = {
     "あく": "dark",
@@ -29,7 +30,7 @@ function formatPercentage(value) {
 async function loadJSON(file, season) {
 
     const response = await fetch(
-        `data/${season}/${file}`
+        `data/${season}/${file}?v=${DATA_VERSION}`
     );
 
     return await response.json();

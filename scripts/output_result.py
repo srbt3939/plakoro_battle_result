@@ -1,5 +1,6 @@
 import sqlite3
 import json
+import shutil
 from datetime import date, timedelta
 from pathlib import Path
 
@@ -1014,7 +1015,6 @@ def main():
         export_players(conn)
 
         for season_id in SEASONS_TO_EXPORT:
-
             configure_season(season_id)
 
             if season_id == "all":
@@ -1031,6 +1031,12 @@ def main():
             export_pokemon_stats(conn)
 
             export_matchups(conn)
+
+            if season_id == "all":
+                shutil.copyfile(
+                    OUTPUT_DIR / "usage.json",
+                    BASE_DIR / "docs" / "data" / "usage.json"
+                )
 
             print()
 
