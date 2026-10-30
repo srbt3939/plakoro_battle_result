@@ -45,6 +45,27 @@ main {
     padding: 0 20px;
 }
 
+.season-filter-bar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 52px;
+    margin-bottom: 20px;
+    padding: 8px 14px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(38, 50, 56, 0.05);
+    backdrop-filter: blur(8px);
+}
+
+.season-filter-bar .season-select-label {
+    color: var(--text);
+}
+
 .summary {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -1011,6 +1032,20 @@ main {
         grid-template-columns: 1fr;
         gap: 10px;
         margin-bottom: 18px;
+    }
+
+    .season-filter-bar {
+        justify-content: stretch;
+        margin-bottom: 18px;
+    }
+
+    .season-filter-bar .season-select-label,
+    .season-filter-bar select {
+        width: 100%;
+    }
+
+    .season-filter-bar .season-select-label {
+        justify-content: space-between;
     }
 
     .pokemon-detail-page .detail-header {

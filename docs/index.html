@@ -39,6 +39,19 @@
 
 <main>
 
+    <div class="season-filter-bar">
+
+        <label class="season-select-label" for="season-select">
+            表示対象シーズン
+            <select id="season-select">
+                <option value="season_1">シーズン1</option>
+                <option value="season_2" selected>シーズン2</option>
+                <option value="all">全シーズン</option>
+            </select>
+        </label>
+
+    </div>
+
 
     <!-- ===================== -->
     <!-- 概要 -->
@@ -184,15 +197,6 @@
                         <option value="win_rate" selected>勝率順</option>
                         <option value="type_sort">タイプ順</option>
                         <option value="weakness_sort">弱点順</option>
-                    </select>
-                </label>
-
-                <label class="season-select-label" for="season-select">
-                    シーズン
-                    <select id="season-select">
-                        <option value="season_1">シーズン1</option>
-                        <option value="season_2" selected>シーズン2</option>
-                        <option value="all">全シーズン</option>
                     </select>
                 </label>
 
