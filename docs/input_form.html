@@ -440,7 +440,7 @@
         try {
 
             const response =
-                await fetch("data/emoji.json");
+                await fetch("data/emoji.json?v=2026-10-30-discord-emoji");
 
             if (!response.ok) {
                 throw new Error(
