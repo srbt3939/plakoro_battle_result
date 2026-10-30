@@ -1,5 +1,5 @@
 {
-    "total_usage": 1614,
+    "total_usage": 1670,
     "pokemon": [
         {
             "rank": 1,
@@ -10,8 +10,8 @@
             "weaknesses": [
                 "そら"
             ],
-            "usage_count": 218,
-            "usage_rate": 13.5
+            "usage_count": 229,
+            "usage_rate": 13.7
         },
         {
             "rank": 2,
@@ -22,19 +22,19 @@
             "weaknesses": [
                 "かみなり"
             ],
-            "usage_count": 149,
-            "usage_rate": 9.2
+            "usage_count": 157,
+            "usage_rate": 9.4
         },
         {
             "rank": 3,
-            "pokemon_id": 12,
-            "name": "ファイヤー",
-            "type1": "ほのお",
+            "pokemon_id": 4,
+            "name": "ピカチュウ",
+            "type1": "かみなり",
             "type2": null,
             "weaknesses": [
-                "みず"
+                "とう"
             ],
-            "usage_count": 135,
+            "usage_count": 141,
             "usage_rate": 8.4
         },
         {
@@ -46,19 +46,19 @@
             "weaknesses": [
                 "はがね"
             ],
-            "usage_count": 132,
-            "usage_rate": 8.2
+            "usage_count": 136,
+            "usage_rate": 8.1
         },
         {
             "rank": 5,
-            "pokemon_id": 4,
-            "name": "ピカチュウ",
-            "type1": "かみなり",
+            "pokemon_id": 12,
+            "name": "ファイヤー",
+            "type1": "ほのお",
             "type2": null,
             "weaknesses": [
-                "とう"
+                "みず"
             ],
-            "usage_count": 130,
+            "usage_count": 135,
             "usage_rate": 8.1
         },
         {
@@ -70,11 +70,23 @@
             "weaknesses": [
                 "あく"
             ],
-            "usage_count": 116,
+            "usage_count": 121,
             "usage_rate": 7.2
         },
         {
             "rank": 7,
+            "pokemon_id": 13,
+            "name": "ゲンガー",
+            "type1": "あく",
+            "type2": null,
+            "weaknesses": [
+                "ちょう"
+            ],
+            "usage_count": 103,
+            "usage_rate": 6.2
+        },
+        {
+            "rank": 8,
             "pokemon_id": 8,
             "name": "イワーク",
             "type1": "とう",
@@ -83,18 +95,6 @@
                 "くさ"
             ],
             "usage_count": 102,
-            "usage_rate": 6.3
-        },
-        {
-            "rank": 8,
-            "pokemon_id": 13,
-            "name": "ゲンガー",
-            "type1": "あく",
-            "type2": null,
-            "weaknesses": [
-                "ちょう"
-            ],
-            "usage_count": 98,
             "usage_rate": 6.1
         },
         {
@@ -106,8 +106,8 @@
             "weaknesses": [
                 "ほのお"
             ],
-            "usage_count": 87,
-            "usage_rate": 5.4
+            "usage_count": 89,
+            "usage_rate": 5.3
         },
         {
             "rank": 10,
@@ -119,7 +119,7 @@
                 "ほのお"
             ],
             "usage_count": 83,
-            "usage_rate": 5.1
+            "usage_rate": 5.0
         },
         {
             "rank": 11,
@@ -130,7 +130,7 @@
             "weaknesses": [
                 "みず"
             ],
-            "usage_count": 79,
+            "usage_count": 82,
             "usage_rate": 4.9
         },
         {
@@ -142,11 +142,23 @@
             "weaknesses": [
                 "とう"
             ],
-            "usage_count": 78,
+            "usage_count": 80,
             "usage_rate": 4.8
         },
         {
             "rank": 13,
+            "pokemon_id": 15,
+            "name": "ルカリオ",
+            "type1": "とう",
+            "type2": null,
+            "weaknesses": [
+                "ほのお"
+            ],
+            "usage_count": 74,
+            "usage_rate": 4.4
+        },
+        {
+            "rank": 14,
             "pokemon_id": 5,
             "name": "イーブイ",
             "type1": "むしょく",
@@ -155,19 +167,7 @@
                 "とう"
             ],
             "usage_count": 73,
-            "usage_rate": 4.5
-        },
-        {
-            "rank": 14,
-            "pokemon_id": 15,
-            "name": "ルカリオ",
-            "type1": "とう",
-            "type2": null,
-            "weaknesses": [
-                "ほのお"
-            ],
-            "usage_count": 72,
-            "usage_rate": 4.5
+            "usage_rate": 4.4
         },
         {
             "rank": 15,
@@ -178,8 +178,8 @@
             "weaknesses": [
                 "とう"
             ],
-            "usage_count": 62,
-            "usage_rate": 3.8
+            "usage_count": 65,
+            "usage_rate": 3.9
         }
     ]
 }
