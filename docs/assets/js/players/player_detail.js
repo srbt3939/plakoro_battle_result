@@ -1,5 +1,6 @@
 const DATA_PATH = "../data";
 const ASSET_PATH = "../";
+const DATA_VERSION = "2026-10-30-discord-emoji";
 
 const typeImageNames = {
     "あく": "dark",
@@ -25,7 +26,7 @@ let playerId = null;
 async function loadJSON(file, season) {
 
     const response = await fetch(
-        `${DATA_PATH}/${season}/${file}`
+        `${DATA_PATH}/${season}/${file}?v=${DATA_VERSION}`
     );
 
     if (!response.ok) {
@@ -40,7 +41,7 @@ async function loadJSON(file, season) {
 async function loadEmojiData() {
 
     const response =
-        await fetch(`${ASSET_PATH}data/emoji.json`);
+        await fetch(`${ASSET_PATH}data/emoji.json?v=${DATA_VERSION}`);
 
     if (!response.ok) {
         throw new Error("emoji.jsonの読み込みに失敗");

@@ -1,4 +1,5 @@
 const DATA_PATH = "../data";
+const DATA_VERSION = "2026-10-30-discord-emoji";
 
 
 // =========================
@@ -8,7 +9,7 @@ const DATA_PATH = "../data";
 async function loadPlayers() {
 
     const response =
-        await fetch(`${DATA_PATH}/players.json`);
+        await fetch(`${DATA_PATH}/players.json?v=${DATA_VERSION}`);
 
     if (!response.ok) {
         throw new Error("players.jsonの読み込みに失敗しました");
@@ -21,7 +22,7 @@ async function loadPlayers() {
 
 async function loadJSON(path) {
 
-    const response = await fetch(`${DATA_PATH}/${path}`);
+    const response = await fetch(`${DATA_PATH}/${path}?v=${DATA_VERSION}`);
 
     if (!response.ok) {
         throw new Error(`${path}の読み込みに失敗しました`);

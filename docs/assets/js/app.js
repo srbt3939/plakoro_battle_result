@@ -3,7 +3,7 @@
 // =========================
 
 let emojiData = null;
-const DATA_VERSION = "2026-10-30-usage-fix";
+const DATA_VERSION = "2026-10-30-discord-emoji";
 
 const typeImageNames = {
     "あく": "dark",
@@ -46,7 +46,7 @@ async function loadEmojiData() {
     try {
 
         const response =
-            await fetch("data/emoji.json");
+            await fetch(`data/emoji.json?v=${DATA_VERSION}`);
 
         if (!response.ok) {
             throw new Error(

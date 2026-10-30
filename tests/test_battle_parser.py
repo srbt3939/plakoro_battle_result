@@ -147,7 +147,7 @@ class BattleParserTests(unittest.TestCase):
         self.assertRegex(html, r'<option value="1"\s+selected>\s*Kai')
         self.assertRegex(html, r'<option value="2"\s+selected>\s*Mina')
         self.assertIn('data-emoji-id="1555182301162377287"', html)
-        self.assertIn('data-emoji-id="1555182348209754244"', html)
+        self.assertIn('data-emoji-id="1555182462135705610"', html)
         self.assertIn('data-emoji-id="1555182348209754244"', html)
         self.assertIn('data-emoji-id="1555182396113031228"', html)
         self.assertIn('data-emoji-id="1555182011461927043"', html)
