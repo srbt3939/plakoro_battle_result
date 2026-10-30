@@ -10,6 +10,28 @@ from app import insert_app
 
 
 class BattleParserTests(unittest.TestCase):
+    def test_parses_current_discord_emoji_names(self):
+        content = (
+            "<:01moji_31:1555182348209754244>"
+            "<:18metagurosu:1555182267272401290>"
+            "<:04batsuVS:1555182440593621082>"
+            "<:19rukario:1555182301162377287>"
+        )
+
+        self.assertEqual(
+            parse_discord_message(content),
+            [
+                {
+                    "first_player": 1,
+                    "player1_pokemon_id": 14,
+                    "player2_pokemon_id": 15,
+                    "player1_result": "lose",
+                    "player2_result": "win",
+                    "battle_type": "normal",
+                }
+            ],
+        )
+
     def test_parses_consecutive_current_format_battles(self):
         content = "\n".join((
             "<:01moji_31:1555182348209754244> "
@@ -124,24 +146,24 @@ class BattleParserTests(unittest.TestCase):
         self.assertRegex(html, r'<option value="4"[^>]*selected>')
         self.assertRegex(html, r'<option value="1"\s+selected>\s*Kai')
         self.assertRegex(html, r'<option value="2"\s+selected>\s*Mina')
-        self.assertIn('data-emoji-id="1544186357923188746"', html)
-        self.assertIn('data-emoji-id="1536404559155433603"', html)
-        self.assertIn('data-emoji-id="1538096814773768212"', html)
-        self.assertIn('data-emoji-id="1538096705478860810"', html)
-        self.assertIn('data-emoji-id="1538123163836227634"', html)
-        self.assertIn('data-emoji-id="1538123084114952193"', html)
+        self.assertIn('data-emoji-id="1555182301162377287"', html)
+        self.assertIn('data-emoji-id="1555182348209754244"', html)
+        self.assertIn('data-emoji-id="1555182348209754244"', html)
+        self.assertIn('data-emoji-id="1555182396113031228"', html)
+        self.assertIn('data-emoji-id="1555182011461927043"', html)
+        self.assertIn('data-emoji-id="1555181988900507709"', html)
         self.assertEqual(html.count('class="battle-emoji-row"'), 3)
         self.assertEqual(html.count('<div class="emoji-preview"'), 12)
         emoji_response = client.get(
-            "/static/images/emoji_images/1544186357923188746.webp"
+            "/static/images/emoji_images/1555182301162377287.webp"
         )
         self.assertEqual(emoji_response.status_code, 200)
         emoji_response.close()
         for emoji_id in (
-            "1538096814773768212",
-            "1538096705478860810",
-            "1538123163836227634",
-            "1538123084114952193",
+            "1555182348209754244",
+            "1555182396113031228",
+            "1555182421840891967",
+            "1555182440593621082",
         ):
             emoji_response = client.get(
                 f"/static/images/emoji_images/{emoji_id}.webp"
