@@ -80,6 +80,27 @@
         gap: 16px;
     }
 
+    .battle-count {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+    }
+
+    .battle-card {
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+    }
+
+    .battle-card + .battle-card {
+        margin-top: 16px;
+    }
+
+    .battle-card h2 {
+        margin: 0 0 14px;
+        font-size: 18px;
+    }
+
     .player-card {
         border: 2px solid #ddd;
         border-radius: 14px;
@@ -254,6 +275,10 @@
             grid-template-columns: 1fr;
         }
 
+        .battle-count {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
         .card {
             padding: 16px;
         }
@@ -301,124 +326,20 @@
 </div> -->
 
 
-<!-- =========================
-     自分 / 相手
-========================== -->
-
 <div class="card">
-
-    <div class="players">
-
-        <!-- 自分 -->
-
-        <div class="player-card">
-
-            <h2>自分</h2>
-
-            <select id="player1Pokemon">
-                <option value="">
-                    ポケモンを選択
-                </option>
-            </select>
-
-        </div>
-
-
-        <!-- 相手 -->
-
-        <div class="player-card">
-
-            <h2>相手</h2>
-
-            <select id="player2Pokemon">
-                <option value="">
-                    ポケモンを選択
-                </option>
-            </select>
-
-        </div>
-
+    <div class="section-title">登録する試合数</div>
+    <div class="button-group battle-count" id="battleCount">
+        <button type="button" class="choice-button selected" data-count="1">1戦</button>
+        <button type="button" class="choice-button" data-count="2">2戦</button>
+        <button type="button" class="choice-button" data-count="3">3戦</button>
+        <button type="button" class="choice-button" data-count="4">4戦</button>
+        <button type="button" class="choice-button" data-count="5">5戦</button>
     </div>
-
 </div>
 
-
-<!-- =========================
-     先行プレイヤー
-========================== -->
-
 <div class="card">
-
-    <div class="section-title">
-        先攻のプレイヤーを選択してください
-    </div>
-
-    <div class="button-group">
-
-        <button
-            type="button"
-            class="choice-button"
-            data-first="player1">
-
-            自分
-
-        </button>
-
-        <button
-            type="button"
-            class="choice-button"
-            data-first="player2">
-
-            相手
-
-        </button>
-
-        <button
-            type="button"
-            class="choice-button"
-            data-first="unknown">
-
-            不明
-
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- =========================
-     自分 勝敗
-========================== -->
-
-<div class="card">
-
-    <div class="section-title">
-        自分の勝敗を選択してください
-    </div>
-
-    <div class="button-group two">
-
-        <button
-            type="button"
-            class="choice-button"
-            data-result="win">
-
-            勝ち
-
-        </button>
-
-        <button
-            type="button"
-            class="choice-button"
-            data-result="lose">
-
-            負け
-
-        </button>
-
-    </div>
-
+    <div class="section-title">試合内容</div>
+    <div id="battleInputs"></div>
 </div>
 
 
@@ -433,7 +354,7 @@
         class="generate-button"
         id="generateButton">
 
-        戦績文字列を生成
+        戦績文字列をまとめて生成
 
     </button>
 
@@ -505,9 +426,7 @@
 
     let data = null;
 
-    let firstPlayer = null;
-
-    let player1Result = null;
+    let battleCount = 1;
 
 
     /*
@@ -548,7 +467,7 @@
             }
 
 
-            createPokemonSelects();
+            renderBattleInputs();
 
             const statusElement = document.getElementById("status");
             if (statusElement) {
@@ -579,37 +498,46 @@
      * =========================================
      */
 
-    function createPokemonSelects() {
+    function pokemonOptions() {
+        return data.pokemon.map(pokemon =>
+            `<option value="${pokemon.id}">${pokemon.name}</option>`
+        ).join("");
+    }
 
-        const selectIds = [
-            "player1Pokemon",
-            "player2Pokemon"
-        ];
-
-
-        selectIds.forEach(selectId => {
-
-            const select =
-                document.getElementById(selectId);
-
-
-            data.pokemon.forEach(pokemon => {
-
-                const option =
-                    document.createElement("option");
-
-                option.value =
-                    pokemon.id;
-
-                option.textContent =
-                    pokemon.name;
-
-                select.appendChild(option);
-
-            });
-
-        });
-
+    function renderBattleInputs() {
+        const container = document.getElementById("battleInputs");
+        container.innerHTML = Array.from({ length: battleCount }, (_, index) => `
+            <section class="battle-card" data-battle-index="${index}">
+                <h2>第${index + 1}戦</h2>
+                <div class="players">
+                    <div class="player-card">
+                        <h2>自分</h2>
+                        <select data-field="player1Pokemon">
+                            <option value="">ポケモンを選択</option>
+                            ${pokemonOptions()}
+                        </select>
+                    </div>
+                    <div class="player-card">
+                        <h2>相手</h2>
+                        <select data-field="player2Pokemon">
+                            <option value="">ポケモンを選択</option>
+                            ${pokemonOptions()}
+                        </select>
+                    </div>
+                </div>
+                <div class="section-title">先攻のプレイヤー</div>
+                <div class="button-group">
+                    <button type="button" class="choice-button" data-field="firstPlayer" data-value="player1">自分</button>
+                    <button type="button" class="choice-button" data-field="firstPlayer" data-value="player2">相手</button>
+                    <button type="button" class="choice-button" data-field="firstPlayer" data-value="unknown">不明</button>
+                </div>
+                <div class="section-title">自分の勝敗</div>
+                <div class="button-group two">
+                    <button type="button" class="choice-button" data-field="player1Result" data-value="win">勝ち</button>
+                    <button type="button" class="choice-button" data-field="player1Result" data-value="lose">負け</button>
+                </div>
+            </section>
+        `).join("");
     }
 
 
@@ -810,78 +738,28 @@
     }
 
 
-    /*
-     * =========================================
-     * 先行プレイヤー選択
-     * =========================================
-     */
-
-    document
-        .querySelectorAll("[data-first]")
-        .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    document
-                        .querySelectorAll("[data-first]")
-                        .forEach(btn => {
-                            btn.classList.remove(
-                                "selected"
-                            );
-                        });
-
-
-                    button.classList.add(
-                        "selected"
-                    );
-
-
-                    firstPlayer =
-                        button.dataset.first;
-
-                }
-            );
-
+    document.getElementById("battleCount").addEventListener("click", event => {
+        const button = event.target.closest("[data-count]");
+        if (!button) {
+            return;
+        }
+        battleCount = Number(button.dataset.count);
+        document.querySelectorAll("#battleCount .choice-button").forEach(item => {
+            item.classList.toggle("selected", item === button);
         });
+        renderBattleInputs();
+    });
 
-
-    /*
-     * =========================================
-     * 自分 勝敗選択
-     * =========================================
-     */
-
-    document
-        .querySelectorAll("[data-result]")
-        .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    document
-                        .querySelectorAll("[data-result]")
-                        .forEach(btn => {
-                            btn.classList.remove(
-                                "selected"
-                            );
-                        });
-
-
-                    button.classList.add(
-                        "selected"
-                    );
-
-
-                    player1Result =
-                        button.dataset.result;
-
-                }
-            );
-
+    document.getElementById("battleInputs").addEventListener("click", event => {
+        const button = event.target.closest("[data-field][data-value]");
+        if (!button) {
+            return;
+        }
+        const card = button.closest("[data-battle-index]");
+        card.querySelectorAll(`[data-field="${button.dataset.field}"]`).forEach(item => {
+            item.classList.toggle("selected", item === button);
         });
+    });
 
 
     /*
@@ -1149,12 +1027,61 @@
      * =========================================
      */
 
+    function generateMultiBattleString() {
+        if (!data) {
+            alert("emoji.jsonを読み込んでいます。");
+            return;
+        }
+
+        const symbols = data.symbols;
+        const results = [];
+
+        for (const card of document.querySelectorAll("[data-battle-index]")) {
+            const battleNumber = Number(card.dataset.battleIndex) + 1;
+            const player1Id = card.querySelector('[data-field="player1Pokemon"]').value;
+            const player2Id = card.querySelector('[data-field="player2Pokemon"]').value;
+            const firstButton = card.querySelector('[data-field="firstPlayer"].selected');
+            const resultButton = card.querySelector('[data-field="player1Result"].selected');
+
+            if (!player1Id || !player2Id) {
+                alert(`第${battleNumber}戦のポケモンを選択してください。`);
+                return;
+            }
+            if (!firstButton) {
+                alert(`第${battleNumber}戦の先攻プレイヤーを選択してください。`);
+                return;
+            }
+            if (!resultButton) {
+                alert(`第${battleNumber}戦の勝敗を選択してください。`);
+                return;
+            }
+
+            const player1 = getPokemon(player1Id);
+            const player2 = getPokemon(player2Id);
+            const firstSymbol = firstButton.dataset.value === "player1"
+                ? symbols.first
+                : firstButton.dataset.value === "player2" ? symbols.second : symbols.unknown;
+            const secondSymbol = firstButton.dataset.value === "unknown"
+                ? symbols.unknown
+                : firstButton.dataset.value === "player1" ? symbols.second : symbols.first;
+            const resultSymbol = resultButton.dataset.value === "win"
+                ? symbols["vs-win-lose"]
+                : symbols["vs-lose-win"];
+
+            results.push(
+                `${firstSymbol}${player1.emoji}${resultSymbol}${player2.emoji}${secondSymbol}`
+            );
+        }
+
+        const result = results.join("\n") + "\n";
+        document.getElementById("resultText").textContent = result;
+        document.getElementById("resultCard").style.display = "block";
+        updateEmojiPreview(result);
+    }
+
     document
         .getElementById("generateButton")
-        .addEventListener(
-            "click",
-            generateBattleString
-        );
+        .addEventListener("click", generateMultiBattleString);
 
 
     /*
