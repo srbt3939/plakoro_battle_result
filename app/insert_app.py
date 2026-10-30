@@ -24,6 +24,18 @@ DB_PATH = BASE_DIR / "data" / "pokemon.db"
 def get_connection():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
+    if conn.execute(
+        "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'battles'"
+    ).fetchone():
+        columns = {
+            row["name"]
+            for row in conn.execute("PRAGMA table_info(battles)").fetchall()
+        }
+        if "battle_type" not in columns:
+            conn.execute(
+                "ALTER TABLE battles ADD COLUMN battle_type TEXT NOT NULL DEFAULT 'normal'"
+            )
+            conn.commit()
     return conn
 
 
@@ -148,6 +160,7 @@ def battle():
         player2_pokemon_ids = request.form.getlist("player2_pokemon_id")
         first_players = request.form.getlist("first_player")
         player1_results = request.form.getlist("player1_result")
+        battle_types = request.form.getlist("battle_type")
 
         battle_count = len(player1_pokemon_ids)
         if (
@@ -155,17 +168,20 @@ def battle():
             or len(player2_pokemon_ids) != battle_count
             or len(first_players) != battle_count
             or len(player1_results) != battle_count
+            or len(battle_types) != battle_count
             or any(result not in ("win", "lose") for result in player1_results)
             or any(first not in ("", "1", "2") for first in first_players)
+            or any(battle_type not in ("normal", "challenge") for battle_type in battle_types)
         ):
             conn.close()
             abort(400)
 
-        for player1_pokemon_id, player2_pokemon_id, first_player, player1_result in zip(
+        for player1_pokemon_id, player2_pokemon_id, first_player, player1_result, battle_type in zip(
             player1_pokemon_ids,
             player2_pokemon_ids,
             first_players,
-            player1_results
+            player1_results,
+            battle_types,
         ):
             player2_result = {"win": "lose", "lose": "win"}[player1_result]
 
@@ -179,11 +195,13 @@ def battle():
                     player2_id,
                     first_player,
                     player1_result,
-                    player2_result
+                    player2_result,
+                    battle_type
                 )
                 SELECT
                     ?,
                     COALESCE(MAX(battle_number), 0) + 1,
+                    ?,
                     ?,
                     ?,
                     ?,
@@ -202,6 +220,7 @@ def battle():
                 first_player or None,
                 player1_result,
                 player2_result,
+                battle_type,
                 battle_message_id
             ))
 
@@ -248,6 +267,7 @@ def battle():
             "player2_pokemon_id": None,
             "first_player": None,
             "player1_result": None,
+            "battle_type": "normal",
             "player1_id": None,
             "player2_id": None,
         }]

@@ -391,6 +391,13 @@
                         <option value="2" data-emoji-id="{{ battle_symbol_emoji_ids.second }}" {% if battle.first_player == 2 %}selected{% endif %}>Player 2</option>
                     </select>
                 </div>
+                <div class="battle-field">
+                    <label>対戦枠</label>
+                    <select name="battle_type" required>
+                        <option value="normal" {% if battle.battle_type == "normal" or not battle.battle_type %}selected{% endif %}>通常対戦</option>
+                        <option value="challenge" {% if battle.battle_type == "challenge" %}selected{% endif %}>バトルチャレンジ</option>
+                    </select>
+                </div>
             </div>
             <div class="battle-emoji-row" aria-label="試合の絵文字">
                 <div class="emoji-preview" data-emoji-slot="first_player" aria-live="polite"></div>
@@ -448,6 +455,13 @@
                     <option value="">不明</option>
                     <option value="1" data-emoji-id="{{ battle_symbol_emoji_ids.first }}">Player 1</option>
                     <option value="2" data-emoji-id="{{ battle_symbol_emoji_ids.second }}">Player 2</option>
+                </select>
+            </div>
+            <div class="battle-field">
+                <label>対戦枠</label>
+                <select name="battle_type" required>
+                    <option value="normal" selected>通常対戦</option>
+                    <option value="challenge">バトルチャレンジ</option>
                 </select>
             </div>
         </div>

@@ -14,6 +14,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 EMOJI_JSON_PATH = BASE_DIR / "docs/data/emoji.json"
 
 CUSTOM_EMOJI_PATTERN = re.compile(r"<a?:([^:>]+):\d+>")
+BATTLE_TYPE_HEADER_PATTERN = re.compile(
+    r"(?im)^[ \t]*(?:【\s*)?(バトルチャレンジ|通常対戦)(?:\s*】)?[ \t]*$"
+)
 
 
 def normalize_emoji_name(name: str) -> str:
@@ -127,7 +130,7 @@ def build_emoji_maps():
 # 戦績文字列を抽出
 # ============================================================
 
-def extract_battle_strings(content: str) -> list[str]:
+def _extract_battle_entries(content: str) -> list[tuple[str, int]]:
     """
     Discordメッセージから戦績文字列を抽出する。
 
@@ -159,12 +162,12 @@ def extract_battle_strings(content: str) -> list[str]:
 
     recognized_names = set(first_or_second) | set(pokemon_by_name) | set(result_by_name)
     recognized_emojis = [
-        (match.group(0), normalize_emoji_name(match.group(1)))
+        (match.group(0), normalize_emoji_name(match.group(1)), match.start())
         for match in CUSTOM_EMOJI_PATTERN.finditer(content)
         if normalize_emoji_name(match.group(1)) in recognized_names
     ]
 
-    battle_strings = []
+    battle_entries = []
     index = 0
     while index < len(recognized_emojis):
         remaining = recognized_emojis[index:]
@@ -195,15 +198,19 @@ def extract_battle_strings(content: str) -> list[str]:
             and names[4] in first_or_second
             and not next_battle_follows
         ):
-            battle_strings.append("".join(emoji[0] for emoji in remaining[:5]))
+            battle_entries.append(("".join(emoji[0] for emoji in remaining[:5]), recognized_emojis[index][2]))
             index += 5
         elif is_four_emoji_battle:
-            battle_strings.append("".join(emoji[0] for emoji in remaining[:4]))
+            battle_entries.append(("".join(emoji[0] for emoji in remaining[:4]), recognized_emojis[index][2]))
             index += 4
         else:
             index += 1
 
-    return battle_strings
+    return battle_entries
+
+
+def extract_battle_strings(content: str) -> list[str]:
+    return [battle_string for battle_string, _ in _extract_battle_entries(content)]
 
 
 # ============================================================
@@ -358,11 +365,26 @@ def parse_discord_message(content: str) -> list[dict]:
         ]
     """
 
-    return [
-        result
-        for battle_string in extract_battle_strings(content)
-        if (result := parse_battle_string(battle_string)) is not None
-    ]
+    entries = []
+    current_battle_type = "normal"
+    headers = list(BATTLE_TYPE_HEADER_PATTERN.finditer(content or ""))
+    header_index = 0
+
+    for battle_string, position in _extract_battle_entries(content):
+        while header_index < len(headers) and headers[header_index].start() < position:
+            current_battle_type = (
+                "challenge"
+                if headers[header_index].group(1) == "バトルチャレンジ"
+                else "normal"
+            )
+            header_index += 1
+
+        result = parse_battle_string(battle_string)
+        if result is not None:
+            result["battle_type"] = current_battle_type
+            entries.append(result)
+
+    return entries
 
 
 # ============================================================
@@ -434,6 +456,14 @@ def register_battles(
 
     try:
         cursor = conn.cursor()
+        columns = {
+            row[1]
+            for row in cursor.execute("PRAGMA table_info(battles)").fetchall()
+        }
+        if "battle_type" not in columns:
+            cursor.execute(
+                "ALTER TABLE battles ADD COLUMN battle_type TEXT NOT NULL DEFAULT 'normal'"
+            )
 
         # ----------------------------------------------------
         # 二重登録チェック
@@ -502,9 +532,10 @@ def register_battles(
                     player2_pokemon_id,
                     first_player,
                     player1_result,
-                    player2_result
+                    player2_result,
+                    battle_type
                 )
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     battle_message_id,
@@ -521,6 +552,7 @@ def register_battles(
 
                     battle["player1_result"],
                     battle["player2_result"],
+                    battle.get("battle_type", "normal"),
                 )
             )
 

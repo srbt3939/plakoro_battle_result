@@ -167,6 +167,7 @@ def export_battles(conn):
 
             b.player1_result,
             b.player2_result,
+            b.battle_type,
 
             bm.season_id
 
@@ -234,6 +235,7 @@ def export_battles(conn):
             },
 
             "first_player": row["first_player"],
+            "battle_type": row["battle_type"] or "normal",
 
             # 全season合算モードでは、各battleが実際にどのseasonのものかを
             # season_idで区別できるようにしておく。
@@ -328,15 +330,32 @@ def export_usage(conn):
 
         FROM pokemon AS p
 
-        JOIN battles AS b
-            ON p.id = b.player1_pokemon_id
-            OR p.id = b.player2_pokemon_id
+        JOIN (
+            SELECT
+                b.id AS battle_id,
+                b.battle_message_id,
+                b.player1_pokemon_id AS pokemon_id
+            FROM battles AS b
+
+            UNION ALL
+
+            SELECT
+                b.id AS battle_id,
+                b.battle_message_id,
+                b.player2_pokemon_id AS pokemon_id
+            FROM battles AS b
+        ) AS appearances
+            ON p.id = appearances.pokemon_id
 
         JOIN battle_messages AS bm
-            ON b.battle_message_id = bm.id
+            ON appearances.battle_message_id = bm.id
+
+        JOIN battles AS b
+            ON b.id = appearances.battle_id
 
         WHERE b.player1_pokemon_id IN ({ph})
             AND b.player2_pokemon_id IN ({ph})
+            AND p.id IN ({ph})
             {season_clause}
 
         GROUP BY
@@ -347,6 +366,7 @@ def export_usage(conn):
             usage_count DESC,
             p.id
     """.format(ph=ACTIVE_POKEMON_PLACEHOLDERS, season_clause=season_clause), (
+        *ACTIVE_POKEMON_IDS,
         *ACTIVE_POKEMON_IDS,
         *ACTIVE_POKEMON_IDS,
         *season_params

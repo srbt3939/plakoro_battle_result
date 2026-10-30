@@ -31,6 +31,7 @@ class BattleParserTests(unittest.TestCase):
                     "player2_pokemon_id": 1,
                     "player1_result": "win",
                     "player2_result": "lose",
+                    "battle_type": "normal",
                 },
                 {
                     "first_player": 2,
@@ -38,9 +39,28 @@ class BattleParserTests(unittest.TestCase):
                     "player2_pokemon_id": 14,
                     "player1_result": "lose",
                     "player2_result": "win",
+                    "battle_type": "normal",
                 },
             ],
         )
+
+    def test_applies_battle_type_headers_to_each_following_battle(self):
+        content = "\n".join((
+            "【バトルチャレンジ】",
+            "<:01moji_31:1555182348209754244> "
+            "<:19rukario:1555182301162377287> "
+            "<:03maruVS:1555182421840891967> "
+            "<:05emoji_23:1555182462135705610>",
+            "【通常対戦】",
+            "<:02emoji_30:1555182396113031228> "
+            "<:08emoji_26:1555182522873155735> "
+            "<:04batsuVS:1555182440593621082> "
+            "<:18metagurosu:1555182267272400897>",
+        ))
+
+        battles = parse_discord_message(content)
+
+        self.assertEqual([battle["battle_type"] for battle in battles], ["challenge", "normal"])
 
     def test_battle_form_prefills_selected_message(self):
         content = "\n".join((
@@ -209,6 +229,7 @@ class BattleParserTests(unittest.TestCase):
                     "player2_pokemon_id": 1,
                     "player1_result": "win",
                     "player2_result": "lose",
+                    "battle_type": "normal",
                 },
             ],
         )

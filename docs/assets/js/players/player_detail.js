@@ -292,6 +292,8 @@ function renderPokemonUsage(records) {
 function formatBattleEntry(record) {
 
     const { battle, self, opponent, isFirst } = record;
+    const battleTypeLabel =
+        battle.battle_type === "challenge" ? "バトルチャレンジ" : "通常対戦";
 
     const sideHTML = (side, isSideFirst) => `
         <div class="recent-battle-player ${side.result === "win" ? "is-win" : "is-lose"}">
@@ -305,6 +307,7 @@ function formatBattleEntry(record) {
     return `
         <div class="recent-battle-entry">
             <div class="recent-battle-number">第${battle.id}戦</div>
+            <span class="battle-type-label">${battleTypeLabel}</span>
             <div class="recent-battle-players">
                 ${sideHTML(self, isFirst)}
                 <span class="vs">VS</span>
@@ -334,7 +337,7 @@ function renderRecentBattles(records) {
 // メイン
 // =========================
 
-async function loadAndRender(season) {
+async function loadAndRender(season, battleType) {
 
     const battleData =
         await loadJSON("battles.json", season);
@@ -344,9 +347,15 @@ async function loadAndRender(season) {
             battle.player1.id === playerId ||
             battle.player2.id === playerId
         );
+    const filteredBattles =
+    battleType === "all"
+        ? myBattles
+        : myBattles.filter(battle =>
+            (battle.battle_type || "normal") === battleType
+        );
 
     const records =
-        myBattles.map(getPlayerSide);
+    filteredBattles.map(getPlayerSide);
 
     const name =
         records.length
@@ -381,19 +390,30 @@ async function main() {
 
         const seasonSelect =
             document.getElementById("season-select");
+        const battleTypeSelect =
+            document.getElementById("battle-type-select");
 
         const initialSeason =
             seasonSelect ? seasonSelect.value : "all";
 
-        await loadAndRender(initialSeason);
+        const initialBattleType =
+            battleTypeSelect ? battleTypeSelect.value : "all";
+
+        await loadAndRender(initialSeason, initialBattleType);
+
+        const reload = () => loadAndRender(
+            seasonSelect ? seasonSelect.value : "all",
+            battleTypeSelect ? battleTypeSelect.value : "all"
+        );
 
         if (seasonSelect) {
-
             seasonSelect.addEventListener(
-                "change",
-                () => loadAndRender(seasonSelect.value)
+                "change", reload
             );
+        }
 
+        if (battleTypeSelect) {
+            battleTypeSelect.addEventListener("change", reload);
         }
 
     } catch (error) {
