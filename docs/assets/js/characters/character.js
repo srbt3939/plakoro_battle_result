@@ -4,7 +4,6 @@ const characterId = /^\d+$/.test(requestedCharacterId || "")
     : null;
 let characterName = "";
 const DATA_PATH = "../data";
-const CHARACTER_DATA_PATH = `${DATA_PATH}/all`;
 const ASSET_PATH = "../";
 const DATA_VERSION = "2026-10-30-character-usage-fix";
 
@@ -29,6 +28,10 @@ async function loadJSON(file, basePath = DATA_PATH) {
         throw new Error(`${file}の読み込みに失敗しました`);
     }
     return response.json();
+}
+
+function getCharacterDataPath(season) {
+    return `${DATA_PATH}/${season}`;
 }
 
 function getEmoji(pokemonId) {
@@ -191,13 +194,33 @@ function renderRecentBattles(battles) {
     }).join("") : "<p>試合データがありません。</p>";
 }
 
+async function renderSeason(season, players) {
+    const characterDataPath = getCharacterDataPath(season);
+    const [battleData, matchupData, usageData] = await Promise.all([
+        loadJSON("battles.json", characterDataPath),
+        loadJSON("matchups.json", characterDataPath),
+        loadJSON("usage.json", characterDataPath)
+    ]);
+
+    const battles = battleData.battles.filter(battle =>
+        battle.player1.pokemon_id === characterId || battle.player2.pokemon_id === characterId
+    );
+    const matchups = matchupData.matchups.filter(matchup =>
+        matchup.pokemon1.id === characterId || matchup.pokemon2.id === characterId
+    );
+    const usage = usageData.pokemon.find(pokemon => pokemon.pokemon_id === characterId);
+
+    renderSummary(battles, matchups, usage?.usage_count || 0);
+    renderOrderStats(battles);
+    renderPlayerRanking(battles, players);
+    renderMatchups(matchups);
+    renderRecentBattles(battles);
+}
+
 async function main() {
     try {
-        const [emoji, battleData, matchupData, usageData, playerData] = await Promise.all([
+        const [emoji, playerData] = await Promise.all([
             loadJSON("emoji.json"),
-            loadJSON("battles.json", CHARACTER_DATA_PATH),
-            loadJSON("matchups.json", CHARACTER_DATA_PATH),
-            loadJSON("usage.json", CHARACTER_DATA_PATH),
             loadJSON("players.json")
         ]);
         emojiData = emoji;
@@ -208,19 +231,12 @@ async function main() {
         characterName = character.name;
         setCharacterNames();
 
-        const battles = battleData.battles.filter(battle =>
-            battle.player1.pokemon_id === characterId || battle.player2.pokemon_id === characterId
+        const seasonSelect = document.getElementById("season-select");
+        const initialSeason = seasonSelect.value;
+        await renderSeason(initialSeason, playerData.players);
+        seasonSelect.addEventListener("change", () =>
+            renderSeason(seasonSelect.value, playerData.players)
         );
-        const matchups = matchupData.matchups.filter(matchup =>
-            matchup.pokemon1.id === characterId || matchup.pokemon2.id === characterId
-        );
-        const usage = usageData.pokemon.find(pokemon => pokemon.pokemon_id === characterId);
-
-        renderSummary(battles, matchups, usage?.usage_count || 0);
-        renderOrderStats(battles);
-        renderPlayerRanking(battles, playerData.players);
-        renderMatchups(matchups);
-        renderRecentBattles(battles);
     } catch (error) {
         console.error(error);
         const message = error.message.includes("キャラクターID")
