@@ -19,7 +19,10 @@ OUTPUT_DIR = BASE_DIR / "docs" / "data"
 # 全season合算は docs/data/all/ 以下へ出力する。
 SEASON_ALLOWED_POKEMON_IDS = {
     1: tuple(range(1, 13)),
-    2: tuple(range(1, 16))
+    2: tuple(range(1, 16)),
+    # Season 3 characters are not finalized yet. Keep the existing roster
+    # available so the season can start collecting battles immediately.
+    3: tuple(range(1, 16))
 }
 
 SEASONS_TO_EXPORT = list(SEASON_ALLOWED_POKEMON_IDS.keys()) + ["all"]
