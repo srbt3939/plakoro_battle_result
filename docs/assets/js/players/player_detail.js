@@ -1,16 +1,17 @@
 const DATA_PATH = "../data";
 const ASSET_PATH = "../";
-const DATA_VERSION = "2026-10-30-discord-emoji";
+const DATA_VERSION = "2026-11-10-pokemon-roster";
 
 const typeImageNames = {
-    "あく": "dark",
-    "かみなり": "electric",
     "くさ": "grass",
-    "ちょう": "psychic",
     "ほのお": "fire",
     "みず": "water",
-    "はがね": "steel",
+    "かみなり": "electric",
+    "ちょう": "psychic",
     "とう": "fighting",
+    "あく": "dark",
+    "はがね": "steel",
+    "ドラゴン": "dragon",
     "そら": "flying",
     "むしょく": "normal"
 };

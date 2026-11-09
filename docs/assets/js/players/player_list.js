@@ -1,5 +1,5 @@
 const DATA_PATH = "../data";
-const DATA_VERSION = "2026-10-30-discord-emoji";
+const DATA_VERSION = "2026-11-10-pokemon-roster";
 
 
 // =========================

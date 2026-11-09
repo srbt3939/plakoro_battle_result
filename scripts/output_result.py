@@ -22,7 +22,7 @@ SEASON_ALLOWED_POKEMON_IDS = {
     2: tuple(range(1, 16)),
     # Season 3 characters are not finalized yet. Keep the existing roster
     # available so the season can start collecting battles immediately.
-    3: tuple(range(1, 16))
+    3: tuple(range(1, 22))
 }
 
 SEASONS_TO_EXPORT = list(SEASON_ALLOWED_POKEMON_IDS.keys()) + ["all"]
