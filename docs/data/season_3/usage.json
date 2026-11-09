@@ -1,4 +1,53 @@
 {
-    "total_usage": 0,
-    "pokemon": []
+    "total_usage": 24,
+    "pokemon": [
+        {
+            "rank": 1,
+            "pokemon_id": 16,
+            "name": "レックウザ",
+            "type1": "ドラゴン",
+            "type2": null,
+            "weaknesses": [
+                "ドラゴン"
+            ],
+            "usage_count": 8,
+            "usage_rate": 33.3
+        },
+        {
+            "rank": 2,
+            "pokemon_id": 17,
+            "name": "ゲッコウガ",
+            "type1": "みず",
+            "type2": null,
+            "weaknesses": [
+                "くさ"
+            ],
+            "usage_count": 7,
+            "usage_rate": 29.2
+        },
+        {
+            "rank": 3,
+            "pokemon_id": 18,
+            "name": "ボスコドラ",
+            "type1": "はがね",
+            "type2": null,
+            "weaknesses": [
+                "とう"
+            ],
+            "usage_count": 7,
+            "usage_rate": 29.2
+        },
+        {
+            "rank": 4,
+            "pokemon_id": 20,
+            "name": "ラッキー",
+            "type1": "むしょく",
+            "type2": null,
+            "weaknesses": [
+                "とう"
+            ],
+            "usage_count": 2,
+            "usage_rate": 8.3
+        }
+    ]
 }

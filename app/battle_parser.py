@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 EMOJI_JSON_PATH = BASE_DIR / "docs/data/emoji.json"
 
-CUSTOM_EMOJI_PATTERN = re.compile(r"<a?:([^:>]+):\d+>")
+CUSTOM_EMOJI_PATTERN = re.compile(r"<a?:([^:>]+):(\d+)>")
 BATTLE_TYPE_HEADER_PATTERN = re.compile(
     r"(?im)^[ \t]*(?:【\s*)?(バトルチャレンジ|通常対戦)(?:\s*】)?[ \t]*$"
 )
@@ -24,6 +24,30 @@ def normalize_emoji_name(name: str) -> str:
     if name.startswith("moji_"):
         return "emoji_" + name[len("moji_"):]
     return name
+
+
+def classify_emoji(name: str, emoji_id: str, maps: dict) -> tuple[str, int | str] | None:
+    normalized_name = normalize_emoji_name(name)
+    emoji_maps = (
+        ("pokemon", "pokemon_by_id", "pokemon_by_name"),
+        ("first_or_second", "first_or_second_by_id", "first_or_second_by_name"),
+        ("result", "result_by_id", "result_by_name"),
+    )
+    for kind, by_id_key, _ in emoji_maps:
+        by_id = maps[by_id_key]
+        if emoji_id in by_id:
+            return kind, by_id[emoji_id]
+
+    for kind, _, by_name_key in (
+        emoji_maps[1],
+        emoji_maps[2],
+        emoji_maps[0],
+    ):
+        by_name = maps[by_name_key]
+        if normalized_name in by_name:
+            return kind, by_name[normalized_name]
+
+    return None
 
 
 # ============================================================
@@ -70,13 +94,25 @@ def build_emoji_maps():
         pokemon["emoji"]: pokemon["id"]
         for pokemon in data["pokemon"]
     }
+    pokemon_by_id = {
+        CUSTOM_EMOJI_PATTERN.fullmatch(emoji).group(2): pokemon_id
+        for emoji, pokemon_id in pokemon_by_emoji.items()
+    }
     pokemon_by_name = {
         normalize_emoji_name(CUSTOM_EMOJI_PATTERN.fullmatch(emoji).group(1)): pokemon_id
         for emoji, pokemon_id in pokemon_by_emoji.items()
     }
+    first_or_second_by_id = {
+        CUSTOM_EMOJI_PATTERN.fullmatch(symbols["first"]).group(2): 1,
+        CUSTOM_EMOJI_PATTERN.fullmatch(symbols["second"]).group(2): 2,
+    }
     first_or_second_by_name = {
         normalize_emoji_name(CUSTOM_EMOJI_PATTERN.fullmatch(symbols["first"]).group(1)): 1,
         normalize_emoji_name(CUSTOM_EMOJI_PATTERN.fullmatch(symbols["second"]).group(1)): 2,
+    }
+    result_by_id = {
+        CUSTOM_EMOJI_PATTERN.fullmatch(symbols["vs-win-lose"]).group(2): "win",
+        CUSTOM_EMOJI_PATTERN.fullmatch(symbols["vs-lose-win"]).group(2): "lose",
     }
     result_by_name = {
         normalize_emoji_name(CUSTOM_EMOJI_PATTERN.fullmatch(symbols["vs-win-lose"]).group(1)): "win",
@@ -119,8 +155,11 @@ def build_emoji_maps():
     return {
         "symbols": symbols,
         "pokemon_by_emoji": pokemon_by_emoji,
+        "pokemon_by_id": pokemon_by_id,
         "pokemon_by_name": pokemon_by_name,
+        "first_or_second_by_id": first_or_second_by_id,
         "first_or_second_by_name": first_or_second_by_name,
+        "result_by_id": result_by_id,
         "result_by_name": result_by_name,
         "emoji_pattern": emoji_pattern,
     }
@@ -156,46 +195,32 @@ def _extract_battle_entries(content: str) -> list[tuple[str, int]]:
         return []
 
     maps = build_emoji_maps()
-    first_or_second = maps["first_or_second_by_name"]
-    pokemon_by_name = maps["pokemon_by_name"]
-    result_by_name = maps["result_by_name"]
-
-    recognized_names = set(first_or_second) | set(pokemon_by_name) | set(result_by_name)
     recognized_emojis = [
-        (match.group(0), normalize_emoji_name(match.group(1)), match.start())
+        (match.group(0), classify_emoji(match.group(1), match.group(2), maps), match.start())
         for match in CUSTOM_EMOJI_PATTERN.finditer(content)
-        if normalize_emoji_name(match.group(1)) in recognized_names
     ]
+    recognized_emojis = [emoji for emoji in recognized_emojis if emoji[1] is not None]
 
     battle_entries = []
     index = 0
     while index < len(recognized_emojis):
         remaining = recognized_emojis[index:]
-        names = [emoji[1] for emoji in remaining]
+        kinds = [emoji[1][0] for emoji in remaining]
 
         # Older messages include the second player's first/second marker.
         is_four_emoji_battle = (
-            len(names) >= 4
-            and names[0] in first_or_second
-            and names[1] in pokemon_by_name
-            and names[2] in result_by_name
-            and names[3] in pokemon_by_name
+            len(kinds) >= 4
+            and kinds[:4] == ["first_or_second", "pokemon", "result", "pokemon"]
         )
         next_battle_follows = (
-            len(names) >= 8
-            and names[4] in first_or_second
-            and names[5] in pokemon_by_name
-            and names[6] in result_by_name
-            and names[7] in pokemon_by_name
+            len(kinds) >= 8
+            and kinds[4:8] == ["first_or_second", "pokemon", "result", "pokemon"]
         )
 
         if (
-            len(names) >= 5
-            and names[0] in first_or_second
-            and names[1] in pokemon_by_name
-            and names[2] in result_by_name
-            and names[3] in pokemon_by_name
-            and names[4] in first_or_second
+            len(kinds) >= 5
+            and kinds[:4] == ["first_or_second", "pokemon", "result", "pokemon"]
+            and kinds[4] == "first_or_second"
             and not next_battle_follows
         ):
             battle_entries.append(("".join(emoji[0] for emoji in remaining[:5]), recognized_emojis[index][2]))
@@ -244,12 +269,12 @@ def parse_battle_string(battle_string: str) -> dict | None:
     # --------------------------------------------------------
 
     emojis = [
-        normalize_emoji_name(name)
-        for name in CUSTOM_EMOJI_PATTERN.findall(battle_string)
+        classify_emoji(name, emoji_id, maps)
+        for name, emoji_id in CUSTOM_EMOJI_PATTERN.findall(battle_string)
     ]
 
     # 4要素形式の現行メッセージと、5要素形式の旧メッセージを受け付ける。
-    if len(emojis) not in (4, 5):
+    if len(emojis) not in (4, 5) or any(emoji is None for emoji in emojis):
         return None
 
     # --------------------------------------------------------
@@ -266,30 +291,27 @@ def parse_battle_string(battle_string: str) -> dict | None:
     # 先攻/後攻確認
     # --------------------------------------------------------
 
-    first_or_second = maps["first_or_second_by_name"]
-    if my_first not in first_or_second:
+    if my_first[0] != "first_or_second":
         return None
 
-    if opponent_first is not None and opponent_first not in first_or_second:
+    if opponent_first is not None and opponent_first[0] != "first_or_second":
         return None
 
     # --------------------------------------------------------
     # ポケモン確認
     # --------------------------------------------------------
 
-    pokemon_by_name = maps["pokemon_by_name"]
-    if my_pokemon not in pokemon_by_name:
+    if my_pokemon[0] != "pokemon":
         return None
 
-    if opponent_pokemon not in pokemon_by_name:
+    if opponent_pokemon[0] != "pokemon":
         return None
 
     # --------------------------------------------------------
     # 統合された勝敗表記を確認
     # --------------------------------------------------------
 
-    result_by_name = maps["result_by_name"]
-    if battle_result not in result_by_name:
+    if battle_result[0] != "result":
         return None
 
     # --------------------------------------------------------
@@ -303,13 +325,13 @@ def parse_battle_string(battle_string: str) -> dict | None:
     # 自分が後攻ならfirst_player=2。
     # --------------------------------------------------------
 
-    first_player = first_or_second[my_first]
+    first_player = my_first[1]
 
     # --------------------------------------------------------
     # 勝敗
     # --------------------------------------------------------
 
-    player1_result = result_by_name[battle_result]
+    player1_result = battle_result[1]
     player2_result = {"win": "lose", "lose": "win"}[player1_result]
 
     # --------------------------------------------------------
@@ -320,10 +342,10 @@ def parse_battle_string(battle_string: str) -> dict | None:
         "first_player": first_player,
 
         "player1_pokemon_id":
-            pokemon_by_name[my_pokemon],
+            my_pokemon[1],
 
         "player2_pokemon_id":
-            pokemon_by_name[opponent_pokemon],
+            opponent_pokemon[1],
 
         "player1_result":
             player1_result,

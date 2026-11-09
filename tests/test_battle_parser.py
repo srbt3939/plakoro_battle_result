@@ -66,6 +66,27 @@ class BattleParserTests(unittest.TestCase):
             ],
         )
 
+    def test_parses_pokemon_by_emoji_id_when_name_differs(self):
+        content = """古凧丸vsマウエス
+<:01moji_31:1555182348209754244> <:22bosukodora:1566689319681400942> <:03maruVS:1555182421840891967> <:20rekkuuza:1566689094556328016>
+<:02emoji_30:1555182396113031228> <:22bosukodora:1566689319681400942> <:04batsuVS:1555182440593621082> <:20rekkuuza:1566689094556328016>
+<:01moji_31:1555182348209754244> <:22bosukodora:1566689319681400942> <:04batsuVS:1555182440593621082> <:20rekkuuza:1566689094556328016>
+<:01moji_31:1555182348209754244> <:22bosukodora:1566689319681400942> <:04batsuVS:1555182440593621082> <:21gekkouga:1566689235853910026>
+<:02emoji_30:1555182396113031228> <:22bosukodora:1566689319681400942> <:04batsuVS:1555182440593621082> <:21gekkouga:1566689235853910026>
+<:01moji_31:1555182348209754244> <:22bosukodora:1566689319681400942> <:04batsuVS:1555182440593621082> <:21gekkouga:1566689235853910026>
+<:02emoji_30:1555182396113031228> <:22bosukodora:1566689319681400942> <:04batsuVS:1555182440593621082> <:21gekkouga:1566689235853910026>"""
+
+        battles = parse_discord_message(content)
+
+        self.assertEqual(len(battles), 7)
+        self.assertEqual(
+            [
+                (battle["player1_pokemon_id"], battle["player2_pokemon_id"])
+                for battle in battles
+            ],
+            [(18, 16), (18, 16), (18, 16), (18, 17), (18, 17), (18, 17), (18, 17)],
+        )
+
     def test_applies_battle_type_headers_to_each_following_battle(self):
         content = "\n".join((
             "【バトルチャレンジ】",
