@@ -1,108 +1,9 @@
 {
     "pokemon": [
         {
-            "pokemon_id": 16,
-            "name": "レックウザ",
-            "type1": "ドラゴン",
-            "type2": null,
-            "weaknesses": [
-                "ドラゴン"
-            ],
-            "total": {
-                "battles": 8,
-                "wins": 6,
-                "losses": 2,
-                "win_rate": 75.0
-            },
-            "first_player": {
-                "battles": 4,
-                "wins": 4,
-                "losses": 0,
-                "win_rate": 100.0
-            },
-            "second_player": {
-                "battles": 4,
-                "wins": 2,
-                "losses": 2,
-                "win_rate": 50.0
-            },
-            "unknown": {
-                "battles": 0,
-                "wins": 0,
-                "losses": 0,
-                "win_rate": 0
-            }
-        },
-        {
-            "pokemon_id": 17,
-            "name": "ゲッコウガ",
-            "type1": "みず",
-            "type2": null,
-            "weaknesses": [
-                "くさ"
-            ],
-            "total": {
-                "battles": 7,
-                "wins": 5,
-                "losses": 2,
-                "win_rate": 71.4
-            },
-            "first_player": {
-                "battles": 3,
-                "wins": 3,
-                "losses": 0,
-                "win_rate": 100.0
-            },
-            "second_player": {
-                "battles": 4,
-                "wins": 2,
-                "losses": 2,
-                "win_rate": 50.0
-            },
-            "unknown": {
-                "battles": 0,
-                "wins": 0,
-                "losses": 0,
-                "win_rate": 0
-            }
-        },
-        {
-            "pokemon_id": 18,
-            "name": "ボスコドラ",
-            "type1": "はがね",
-            "type2": null,
-            "weaknesses": [
-                "とう"
-            ],
-            "total": {
-                "battles": 7,
-                "wins": 1,
-                "losses": 6,
-                "win_rate": 14.3
-            },
-            "first_player": {
-                "battles": 4,
-                "wins": 1,
-                "losses": 3,
-                "win_rate": 25.0
-            },
-            "second_player": {
-                "battles": 3,
-                "wins": 0,
-                "losses": 3,
-                "win_rate": 0.0
-            },
-            "unknown": {
-                "battles": 0,
-                "wins": 0,
-                "losses": 0,
-                "win_rate": 0
-            }
-        },
-        {
-            "pokemon_id": 20,
-            "name": "ラッキー",
-            "type1": "むしょく",
+            "pokemon_id": 4,
+            "name": "ピカチュウ",
+            "type1": "かみなり",
             "type2": null,
             "weaknesses": [
                 "とう"
@@ -124,6 +25,237 @@
                 "wins": 0,
                 "losses": 1,
                 "win_rate": 0.0
+            },
+            "unknown": {
+                "battles": 0,
+                "wins": 0,
+                "losses": 0,
+                "win_rate": 0
+            }
+        },
+        {
+            "pokemon_id": 12,
+            "name": "ファイヤー",
+            "type1": "ほのお",
+            "type2": null,
+            "weaknesses": [
+                "みず"
+            ],
+            "total": {
+                "battles": 2,
+                "wins": 2,
+                "losses": 0,
+                "win_rate": 100.0
+            },
+            "first_player": {
+                "battles": 1,
+                "wins": 1,
+                "losses": 0,
+                "win_rate": 100.0
+            },
+            "second_player": {
+                "battles": 1,
+                "wins": 1,
+                "losses": 0,
+                "win_rate": 100.0
+            },
+            "unknown": {
+                "battles": 0,
+                "wins": 0,
+                "losses": 0,
+                "win_rate": 0
+            }
+        },
+        {
+            "pokemon_id": 16,
+            "name": "レックウザ",
+            "type1": "ドラゴン",
+            "type2": null,
+            "weaknesses": [
+                "ドラゴン"
+            ],
+            "total": {
+                "battles": 21,
+                "wins": 17,
+                "losses": 4,
+                "win_rate": 81.0
+            },
+            "first_player": {
+                "battles": 11,
+                "wins": 11,
+                "losses": 0,
+                "win_rate": 100.0
+            },
+            "second_player": {
+                "battles": 10,
+                "wins": 6,
+                "losses": 4,
+                "win_rate": 60.0
+            },
+            "unknown": {
+                "battles": 0,
+                "wins": 0,
+                "losses": 0,
+                "win_rate": 0
+            }
+        },
+        {
+            "pokemon_id": 17,
+            "name": "ゲッコウガ",
+            "type1": "みず",
+            "type2": null,
+            "weaknesses": [
+                "くさ"
+            ],
+            "total": {
+                "battles": 12,
+                "wins": 9,
+                "losses": 3,
+                "win_rate": 75.0
+            },
+            "first_player": {
+                "battles": 6,
+                "wins": 6,
+                "losses": 0,
+                "win_rate": 100.0
+            },
+            "second_player": {
+                "battles": 6,
+                "wins": 3,
+                "losses": 3,
+                "win_rate": 50.0
+            },
+            "unknown": {
+                "battles": 0,
+                "wins": 0,
+                "losses": 0,
+                "win_rate": 0
+            }
+        },
+        {
+            "pokemon_id": 18,
+            "name": "ボスコドラ",
+            "type1": "はがね",
+            "type2": null,
+            "weaknesses": [
+                "とう"
+            ],
+            "total": {
+                "battles": 16,
+                "wins": 3,
+                "losses": 13,
+                "win_rate": 18.8
+            },
+            "first_player": {
+                "battles": 8,
+                "wins": 3,
+                "losses": 5,
+                "win_rate": 37.5
+            },
+            "second_player": {
+                "battles": 8,
+                "wins": 0,
+                "losses": 8,
+                "win_rate": 0.0
+            },
+            "unknown": {
+                "battles": 0,
+                "wins": 0,
+                "losses": 0,
+                "win_rate": 0
+            }
+        },
+        {
+            "pokemon_id": 19,
+            "name": "ヤミラミ",
+            "type1": "あく",
+            "type2": null,
+            "weaknesses": [
+                "ちょう"
+            ],
+            "total": {
+                "battles": 3,
+                "wins": 2,
+                "losses": 1,
+                "win_rate": 66.7
+            },
+            "first_player": {
+                "battles": 1,
+                "wins": 1,
+                "losses": 0,
+                "win_rate": 100.0
+            },
+            "second_player": {
+                "battles": 2,
+                "wins": 1,
+                "losses": 1,
+                "win_rate": 50.0
+            },
+            "unknown": {
+                "battles": 0,
+                "wins": 0,
+                "losses": 0,
+                "win_rate": 0
+            }
+        },
+        {
+            "pokemon_id": 20,
+            "name": "ラッキー",
+            "type1": "むしょく",
+            "type2": null,
+            "weaknesses": [
+                "とう"
+            ],
+            "total": {
+                "battles": 12,
+                "wins": 5,
+                "losses": 7,
+                "win_rate": 41.7
+            },
+            "first_player": {
+                "battles": 6,
+                "wins": 3,
+                "losses": 3,
+                "win_rate": 50.0
+            },
+            "second_player": {
+                "battles": 6,
+                "wins": 2,
+                "losses": 4,
+                "win_rate": 33.3
+            },
+            "unknown": {
+                "battles": 0,
+                "wins": 0,
+                "losses": 0,
+                "win_rate": 0
+            }
+        },
+        {
+            "pokemon_id": 21,
+            "name": "カヌチャン",
+            "type1": "ちょう",
+            "type2": null,
+            "weaknesses": [
+                "ほのお"
+            ],
+            "total": {
+                "battles": 14,
+                "wins": 4,
+                "losses": 10,
+                "win_rate": 28.6
+            },
+            "first_player": {
+                "battles": 8,
+                "wins": 2,
+                "losses": 6,
+                "win_rate": 25.0
+            },
+            "second_player": {
+                "battles": 8,
+                "wins": 2,
+                "losses": 6,
+                "win_rate": 25.0
             },
             "unknown": {
                 "battles": 0,

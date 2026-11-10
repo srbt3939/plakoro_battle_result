@@ -108,22 +108,22 @@
                 "とう"
             ],
             "total": {
-                "battles": 138,
+                "battles": 140,
                 "wins": 63,
-                "losses": 75,
-                "win_rate": 45.7
+                "losses": 77,
+                "win_rate": 45.0
             },
             "first_player": {
-                "battles": 73,
+                "battles": 74,
                 "wins": 36,
-                "losses": 37,
-                "win_rate": 49.3
+                "losses": 38,
+                "win_rate": 48.6
             },
             "second_player": {
-                "battles": 76,
+                "battles": 77,
                 "wins": 27,
-                "losses": 49,
-                "win_rate": 35.5
+                "losses": 50,
+                "win_rate": 35.1
             },
             "unknown": {
                 "battles": 0,
@@ -372,22 +372,22 @@
                 "みず"
             ],
             "total": {
-                "battles": 138,
-                "wins": 78,
+                "battles": 140,
+                "wins": 80,
                 "losses": 60,
-                "win_rate": 56.5
+                "win_rate": 57.1
             },
             "first_player": {
-                "battles": 54,
-                "wins": 39,
+                "battles": 55,
+                "wins": 40,
                 "losses": 15,
-                "win_rate": 72.2
+                "win_rate": 72.7
             },
             "second_player": {
-                "battles": 58,
-                "wins": 26,
+                "battles": 59,
+                "wins": 27,
                 "losses": 32,
-                "win_rate": 44.8
+                "win_rate": 45.8
             },
             "unknown": {
                 "battles": 26,
@@ -504,22 +504,22 @@
                 "ドラゴン"
             ],
             "total": {
-                "battles": 8,
-                "wins": 6,
-                "losses": 2,
-                "win_rate": 75.0
+                "battles": 21,
+                "wins": 17,
+                "losses": 4,
+                "win_rate": 81.0
             },
             "first_player": {
-                "battles": 4,
-                "wins": 4,
+                "battles": 11,
+                "wins": 11,
                 "losses": 0,
                 "win_rate": 100.0
             },
             "second_player": {
-                "battles": 4,
-                "wins": 2,
-                "losses": 2,
-                "win_rate": 50.0
+                "battles": 10,
+                "wins": 6,
+                "losses": 4,
+                "win_rate": 60.0
             },
             "unknown": {
                 "battles": 0,
@@ -537,21 +537,21 @@
                 "くさ"
             ],
             "total": {
-                "battles": 7,
-                "wins": 5,
-                "losses": 2,
-                "win_rate": 71.4
+                "battles": 12,
+                "wins": 9,
+                "losses": 3,
+                "win_rate": 75.0
             },
             "first_player": {
-                "battles": 3,
-                "wins": 3,
+                "battles": 6,
+                "wins": 6,
                 "losses": 0,
                 "win_rate": 100.0
             },
             "second_player": {
-                "battles": 4,
-                "wins": 2,
-                "losses": 2,
+                "battles": 6,
+                "wins": 3,
+                "losses": 3,
                 "win_rate": 50.0
             },
             "unknown": {
@@ -570,22 +570,55 @@
                 "とう"
             ],
             "total": {
-                "battles": 7,
-                "wins": 1,
-                "losses": 6,
-                "win_rate": 14.3
+                "battles": 16,
+                "wins": 3,
+                "losses": 13,
+                "win_rate": 18.8
             },
             "first_player": {
-                "battles": 4,
-                "wins": 1,
-                "losses": 3,
-                "win_rate": 25.0
+                "battles": 8,
+                "wins": 3,
+                "losses": 5,
+                "win_rate": 37.5
             },
             "second_player": {
-                "battles": 3,
+                "battles": 8,
                 "wins": 0,
-                "losses": 3,
+                "losses": 8,
                 "win_rate": 0.0
+            },
+            "unknown": {
+                "battles": 0,
+                "wins": 0,
+                "losses": 0,
+                "win_rate": 0
+            }
+        },
+        {
+            "pokemon_id": 19,
+            "name": "ヤミラミ",
+            "type1": "あく",
+            "type2": null,
+            "weaknesses": [
+                "ちょう"
+            ],
+            "total": {
+                "battles": 3,
+                "wins": 2,
+                "losses": 1,
+                "win_rate": 66.7
+            },
+            "first_player": {
+                "battles": 1,
+                "wins": 1,
+                "losses": 0,
+                "win_rate": 100.0
+            },
+            "second_player": {
+                "battles": 2,
+                "wins": 1,
+                "losses": 1,
+                "win_rate": 50.0
             },
             "unknown": {
                 "battles": 0,
@@ -603,22 +636,55 @@
                 "とう"
             ],
             "total": {
-                "battles": 2,
-                "wins": 0,
-                "losses": 2,
-                "win_rate": 0.0
+                "battles": 12,
+                "wins": 5,
+                "losses": 7,
+                "win_rate": 41.7
             },
             "first_player": {
-                "battles": 1,
-                "wins": 0,
-                "losses": 1,
-                "win_rate": 0.0
+                "battles": 6,
+                "wins": 3,
+                "losses": 3,
+                "win_rate": 50.0
             },
             "second_player": {
-                "battles": 1,
+                "battles": 6,
+                "wins": 2,
+                "losses": 4,
+                "win_rate": 33.3
+            },
+            "unknown": {
+                "battles": 0,
                 "wins": 0,
-                "losses": 1,
-                "win_rate": 0.0
+                "losses": 0,
+                "win_rate": 0
+            }
+        },
+        {
+            "pokemon_id": 21,
+            "name": "カヌチャン",
+            "type1": "ちょう",
+            "type2": null,
+            "weaknesses": [
+                "ほのお"
+            ],
+            "total": {
+                "battles": 14,
+                "wins": 4,
+                "losses": 10,
+                "win_rate": 28.6
+            },
+            "first_player": {
+                "battles": 8,
+                "wins": 2,
+                "losses": 6,
+                "win_rate": 25.0
+            },
+            "second_player": {
+                "battles": 8,
+                "wins": 2,
+                "losses": 6,
+                "win_rate": 25.0
             },
             "unknown": {
                 "battles": 0,
