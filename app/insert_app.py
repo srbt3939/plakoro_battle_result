@@ -1,13 +1,26 @@
 import json
 import re
+from datetime import date
 from flask import Flask, abort, render_template, request, redirect, url_for
 import sqlite3
 from pathlib import Path
 
 if __package__:
     from .battle_parser import parse_discord_message
+    from .battle_matches import (
+        create_battle_match,
+        is_battle_challenge_message,
+        parse_tournament_games,
+        tournament_name_from_message,
+    )
 else:
     from battle_parser import parse_discord_message
+    from battle_matches import (
+        create_battle_match,
+        is_battle_challenge_message,
+        parse_tournament_games,
+        tournament_name_from_message,
+    )
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,6 +37,7 @@ DB_PATH = BASE_DIR / "data" / "pokemon.db"
 def get_connection():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
+    conn.execute("PRAGMA foreign_keys = ON")
     if conn.execute(
         "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'battles'"
     ).fetchone():
@@ -85,6 +99,8 @@ def message():
         conn.commit()
         conn.close()
 
+        if is_battle_challenge_message(raw_content):
+            return redirect(url_for("battle_challenge", message_id=message_id))
         return redirect(url_for("battle", message_id=message_id))
 
     conn.close()
@@ -285,6 +301,185 @@ def battle():
         initial_battles=initial_battles,
         parsed_battle_count=parsed_battle_count,
         selected_message=selected_message,
+    )
+
+
+# =========================
+# Battle Challenge（BO3）登録
+# =========================
+
+@app.route("/battle-challenge", methods=["GET", "POST"])
+def battle_challenge():
+    conn = get_connection()
+    required_columns = {
+        row["name"] for row in conn.execute("PRAGMA table_info(battles)").fetchall()
+    }
+    if not {"match_id", "game_number"}.issubset(required_columns):
+        conn.close()
+        abort(503, description="DB移行が必要です。scripts/migrate_battle_challenges.py を実行してください。")
+
+    messages = [
+        message
+        for message in conn.execute("""
+            SELECT *
+            FROM battle_messages
+            ORDER BY id DESC
+        """).fetchall()
+        if is_battle_challenge_message(message["raw_content"])
+    ]
+    seasons = conn.execute("SELECT id, name FROM seasons ORDER BY id").fetchall()
+    pokemon = conn.execute("SELECT id, name FROM pokemon ORDER BY id").fetchall()
+    players = conn.execute("SELECT id, name FROM players ORDER BY name COLLATE NOCASE").fetchall()
+
+    selected_message_id = request.values.get("message_id", type=int)
+    selected_message = next(
+        (message for message in messages if message["id"] == selected_message_id),
+        None,
+    )
+
+    if request.method == "POST":
+        if selected_message is None:
+            conn.close()
+            abort(400)
+
+        raw_content = selected_message["raw_content"] or ""
+        if not is_battle_challenge_message(raw_content):
+            conn.close()
+            abort(400, description="バトルチャレンジを示す語句がメッセージにありません。")
+        parsed_games = parse_tournament_games(raw_content)
+        if len(parsed_games) > 3:
+            conn.close()
+            abort(400, description="大会対戦は最大3ゲームです。元メッセージを確認してください。")
+
+        if conn.execute(
+            "SELECT 1 FROM battle_matches WHERE battle_message_id = ?",
+            (selected_message_id,),
+        ).fetchone():
+            conn.close()
+            abort(409, description="このメッセージの大会対戦は登録済みです。")
+
+        season_id = request.form.get("season_id", type=int)
+        match_date = request.form.get("match_date", "").strip()
+        try:
+            date.fromisoformat(match_date)
+        except ValueError:
+            conn.close()
+            abort(400, description="対戦日を入力してください。")
+        if not any(season["id"] == season_id for season in seasons):
+            conn.close()
+            abort(400, description="シーズンを選択してください。")
+
+        player_id = request.form.get("player_id", type=int)
+        if player_id is not None and not any(player["id"] == player_id for player in players):
+            conn.close()
+            abort(400, description="登録済みのプレイヤーを選択してください。")
+
+        pokemon_ids = {item["id"] for item in pokemon}
+        games = []
+        encountered_empty_game = False
+        for game_number in range(1, 4):
+            player1_pokemon = request.form.get(f"player1_pokemon_id_{game_number}", "").strip()
+            player2_pokemon = request.form.get(f"player2_pokemon_id_{game_number}", "").strip()
+            result = request.form.get(f"player1_result_{game_number}", "").strip()
+            first_player = request.form.get(f"first_player_{game_number}", "").strip()
+            values = (player1_pokemon, player2_pokemon, result)
+
+            if not any(values):
+                encountered_empty_game = True
+                continue
+            if encountered_empty_game or not all(values):
+                conn.close()
+                abort(400, description="ゲームはGAME 1から順に、必要項目を入力してください。")
+            if result not in ("win", "lose") or first_player not in ("", "1", "2"):
+                conn.close()
+                abort(400)
+            try:
+                player1_pokemon_id = int(player1_pokemon)
+                player2_pokemon_id = int(player2_pokemon)
+            except ValueError:
+                conn.close()
+                abort(400)
+            if player1_pokemon_id not in pokemon_ids or player2_pokemon_id not in pokemon_ids:
+                conn.close()
+                abort(400, description="登録済みのポケモンを選択してください。")
+
+            games.append({
+                "player1_pokemon_id": player1_pokemon_id,
+                "player2_pokemon_id": player2_pokemon_id,
+                "player1_result": result,
+                "first_player": int(first_player) if first_player else None,
+            })
+
+        if not games:
+            conn.close()
+            abort(400, description="少なくとも1ゲームを入力してください。")
+
+        wins = 0
+        losses = 0
+        for index, game in enumerate(games):
+            wins += game["player1_result"] == "win"
+            losses += game["player1_result"] == "lose"
+            if (wins == 2 or losses == 2) and index != len(games) - 1:
+                conn.close()
+                abort(400, description="シリーズ決着後のゲームは登録できません。")
+
+        try:
+            with conn:
+                match_id = create_battle_match(
+                    conn,
+                    battle_message_id=selected_message_id,
+                    season_id=season_id,
+                    tournament_name=request.form.get("tournament_name", "").strip() or None,
+                    opponent=request.form.get("opponent", "").strip() or None,
+                    match_date=match_date,
+                    player_id=player_id,
+                    games=games,
+                )
+        except sqlite3.IntegrityError:
+            conn.close()
+            app.logger.exception("Failed to register Battle Challenge series")
+            abort(400, description="大会対戦を登録できませんでした。入力内容とDB移行状態を確認してください。")
+        except ValueError as error:
+            conn.close()
+            abort(400, description=str(error))
+
+        conn.close()
+        return redirect(url_for("battle_challenge", message_id=selected_message_id, registered=match_id))
+
+    parsed_games = parse_tournament_games(selected_message["raw_content"] or "") if selected_message else []
+    initial_game_count = len(parsed_games)
+    initial_games = parsed_games[:3]
+    while len(initial_games) < 3:
+        initial_games.append({
+            "player1_pokemon_id": None,
+            "player2_pokemon_id": None,
+            "player1_result": None,
+            "first_player": None,
+        })
+
+    existing_match = None
+    if selected_message is not None:
+        existing_match = conn.execute(
+            "SELECT match_id FROM battle_matches WHERE battle_message_id = ?",
+            (selected_message_id,),
+        ).fetchone()
+
+    conn.close()
+    return render_template(
+        "battle_challenge_form.html",
+        messages=messages,
+        seasons=seasons,
+        pokemon=pokemon,
+        players=players,
+        selected_message=selected_message,
+        selected_message_id=selected_message_id,
+        initial_games=initial_games,
+        initial_game_count=initial_game_count,
+        tournament_name=tournament_name_from_message(
+            selected_message["raw_content"] if selected_message else ""
+        ),
+        registered_match_id=request.args.get("registered", type=int),
+        existing_match=existing_match,
     )
 
 

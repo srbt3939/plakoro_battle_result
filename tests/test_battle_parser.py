@@ -103,7 +103,7 @@ class BattleParserTests(unittest.TestCase):
 
         battles = parse_discord_message(content)
 
-        self.assertEqual([battle["battle_type"] for battle in battles], ["challenge", "normal"])
+        self.assertEqual([battle["battle_type"] for battle in battles], ["challenge", "challenge"])
 
     def test_battle_form_prefills_selected_message(self):
         content = "\n".join((
@@ -136,7 +136,14 @@ class BattleParserTests(unittest.TestCase):
                 """)
                 conn.executemany(
                     "INSERT INTO pokemon (id, name) VALUES (?, ?)",
-                    [(1, "フシギダネ"), (4, "ピカチュウ"), (14, "メタグロス"), (15, "ルカリオ")],
+                    [
+                        (1, "フシギダネ"),
+                        (4, "ピカチュウ"),
+                        (11, "サンダー"),
+                        (12, "ファイヤー"),
+                        (14, "メタグロス"),
+                        (15, "ルカリオ"),
+                    ],
                 )
                 conn.executemany(
                     "INSERT INTO players (id, name) VALUES (?, ?)",

@@ -194,6 +194,7 @@ def export_battles(conn):
 
         WHERE b.player1_pokemon_id IN ({ph})
             AND b.player2_pokemon_id IN ({ph})
+            AND b.match_id IS NULL
             {season_clause}
 
         ORDER BY
@@ -255,6 +256,211 @@ def export_battles(conn):
     )
 
 
+def calculate_series_result(results):
+    player_wins = results.count("win")
+    opponent_wins = results.count("lose")
+    if player_wins >= 2:
+        return "win", player_wins, opponent_wins
+    if opponent_wins >= 2:
+        return "lose", player_wins, opponent_wins
+    return None, player_wins, opponent_wins
+
+
+def export_battle_matches(conn):
+    season_filter = "" if ACTIVE_SEASON_ID == "all" else "WHERE m.season_id = ?"
+    season_params = [] if ACTIVE_SEASON_ID == "all" else [ACTIVE_SEASON_ID]
+    match_rows = conn.execute(f"""
+        SELECT
+            m.match_id, m.match_type, m.tournament_name, m.opponent, m.match_date,
+            m.season_id, m.player_id, player.name AS player_name,
+            m.battle_message_id
+        FROM battle_matches AS m
+        LEFT JOIN players AS player ON player.id = m.player_id
+        {season_filter}
+        ORDER BY m.match_date DESC, m.match_id DESC
+    """, season_params).fetchall()
+    game_rows = conn.execute(f"""
+        SELECT
+            b.match_id, b.id, b.battle_message_id, b.battle_number,
+            b.game_number, b.player1_id, b.player2_id,
+            b.player1_pokemon_id, p1.name AS player1_pokemon,
+            p1.type1 AS player1_type1, p1.type2 AS player1_type2,
+            p1.weaknesses AS player1_weaknesses,
+            b.player2_pokemon_id, p2.name AS player2_pokemon,
+            p2.type1 AS player2_type1, p2.type2 AS player2_type2,
+            p2.weaknesses AS player2_weaknesses,
+            b.first_player, b.player1_result, b.player2_result,
+            m.season_id,
+            player1.name AS player1_name, player2.name AS player2_name,
+            m.opponent
+        FROM battles AS b
+        JOIN battle_matches AS m ON m.match_id = b.match_id
+        JOIN pokemon AS p1 ON p1.id = b.player1_pokemon_id
+        JOIN pokemon AS p2 ON p2.id = b.player2_pokemon_id
+        LEFT JOIN players AS player1 ON player1.id = b.player1_id
+        LEFT JOIN players AS player2 ON player2.id = b.player2_id
+        {"WHERE m.season_id = ?" if ACTIVE_SEASON_ID != "all" else ""}
+        ORDER BY b.match_id, b.game_number
+    """, season_params).fetchall()
+    games_by_match = {}
+    for row in game_rows:
+        games_by_match.setdefault(row["match_id"], []).append({
+            "id": row["id"],
+            "battle_message_id": row["battle_message_id"],
+            "battle_number": row["battle_number"],
+            "game_number": row["game_number"],
+            "battle_type": "challenge",
+            "match_id": row["match_id"],
+            "season_id": row["season_id"],
+            "player1": {
+                "id": row["player1_id"],
+                "name": row["player1_name"],
+                "pokemon_id": row["player1_pokemon_id"],
+                "pokemon": row["player1_pokemon"],
+                "type1": row["player1_type1"],
+                "type2": row["player1_type2"],
+                "weaknesses": parse_weaknesses(row["player1_weaknesses"]),
+                "result": row["player1_result"],
+            },
+            "player2": {
+                "id": row["player2_id"],
+                "name": row["player2_name"] or row["opponent"],
+                "pokemon_id": row["player2_pokemon_id"],
+                "pokemon": row["player2_pokemon"],
+                "type1": row["player2_type1"],
+                "type2": row["player2_type2"],
+                "weaknesses": parse_weaknesses(row["player2_weaknesses"]),
+                "result": row["player2_result"],
+            },
+            "first_player": row["first_player"],
+        })
+
+    matches = []
+    for row in match_rows:
+        games = games_by_match.get(row["match_id"], [])
+        result, player_score, opponent_score = calculate_series_result(
+            [game["player1"]["result"] for game in games]
+        )
+        matches.append({
+            "match_id": row["match_id"],
+            "match_type": row["match_type"],
+            "tournament_name": row["tournament_name"],
+            "opponent": row["opponent"],
+            "match_date": row["match_date"],
+            "match_result": result,
+            "player_score": player_score,
+            "opponent_score": opponent_score,
+            "season_id": row["season_id"],
+            "player": {"id": row["player_id"], "name": row["player_name"]},
+            "battle_message_id": row["battle_message_id"],
+            "games": games,
+        })
+    save_json("battle_matches.json", {"matches": matches})
+    return matches
+
+
+def export_battle_challenge_stats(conn, matches):
+    season_clause, season_params = get_season_filter_sql()
+    tournament_season_clause = (
+        "AND m.season_id = ?" if ACTIVE_SEASON_ID != "all" else ""
+    )
+    rows = conn.execute("""
+        SELECT
+            b.match_id, b.player1_pokemon_id, b.player2_pokemon_id,
+            b.player1_result, b.player2_result
+        FROM battles AS b
+        JOIN battle_messages AS bm ON bm.id = b.battle_message_id
+        WHERE b.player1_pokemon_id IN ({ph})
+            AND b.player2_pokemon_id IN ({ph})
+            AND b.match_id IS NULL
+            {season_clause}
+        UNION ALL
+        SELECT
+            b.match_id, b.player1_pokemon_id, b.player2_pokemon_id,
+            b.player1_result, b.player2_result
+        FROM battles AS b
+        JOIN battle_matches AS m ON m.match_id = b.match_id
+        WHERE b.player1_pokemon_id IN ({ph})
+            AND b.player2_pokemon_id IN ({ph})
+            {tournament_season_clause}
+    """.format(
+        ph=ACTIVE_POKEMON_PLACEHOLDERS,
+        season_clause=season_clause,
+        tournament_season_clause=tournament_season_clause,
+    ), (
+        *ACTIVE_POKEMON_IDS, *ACTIVE_POKEMON_IDS, *season_params,
+        *ACTIVE_POKEMON_IDS, *ACTIVE_POKEMON_IDS,
+        *([] if ACTIVE_SEASON_ID == "all" else [ACTIVE_SEASON_ID]),
+    )).fetchall()
+
+    def game_totals(game_rows):
+        return {
+            "games": len(game_rows),
+            "wins": sum(row["player1_result"] == "win" for row in game_rows),
+            "losses": sum(row["player1_result"] == "lose" for row in game_rows),
+        }
+
+    tournament_games = [row for row in rows if row["match_id"] is not None]
+    normal_games = [row for row in rows if row["match_id"] is None]
+    scopes = {
+        "normal": normal_games,
+        "battle_challenge": tournament_games,
+        "all": rows,
+    }
+    pokemon_scopes = {}
+    for scope, scope_rows in scopes.items():
+        by_pokemon = {}
+        for row in scope_rows:
+            for side in (1, 2):
+                pokemon_id = row[f"player{side}_pokemon_id"]
+                result = row[f"player{side}_result"]
+                stats = by_pokemon.setdefault(pokemon_id, {
+                    "games": 0, "wins": 0, "losses": 0, "usage_count": 0,
+                })
+                stats["games"] += 1
+                stats["usage_count"] += 1
+                stats["wins"] += result == "win"
+                stats["losses"] += result == "lose"
+        total_usage = sum(stats["usage_count"] for stats in by_pokemon.values())
+        pokemon_scopes[scope] = [
+            {
+                "pokemon_id": pokemon_id,
+                "name": conn.execute(
+                    "SELECT name FROM pokemon WHERE id = ?", (pokemon_id,)
+                ).fetchone()["name"],
+                **stats,
+                "usage_rate": round(stats["usage_count"] / total_usage * 100, 1)
+                    if total_usage else 0,
+                "win_rate": round(stats["wins"] / stats["games"] * 100, 1)
+                    if stats["games"] else 0,
+            }
+            for pokemon_id, stats in sorted(by_pokemon.items())
+        ]
+
+    series_wins = sum(match["match_result"] == "win" for match in matches)
+    series_losses = sum(match["match_result"] == "lose" for match in matches)
+    decided_series = series_wins + series_losses
+    all_game_stats = game_totals(tournament_games)
+    game_count = all_game_stats["games"]
+    save_json("battle_challenge_stats.json", {
+        "series": {
+            "series_count": len(matches),
+            "wins": series_wins,
+            "losses": series_losses,
+            "win_rate": round(series_wins / decided_series * 100, 1) if decided_series else 0,
+            "undecided": len(matches) - decided_series,
+        },
+        "games": {
+            **all_game_stats,
+            "win_rate": round(all_game_stats["wins"] / game_count * 100, 1) if game_count else 0,
+        },
+        "game_scopes": {
+            scope: {**game_totals(scope_rows)} for scope, scope_rows in scopes.items()
+        },
+        "pokemon": pokemon_scopes,
+    })
+
+
 # =========================
 # ② 直近2週間の試合数
 # =========================
@@ -278,6 +484,7 @@ def export_battle_trend(conn):
 
         WHERE b.player1_pokemon_id IN ({ph})
             AND b.player2_pokemon_id IN ({ph})
+            AND b.match_id IS NULL
             AND bm.battle_date BETWEEN ? AND ?
             {season_clause}
 
@@ -359,6 +566,7 @@ def export_usage(conn):
 
         WHERE b.player1_pokemon_id IN ({ph})
             AND b.player2_pokemon_id IN ({ph})
+            AND b.match_id IS NULL
             AND p.id IN ({ph})
             {season_clause}
 
@@ -441,6 +649,7 @@ def export_pokemon_stats(conn):
             ON b.battle_message_id = bm.id
         WHERE b.player1_pokemon_id IN ({ph})
             AND b.player2_pokemon_id IN ({ph})
+            AND b.match_id IS NULL
             {season_clause}
     """.format(ph=ACTIVE_POKEMON_PLACEHOLDERS, season_clause=season_clause), (
         *ACTIVE_POKEMON_IDS,
@@ -802,6 +1011,7 @@ def export_matchups(conn):
 
         WHERE b.player1_pokemon_id IN ({ph})
             AND b.player2_pokemon_id IN ({ph})
+            AND b.match_id IS NULL
             {season_clause}
     """.format(ph=ACTIVE_POKEMON_PLACEHOLDERS, season_clause=season_clause), (
         *ACTIVE_POKEMON_IDS,
@@ -1026,6 +1236,9 @@ def main():
                 print(f"season_id={season_id} を対象にJSON出力を開始します。")
 
             export_battles(conn)
+
+            matches = export_battle_matches(conn)
+            export_battle_challenge_stats(conn, matches)
 
             export_battle_trend(conn)
 

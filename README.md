@@ -21,8 +21,7 @@ Discord上で報告された対戦結果をもとに、ポケモンごとの使�
 - 通常対戦・バトルチャレンジ別の戦績集計
 - GitHub Pagesを利用した戦績公開
 
-将来的な機能：
-- Discord Botとの連携
+Discord Botは通常対戦を自動登録し、バトルチャレンジの投稿は元メッセージだけを保存します。大会対戦は登録画面でシーズンとゲーム結果を確認してから登録します。
 
 ## システム構成
 
@@ -30,7 +29,7 @@ Discord上で報告された対戦結果をもとに、ポケモンごとの使�
 Discord
    │ 対戦結果
    ▼
-Discord Bot（現在は手動）
+Discord Bot / 管理画面
    │
    ▼
 SQLite (data/pokemon.db)
@@ -47,16 +46,19 @@ GitHub Pages (docs/)
 ```text
 app/
 ├── battle_parser.py
+├── battle_matches.py
 ├── discord_bot.py
 ├── insert_app.py
 └── templates/
       ├── battle_form.html
+      ├── battle_challenge_form.html
       ├── insert_index.html
       ├── message_form.html
       └── player_form.html
 data/
 └── pokemon.db
 scripts/
+├── migrate_battle_challenges.py
 └── output_result.py
 docs/
 ├── index.html                 # GitHub Pagesのトップ
@@ -84,6 +86,9 @@ docs/
 ## 実行
 
 ```bash
+# 既存DBをバックアップしてからBO3対応スキーマへ移行（初回のみ）
+python scripts/migrate_battle_challenges.py
+
 # 対戦結果登録画面
 python app/insert_app.py
 
@@ -99,4 +104,8 @@ python -m app.discord_bot
 
 対戦メッセージを登録すると、戦績登録画面へ移動し、本文の絵文字から読み取れた対戦結果が入力欄に仮入力されます。登録済みのメッセージも戦績登録画面で選び直して仮入力できます。読み取り結果を確認・修正してから登録してください。
 
-対戦枠は試合ごとに「通常対戦」または「バトルチャレンジ」を指定できます。同一メッセージ内で対戦枠を分ける場合は、本文に「【通常対戦】」「【バトルチャレンジ】」の見出しを置くと初期値へ反映されます。見出しがない試合は通常対戦として扱われ、登録画面で変更できます。通常の統計は両方の対戦枠を合算し、プレイヤー詳細では対戦枠を切り替えて確認できます。
+通常対戦の投稿は従来どおり自動登録されます。対戦枠の見出し「【通常対戦】」「【バトルチャレンジ】」は従来の登録画面で初期値に反映されます。通常の統計は既存どおり両方の対戦枠を合算し、プレイヤー詳細では対戦枠を切り替えて確認できます。
+
+「バトルチャレンジ」「バトチャレ」「バトチャレンジ」を含むメッセージは大会対戦として扱います。Discord Botまたは管理画面でメッセージを保存した後、管理画面の「バトルチャレンジ（BO3）登録」からシーズンを選択し、最大3ゲームを登録してください。大会名・対戦相手は任意です。大会シリーズは通常対戦と分けてJSON出力され、直近対戦履歴で切り替えて表示できます。
+
+BO3対応DBへの移行は既存レコードを保ったまま実施し、実行前に `data/pokemon.db.backup-<UTC日時>` を作成します。JSON出力時は通常対戦用の既存JSON・集計に大会ゲームを重複計上せず、`battle_matches.json` と `battle_challenge_stats.json` を別途生成します。

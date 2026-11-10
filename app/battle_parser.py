@@ -14,6 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 EMOJI_JSON_PATH = BASE_DIR / "docs/data/emoji.json"
 
 CUSTOM_EMOJI_PATTERN = re.compile(r"<a?:([^:>]+):(\d+)>")
+BATTLE_CHALLENGE_PATTERN = re.compile(r"バト(?:ル)?チャレ(?:ンジ)?")
 BATTLE_TYPE_HEADER_PATTERN = re.compile(
     r"(?im)^[ \t]*(?:【\s*)?(バトルチャレンジ|通常対戦)(?:\s*】)?[ \t]*$"
 )
@@ -405,6 +406,10 @@ def parse_discord_message(content: str) -> list[dict]:
         if result is not None:
             result["battle_type"] = current_battle_type
             entries.append(result)
+
+    if BATTLE_CHALLENGE_PATTERN.search(content or ""):
+        for entry in entries:
+            entry["battle_type"] = "challenge"
 
     return entries
 

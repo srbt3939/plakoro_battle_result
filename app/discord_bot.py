@@ -6,10 +6,11 @@ from pathlib import Path
 import discord
 
 from .battle_parser import parse_discord_message, register_battles
+from .battle_matches import is_battle_challenge_message, save_battle_challenge_message
 
 
 BASE_DIR = Path(__file__).resolve().parent
-DB_PATH = os.getenv("BATTLE_DB_PATH", str(BASE_DIR / "data" / "pokemon.db"))
+DB_PATH = os.getenv("BATTLE_DB_PATH", str(BASE_DIR.parent / "data" / "pokemon.db"))
 BOT_TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 DEFAULT_PLAYER2_ID = os.getenv("DEFAULT_PLAYER2_ID")
 
@@ -54,6 +55,21 @@ async def on_message(message: discord.Message) -> None:
         return
 
     if ALLOWED_CHANNEL_IDS and message.channel.id not in ALLOWED_CHANNEL_IDS:
+        return
+
+    if is_battle_challenge_message(message.content):
+        stored_message_id = await asyncio.to_thread(
+            save_battle_challenge_message,
+            DB_PATH,
+            message.id,
+            message.content,
+            message.created_at.isoformat(),
+        )
+        if stored_message_id is not None:
+            await message.reply(
+                "バトルチャレンジのメッセージを保存しました。管理画面の「バトルチャレンジ（BO3）登録」から、シーズンとゲーム結果を確認して登録してください。",
+                mention_author=False,
+            )
         return
 
     battles = parse_discord_message(message.content)

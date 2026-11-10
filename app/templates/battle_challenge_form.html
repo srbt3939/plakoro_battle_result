@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>バトルチャレンジ（BO3）登録</title>
+    <style>
+        body { max-width: 900px; margin: 24px auto; padding: 0 16px; color: #263238; font-family: sans-serif; }
+        label { display: block; margin: 12px 0 5px; font-weight: 600; }
+        input, select, button { max-width: 100%; padding: 8px; }
+        .series-fields, .game-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+        .game-card { margin: 18px 0; padding: 16px; border: 1px solid #d5dfe4; border-radius: 10px; }
+        .message-content { max-height: 260px; overflow: auto; padding: 12px; background: #f5f7f8; white-space: pre-wrap; }
+        .notice { padding: 12px; background: #e7f2f5; border-radius: 8px; }
+        @media (max-width: 520px) { body { margin-top: 12px; } .game-card { padding: 12px; } }
+    </style>
+</head>
+<body>
+    <h1>バトルチャレンジ（BO3）登録</h1>
+    <p>GAME 1から順に入力してください。大会名・対戦相手は任意です。2勝が決まった後のゲームは登録できません。</p>
+
+    <form method="get">
+        <label for="message-select">元メッセージ</label>
+        <select id="message-select" name="message_id" required>
+            <option value="">メッセージを選択</option>
+            {% for message in messages %}
+            <option value="{{ message.id }}" {% if message.id == selected_message_id %}selected{% endif %}>
+                #{{ message.id }} — {{ message.battle_date or message.created_at[:10] or "日付なし" }}
+            </option>
+            {% endfor %}
+        </select>
+        <button type="submit">メッセージを読み込む</button>
+    </form>
+
+    {% if selected_message %}
+    <h2>元メッセージ</h2>
+    <pre class="message-content">{{ selected_message.raw_content }}</pre>
+    {% if initial_game_count > 3 %}
+    <p class="notice">このメッセージから{{ initial_game_count }}ゲームを読み取りました。BO3は最大3ゲームのため、元メッセージを確認してください。</p>
+    {% endif %}
+
+    {% if registered_match_id %}
+    <p class="notice">大会対戦を登録しました（ID: {{ registered_match_id }}）。</p>
+    {% elif existing_match %}
+    <p class="notice">このメッセージの大会対戦は登録済みです（ID: {{ existing_match.match_id }}）。</p>
+    {% else %}
+    <form method="post">
+        <input type="hidden" name="message_id" value="{{ selected_message.id }}">
+        <div class="series-fields">
+            <div>
+                <label for="tournament-name">大会名（任意）</label>
+                <input id="tournament-name" name="tournament_name" value="{{ tournament_name }}" maxlength="200">
+            </div>
+            <div>
+                <label for="opponent">対戦相手（任意）</label>
+                <input id="opponent" name="opponent" maxlength="100">
+            </div>
+            <div>
+                <label for="match-date">対戦日</label>
+                <input id="match-date" name="match_date" type="date"
+                    value="{{ selected_message.battle_date or selected_message.created_at[:10] }}" required>
+            </div>
+            <div>
+                <label for="season">シーズン</label>
+                <select id="season" name="season_id" required>
+                    <option value="">シーズンを選択</option>
+                    {% for season in seasons %}
+                    <option value="{{ season.id }}" {% if selected_message.season_id == season.id %}selected{% endif %}>
+                        {{ season.name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="player">投稿者（任意）</label>
+                <select id="player" name="player_id">
+                    <option value="">未選択</option>
+                    {% for player in players %}
+                    <option value="{{ player.id }}">{{ player.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        {% for game in initial_games %}
+        <fieldset class="game-card">
+            <legend>GAME {{ loop.index }}</legend>
+            <div class="game-fields">
+                <div>
+                    <label for="player1-{{ loop.index }}">自分のポケモン</label>
+                    <select id="player1-{{ loop.index }}" name="player1_pokemon_id_{{ loop.index }}">
+                        <option value="">未入力</option>
+                        {% for item in pokemon %}
+                        <option value="{{ item.id }}" {% if game.player1_pokemon_id == item.id %}selected{% endif %}>{{ item.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label for="player2-{{ loop.index }}">相手のポケモン</label>
+                    <select id="player2-{{ loop.index }}" name="player2_pokemon_id_{{ loop.index }}">
+                        <option value="">未入力</option>
+                        {% for item in pokemon %}
+                        <option value="{{ item.id }}" {% if game.player2_pokemon_id == item.id %}selected{% endif %}>{{ item.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label for="result-{{ loop.index }}">自分の結果</label>
+                    <select id="result-{{ loop.index }}" name="player1_result_{{ loop.index }}">
+                        <option value="">未入力</option>
+                        <option value="win" {% if game.player1_result == "win" %}selected{% endif %}>WIN</option>
+                        <option value="lose" {% if game.player1_result == "lose" %}selected{% endif %}>LOSE</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="first-{{ loop.index }}">先攻</label>
+                    <select id="first-{{ loop.index }}" name="first_player_{{ loop.index }}">
+                        <option value="">不明</option>
+                        <option value="1" {% if game.first_player == 1 %}selected{% endif %}>自分</option>
+                        <option value="2" {% if game.first_player == 2 %}selected{% endif %}>相手</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+        {% endfor %}
+
+        <button type="submit">大会対戦を登録</button>
+    </form>
+    {% endif %}
+    {% endif %}
+    <p><a href="/">管理画面へ戻る</a></p>
+</body>
+</html>
