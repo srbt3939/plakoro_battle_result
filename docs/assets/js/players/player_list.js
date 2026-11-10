@@ -104,7 +104,7 @@ async function main() {
 
         const [data, battleData, emojiData] = await Promise.all([
             loadPlayers(),
-            loadJSON("season_2/battles.json"),
+            loadJSON("season_3/battles.json"),
             loadJSON("emoji.json")
         ]);
 
