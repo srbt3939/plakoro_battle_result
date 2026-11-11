@@ -370,9 +370,9 @@ def battle_challenge():
             abort(400, description="シーズンを選択してください。")
 
         player_id = request.form.get("player_id", type=int)
-        if player_id is not None and not any(player["id"] == player_id for player in players):
+        if player_id is None or not any(player["id"] == player_id for player in players):
             conn.close()
-            abort(400, description="登録済みのプレイヤーを選択してください。")
+            abort(400, description="プレイヤー別の戦績に表示するため、投稿者を選択してください。")
 
         pokemon_ids = {item["id"] for item in pokemon}
         games = []

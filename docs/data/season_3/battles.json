@@ -3295,6 +3295,123 @@
             "first_player": 2,
             "battle_type": "normal",
             "season_id": 3
+        },
+        {
+            "id": 987,
+            "battle_message_id": 348,
+            "battle_number": 1,
+            "player1": {
+                "id": 22,
+                "name": "YOICHI",
+                "pokemon_id": 21,
+                "pokemon": "カヌチャン",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "name": null,
+                "pokemon_id": 16,
+                "pokemon": "レックウザ",
+                "type1": "ドラゴン",
+                "type2": null,
+                "weaknesses": [
+                    "ドラゴン"
+                ],
+                "result": "lose"
+            },
+            "first_player": 2,
+            "battle_type": "challenge",
+            "season_id": 3,
+            "match_id": 1,
+            "game_number": 1,
+            "tournament_name": "大阪　バトルチャレンジ",
+            "match_opponent": null,
+            "match_result": "win",
+            "player_score": 2,
+            "opponent_score": 1
+        },
+        {
+            "id": 988,
+            "battle_message_id": 348,
+            "battle_number": 2,
+            "player1": {
+                "id": 22,
+                "name": "YOICHI",
+                "pokemon_id": 21,
+                "pokemon": "カヌチャン",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": null,
+                "name": null,
+                "pokemon_id": 16,
+                "pokemon": "レックウザ",
+                "type1": "ドラゴン",
+                "type2": null,
+                "weaknesses": [
+                    "ドラゴン"
+                ],
+                "result": "win"
+            },
+            "first_player": 2,
+            "battle_type": "challenge",
+            "season_id": 3,
+            "match_id": 1,
+            "game_number": 2,
+            "tournament_name": "大阪　バトルチャレンジ",
+            "match_opponent": null,
+            "match_result": "win",
+            "player_score": 2,
+            "opponent_score": 1
+        },
+        {
+            "id": 989,
+            "battle_message_id": 348,
+            "battle_number": 3,
+            "player1": {
+                "id": 22,
+                "name": "YOICHI",
+                "pokemon_id": 21,
+                "pokemon": "カヌチャン",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "name": null,
+                "pokemon_id": 16,
+                "pokemon": "レックウザ",
+                "type1": "ドラゴン",
+                "type2": null,
+                "weaknesses": [
+                    "ドラゴン"
+                ],
+                "result": "lose"
+            },
+            "first_player": 1,
+            "battle_type": "challenge",
+            "season_id": 3,
+            "match_id": 1,
+            "game_number": 3,
+            "tournament_name": "大阪　バトルチャレンジ",
+            "match_opponent": null,
+            "match_result": "win",
+            "player_score": 2,
+            "opponent_score": 1
         }
     ]
 }

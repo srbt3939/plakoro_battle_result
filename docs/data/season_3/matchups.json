@@ -152,6 +152,31 @@
         },
         {
             "pokemon1": {
+                "id": 16,
+                "name": "レックウザ",
+                "type1": "ドラゴン",
+                "type2": null,
+                "weaknesses": [
+                    "ドラゴン"
+                ]
+            },
+            "pokemon2": {
+                "id": 21,
+                "name": "カヌチャン",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ]
+            },
+            "battles": 5,
+            "pokemon1_wins": 3,
+            "pokemon2_wins": 2,
+            "pokemon1_win_rate": 60.0,
+            "pokemon2_win_rate": 40.0
+        },
+        {
+            "pokemon1": {
                 "id": 18,
                 "name": "ボスコドラ",
                 "type1": "はがね",
@@ -371,31 +396,6 @@
             },
             "battles": 3,
             "pokemon1_wins": 3,
-            "pokemon2_wins": 0,
-            "pokemon1_win_rate": 100.0,
-            "pokemon2_win_rate": 0.0
-        },
-        {
-            "pokemon1": {
-                "id": 16,
-                "name": "レックウザ",
-                "type1": "ドラゴン",
-                "type2": null,
-                "weaknesses": [
-                    "ドラゴン"
-                ]
-            },
-            "pokemon2": {
-                "id": 21,
-                "name": "カヌチャン",
-                "type1": "ちょう",
-                "type2": null,
-                "weaknesses": [
-                    "ほのお"
-                ]
-            },
-            "battles": 2,
-            "pokemon1_wins": 2,
             "pokemon2_wins": 0,
             "pokemon1_win_rate": 100.0,
             "pokemon2_win_rate": 0.0

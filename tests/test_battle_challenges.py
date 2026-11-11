@@ -193,6 +193,7 @@ class BattleChallengeTests(unittest.TestCase):
                         "message_id": "1",
                         "season_id": "3",
                         "match_date": "2026-11-10",
+                        "player_id": "1",
                         **game_form(1, "win"),
                         **game_form(2, "win"),
                         **game_form(3, "lose"),
@@ -214,6 +215,7 @@ class BattleChallengeTests(unittest.TestCase):
                         "message_id": "1",
                         "season_id": "3",
                         "match_date": "2026-11-10",
+                        "player_id": "1",
                         **game_form(1, "win"),
                     },
                 )
@@ -226,7 +228,7 @@ class BattleChallengeTests(unittest.TestCase):
                     (None, 1, 0),
                 )
 
-    def test_export_keeps_normal_json_separate_and_includes_tournament_stats(self):
+    def test_export_includes_tournament_games_in_all_game_aggregations(self):
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "test.db"
             create_database(db_path)
@@ -268,6 +270,9 @@ class BattleChallengeTests(unittest.TestCase):
             output_result.OUTPUT_DIR = Path(directory) / "out"
             try:
                 output_result.export_battles(conn)
+                output_result.export_usage(conn)
+                output_result.export_pokemon_stats(conn)
+                output_result.export_matchups(conn)
                 matches = output_result.export_battle_matches(conn)
                 output_result.export_battle_challenge_stats(conn, matches)
             finally:
@@ -281,9 +286,27 @@ class BattleChallengeTests(unittest.TestCase):
 
             out_dir = Path(directory) / "out"
             normal_json = json.loads((out_dir / "battles.json").read_text())
+            usage_json = json.loads((out_dir / "usage.json").read_text())
+            pokemon_stats_json = json.loads((out_dir / "pokemon_stats.json").read_text())
+            matchups_json = json.loads((out_dir / "matchups.json").read_text())
             match_json = json.loads((out_dir / "battle_matches.json").read_text())
             stats = json.loads((out_dir / "battle_challenge_stats.json").read_text())
-            self.assertEqual(len(normal_json["battles"]), 1)
+            self.assertEqual(len(normal_json["battles"]), 4)
+            challenge_games = [
+                battle for battle in normal_json["battles"]
+                if battle["battle_type"] == "challenge"
+            ]
+            self.assertEqual(len(challenge_games), 3)
+            self.assertTrue(all(battle["player1"]["id"] == 1 for battle in challenge_games))
+            self.assertEqual(challenge_games[0]["tournament_name"], "大阪　バトルチャレンジ")
+            self.assertEqual(usage_json["total_usage"], 8)
+            pokemon_stats = {
+                pokemon["pokemon_id"]: pokemon
+                for pokemon in pokemon_stats_json["pokemon"]
+            }
+            self.assertEqual(pokemon_stats[1]["total"]["battles"], 4)
+            self.assertEqual(pokemon_stats[1]["total"]["wins"], 2)
+            self.assertEqual(matchups_json["matchups"][0]["battles"], 4)
             self.assertEqual(match_json["matches"][0]["match_id"], match_id)
             self.assertEqual(match_json["matches"][0]["player_score"], 2)
             game = match_json["matches"][0]["games"][0]

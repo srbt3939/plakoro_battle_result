@@ -72,9 +72,9 @@
                 </select>
             </div>
             <div>
-                <label for="player">投稿者（任意）</label>
-                <select id="player" name="player_id">
-                    <option value="">未選択</option>
+                <label for="player">投稿者（必須）</label>
+                <select id="player" name="player_id" required>
+                    <option value="">プレイヤーを選択</option>
                     {% for player in players %}
                     <option value="{{ player.id }}">{{ player.name }}</option>
                     {% endfor %}

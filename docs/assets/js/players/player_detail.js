@@ -1,6 +1,6 @@
 const DATA_PATH = "../data";
 const ASSET_PATH = "../";
-const DATA_VERSION = "2026-11-10-pokemon-roster";
+const DATA_VERSION = "2026-11-11-battle-challenge-aggregation";
 
 const typeImageNames = {
     "くさ": "grass",
@@ -295,7 +295,15 @@ function formatBattleEntry(record) {
 
     const { battle, self, opponent, isFirst } = record;
     const battleTypeLabel =
-        battle.battle_type === "challenge" ? "バトルチャレンジ" : "通常対戦";
+        battle.battle_type === "challenge"
+            ? [
+                battle.tournament_name || "バトルチャレンジ",
+                battle.game_number ? `GAME ${battle.game_number}` : "",
+                battle.player_score != null
+                    ? `${battle.player_score} - ${battle.opponent_score}`
+                    : ""
+            ].filter(Boolean).join(" · ")
+            : "通常対戦";
 
     const sideHTML = (side, isSideFirst) => `
         <div class="recent-battle-player ${side.result === "win" ? "is-win" : "is-lose"}">

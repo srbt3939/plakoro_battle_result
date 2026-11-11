@@ -101,7 +101,7 @@ def get_season_filter_sql():
     if ACTIVE_SEASON_ID == "all":
         return "", []
 
-    return "AND bm.season_id = ?", [ACTIVE_SEASON_ID]
+    return "AND COALESCE(m.season_id, bm.season_id) = ?", [ACTIVE_SEASON_ID]
 
 
 # =========================
@@ -153,7 +153,7 @@ def export_battles(conn):
             pl1.name AS player1_name,
 
             b.player2_id,
-            pl2.name AS player2_name,
+            COALESCE(pl2.name, m.opponent) AS player2_name,
 
             b.player1_pokemon_id,
             p1.name AS player1_pokemon,
@@ -173,12 +173,22 @@ def export_battles(conn):
             b.player2_result,
             b.battle_type,
 
-            bm.season_id
+            COALESCE(m.season_id, bm.season_id) AS season_id,
+            b.match_id,
+            b.game_number,
+            m.tournament_name,
+            m.opponent AS match_opponent,
+            m.match_result,
+            m.player_score,
+            m.opponent_score
 
         FROM battles AS b
 
         JOIN battle_messages AS bm
             ON b.battle_message_id = bm.id
+
+        LEFT JOIN battle_matches AS m
+            ON b.match_id = m.match_id
 
         JOIN pokemon AS p1
             ON b.player1_pokemon_id = p1.id
@@ -194,7 +204,6 @@ def export_battles(conn):
 
         WHERE b.player1_pokemon_id IN ({ph})
             AND b.player2_pokemon_id IN ({ph})
-            AND b.match_id IS NULL
             {season_clause}
 
         ORDER BY
@@ -211,7 +220,7 @@ def export_battles(conn):
 
     for row in rows:
 
-        battles.append({
+        battle = {
             "id": row["id"],
 
             "battle_message_id": row["battle_message_id"],
@@ -245,7 +254,18 @@ def export_battles(conn):
             # 全season合算モードでは、各battleが実際にどのseasonのものかを
             # season_idで区別できるようにしておく。
             "season_id": row["season_id"]
-        })
+        }
+        if row["match_id"] is not None:
+            battle.update({
+                "match_id": row["match_id"],
+                "game_number": row["game_number"],
+                "tournament_name": row["tournament_name"],
+                "match_opponent": row["match_opponent"],
+                "match_result": row["match_result"],
+                "player_score": row["player_score"],
+                "opponent_score": row["opponent_score"],
+            })
+        battles.append(battle)
 
 
     save_json(
@@ -370,6 +390,7 @@ def export_battle_challenge_stats(conn, matches):
             b.player1_result, b.player2_result
         FROM battles AS b
         JOIN battle_messages AS bm ON bm.id = b.battle_message_id
+        LEFT JOIN battle_matches AS m ON m.match_id = b.match_id
         WHERE b.player1_pokemon_id IN ({ph})
             AND b.player2_pokemon_id IN ({ph})
             AND b.match_id IS NULL
@@ -474,7 +495,7 @@ def export_battle_trend(conn):
 
     rows = conn.execute("""
         SELECT
-            bm.battle_date,
+            COALESCE(m.match_date, bm.battle_date) AS battle_date,
             COUNT(b.id) AS battle_count
 
         FROM battle_messages AS bm
@@ -482,10 +503,12 @@ def export_battle_trend(conn):
         JOIN battles AS b
             ON b.battle_message_id = bm.id
 
+        LEFT JOIN battle_matches AS m
+            ON b.match_id = m.match_id
+
         WHERE b.player1_pokemon_id IN ({ph})
             AND b.player2_pokemon_id IN ({ph})
-            AND b.match_id IS NULL
-            AND bm.battle_date BETWEEN ? AND ?
+            AND COALESCE(m.match_date, bm.battle_date) BETWEEN ? AND ?
             {season_clause}
 
         GROUP BY bm.battle_date
@@ -564,9 +587,11 @@ def export_usage(conn):
         JOIN battles AS b
             ON b.id = appearances.battle_id
 
+        LEFT JOIN battle_matches AS m
+            ON b.match_id = m.match_id
+
         WHERE b.player1_pokemon_id IN ({ph})
             AND b.player2_pokemon_id IN ({ph})
-            AND b.match_id IS NULL
             AND p.id IN ({ph})
             {season_clause}
 
@@ -647,9 +672,10 @@ def export_pokemon_stats(conn):
         FROM battles AS b
         JOIN battle_messages AS bm
             ON b.battle_message_id = bm.id
+        LEFT JOIN battle_matches AS m
+            ON b.match_id = m.match_id
         WHERE b.player1_pokemon_id IN ({ph})
             AND b.player2_pokemon_id IN ({ph})
-            AND b.match_id IS NULL
             {season_clause}
     """.format(ph=ACTIVE_POKEMON_PLACEHOLDERS, season_clause=season_clause), (
         *ACTIVE_POKEMON_IDS,
@@ -1009,9 +1035,11 @@ def export_matchups(conn):
         JOIN battle_messages AS bm
             ON b.battle_message_id = bm.id
 
+        LEFT JOIN battle_matches AS m
+            ON b.match_id = m.match_id
+
         WHERE b.player1_pokemon_id IN ({ph})
             AND b.player2_pokemon_id IN ({ph})
-            AND b.match_id IS NULL
             {season_clause}
     """.format(ph=ACTIVE_POKEMON_PLACEHOLDERS, season_clause=season_clause), (
         *ACTIVE_POKEMON_IDS,
