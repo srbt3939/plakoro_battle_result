@@ -1,3 +1,124 @@
 {
-    "matches": []
+    "matches": [
+        {
+            "match_id": 1,
+            "match_type": "battle_challenge",
+            "tournament_name": "大阪　バトルチャレンジ",
+            "opponent": null,
+            "match_date": "2026-11-08",
+            "match_result": "win",
+            "player_score": 2,
+            "opponent_score": 1,
+            "season_id": 3,
+            "player": {
+                "id": 22,
+                "name": "YOICHI"
+            },
+            "battle_message_id": 348,
+            "games": [
+                {
+                    "id": 987,
+                    "battle_message_id": 348,
+                    "battle_number": 1,
+                    "game_number": 1,
+                    "battle_type": "challenge",
+                    "match_id": 1,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 22,
+                        "name": "YOICHI",
+                        "pokemon_id": 21,
+                        "pokemon": "カヌチャン",
+                        "type1": "ちょう",
+                        "type2": null,
+                        "weaknesses": [
+                            "ほのお"
+                        ],
+                        "result": "win"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 16,
+                        "pokemon": "レックウザ",
+                        "type1": "ドラゴン",
+                        "type2": null,
+                        "weaknesses": [
+                            "ドラゴン"
+                        ],
+                        "result": "lose"
+                    },
+                    "first_player": 2
+                },
+                {
+                    "id": 988,
+                    "battle_message_id": 348,
+                    "battle_number": 2,
+                    "game_number": 2,
+                    "battle_type": "challenge",
+                    "match_id": 1,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 22,
+                        "name": "YOICHI",
+                        "pokemon_id": 21,
+                        "pokemon": "カヌチャン",
+                        "type1": "ちょう",
+                        "type2": null,
+                        "weaknesses": [
+                            "ほのお"
+                        ],
+                        "result": "lose"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 16,
+                        "pokemon": "レックウザ",
+                        "type1": "ドラゴン",
+                        "type2": null,
+                        "weaknesses": [
+                            "ドラゴン"
+                        ],
+                        "result": "win"
+                    },
+                    "first_player": 2
+                },
+                {
+                    "id": 989,
+                    "battle_message_id": 348,
+                    "battle_number": 3,
+                    "game_number": 3,
+                    "battle_type": "challenge",
+                    "match_id": 1,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 22,
+                        "name": "YOICHI",
+                        "pokemon_id": 21,
+                        "pokemon": "カヌチャン",
+                        "type1": "ちょう",
+                        "type2": null,
+                        "weaknesses": [
+                            "ほのお"
+                        ],
+                        "result": "win"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 16,
+                        "pokemon": "レックウザ",
+                        "type1": "ドラゴン",
+                        "type2": null,
+                        "weaknesses": [
+                            "ドラゴン"
+                        ],
+                        "result": "lose"
+                    },
+                    "first_player": 1
+                }
+            ]
+        }
+    ]
 }
