@@ -1,65 +1,75 @@
 {
     "series": {
-        "series_count": 1,
-        "wins": 1,
+        "series_count": 2,
+        "wins": 2,
         "losses": 0,
         "win_rate": 100.0,
         "undecided": 0
     },
     "games": {
-        "games": 3,
-        "wins": 2,
-        "losses": 1,
+        "games": 6,
+        "wins": 4,
+        "losses": 2,
         "win_rate": 66.7
     },
     "game_scopes": {
         "normal": {
-            "games": 206,
-            "wins": 107,
-            "losses": 99
+            "games": 228,
+            "wins": 120,
+            "losses": 108
         },
         "battle_challenge": {
-            "games": 3,
-            "wins": 2,
-            "losses": 1
+            "games": 6,
+            "wins": 4,
+            "losses": 2
         },
         "all": {
-            "games": 209,
-            "wins": 109,
-            "losses": 100
+            "games": 234,
+            "wins": 124,
+            "losses": 110
         }
     },
     "pokemon": {
         "normal": [
             {
+                "pokemon_id": 1,
+                "name": "フシギダネ",
+                "games": 2,
+                "wins": 0,
+                "losses": 2,
+                "usage_count": 2,
+                "usage_rate": 0.4,
+                "win_rate": 0.0
+            },
+            {
                 "pokemon_id": 2,
                 "name": "ヒトカゲ",
-                "games": 7,
-                "wins": 5,
+                "games": 10,
+                "wins": 8,
                 "losses": 2,
-                "usage_count": 7,
-                "usage_rate": 1.7,
-                "win_rate": 71.4
+                "usage_count": 10,
+                "usage_rate": 2.2,
+                "win_rate": 80.0
             },
             {
                 "pokemon_id": 3,
                 "name": "ゼニガメ",
-                "games": 7,
-                "wins": 7,
-                "losses": 0,
-                "usage_count": 7,
-                "usage_rate": 1.7,
-                "win_rate": 100.0
+                "games": 12,
+                "wins": 10,
+                "losses": 2,
+                "usage_count": 12,
+                "usage_rate": 2.6,
+                "win_rate": 83.3
             },
             {
                 "pokemon_id": 4,
                 "name": "ピカチュウ",
-                "games": 7,
+                "games": 8,
                 "wins": 4,
-                "losses": 3,
-                "usage_count": 7,
-                "usage_rate": 1.7,
-                "win_rate": 57.1
+                "losses": 4,
+                "usage_count": 8,
+                "usage_rate": 1.8,
+                "win_rate": 50.0
             },
             {
                 "pokemon_id": 6,
@@ -68,28 +78,28 @@
                 "wins": 1,
                 "losses": 1,
                 "usage_count": 2,
-                "usage_rate": 0.5,
+                "usage_rate": 0.4,
                 "win_rate": 50.0
             },
             {
                 "pokemon_id": 8,
                 "name": "イワーク",
-                "games": 2,
-                "wins": 1,
+                "games": 3,
+                "wins": 2,
                 "losses": 1,
-                "usage_count": 2,
-                "usage_rate": 0.5,
-                "win_rate": 50.0
+                "usage_count": 3,
+                "usage_rate": 0.7,
+                "win_rate": 66.7
             },
             {
                 "pokemon_id": 9,
                 "name": "カイロス",
-                "games": 13,
-                "wins": 6,
-                "losses": 7,
-                "usage_count": 13,
-                "usage_rate": 3.2,
-                "win_rate": 46.2
+                "games": 15,
+                "wins": 7,
+                "losses": 8,
+                "usage_count": 15,
+                "usage_rate": 3.3,
+                "win_rate": 46.7
             },
             {
                 "pokemon_id": 10,
@@ -98,32 +108,22 @@
                 "wins": 4,
                 "losses": 4,
                 "usage_count": 8,
-                "usage_rate": 1.9,
+                "usage_rate": 1.8,
                 "win_rate": 50.0
             },
             {
                 "pokemon_id": 12,
                 "name": "ファイヤー",
-                "games": 8,
-                "wins": 6,
+                "games": 10,
+                "wins": 8,
                 "losses": 2,
-                "usage_count": 8,
-                "usage_rate": 1.9,
-                "win_rate": 75.0
+                "usage_count": 10,
+                "usage_rate": 2.2,
+                "win_rate": 80.0
             },
             {
-                "pokemon_id": 14,
-                "name": "メタグロス",
-                "games": 4,
-                "wins": 2,
-                "losses": 2,
-                "usage_count": 4,
-                "usage_rate": 1.0,
-                "win_rate": 50.0
-            },
-            {
-                "pokemon_id": 15,
-                "name": "ルカリオ",
+                "pokemon_id": 13,
+                "name": "ゲンガー",
                 "games": 1,
                 "wins": 1,
                 "losses": 0,
@@ -132,44 +132,64 @@
                 "win_rate": 100.0
             },
             {
+                "pokemon_id": 14,
+                "name": "メタグロス",
+                "games": 7,
+                "wins": 4,
+                "losses": 3,
+                "usage_count": 7,
+                "usage_rate": 1.5,
+                "win_rate": 57.1
+            },
+            {
+                "pokemon_id": 15,
+                "name": "ルカリオ",
+                "games": 2,
+                "wins": 1,
+                "losses": 1,
+                "usage_count": 2,
+                "usage_rate": 0.4,
+                "win_rate": 50.0
+            },
+            {
                 "pokemon_id": 16,
                 "name": "レックウザ",
-                "games": 75,
-                "wins": 44,
-                "losses": 31,
-                "usage_count": 75,
-                "usage_rate": 18.2,
-                "win_rate": 58.7
+                "games": 81,
+                "wins": 45,
+                "losses": 36,
+                "usage_count": 81,
+                "usage_rate": 17.8,
+                "win_rate": 55.6
             },
             {
                 "pokemon_id": 17,
                 "name": "ゲッコウガ",
-                "games": 56,
+                "games": 57,
                 "wins": 31,
-                "losses": 25,
-                "usage_count": 56,
-                "usage_rate": 13.6,
-                "win_rate": 55.4
+                "losses": 26,
+                "usage_count": 57,
+                "usage_rate": 12.5,
+                "win_rate": 54.4
             },
             {
                 "pokemon_id": 18,
                 "name": "ボスコドラ",
-                "games": 93,
-                "wins": 42,
-                "losses": 51,
-                "usage_count": 93,
-                "usage_rate": 22.6,
-                "win_rate": 45.2
+                "games": 96,
+                "wins": 43,
+                "losses": 53,
+                "usage_count": 96,
+                "usage_rate": 21.1,
+                "win_rate": 44.8
             },
             {
                 "pokemon_id": 19,
                 "name": "ヤミラミ",
-                "games": 40,
-                "wins": 22,
-                "losses": 18,
-                "usage_count": 40,
-                "usage_rate": 9.7,
-                "win_rate": 55.0
+                "games": 44,
+                "wins": 23,
+                "losses": 21,
+                "usage_count": 44,
+                "usage_rate": 9.6,
+                "win_rate": 52.3
             },
             {
                 "pokemon_id": 20,
@@ -178,30 +198,60 @@
                 "wins": 15,
                 "losses": 26,
                 "usage_count": 41,
-                "usage_rate": 10.0,
+                "usage_rate": 9.0,
                 "win_rate": 36.6
             },
             {
                 "pokemon_id": 21,
                 "name": "カヌチャン",
-                "games": 48,
-                "wins": 15,
-                "losses": 33,
-                "usage_count": 48,
-                "usage_rate": 11.7,
-                "win_rate": 31.2
+                "games": 57,
+                "wins": 21,
+                "losses": 36,
+                "usage_count": 57,
+                "usage_rate": 12.5,
+                "win_rate": 36.8
             }
         ],
         "battle_challenge": [
             {
+                "pokemon_id": 11,
+                "name": "サンダー",
+                "games": 1,
+                "wins": 1,
+                "losses": 0,
+                "usage_count": 1,
+                "usage_rate": 8.3,
+                "win_rate": 100.0
+            },
+            {
+                "pokemon_id": 12,
+                "name": "ファイヤー",
+                "games": 1,
+                "wins": 0,
+                "losses": 1,
+                "usage_count": 1,
+                "usage_rate": 8.3,
+                "win_rate": 0.0
+            },
+            {
                 "pokemon_id": 16,
                 "name": "レックウザ",
-                "games": 3,
+                "games": 4,
                 "wins": 1,
-                "losses": 2,
+                "losses": 3,
+                "usage_count": 4,
+                "usage_rate": 33.3,
+                "win_rate": 25.0
+            },
+            {
+                "pokemon_id": 18,
+                "name": "ボスコドラ",
+                "games": 3,
+                "wins": 2,
+                "losses": 1,
                 "usage_count": 3,
-                "usage_rate": 50.0,
-                "win_rate": 33.3
+                "usage_rate": 25.0,
+                "win_rate": 66.7
             },
             {
                 "pokemon_id": 21,
@@ -210,40 +260,50 @@
                 "wins": 2,
                 "losses": 1,
                 "usage_count": 3,
-                "usage_rate": 50.0,
+                "usage_rate": 25.0,
                 "win_rate": 66.7
             }
         ],
         "all": [
             {
+                "pokemon_id": 1,
+                "name": "フシギダネ",
+                "games": 2,
+                "wins": 0,
+                "losses": 2,
+                "usage_count": 2,
+                "usage_rate": 0.4,
+                "win_rate": 0.0
+            },
+            {
                 "pokemon_id": 2,
                 "name": "ヒトカゲ",
-                "games": 7,
-                "wins": 5,
+                "games": 10,
+                "wins": 8,
                 "losses": 2,
-                "usage_count": 7,
-                "usage_rate": 1.7,
-                "win_rate": 71.4
+                "usage_count": 10,
+                "usage_rate": 2.1,
+                "win_rate": 80.0
             },
             {
                 "pokemon_id": 3,
                 "name": "ゼニガメ",
-                "games": 7,
-                "wins": 7,
-                "losses": 0,
-                "usage_count": 7,
-                "usage_rate": 1.7,
-                "win_rate": 100.0
+                "games": 12,
+                "wins": 10,
+                "losses": 2,
+                "usage_count": 12,
+                "usage_rate": 2.6,
+                "win_rate": 83.3
             },
             {
                 "pokemon_id": 4,
                 "name": "ピカチュウ",
-                "games": 7,
+                "games": 8,
                 "wins": 4,
-                "losses": 3,
-                "usage_count": 7,
+                "losses": 4,
+                "usage_count": 8,
                 "usage_rate": 1.7,
-                "win_rate": 57.1
+                "win_rate": 50.0
             },
             {
                 "pokemon_id": 6,
@@ -252,28 +312,28 @@
                 "wins": 1,
                 "losses": 1,
                 "usage_count": 2,
-                "usage_rate": 0.5,
+                "usage_rate": 0.4,
                 "win_rate": 50.0
             },
             {
                 "pokemon_id": 8,
                 "name": "イワーク",
-                "games": 2,
-                "wins": 1,
+                "games": 3,
+                "wins": 2,
                 "losses": 1,
-                "usage_count": 2,
-                "usage_rate": 0.5,
-                "win_rate": 50.0
+                "usage_count": 3,
+                "usage_rate": 0.6,
+                "win_rate": 66.7
             },
             {
                 "pokemon_id": 9,
                 "name": "カイロス",
-                "games": 13,
-                "wins": 6,
-                "losses": 7,
-                "usage_count": 13,
-                "usage_rate": 3.1,
-                "win_rate": 46.2
+                "games": 15,
+                "wins": 7,
+                "losses": 8,
+                "usage_count": 15,
+                "usage_rate": 3.2,
+                "win_rate": 46.7
             },
             {
                 "pokemon_id": 10,
@@ -282,32 +342,12 @@
                 "wins": 4,
                 "losses": 4,
                 "usage_count": 8,
-                "usage_rate": 1.9,
+                "usage_rate": 1.7,
                 "win_rate": 50.0
             },
             {
-                "pokemon_id": 12,
-                "name": "ファイヤー",
-                "games": 8,
-                "wins": 6,
-                "losses": 2,
-                "usage_count": 8,
-                "usage_rate": 1.9,
-                "win_rate": 75.0
-            },
-            {
-                "pokemon_id": 14,
-                "name": "メタグロス",
-                "games": 4,
-                "wins": 2,
-                "losses": 2,
-                "usage_count": 4,
-                "usage_rate": 1.0,
-                "win_rate": 50.0
-            },
-            {
-                "pokemon_id": 15,
-                "name": "ルカリオ",
+                "pokemon_id": 11,
+                "name": "サンダー",
                 "games": 1,
                 "wins": 1,
                 "losses": 0,
@@ -316,44 +356,84 @@
                 "win_rate": 100.0
             },
             {
+                "pokemon_id": 12,
+                "name": "ファイヤー",
+                "games": 11,
+                "wins": 8,
+                "losses": 3,
+                "usage_count": 11,
+                "usage_rate": 2.4,
+                "win_rate": 72.7
+            },
+            {
+                "pokemon_id": 13,
+                "name": "ゲンガー",
+                "games": 1,
+                "wins": 1,
+                "losses": 0,
+                "usage_count": 1,
+                "usage_rate": 0.2,
+                "win_rate": 100.0
+            },
+            {
+                "pokemon_id": 14,
+                "name": "メタグロス",
+                "games": 7,
+                "wins": 4,
+                "losses": 3,
+                "usage_count": 7,
+                "usage_rate": 1.5,
+                "win_rate": 57.1
+            },
+            {
+                "pokemon_id": 15,
+                "name": "ルカリオ",
+                "games": 2,
+                "wins": 1,
+                "losses": 1,
+                "usage_count": 2,
+                "usage_rate": 0.4,
+                "win_rate": 50.0
+            },
+            {
                 "pokemon_id": 16,
                 "name": "レックウザ",
-                "games": 78,
-                "wins": 45,
-                "losses": 33,
-                "usage_count": 78,
-                "usage_rate": 18.7,
-                "win_rate": 57.7
+                "games": 85,
+                "wins": 46,
+                "losses": 39,
+                "usage_count": 85,
+                "usage_rate": 18.2,
+                "win_rate": 54.1
             },
             {
                 "pokemon_id": 17,
                 "name": "ゲッコウガ",
-                "games": 56,
+                "games": 57,
                 "wins": 31,
-                "losses": 25,
-                "usage_count": 56,
-                "usage_rate": 13.4,
-                "win_rate": 55.4
+                "losses": 26,
+                "usage_count": 57,
+                "usage_rate": 12.2,
+                "win_rate": 54.4
             },
             {
                 "pokemon_id": 18,
                 "name": "ボスコドラ",
-                "games": 93,
-                "wins": 42,
-                "losses": 51,
-                "usage_count": 93,
-                "usage_rate": 22.2,
-                "win_rate": 45.2
+                "games": 99,
+                "wins": 45,
+                "losses": 54,
+                "usage_count": 99,
+                "usage_rate": 21.2,
+                "win_rate": 45.5
             },
             {
                 "pokemon_id": 19,
                 "name": "ヤミラミ",
-                "games": 40,
-                "wins": 22,
-                "losses": 18,
-                "usage_count": 40,
-                "usage_rate": 9.6,
-                "win_rate": 55.0
+                "games": 44,
+                "wins": 23,
+                "losses": 21,
+                "usage_count": 44,
+                "usage_rate": 9.4,
+                "win_rate": 52.3
             },
             {
                 "pokemon_id": 20,
@@ -362,18 +442,18 @@
                 "wins": 15,
                 "losses": 26,
                 "usage_count": 41,
-                "usage_rate": 9.8,
+                "usage_rate": 8.8,
                 "win_rate": 36.6
             },
             {
                 "pokemon_id": 21,
                 "name": "カヌチャン",
-                "games": 51,
-                "wins": 17,
-                "losses": 34,
-                "usage_count": 51,
-                "usage_rate": 12.2,
-                "win_rate": 33.3
+                "games": 60,
+                "wins": 23,
+                "losses": 37,
+                "usage_count": 60,
+                "usage_rate": 12.8,
+                "win_rate": 38.3
             }
         ]
     }
