@@ -193,7 +193,7 @@
             },
             {
                 "pokemon_id": 18,
-                "name": "ボスコドラ",
+                "name": "ボスゴドラ",
                 "games": 110,
                 "wins": 49,
                 "losses": 61,
@@ -265,7 +265,7 @@
             },
             {
                 "pokemon_id": 18,
-                "name": "ボスコドラ",
+                "name": "ボスゴドラ",
                 "games": 3,
                 "wins": 2,
                 "losses": 1,
@@ -457,7 +457,7 @@
             },
             {
                 "pokemon_id": 18,
-                "name": "ボスコドラ",
+                "name": "ボスゴドラ",
                 "games": 113,
                 "wins": 51,
                 "losses": 62,
