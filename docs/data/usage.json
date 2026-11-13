@@ -1,5 +1,5 @@
 {
-    "total_usage": 2230,
+    "total_usage": 2300,
     "pokemon": [
         {
             "rank": 1,
@@ -11,7 +11,7 @@
                 "そら"
             ],
             "usage_count": 244,
-            "usage_rate": 10.9
+            "usage_rate": 10.6
         },
         {
             "rank": 2,
@@ -22,8 +22,8 @@
             "weaknesses": [
                 "かみなり"
             ],
-            "usage_count": 178,
-            "usage_rate": 8.0
+            "usage_count": 180,
+            "usage_rate": 7.8
         },
         {
             "rank": 3,
@@ -34,8 +34,8 @@
             "weaknesses": [
                 "はがね"
             ],
-            "usage_count": 160,
-            "usage_rate": 7.2
+            "usage_count": 162,
+            "usage_rate": 7.0
         },
         {
             "rank": 4,
@@ -46,7 +46,7 @@
             "weaknesses": [
                 "とう"
             ],
-            "usage_count": 157,
+            "usage_count": 161,
             "usage_rate": 7.0
         },
         {
@@ -59,7 +59,7 @@
                 "みず"
             ],
             "usage_count": 149,
-            "usage_rate": 6.7
+            "usage_rate": 6.5
         },
         {
             "rank": 6,
@@ -70,7 +70,7 @@
             "weaknesses": [
                 "あく"
             ],
-            "usage_count": 128,
+            "usage_count": 130,
             "usage_rate": 5.7
         },
         {
@@ -82,7 +82,7 @@
             "weaknesses": [
                 "ちょう"
             ],
-            "usage_count": 120,
+            "usage_count": 124,
             "usage_rate": 5.4
         },
         {
@@ -94,23 +94,11 @@
             "weaknesses": [
                 "くさ"
             ],
-            "usage_count": 115,
-            "usage_rate": 5.2
+            "usage_count": 117,
+            "usage_rate": 5.1
         },
         {
             "rank": 9,
-            "pokemon_id": 14,
-            "name": "メタグロス",
-            "type1": "はがね",
-            "type2": null,
-            "weaknesses": [
-                "ほのお"
-            ],
-            "usage_count": 103,
-            "usage_rate": 4.6
-        },
-        {
-            "rank": 10,
             "pokemon_id": 18,
             "name": "ボスコドラ",
             "type1": "はがね",
@@ -118,8 +106,20 @@
             "weaknesses": [
                 "とう"
             ],
-            "usage_count": 99,
-            "usage_rate": 4.4
+            "usage_count": 113,
+            "usage_rate": 4.9
+        },
+        {
+            "rank": 10,
+            "pokemon_id": 14,
+            "name": "メタグロス",
+            "type1": "はがね",
+            "type2": null,
+            "weaknesses": [
+                "ほのお"
+            ],
+            "usage_count": 105,
+            "usage_rate": 4.6
         },
         {
             "rank": 11,
@@ -130,20 +130,20 @@
             "weaknesses": [
                 "みず"
             ],
-            "usage_count": 94,
+            "usage_count": 96,
             "usage_rate": 4.2
         },
         {
             "rank": 12,
-            "pokemon_id": 15,
-            "name": "ルカリオ",
-            "type1": "とう",
+            "pokemon_id": 16,
+            "name": "レックウザ",
+            "type1": "ドラゴン",
             "type2": null,
             "weaknesses": [
-                "ほのお"
+                "ドラゴン"
             ],
-            "usage_count": 88,
-            "usage_rate": 3.9
+            "usage_count": 95,
+            "usage_rate": 4.1
         },
         {
             "rank": 13,
@@ -154,20 +154,20 @@
             "weaknesses": [
                 "ほのお"
             ],
-            "usage_count": 87,
-            "usage_rate": 3.9
+            "usage_count": 91,
+            "usage_rate": 4.0
         },
         {
             "rank": 14,
-            "pokemon_id": 16,
-            "name": "レックウザ",
-            "type1": "ドラゴン",
+            "pokemon_id": 15,
+            "name": "ルカリオ",
+            "type1": "とう",
             "type2": null,
             "weaknesses": [
-                "ドラゴン"
+                "ほのお"
             ],
-            "usage_count": 85,
-            "usage_rate": 3.8
+            "usage_count": 90,
+            "usage_rate": 3.9
         },
         {
             "rank": 15,
@@ -178,7 +178,7 @@
             "weaknesses": [
                 "とう"
             ],
-            "usage_count": 81,
+            "usage_count": 83,
             "usage_rate": 3.6
         },
         {
@@ -190,7 +190,7 @@
             "weaknesses": [
                 "とう"
             ],
-            "usage_count": 74,
+            "usage_count": 77,
             "usage_rate": 3.3
         },
         {
@@ -203,7 +203,7 @@
                 "とう"
             ],
             "usage_count": 66,
-            "usage_rate": 3.0
+            "usage_rate": 2.9
         },
         {
             "rank": 18,
@@ -214,8 +214,8 @@
             "weaknesses": [
                 "ほのお"
             ],
-            "usage_count": 60,
-            "usage_rate": 2.7
+            "usage_count": 66,
+            "usage_rate": 2.9
         },
         {
             "rank": 19,
@@ -226,8 +226,8 @@
             "weaknesses": [
                 "くさ"
             ],
-            "usage_count": 57,
-            "usage_rate": 2.6
+            "usage_count": 61,
+            "usage_rate": 2.7
         },
         {
             "rank": 20,
@@ -238,7 +238,7 @@
             "weaknesses": [
                 "ちょう"
             ],
-            "usage_count": 44,
+            "usage_count": 46,
             "usage_rate": 2.0
         },
         {
@@ -250,8 +250,8 @@
             "weaknesses": [
                 "とう"
             ],
-            "usage_count": 41,
-            "usage_rate": 1.8
+            "usage_count": 44,
+            "usage_rate": 1.9
         }
     ]
 }
