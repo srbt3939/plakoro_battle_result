@@ -9,22 +9,22 @@
                 "ほのお"
             ],
             "total": {
-                "battles": 91,
-                "wins": 46,
+                "battles": 93,
+                "wins": 48,
                 "losses": 45,
-                "win_rate": 50.5
+                "win_rate": 51.6
             },
             "first_player": {
-                "battles": 42,
-                "wins": 25,
+                "battles": 43,
+                "wins": 26,
                 "losses": 17,
-                "win_rate": 59.5
+                "win_rate": 60.5
             },
             "second_player": {
-                "battles": 41,
-                "wins": 17,
+                "battles": 42,
+                "wins": 18,
                 "losses": 24,
-                "win_rate": 41.5
+                "win_rate": 42.9
             },
             "unknown": {
                 "battles": 8,
@@ -75,16 +75,16 @@
                 "かみなり"
             ],
             "total": {
-                "battles": 171,
-                "wins": 100,
+                "battles": 172,
+                "wins": 101,
                 "losses": 71,
-                "win_rate": 58.5
+                "win_rate": 58.7
             },
             "first_player": {
-                "battles": 86,
-                "wins": 55,
+                "battles": 87,
+                "wins": 56,
                 "losses": 31,
-                "win_rate": 64.0
+                "win_rate": 64.4
             },
             "second_player": {
                 "battles": 82,
@@ -141,22 +141,22 @@
                 "とう"
             ],
             "total": {
-                "battles": 77,
-                "wins": 34,
-                "losses": 43,
-                "win_rate": 44.2
+                "battles": 79,
+                "wins": 35,
+                "losses": 44,
+                "win_rate": 44.3
             },
             "first_player": {
-                "battles": 38,
-                "wins": 20,
+                "battles": 39,
+                "wins": 21,
                 "losses": 18,
-                "win_rate": 52.6
+                "win_rate": 53.8
             },
             "second_player": {
-                "battles": 34,
+                "battles": 35,
                 "wins": 12,
-                "losses": 22,
-                "win_rate": 35.3
+                "losses": 23,
+                "win_rate": 34.3
             },
             "unknown": {
                 "battles": 5,
@@ -174,22 +174,22 @@
                 "あく"
             ],
             "total": {
-                "battles": 125,
-                "wins": 75,
-                "losses": 50,
-                "win_rate": 60.0
+                "battles": 129,
+                "wins": 77,
+                "losses": 52,
+                "win_rate": 59.7
             },
             "first_player": {
-                "battles": 56,
+                "battles": 57,
                 "wins": 38,
-                "losses": 18,
-                "win_rate": 67.9
+                "losses": 19,
+                "win_rate": 66.7
             },
             "second_player": {
-                "battles": 55,
-                "wins": 26,
-                "losses": 29,
-                "win_rate": 47.3
+                "battles": 58,
+                "wins": 28,
+                "losses": 30,
+                "win_rate": 48.3
             },
             "unknown": {
                 "battles": 18,
@@ -240,10 +240,10 @@
                 "くさ"
             ],
             "total": {
-                "battles": 117,
-                "wins": 53,
+                "battles": 118,
+                "wins": 54,
                 "losses": 64,
-                "win_rate": 45.3
+                "win_rate": 45.8
             },
             "first_player": {
                 "battles": 54,
@@ -252,10 +252,10 @@
                 "win_rate": 59.3
             },
             "second_player": {
-                "battles": 53,
-                "wins": 18,
+                "battles": 54,
+                "wins": 19,
                 "losses": 35,
-                "win_rate": 34.0
+                "win_rate": 35.2
             },
             "unknown": {
                 "battles": 10,
@@ -273,10 +273,10 @@
                 "そら"
             ],
             "total": {
-                "battles": 233,
+                "battles": 234,
                 "wins": 118,
-                "losses": 115,
-                "win_rate": 50.6
+                "losses": 116,
+                "win_rate": 50.4
             },
             "first_player": {
                 "battles": 101,
@@ -285,10 +285,10 @@
                 "win_rate": 52.5
             },
             "second_player": {
-                "battles": 96,
+                "battles": 97,
                 "wins": 39,
-                "losses": 57,
-                "win_rate": 40.6
+                "losses": 58,
+                "win_rate": 40.2
             },
             "unknown": {
                 "battles": 46,
@@ -306,22 +306,22 @@
                 "はがね"
             ],
             "total": {
-                "battles": 158,
-                "wins": 80,
-                "losses": 78,
-                "win_rate": 50.6
+                "battles": 172,
+                "wins": 88,
+                "losses": 84,
+                "win_rate": 51.2
             },
             "first_player": {
-                "battles": 68,
-                "wins": 40,
-                "losses": 28,
-                "win_rate": 58.8
+                "battles": 76,
+                "wins": 46,
+                "losses": 30,
+                "win_rate": 60.5
             },
             "second_player": {
-                "battles": 70,
-                "wins": 28,
-                "losses": 42,
-                "win_rate": 40.0
+                "battles": 76,
+                "wins": 30,
+                "losses": 46,
+                "win_rate": 39.5
             },
             "unknown": {
                 "battles": 21,
@@ -372,22 +372,22 @@
                 "みず"
             ],
             "total": {
-                "battles": 149,
-                "wins": 86,
-                "losses": 63,
-                "win_rate": 57.7
+                "battles": 154,
+                "wins": 89,
+                "losses": 65,
+                "win_rate": 57.8
             },
             "first_player": {
-                "battles": 60,
-                "wins": 42,
+                "battles": 63,
+                "wins": 45,
                 "losses": 18,
-                "win_rate": 70.0
+                "win_rate": 71.4
             },
             "second_player": {
-                "battles": 63,
+                "battles": 65,
                 "wins": 31,
-                "losses": 32,
-                "win_rate": 49.2
+                "losses": 34,
+                "win_rate": 47.7
             },
             "unknown": {
                 "battles": 26,
@@ -405,16 +405,16 @@
                 "ちょう"
             ],
             "total": {
-                "battles": 117,
-                "wins": 54,
+                "battles": 118,
+                "wins": 55,
                 "losses": 63,
-                "win_rate": 46.2
+                "win_rate": 46.6
             },
             "first_player": {
-                "battles": 57,
-                "wins": 34,
+                "battles": 58,
+                "wins": 35,
                 "losses": 23,
-                "win_rate": 59.6
+                "win_rate": 60.3
             },
             "second_player": {
                 "battles": 67,
@@ -438,22 +438,22 @@
                 "ほのお"
             ],
             "total": {
-                "battles": 103,
-                "wins": 53,
-                "losses": 50,
-                "win_rate": 51.5
+                "battles": 105,
+                "wins": 54,
+                "losses": 51,
+                "win_rate": 51.4
             },
             "first_player": {
-                "battles": 51,
-                "wins": 30,
+                "battles": 52,
+                "wins": 31,
                 "losses": 21,
-                "win_rate": 58.8
+                "win_rate": 59.6
             },
             "second_player": {
-                "battles": 54,
+                "battles": 55,
                 "wins": 23,
-                "losses": 31,
-                "win_rate": 42.6
+                "losses": 32,
+                "win_rate": 41.8
             },
             "unknown": {
                 "battles": 0,
@@ -471,22 +471,22 @@
                 "ほのお"
             ],
             "total": {
-                "battles": 87,
-                "wins": 49,
-                "losses": 38,
-                "win_rate": 56.3
+                "battles": 92,
+                "wins": 50,
+                "losses": 42,
+                "win_rate": 54.3
             },
             "first_player": {
-                "battles": 52,
-                "wins": 29,
-                "losses": 23,
-                "win_rate": 55.8
+                "battles": 55,
+                "wins": 30,
+                "losses": 25,
+                "win_rate": 54.5
             },
             "second_player": {
-                "battles": 38,
+                "battles": 40,
                 "wins": 20,
-                "losses": 18,
-                "win_rate": 52.6
+                "losses": 20,
+                "win_rate": 50.0
             },
             "unknown": {
                 "battles": 0,
@@ -504,22 +504,22 @@
                 "ドラゴン"
             ],
             "total": {
-                "battles": 89,
-                "wins": 53,
-                "losses": 36,
-                "win_rate": 59.6
+                "battles": 111,
+                "wins": 69,
+                "losses": 42,
+                "win_rate": 62.2
             },
             "first_player": {
-                "battles": 48,
-                "wins": 30,
-                "losses": 18,
-                "win_rate": 62.5
+                "battles": 61,
+                "wins": 41,
+                "losses": 20,
+                "win_rate": 67.2
             },
             "second_player": {
-                "battles": 47,
-                "wins": 23,
-                "losses": 24,
-                "win_rate": 48.9
+                "battles": 63,
+                "wins": 28,
+                "losses": 35,
+                "win_rate": 44.4
             },
             "unknown": {
                 "battles": 0,
@@ -537,22 +537,22 @@
                 "くさ"
             ],
             "total": {
-                "battles": 59,
-                "wins": 33,
-                "losses": 26,
-                "win_rate": 55.9
+                "battles": 80,
+                "wins": 44,
+                "losses": 36,
+                "win_rate": 55.0
             },
             "first_player": {
-                "battles": 33,
-                "wins": 17,
-                "losses": 16,
-                "win_rate": 51.5
+                "battles": 45,
+                "wins": 23,
+                "losses": 22,
+                "win_rate": 51.1
             },
             "second_player": {
-                "battles": 28,
-                "wins": 16,
-                "losses": 12,
-                "win_rate": 57.1
+                "battles": 39,
+                "wins": 21,
+                "losses": 18,
+                "win_rate": 53.8
             },
             "unknown": {
                 "battles": 0,
@@ -570,22 +570,22 @@
                 "とう"
             ],
             "total": {
-                "battles": 98,
-                "wins": 51,
-                "losses": 47,
-                "win_rate": 52.0
+                "battles": 109,
+                "wins": 54,
+                "losses": 55,
+                "win_rate": 49.5
             },
             "first_player": {
-                "battles": 53,
-                "wins": 26,
-                "losses": 27,
-                "win_rate": 49.1
+                "battles": 59,
+                "wins": 28,
+                "losses": 31,
+                "win_rate": 47.5
             },
             "second_player": {
-                "battles": 60,
-                "wins": 25,
-                "losses": 35,
-                "win_rate": 41.7
+                "battles": 65,
+                "wins": 26,
+                "losses": 39,
+                "win_rate": 40.0
             },
             "unknown": {
                 "battles": 0,
@@ -603,22 +603,22 @@
                 "ちょう"
             ],
             "total": {
-                "battles": 44,
-                "wins": 23,
-                "losses": 21,
-                "win_rate": 52.3
+                "battles": 64,
+                "wins": 34,
+                "losses": 30,
+                "win_rate": 53.1
             },
             "first_player": {
-                "battles": 20,
-                "wins": 11,
-                "losses": 9,
-                "win_rate": 55.0
+                "battles": 28,
+                "wins": 18,
+                "losses": 10,
+                "win_rate": 64.3
             },
             "second_player": {
-                "battles": 26,
-                "wins": 12,
-                "losses": 14,
-                "win_rate": 46.2
+                "battles": 38,
+                "wins": 16,
+                "losses": 22,
+                "win_rate": 42.1
             },
             "unknown": {
                 "battles": 0,
@@ -636,21 +636,21 @@
                 "とう"
             ],
             "total": {
-                "battles": 44,
-                "wins": 15,
-                "losses": 29,
-                "win_rate": 34.1
+                "battles": 64,
+                "wins": 22,
+                "losses": 42,
+                "win_rate": 34.4
             },
             "first_player": {
-                "battles": 24,
-                "wins": 9,
-                "losses": 15,
-                "win_rate": 37.5
+                "battles": 34,
+                "wins": 13,
+                "losses": 21,
+                "win_rate": 38.2
             },
             "second_player": {
-                "battles": 20,
-                "wins": 6,
-                "losses": 14,
+                "battles": 30,
+                "wins": 9,
+                "losses": 21,
                 "win_rate": 30.0
             },
             "unknown": {
@@ -669,22 +669,22 @@
                 "ほのお"
             ],
             "total": {
-                "battles": 63,
-                "wins": 28,
-                "losses": 35,
-                "win_rate": 44.4
+                "battles": 80,
+                "wins": 38,
+                "losses": 42,
+                "win_rate": 47.5
             },
             "first_player": {
-                "battles": 32,
-                "wins": 16,
-                "losses": 16,
+                "battles": 42,
+                "wins": 21,
+                "losses": 21,
                 "win_rate": 50.0
             },
             "second_player": {
-                "battles": 34,
-                "wins": 12,
-                "losses": 22,
-                "win_rate": 35.3
+                "battles": 41,
+                "wins": 17,
+                "losses": 24,
+                "win_rate": 41.5
             },
             "unknown": {
                 "battles": 0,
