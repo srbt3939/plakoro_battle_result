@@ -1,5 +1,5 @@
 {
-    "total_usage": 816,
+    "total_usage": 820,
     "pokemon": [
         {
             "rank": 1,
@@ -10,8 +10,8 @@
             "weaknesses": [
                 "ドラゴン"
             ],
-            "usage_count": 155,
-            "usage_rate": 19.0
+            "usage_count": 157,
+            "usage_rate": 19.1
         },
         {
             "rank": 2,
@@ -35,7 +35,7 @@
                 "ほのお"
             ],
             "usage_count": 100,
-            "usage_rate": 12.3
+            "usage_rate": 12.2
         },
         {
             "rank": 4,
@@ -47,7 +47,7 @@
                 "くさ"
             ],
             "usage_count": 92,
-            "usage_rate": 11.3
+            "usage_rate": 11.2
         },
         {
             "rank": 5,
@@ -183,6 +183,18 @@
         },
         {
             "rank": 16,
+            "pokemon_id": 15,
+            "name": "ルカリオ",
+            "type1": "とう",
+            "type2": null,
+            "weaknesses": [
+                "ほのお"
+            ],
+            "usage_count": 12,
+            "usage_rate": 1.5
+        },
+        {
+            "rank": 17,
             "pokemon_id": 1,
             "name": "フシギダネ",
             "type1": "くさ",
@@ -194,25 +206,13 @@
             "usage_rate": 1.2
         },
         {
-            "rank": 17,
+            "rank": 18,
             "pokemon_id": 13,
             "name": "ゲンガー",
             "type1": "あく",
             "type2": null,
             "weaknesses": [
                 "ちょう"
-            ],
-            "usage_count": 10,
-            "usage_rate": 1.2
-        },
-        {
-            "rank": 18,
-            "pokemon_id": 15,
-            "name": "ルカリオ",
-            "type1": "とう",
-            "type2": null,
-            "weaknesses": [
-                "ほのお"
             ],
             "usage_count": 10,
             "usage_rate": 1.2

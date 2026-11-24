@@ -13118,6 +13118,70 @@
             "first_player": 1,
             "battle_type": "normal",
             "season_id": 3
+        },
+        {
+            "id": 1292,
+            "battle_message_id": 405,
+            "battle_number": 1,
+            "player1": {
+                "id": 18,
+                "name": "ナゼル",
+                "pokemon_id": 16,
+                "pokemon": "レックウザ",
+                "type1": "ドラゴン",
+                "type2": null,
+                "weaknesses": [
+                    "ドラゴン"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": 19,
+                "name": "B",
+                "pokemon_id": 15,
+                "pokemon": "ルカリオ",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
+                "result": "win"
+            },
+            "first_player": 2,
+            "battle_type": "normal",
+            "season_id": 3
+        },
+        {
+            "id": 1293,
+            "battle_message_id": 405,
+            "battle_number": 2,
+            "player1": {
+                "id": 18,
+                "name": "ナゼル",
+                "pokemon_id": 16,
+                "pokemon": "レックウザ",
+                "type1": "ドラゴン",
+                "type2": null,
+                "weaknesses": [
+                    "ドラゴン"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": 19,
+                "name": "B",
+                "pokemon_id": 15,
+                "pokemon": "ルカリオ",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
+                "result": "lose"
+            },
+            "first_player": 1,
+            "battle_type": "normal",
+            "season_id": 3
         }
     ]
 }
