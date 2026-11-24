@@ -1,26 +1,6 @@
 {
     "days": [
         {
-            "date": "2026-11-06",
-            "battle_count": 0
-        },
-        {
-            "date": "2026-11-07",
-            "battle_count": 0
-        },
-        {
-            "date": "2026-11-08",
-            "battle_count": 120
-        },
-        {
-            "date": "2026-11-09",
-            "battle_count": 19
-        },
-        {
-            "date": "2026-11-10",
-            "battle_count": 70
-        },
-        {
             "date": "2026-11-11",
             "battle_count": 16
         },
@@ -46,14 +26,34 @@
         },
         {
             "date": "2026-11-17",
-            "battle_count": 0
+            "battle_count": 17
         },
         {
             "date": "2026-11-18",
-            "battle_count": 0
+            "battle_count": 24
         },
         {
             "date": "2026-11-19",
+            "battle_count": 0
+        },
+        {
+            "date": "2026-11-20",
+            "battle_count": 19
+        },
+        {
+            "date": "2026-11-21",
+            "battle_count": 0
+        },
+        {
+            "date": "2026-11-22",
+            "battle_count": 0
+        },
+        {
+            "date": "2026-11-23",
+            "battle_count": 0
+        },
+        {
+            "date": "2026-11-24",
             "battle_count": 0
         }
     ]
