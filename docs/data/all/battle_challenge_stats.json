@@ -14,9 +14,9 @@
     },
     "game_scopes": {
         "normal": {
-            "games": 1282,
-            "wins": 689,
-            "losses": 593
+            "games": 1288,
+            "wins": 693,
+            "losses": 595
         },
         "battle_challenge": {
             "games": 9,
@@ -24,9 +24,9 @@
             "losses": 4
         },
         "all": {
-            "games": 1291,
-            "wins": 694,
-            "losses": 597
+            "games": 1297,
+            "wins": 698,
+            "losses": 599
         }
     },
     "pokemon": {
@@ -88,7 +88,7 @@
                 "wins": 81,
                 "losses": 59,
                 "usage_count": 140,
-                "usage_rate": 5.5,
+                "usage_rate": 5.4,
                 "win_rate": 57.9
             },
             {
@@ -118,18 +118,18 @@
                 "wins": 118,
                 "losses": 127,
                 "usage_count": 245,
-                "usage_rate": 9.6,
+                "usage_rate": 9.5,
                 "win_rate": 48.2
             },
             {
                 "pokemon_id": 10,
                 "name": "フリーザー",
-                "games": 182,
-                "wins": 93,
-                "losses": 89,
-                "usage_count": 182,
-                "usage_rate": 7.1,
-                "win_rate": 51.1
+                "games": 185,
+                "wins": 94,
+                "losses": 91,
+                "usage_count": 185,
+                "usage_rate": 7.2,
+                "win_rate": 50.8
             },
             {
                 "pokemon_id": 11,
@@ -138,7 +138,7 @@
                 "wins": 28,
                 "losses": 40,
                 "usage_count": 68,
-                "usage_rate": 2.7,
+                "usage_rate": 2.6,
                 "win_rate": 41.2
             },
             {
@@ -184,12 +184,12 @@
             {
                 "pokemon_id": 16,
                 "name": "レックウザ",
-                "games": 149,
-                "wins": 84,
+                "games": 152,
+                "wins": 87,
                 "losses": 65,
-                "usage_count": 149,
-                "usage_rate": 5.8,
-                "win_rate": 56.4
+                "usage_count": 152,
+                "usage_rate": 5.9,
+                "win_rate": 57.2
             },
             {
                 "pokemon_id": 17,
@@ -218,7 +218,7 @@
                 "wins": 36,
                 "losses": 32,
                 "usage_count": 68,
-                "usage_rate": 2.7,
+                "usage_rate": 2.6,
                 "win_rate": 52.9
             },
             {
@@ -240,6 +240,16 @@
                 "usage_count": 97,
                 "usage_rate": 3.8,
                 "win_rate": 41.2
+            },
+            {
+                "pokemon_id": 22,
+                "name": "カイリュー",
+                "games": 6,
+                "wins": 2,
+                "losses": 4,
+                "usage_count": 6,
+                "usage_rate": 0.2,
+                "win_rate": 33.3
             }
         ],
         "battle_challenge": [
@@ -402,18 +412,18 @@
                 "wins": 118,
                 "losses": 127,
                 "usage_count": 245,
-                "usage_rate": 9.5,
+                "usage_rate": 9.4,
                 "win_rate": 48.2
             },
             {
                 "pokemon_id": 10,
                 "name": "フリーザー",
-                "games": 183,
-                "wins": 94,
-                "losses": 89,
-                "usage_count": 183,
-                "usage_rate": 7.1,
-                "win_rate": 51.4
+                "games": 186,
+                "wins": 95,
+                "losses": 91,
+                "usage_count": 186,
+                "usage_rate": 7.2,
+                "win_rate": 51.1
             },
             {
                 "pokemon_id": 11,
@@ -468,12 +478,12 @@
             {
                 "pokemon_id": 16,
                 "name": "レックウザ",
-                "games": 157,
-                "wins": 87,
+                "games": 160,
+                "wins": 90,
                 "losses": 70,
-                "usage_count": 157,
-                "usage_rate": 6.1,
-                "win_rate": 55.4
+                "usage_count": 160,
+                "usage_rate": 6.2,
+                "win_rate": 56.2
             },
             {
                 "pokemon_id": 17,
@@ -482,7 +492,7 @@
                 "wins": 49,
                 "losses": 43,
                 "usage_count": 92,
-                "usage_rate": 3.6,
+                "usage_rate": 3.5,
                 "win_rate": 53.3
             },
             {
@@ -524,6 +534,16 @@
                 "usage_count": 100,
                 "usage_rate": 3.9,
                 "win_rate": 42.0
+            },
+            {
+                "pokemon_id": 22,
+                "name": "カイリュー",
+                "games": 6,
+                "wins": 2,
+                "losses": 4,
+                "usage_count": 6,
+                "usage_rate": 0.2,
+                "win_rate": 33.3
             }
         ]
     }

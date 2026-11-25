@@ -306,22 +306,22 @@
                 "はがね"
             ],
             "total": {
-                "battles": 31,
-                "wins": 18,
-                "losses": 13,
-                "win_rate": 58.1
+                "battles": 34,
+                "wins": 19,
+                "losses": 15,
+                "win_rate": 55.9
             },
             "first_player": {
-                "battles": 17,
-                "wins": 13,
-                "losses": 4,
-                "win_rate": 76.5
+                "battles": 19,
+                "wins": 14,
+                "losses": 5,
+                "win_rate": 73.7
             },
             "second_player": {
-                "battles": 14,
+                "battles": 15,
                 "wins": 5,
-                "losses": 9,
-                "win_rate": 35.7
+                "losses": 10,
+                "win_rate": 33.3
             },
             "unknown": {
                 "battles": 0,
@@ -504,22 +504,22 @@
                 "ドラゴン"
             ],
             "total": {
-                "battles": 142,
-                "wins": 87,
+                "battles": 145,
+                "wins": 90,
                 "losses": 55,
-                "win_rate": 61.3
+                "win_rate": 62.1
             },
             "first_player": {
-                "battles": 79,
-                "wins": 54,
+                "battles": 80,
+                "wins": 55,
                 "losses": 25,
-                "win_rate": 68.4
+                "win_rate": 68.8
             },
             "second_player": {
-                "battles": 78,
-                "wins": 33,
+                "battles": 80,
+                "wins": 35,
                 "losses": 45,
-                "win_rate": 42.3
+                "win_rate": 43.8
             },
             "unknown": {
                 "battles": 0,
@@ -685,6 +685,39 @@
                 "wins": 18,
                 "losses": 31,
                 "win_rate": 36.7
+            },
+            "unknown": {
+                "battles": 0,
+                "wins": 0,
+                "losses": 0,
+                "win_rate": 0
+            }
+        },
+        {
+            "pokemon_id": 22,
+            "name": "カイリュー",
+            "type1": "ドラゴン",
+            "type2": null,
+            "weaknesses": [
+                "ドラゴン"
+            ],
+            "total": {
+                "battles": 6,
+                "wins": 2,
+                "losses": 4,
+                "win_rate": 33.3
+            },
+            "first_player": {
+                "battles": 3,
+                "wins": 1,
+                "losses": 2,
+                "win_rate": 33.3
+            },
+            "second_player": {
+                "battles": 3,
+                "wins": 1,
+                "losses": 2,
+                "win_rate": 33.3
             },
             "unknown": {
                 "battles": 0,

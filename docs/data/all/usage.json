@@ -1,5 +1,5 @@
 {
-    "total_usage": 2582,
+    "total_usage": 2594,
     "pokemon": [
         {
             "rank": 1,
@@ -11,28 +11,28 @@
                 "そら"
             ],
             "usage_count": 245,
-            "usage_rate": 9.5
+            "usage_rate": 9.4
         },
         {
             "rank": 2,
-            "pokemon_id": 3,
-            "name": "ゼニガメ",
-            "type1": "みず",
-            "type2": null,
-            "weaknesses": [
-                "かみなり"
-            ],
-            "usage_count": 183,
-            "usage_rate": 7.1
-        },
-        {
-            "rank": 3,
             "pokemon_id": 10,
             "name": "フリーザー",
             "type1": "みず",
             "type2": null,
             "weaknesses": [
                 "はがね"
+            ],
+            "usage_count": 186,
+            "usage_rate": 7.2
+        },
+        {
+            "rank": 3,
+            "pokemon_id": 3,
+            "name": "ゼニガメ",
+            "type1": "みず",
+            "type2": null,
+            "weaknesses": [
+                "かみなり"
             ],
             "usage_count": 183,
             "usage_rate": 7.1
@@ -58,8 +58,8 @@
             "weaknesses": [
                 "ドラゴン"
             ],
-            "usage_count": 157,
-            "usage_rate": 6.1
+            "usage_count": 160,
+            "usage_rate": 6.2
         },
         {
             "rank": 6,
@@ -191,7 +191,7 @@
                 "くさ"
             ],
             "usage_count": 92,
-            "usage_rate": 3.6
+            "usage_rate": 3.5
         },
         {
             "rank": 17,
@@ -252,6 +252,18 @@
             ],
             "usage_count": 68,
             "usage_rate": 2.6
+        },
+        {
+            "rank": 22,
+            "pokemon_id": 22,
+            "name": "カイリュー",
+            "type1": "ドラゴン",
+            "type2": null,
+            "weaknesses": [
+                "ドラゴン"
+            ],
+            "usage_count": 6,
+            "usage_rate": 0.2
         }
     ]
 }
