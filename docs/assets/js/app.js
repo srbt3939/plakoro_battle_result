@@ -279,6 +279,41 @@ function moveRecentBattles(direction) {
 // 直近2週間の試合数
 // =========================
 
+let battleTrendChart = null;
+
+function getTrendChartThemeColors() {
+    const isDark = document.documentElement.dataset.theme === "dark";
+    return {
+        borderColor: isDark ? "#56b4d3" : "#2f7892",
+        backgroundColor: isDark ? "rgba(86, 180, 211, 0.18)" : "rgba(47, 120, 146, 0.14)",
+        tickColor: isDark ? "#93a4af" : "#71808a",
+        gridColor: isDark ? "rgba(147, 164, 175, 0.16)" : "rgba(38, 50, 56, 0.08)"
+    };
+}
+
+function updateBattleTrendChartTheme() {
+    if (!battleTrendChart) {
+        return;
+    }
+    const colors = getTrendChartThemeColors();
+    const dataset = battleTrendChart.data.datasets[0];
+    if (dataset) {
+        dataset.borderColor = colors.borderColor;
+        dataset.backgroundColor = colors.backgroundColor;
+    }
+    if (battleTrendChart.options.scales?.x) {
+        battleTrendChart.options.scales.x.ticks.color = colors.tickColor;
+        battleTrendChart.options.scales.x.grid.color = colors.gridColor;
+    }
+    if (battleTrendChart.options.scales?.y) {
+        battleTrendChart.options.scales.y.ticks.color = colors.tickColor;
+        battleTrendChart.options.scales.y.grid.color = colors.gridColor;
+    }
+    battleTrendChart.update();
+}
+
+window.addEventListener("themechange", updateBattleTrendChartTheme);
+
 function createBattleTrendChart(days, pageLoadedAt) {
 
     const trendCounts = new Map(
@@ -320,7 +355,14 @@ function createBattleTrendChart(days, pageLoadedAt) {
             "battle-trend-chart"
         );
 
-    new Chart(ctx, {
+    if (battleTrendChart) {
+        battleTrendChart.destroy();
+        battleTrendChart = null;
+    }
+
+    const colors = getTrendChartThemeColors();
+
+    battleTrendChart = new Chart(ctx, {
 
         type: "line",
 
@@ -333,8 +375,8 @@ function createBattleTrendChart(days, pageLoadedAt) {
                 {
                     label: "試合数",
                     data: data,
-                    borderColor: "#2f7892",
-                    backgroundColor: "rgba(47, 120, 146, 0.14)",
+                    borderColor: colors.borderColor,
+                    backgroundColor: colors.backgroundColor,
                     fill: true,
                     tension: 0.25,
                     pointRadius: 4,
@@ -352,10 +394,23 @@ function createBattleTrendChart(days, pageLoadedAt) {
 
             scales: {
 
+                x: {
+                    ticks: {
+                        color: colors.tickColor
+                    },
+                    grid: {
+                        color: colors.gridColor
+                    }
+                },
+
                 y: {
                     beginAtZero: true,
                     ticks: {
-                        precision: 0
+                        precision: 0,
+                        color: colors.tickColor
+                    },
+                    grid: {
+                        color: colors.gridColor
                     }
                 }
 
