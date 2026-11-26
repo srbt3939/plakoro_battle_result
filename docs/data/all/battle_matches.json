@@ -1,6 +1,126 @@
 {
     "matches": [
         {
+            "match_id": 4,
+            "match_type": "battle_challenge",
+            "tournament_name": "バトチャレ（YS京都店）",
+            "opponent": null,
+            "match_date": "2026-11-22",
+            "match_result": "lose",
+            "player_score": 1,
+            "opponent_score": 2,
+            "season_id": 3,
+            "player": {
+                "id": 14,
+                "name": "見倉茂"
+            },
+            "battle_message_id": 410,
+            "games": [
+                {
+                    "id": 1317,
+                    "battle_message_id": 410,
+                    "battle_number": 1,
+                    "game_number": 1,
+                    "battle_type": "challenge",
+                    "match_id": 4,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 14,
+                        "name": "見倉茂",
+                        "pokemon_id": 22,
+                        "pokemon": "カイリュー",
+                        "type1": "ドラゴン",
+                        "type2": null,
+                        "weaknesses": [
+                            "ドラゴン"
+                        ],
+                        "result": "win"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 22,
+                        "pokemon": "カイリュー",
+                        "type1": "ドラゴン",
+                        "type2": null,
+                        "weaknesses": [
+                            "ドラゴン"
+                        ],
+                        "result": "lose"
+                    },
+                    "first_player": 1
+                },
+                {
+                    "id": 1318,
+                    "battle_message_id": 410,
+                    "battle_number": 2,
+                    "game_number": 2,
+                    "battle_type": "challenge",
+                    "match_id": 4,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 14,
+                        "name": "見倉茂",
+                        "pokemon_id": 22,
+                        "pokemon": "カイリュー",
+                        "type1": "ドラゴン",
+                        "type2": null,
+                        "weaknesses": [
+                            "ドラゴン"
+                        ],
+                        "result": "lose"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 14,
+                        "pokemon": "メタグロス",
+                        "type1": "はがね",
+                        "type2": null,
+                        "weaknesses": [
+                            "ほのお"
+                        ],
+                        "result": "win"
+                    },
+                    "first_player": 1
+                },
+                {
+                    "id": 1319,
+                    "battle_message_id": 410,
+                    "battle_number": 3,
+                    "game_number": 3,
+                    "battle_type": "challenge",
+                    "match_id": 4,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 14,
+                        "name": "見倉茂",
+                        "pokemon_id": 22,
+                        "pokemon": "カイリュー",
+                        "type1": "ドラゴン",
+                        "type2": null,
+                        "weaknesses": [
+                            "ドラゴン"
+                        ],
+                        "result": "lose"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 8,
+                        "pokemon": "イワーク",
+                        "type1": "とう",
+                        "type2": null,
+                        "weaknesses": [
+                            "くさ"
+                        ],
+                        "result": "win"
+                    },
+                    "first_player": 1
+                }
+            ]
+        },
+        {
             "match_id": 3,
             "match_type": "battle_challenge",
             "tournament_name": "バトチャレ",

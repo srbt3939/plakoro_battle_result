@@ -1,5 +1,5 @@
 {
-    "total_usage": 2594,
+    "total_usage": 2634,
     "pokemon": [
         {
             "rank": 1,
@@ -10,8 +10,8 @@
             "weaknesses": [
                 "そら"
             ],
-            "usage_count": 245,
-            "usage_rate": 9.4
+            "usage_count": 246,
+            "usage_rate": 9.3
         },
         {
             "rank": 2,
@@ -23,7 +23,7 @@
                 "はがね"
             ],
             "usage_count": 186,
-            "usage_rate": 7.2
+            "usage_rate": 7.1
         },
         {
             "rank": 3,
@@ -35,7 +35,7 @@
                 "かみなり"
             ],
             "usage_count": 183,
-            "usage_rate": 7.1
+            "usage_rate": 6.9
         },
         {
             "rank": 4,
@@ -47,7 +47,7 @@
                 "とう"
             ],
             "usage_count": 165,
-            "usage_rate": 6.4
+            "usage_rate": 6.3
         },
         {
             "rank": 5,
@@ -59,7 +59,7 @@
                 "ドラゴン"
             ],
             "usage_count": 160,
-            "usage_rate": 6.2
+            "usage_rate": 6.1
         },
         {
             "rank": 6,
@@ -71,7 +71,7 @@
                 "みず"
             ],
             "usage_count": 156,
-            "usage_rate": 6.0
+            "usage_rate": 5.9
         },
         {
             "rank": 7,
@@ -83,10 +83,22 @@
                 "あく"
             ],
             "usage_count": 140,
-            "usage_rate": 5.4
+            "usage_rate": 5.3
         },
         {
             "rank": 8,
+            "pokemon_id": 18,
+            "name": "ボスゴドラ",
+            "type1": "はがね",
+            "type2": null,
+            "weaknesses": [
+                "とう"
+            ],
+            "usage_count": 131,
+            "usage_rate": 5.0
+        },
+        {
+            "rank": 9,
             "pokemon_id": 13,
             "name": "ゲンガー",
             "type1": "あく",
@@ -95,18 +107,6 @@
                 "ちょう"
             ],
             "usage_count": 129,
-            "usage_rate": 5.0
-        },
-        {
-            "rank": 9,
-            "pokemon_id": 18,
-            "name": "ボスゴドラ",
-            "type1": "はがね",
-            "type2": null,
-            "weaknesses": [
-                "とう"
-            ],
-            "usage_count": 126,
             "usage_rate": 4.9
         },
         {
@@ -118,8 +118,8 @@
             "weaknesses": [
                 "くさ"
             ],
-            "usage_count": 120,
-            "usage_rate": 4.6
+            "usage_count": 123,
+            "usage_rate": 4.7
         },
         {
             "rank": 11,
@@ -130,35 +130,11 @@
             "weaknesses": [
                 "ほのお"
             ],
-            "usage_count": 114,
+            "usage_count": 115,
             "usage_rate": 4.4
         },
         {
             "rank": 12,
-            "pokemon_id": 21,
-            "name": "カヌチャン",
-            "type1": "ちょう",
-            "type2": null,
-            "weaknesses": [
-                "ほのお"
-            ],
-            "usage_count": 100,
-            "usage_rate": 3.9
-        },
-        {
-            "rank": 13,
-            "pokemon_id": 2,
-            "name": "ヒトカゲ",
-            "type1": "ほのお",
-            "type2": null,
-            "weaknesses": [
-                "みず"
-            ],
-            "usage_count": 98,
-            "usage_rate": 3.8
-        },
-        {
-            "rank": 14,
             "pokemon_id": 15,
             "name": "ルカリオ",
             "type1": "とう",
@@ -166,7 +142,31 @@
             "weaknesses": [
                 "ほのお"
             ],
-            "usage_count": 98,
+            "usage_count": 102,
+            "usage_rate": 3.9
+        },
+        {
+            "rank": 13,
+            "pokemon_id": 21,
+            "name": "カヌチャン",
+            "type1": "ちょう",
+            "type2": null,
+            "weaknesses": [
+                "ほのお"
+            ],
+            "usage_count": 102,
+            "usage_rate": 3.9
+        },
+        {
+            "rank": 14,
+            "pokemon_id": 2,
+            "name": "ヒトカゲ",
+            "type1": "ほのお",
+            "type2": null,
+            "weaknesses": [
+                "みず"
+            ],
+            "usage_count": 100,
             "usage_rate": 3.8
         },
         {
@@ -179,7 +179,7 @@
                 "ほのお"
             ],
             "usage_count": 95,
-            "usage_rate": 3.7
+            "usage_rate": 3.6
         },
         {
             "rank": 16,
@@ -203,7 +203,7 @@
                 "とう"
             ],
             "usage_count": 88,
-            "usage_rate": 3.4
+            "usage_rate": 3.3
         },
         {
             "rank": 18,
@@ -231,6 +231,18 @@
         },
         {
             "rank": 20,
+            "pokemon_id": 19,
+            "name": "ヤミラミ",
+            "type1": "あく",
+            "type2": null,
+            "weaknesses": [
+                "ちょう"
+            ],
+            "usage_count": 70,
+            "usage_rate": 2.7
+        },
+        {
+            "rank": 21,
             "pokemon_id": 11,
             "name": "サンダー",
             "type1": "かみなり",
@@ -239,18 +251,6 @@
                 "とう"
             ],
             "usage_count": 69,
-            "usage_rate": 2.7
-        },
-        {
-            "rank": 21,
-            "pokemon_id": 19,
-            "name": "ヤミラミ",
-            "type1": "あく",
-            "type2": null,
-            "weaknesses": [
-                "ちょう"
-            ],
-            "usage_count": 68,
             "usage_rate": 2.6
         },
         {
@@ -262,8 +262,20 @@
             "weaknesses": [
                 "ドラゴン"
             ],
-            "usage_count": 6,
-            "usage_rate": 0.2
+            "usage_count": 16,
+            "usage_rate": 0.6
+        },
+        {
+            "rank": 23,
+            "pokemon_id": 23,
+            "name": "チルタリス",
+            "type1": "ひこう",
+            "type2": null,
+            "weaknesses": [
+                "みず"
+            ],
+            "usage_count": 10,
+            "usage_rate": 0.4
         }
     ]
 }
