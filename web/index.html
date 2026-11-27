@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プラコロ バトルデータ</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/theme.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<header>
+    <button type="button" class="theme-toggle" data-theme-toggle aria-label="ダークモードに切り替え">
+        <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+        <span class="theme-toggle-label">ダーク</span>
+    </button>
+    <h1>ON PLA! プラコロ バトルデータ</h1>
+    <p>Discordコミュニティの対戦データ</p>
+</header>
+<main>
+    <div class="season-filter-bar">
+        <label class="season-select-label" for="season-select">
+            表示対象シーズン
+            <select id="season-select">
+                <option value="season_1">シーズン1</option>
+                <option value="season_2">シーズン2</option>
+                <option value="season_3" selected>シーズン3</option>
+                <option value="all">全シーズン</option>
+            </select>
+        </label>
+    </div>
+
+    <section class="summary">
+        <div class="summary-card">
+            <span class="label">総試合数</span>
+            <span id="total-battles" class="value">-</span>
+        </div>
+        <a href="recent_battles.html" class="summary-card" style="text-decoration: none; color: inherit; cursor: pointer;">
+            <span class="label">直近30戦を見る</span>
+            <span class="value">🕒</span>
+        </a>
+        <a href="players/index.html" class="summary-card" style="text-decoration: none; color: inherit; cursor: pointer;">
+            <span class="label">プレイヤー戦績</span>
+            <span class="value">🚹</span>
+        </a>
+        <a href="input_form.html" class="summary-card" style="text-decoration: none; color: inherit; cursor: pointer;">
+            <span class="label">戦績入力補助ツール</span>
+            <span class="value">➕</span>
+        </a>
+    </section>
+
+    <section class="card">
+        <h2>🕒 直近の試合データ</h2>
+        <div class="carousel-wrapper">
+            <button class="carousel-arrow" onclick="moveRecentBattles(-1)" aria-label="前のページ">‹</button>
+            <div id="recent-battles-carousel" class="recent-battles-carousel"></div>
+            <button class="carousel-arrow" onclick="moveRecentBattles(1)" aria-label="次のページ">›</button>
+        </div>
+        <div id="recent-battles-dots" class="carousel-dots"></div>
+    </section>
+
+    <section class="card">
+        <div class="section-header-row">
+            <h2>📊 ポケモンランキング</h2>
+            <div class="header-controls">
+                <label class="sort-select-label" for="ranking-sort-select">
+                    並び替え
+                    <select id="ranking-sort-select" onchange="setRankingSort(this.value)">
+                        <option value="usage_rate">使用率順</option>
+                        <option value="win_rate" selected>勝率順</option>
+                        <option value="type_sort">タイプ順</option>
+                        <option value="weakness_sort">弱点順</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+        <div id="pokemon-ranking"></div>
+    </section>
+
+    <section class="card">
+        <h2>🎯 先攻・後攻戦績</h2>
+        <div id="first-second-overall"></div>
+        <div id="first-second-ranking"></div>
+    </section>
+
+    <section class="card">
+        <h2>🔥 対戦成績</h2>
+        <div class="matchup-filter">
+            <label for="matchup-pokemon">ポケモンを選択</label>
+            <select id="matchup-pokemon">
+                <option value="">すべてのポケモン</option>
+            </select>
+        </div>
+        <div id="matchup-list"></div>
+    </section>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <p class="fan-site-notice">本サイトは、ポケットモンスターおよびポケモン関連コンテンツのファンサイトです。</p>
+        <p class="fan-site-notice">株式会社ポケモン、任天堂株式会社、株式会社ゲームフリーク、株式会社クリーチャーズ等の公式・関連企業とは一切関係ありません。</p>
+        <p class="copyright-notice">Pokémon、ポケットモンスターおよび関連する名称・画像等は、それぞれの権利者に帰属します。</p>
+        <p class="footer-credit">© ON PLA! プラコロ バトルデータ</p>
+    </div>
+</footer>
+</main>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

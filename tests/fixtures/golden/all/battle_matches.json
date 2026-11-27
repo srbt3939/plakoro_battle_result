@@ -1,0 +1,484 @@
+{
+    "matches": [
+        {
+            "match_id": 4,
+            "match_type": "battle_challenge",
+            "tournament_name": "テスト大会04 バトルチャレンジ",
+            "opponent": null,
+            "match_date": "2026-11-22",
+            "match_result": "lose",
+            "player_score": 1,
+            "opponent_score": 2,
+            "season_id": 3,
+            "player": {
+                "id": 14,
+                "name": "プレイヤー14"
+            },
+            "battle_message_id": 410,
+            "games": [
+                {
+                    "id": 1317,
+                    "battle_message_id": 410,
+                    "battle_number": 1,
+                    "game_number": 1,
+                    "battle_type": "challenge",
+                    "match_id": 4,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 14,
+                        "name": "プレイヤー14",
+                        "pokemon_id": 22,
+                        "pokemon": "カイリュー",
+                        "type1": "ドラゴン",
+                        "type2": null,
+                        "weaknesses": [
+                            "ドラゴン"
+                        ],
+                        "result": "win"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 22,
+                        "pokemon": "カイリュー",
+                        "type1": "ドラゴン",
+                        "type2": null,
+                        "weaknesses": [
+                            "ドラゴン"
+                        ],
+                        "result": "lose"
+                    },
+                    "first_player": 1
+                },
+                {
+                    "id": 1318,
+                    "battle_message_id": 410,
+                    "battle_number": 2,
+                    "game_number": 2,
+                    "battle_type": "challenge",
+                    "match_id": 4,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 14,
+                        "name": "プレイヤー14",
+                        "pokemon_id": 22,
+                        "pokemon": "カイリュー",
+                        "type1": "ドラゴン",
+                        "type2": null,
+                        "weaknesses": [
+                            "ドラゴン"
+                        ],
+                        "result": "lose"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 14,
+                        "pokemon": "メタグロス",
+                        "type1": "はがね",
+                        "type2": null,
+                        "weaknesses": [
+                            "ほのお"
+                        ],
+                        "result": "win"
+                    },
+                    "first_player": 1
+                },
+                {
+                    "id": 1319,
+                    "battle_message_id": 410,
+                    "battle_number": 3,
+                    "game_number": 3,
+                    "battle_type": "challenge",
+                    "match_id": 4,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 14,
+                        "name": "プレイヤー14",
+                        "pokemon_id": 22,
+                        "pokemon": "カイリュー",
+                        "type1": "ドラゴン",
+                        "type2": null,
+                        "weaknesses": [
+                            "ドラゴン"
+                        ],
+                        "result": "lose"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 8,
+                        "pokemon": "イワーク",
+                        "type1": "とう",
+                        "type2": null,
+                        "weaknesses": [
+                            "くさ"
+                        ],
+                        "result": "win"
+                    },
+                    "first_player": 1
+                }
+            ]
+        },
+        {
+            "match_id": 3,
+            "match_type": "battle_challenge",
+            "tournament_name": "テスト大会03 バトルチャレンジ",
+            "opponent": null,
+            "match_date": "2026-11-14",
+            "match_result": "lose",
+            "player_score": 1,
+            "opponent_score": 2,
+            "season_id": 3,
+            "player": {
+                "id": 17,
+                "name": "プレイヤー17"
+            },
+            "battle_message_id": 386,
+            "games": [
+                {
+                    "id": 1164,
+                    "battle_message_id": 386,
+                    "battle_number": 1,
+                    "game_number": 1,
+                    "battle_type": "challenge",
+                    "match_id": 3,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 17,
+                        "name": "プレイヤー17",
+                        "pokemon_id": 16,
+                        "pokemon": "レックウザ",
+                        "type1": "ドラゴン",
+                        "type2": null,
+                        "weaknesses": [
+                            "ドラゴン"
+                        ],
+                        "result": "win"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 15,
+                        "pokemon": "ルカリオ",
+                        "type1": "とう",
+                        "type2": null,
+                        "weaknesses": [
+                            "ほのお"
+                        ],
+                        "result": "lose"
+                    },
+                    "first_player": 2
+                },
+                {
+                    "id": 1165,
+                    "battle_message_id": 386,
+                    "battle_number": 2,
+                    "game_number": 2,
+                    "battle_type": "challenge",
+                    "match_id": 3,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 17,
+                        "name": "プレイヤー17",
+                        "pokemon_id": 16,
+                        "pokemon": "レックウザ",
+                        "type1": "ドラゴン",
+                        "type2": null,
+                        "weaknesses": [
+                            "ドラゴン"
+                        ],
+                        "result": "lose"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 16,
+                        "pokemon": "レックウザ",
+                        "type1": "ドラゴン",
+                        "type2": null,
+                        "weaknesses": [
+                            "ドラゴン"
+                        ],
+                        "result": "win"
+                    },
+                    "first_player": 2
+                },
+                {
+                    "id": 1166,
+                    "battle_message_id": 386,
+                    "battle_number": 3,
+                    "game_number": 3,
+                    "battle_type": "challenge",
+                    "match_id": 3,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 17,
+                        "name": "プレイヤー17",
+                        "pokemon_id": 16,
+                        "pokemon": "レックウザ",
+                        "type1": "ドラゴン",
+                        "type2": null,
+                        "weaknesses": [
+                            "ドラゴン"
+                        ],
+                        "result": "lose"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 10,
+                        "pokemon": "フリーザー",
+                        "type1": "みず",
+                        "type2": null,
+                        "weaknesses": [
+                            "はがね"
+                        ],
+                        "result": "win"
+                    },
+                    "first_player": 2
+                }
+            ]
+        },
+        {
+            "match_id": 2,
+            "match_type": "battle_challenge",
+            "tournament_name": "テスト大会02 バトルチャレンジ",
+            "opponent": null,
+            "match_date": "2026-11-11",
+            "match_result": "win",
+            "player_score": 2,
+            "opponent_score": 1,
+            "season_id": 3,
+            "player": {
+                "id": 12,
+                "name": "プレイヤー12"
+            },
+            "battle_message_id": 377,
+            "games": [
+                {
+                    "id": 1106,
+                    "battle_message_id": 377,
+                    "battle_number": 1,
+                    "game_number": 1,
+                    "battle_type": "challenge",
+                    "match_id": 2,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 12,
+                        "name": "プレイヤー12",
+                        "pokemon_id": 18,
+                        "pokemon": "ボスゴドラ",
+                        "type1": "はがね",
+                        "type2": null,
+                        "weaknesses": [
+                            "とう"
+                        ],
+                        "result": "win"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 12,
+                        "pokemon": "ファイヤー",
+                        "type1": "ほのお",
+                        "type2": null,
+                        "weaknesses": [
+                            "みず"
+                        ],
+                        "result": "lose"
+                    },
+                    "first_player": 2
+                },
+                {
+                    "id": 1107,
+                    "battle_message_id": 377,
+                    "battle_number": 2,
+                    "game_number": 2,
+                    "battle_type": "challenge",
+                    "match_id": 2,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 12,
+                        "name": "プレイヤー12",
+                        "pokemon_id": 18,
+                        "pokemon": "ボスゴドラ",
+                        "type1": "はがね",
+                        "type2": null,
+                        "weaknesses": [
+                            "とう"
+                        ],
+                        "result": "lose"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 11,
+                        "pokemon": "サンダー",
+                        "type1": "かみなり",
+                        "type2": null,
+                        "weaknesses": [
+                            "とう"
+                        ],
+                        "result": "win"
+                    },
+                    "first_player": 1
+                },
+                {
+                    "id": 1108,
+                    "battle_message_id": 377,
+                    "battle_number": 3,
+                    "game_number": 3,
+                    "battle_type": "challenge",
+                    "match_id": 2,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 12,
+                        "name": "プレイヤー12",
+                        "pokemon_id": 18,
+                        "pokemon": "ボスゴドラ",
+                        "type1": "はがね",
+                        "type2": null,
+                        "weaknesses": [
+                            "とう"
+                        ],
+                        "result": "win"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 16,
+                        "pokemon": "レックウザ",
+                        "type1": "ドラゴン",
+                        "type2": null,
+                        "weaknesses": [
+                            "ドラゴン"
+                        ],
+                        "result": "lose"
+                    },
+                    "first_player": 1
+                }
+            ]
+        },
+        {
+            "match_id": 1,
+            "match_type": "battle_challenge",
+            "tournament_name": "テスト大会01 バトルチャレンジ",
+            "opponent": null,
+            "match_date": "2026-11-08",
+            "match_result": "win",
+            "player_score": 2,
+            "opponent_score": 1,
+            "season_id": 3,
+            "player": {
+                "id": 22,
+                "name": "プレイヤー22"
+            },
+            "battle_message_id": 348,
+            "games": [
+                {
+                    "id": 987,
+                    "battle_message_id": 348,
+                    "battle_number": 1,
+                    "game_number": 1,
+                    "battle_type": "challenge",
+                    "match_id": 1,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 22,
+                        "name": "プレイヤー22",
+                        "pokemon_id": 21,
+                        "pokemon": "カヌチャン",
+                        "type1": "ちょう",
+                        "type2": null,
+                        "weaknesses": [
+                            "ほのお"
+                        ],
+                        "result": "win"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 16,
+                        "pokemon": "レックウザ",
+                        "type1": "ドラゴン",
+                        "type2": null,
+                        "weaknesses": [
+                            "ドラゴン"
+                        ],
+                        "result": "lose"
+                    },
+                    "first_player": 2
+                },
+                {
+                    "id": 988,
+                    "battle_message_id": 348,
+                    "battle_number": 2,
+                    "game_number": 2,
+                    "battle_type": "challenge",
+                    "match_id": 1,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 22,
+                        "name": "プレイヤー22",
+                        "pokemon_id": 21,
+                        "pokemon": "カヌチャン",
+                        "type1": "ちょう",
+                        "type2": null,
+                        "weaknesses": [
+                            "ほのお"
+                        ],
+                        "result": "lose"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 16,
+                        "pokemon": "レックウザ",
+                        "type1": "ドラゴン",
+                        "type2": null,
+                        "weaknesses": [
+                            "ドラゴン"
+                        ],
+                        "result": "win"
+                    },
+                    "first_player": 2
+                },
+                {
+                    "id": 989,
+                    "battle_message_id": 348,
+                    "battle_number": 3,
+                    "game_number": 3,
+                    "battle_type": "challenge",
+                    "match_id": 1,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 22,
+                        "name": "プレイヤー22",
+                        "pokemon_id": 21,
+                        "pokemon": "カヌチャン",
+                        "type1": "ちょう",
+                        "type2": null,
+                        "weaknesses": [
+                            "ほのお"
+                        ],
+                        "result": "win"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 16,
+                        "pokemon": "レックウザ",
+                        "type1": "ドラゴン",
+                        "type2": null,
+                        "weaknesses": [
+                            "ドラゴン"
+                        ],
+                        "result": "lose"
+                    },
+                    "first_player": 1
+                }
+            ]
+        }
+    ]
+}

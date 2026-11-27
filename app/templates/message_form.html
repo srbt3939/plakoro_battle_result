@@ -4,9 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Battle Message登録</title>
+    <style>
+        .connection-banner {
+            padding: 8px 14px;
+            margin-bottom: 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            background: {% if repo_is_dynamodb %}#fff3cd{% else %}#e7f2f5{% endif %};
+            border: 1px solid {% if repo_is_dynamodb %}#ffecb5{% else %}#b6d8e2{% endif %};
+        }
+    </style>
 </head>
 
 <body>
+
+<div class="connection-banner">
+    接続先：{{ repo_backend_label }}
+</div>
 
 <h1>Battle Message登録</h1>
 
@@ -27,11 +41,6 @@
         </select>
     </p>
 
-    <!-- <p>
-        Battle Type<br>
-        <input type="text" name="battle_type">
-    </p> -->
-
     <p>
         Battle Date<br>
         <input type="date" name="battle_date">
@@ -40,11 +49,6 @@
     <p>
         Raw Content<br>
         <textarea name="raw_content" rows="10" cols="60"></textarea>
-    </p>
-
-    <p>
-        Created At<br>
-        <input type="text" name="created_at" required>
     </p>
 
     <button type="submit">

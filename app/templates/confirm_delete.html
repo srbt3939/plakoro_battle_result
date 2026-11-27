@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>論理削除の確認</title>
+    <style>
+        body { max-width: 720px; margin: 24px auto; padding: 0 16px; font-family: sans-serif; color: #263238; }
+        .connection-banner {
+            padding: 8px 14px;
+            margin-bottom: 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            background: {% if repo_is_dynamodb %}#fff3cd{% else %}#e7f2f5{% endif %};
+            border: 1px solid {% if repo_is_dynamodb %}#ffecb5{% else %}#b6d8e2{% endif %};
+        }
+        .warning-box { padding: 16px; background: #fff5f5; border: 1px solid #f1b0b7; border-radius: 8px; margin-bottom: 20px; }
+        label { display: block; font-weight: bold; margin-bottom: 6px; }
+        input[type="text"] { width: 100%; padding: 8px; box-sizing: border-box; margin-bottom: 14px; }
+        .danger-btn { padding: 10px 18px; background: #c92a2a; color: #fff; border: 0; border-radius: 6px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="connection-banner">
+        接続先：{{ repo_backend_label }}
+    </div>
+
+    <h1>削除の確認（論理削除）</h1>
+
+    <div class="warning-box">
+        {% if kind == "battle" %}
+            <p><strong>通常対戦 ID #{{ target.id }}</strong>（メッセージ #{{ target.battle_message_id }} / 第{{ target.battle_number }}試合）を論理削除します。</p>
+            <p>{{ target.player1_name or "-" }}（{{ target.player1_pokemon }}：{{ target.player1_result }}） VS {{ target.player2_name or "-" }}（{{ target.player2_pokemon }}：{{ target.player2_result }}）</p>
+        {% else %}
+            <p><strong>大会対戦（BO3）シリーズ ID #{{ target.match_id }}</strong>（{{ target.tournament_name or "大会名未記入" }} / {{ target.match_date }}）および紐づく全ゲーム（{{ target.games | length }}件）を論理削除します。</p>
+            <ul>
+                {% for g in target.games %}
+                <li>GAME {{ g.game_number }}（Battle #{{ g.id }}）：{{ g.player1_pokemon }} VS {{ g.player2_pokemon }}（{{ g.player1_result }}）</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <p>※元データは物理削除されず、集計・一覧から除外され、操作履歴が監査ログ（<code>BattleAuditLogs</code>）に記録されます。</p>
+    </div>
+
+    <form method="post">
+        <label for="reason">削除理由（必須）</label>
+        <input id="reason" type="text" name="reason" required maxlength="300" placeholder="例：ポケモンの選択誤りのため再登録">
+        <button type="submit" class="danger-btn">論理削除を実行する</button>
+    </form>
+
+    <p><a href="/">キャンセルして戻る</a></p>
+</body>
+</html>

@@ -1,25 +1,40 @@
 import json
-import re
+import os
 from datetime import date
-from flask import Flask, abort, render_template, request, redirect, url_for
-import sqlite3
 from pathlib import Path
+import re
+from urllib.parse import urlparse
+import uuid
+
+from flask import Flask, abort, redirect, render_template, request, url_for
 
 if __package__:
-    from .battle_parser import parse_discord_message
     from .battle_matches import (
-        create_battle_match,
         is_battle_challenge_message,
         parse_tournament_games,
         tournament_name_from_message,
     )
+    from .battle_parser import parse_discord_message
+    from .repository import (
+        BattleRepository,
+        ConflictError,
+        DuplicateError,
+        NotFoundError,
+        get_repository,
+    )
 else:
-    from battle_parser import parse_discord_message
     from battle_matches import (
-        create_battle_match,
         is_battle_challenge_message,
         parse_tournament_games,
         tournament_name_from_message,
+    )
+    from battle_parser import parse_discord_message
+    from repository import (
+        BattleRepository,
+        ConflictError,
+        DuplicateError,
+        NotFoundError,
+        get_repository,
     )
 
 
@@ -32,25 +47,36 @@ app = Flask(
 )
 
 DB_PATH = BASE_DIR / "data" / "pokemon.db"
+REPOSITORY: BattleRepository | None = None
+ALLOWED_LOCAL_HOSTS = {"127.0.0.1", "localhost"}
 
 
-def get_connection():
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    conn.execute("PRAGMA foreign_keys = ON")
-    if conn.execute(
-        "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'battles'"
-    ).fetchone():
-        columns = {
-            row["name"]
-            for row in conn.execute("PRAGMA table_info(battles)").fetchall()
-        }
-        if "battle_type" not in columns:
-            conn.execute(
-                "ALTER TABLE battles ADD COLUMN battle_type TEXT NOT NULL DEFAULT 'normal'"
-            )
-            conn.commit()
-    return conn
+def get_repo() -> BattleRepository:
+    if REPOSITORY is not None:
+        return REPOSITORY
+    return get_repository(db_path=DB_PATH)
+
+
+@app.before_request
+def verify_local_origin() -> None:
+    if request.method != "POST":
+        return
+    origin = request.headers.get("Origin")
+    if not origin:
+        return
+    parsed = urlparse(origin)
+    if parsed.hostname not in ALLOWED_LOCAL_HOSTS:
+        abort(403, description="許可されていない送信元（Origin）からのリクエストです。")
+
+
+@app.context_processor
+def inject_connection_info() -> dict:
+    repo = get_repo()
+    return {
+        "repo_backend_name": repo.backend_name,
+        "repo_backend_label": repo.backend_label,
+        "repo_is_dynamodb": repo.backend_name == "dynamodb",
+    }
 
 
 # =========================
@@ -59,56 +85,35 @@ def get_connection():
 
 @app.route("/message", methods=["GET", "POST"])
 def message():
-
-    conn = get_connection()
-
-    seasons = conn.execute("""
-        SELECT *
-        FROM seasons
-        ORDER BY id
-    """).fetchall()
+    repo = get_repo()
+    seasons = repo.list_seasons()
 
     if request.method == "POST":
+        discord_message_id = request.form.get("discord_message_id", "").strip()
+        season_id = request.form.get("season_id", type=int)
+        battle_date = request.form.get("battle_date", "").strip()
+        raw_content = request.form.get("raw_content", "")
 
-        discord_message_id = request.form["discord_message_id"]
-        season_id = request.form["season_id"]
+        if not discord_message_id or season_id is None:
+            abort(400, description="必須項目を入力してください。")
 
-        battle_date = request.form["battle_date"]
-
-        raw_content = request.form["raw_content"]
-        created_at = request.form["created_at"]
-
-        cursor = conn.execute("""
-            INSERT INTO battle_messages (
-                discord_message_id,
-                season_id,
-                battle_date,
-                raw_content,
-                created_at
+        try:
+            message_id = repo.create_message(
+                discord_message_id=discord_message_id,
+                season_id=season_id,
+                battle_date=battle_date,
+                raw_content=raw_content,
             )
-            VALUES (?, ?, ?, ?, ?)
-        """, (
-            discord_message_id,
-            season_id,
-            battle_date,
-            raw_content,
-            created_at
-        ))
-
-        message_id = cursor.lastrowid
-        conn.commit()
-        conn.close()
+        except DuplicateError as error:
+            abort(409, description=str(error))
+        except ValueError as error:
+            abort(400, description=str(error))
 
         if is_battle_challenge_message(raw_content):
             return redirect(url_for("battle_challenge", message_id=message_id))
         return redirect(url_for("battle", message_id=message_id))
 
-    conn.close()
-
-    return render_template(
-        "message_form.html",
-        seasons=seasons
-    )
+    return render_template("message_form.html", seasons=seasons)
 
 
 # =========================
@@ -117,15 +122,8 @@ def message():
 
 @app.route("/battle", methods=["GET", "POST"])
 def battle():
-
-    conn = get_connection()
-
-    # ポケモン一覧
-    pokemon = conn.execute("""
-        SELECT *
-        FROM pokemon
-        ORDER BY id
-    """).fetchall()
+    repo = get_repo()
+    pokemon = repo.list_pokemon()
     emoji_data = json.loads(
         (BASE_DIR / "docs" / "data" / "emoji.json").read_text(encoding="utf-8")
     )
@@ -144,33 +142,23 @@ def battle():
         for symbol in ("first", "second", "win", "lose")
     }
 
-    # Battle Message一覧
-    messages = conn.execute("""
-        SELECT *
-        FROM battle_messages
-        ORDER BY id DESC
-    """).fetchall()
-
-    # Player一覧
-    players = conn.execute("""
-        SELECT *
-        FROM players
-        ORDER BY id
-    """).fetchall()
+    players = repo.list_players(order="id")
 
     if request.method == "POST":
         if request.form.get("action") == "load_message":
             message_id = request.form.get("battle_message_id", type=int)
-            if message_id is None or not any(
-                message["id"] == message_id for message in messages
-            ):
-                conn.close()
+            if message_id is None or repo.get_message(message_id) is None:
                 abort(400)
             return redirect(url_for("battle", message_id=message_id))
 
-        battle_message_id = request.form["battle_message_id"]
-        player1_id = request.form["player1_id"] or None
-        player2_id = request.form["player2_id"] or None
+        battle_message_id = request.form.get("battle_message_id", type=int)
+        if battle_message_id is None:
+            abort(400)
+        player1_raw = request.form.get("player1_id", "").strip()
+        player2_raw = request.form.get("player2_id", "").strip()
+        player1_id = int(player1_raw) if player1_raw else None
+        player2_id = int(player2_raw) if player2_raw else None
+        request_id = request.form.get("request_id", "").strip() or None
 
         player1_pokemon_ids = request.form.getlist("player1_pokemon_id")
         player2_pokemon_ids = request.form.getlist("player2_pokemon_id")
@@ -181,6 +169,7 @@ def battle():
         battle_count = len(player1_pokemon_ids)
         if (
             battle_count == 0
+            or battle_count > 90
             or len(player2_pokemon_ids) != battle_count
             or len(first_players) != battle_count
             or len(player1_results) != battle_count
@@ -189,67 +178,55 @@ def battle():
             or any(first not in ("", "1", "2") for first in first_players)
             or any(battle_type not in ("normal", "challenge") for battle_type in battle_types)
         ):
-            conn.close()
             abort(400)
 
-        for player1_pokemon_id, player2_pokemon_id, first_player, player1_result, battle_type in zip(
-            player1_pokemon_ids,
-            player2_pokemon_ids,
-            first_players,
-            player1_results,
-            battle_types,
-        ):
-            player2_result = {"win": "lose", "lose": "win"}[player1_result]
+        rows = [
+            {
+                "player1_pokemon_id": int(p1_pid),
+                "player2_pokemon_id": int(p2_pid),
+                "first_player": int(fp) if fp else None,
+                "player1_result": res,
+                "battle_type": btype,
+            }
+            for p1_pid, p2_pid, fp, res, btype in zip(
+                player1_pokemon_ids,
+                player2_pokemon_ids,
+                first_players,
+                player1_results,
+                battle_types,
+            )
+        ]
 
-            conn.execute("""
-                INSERT INTO battles (
-                    battle_message_id,
-                    battle_number,
-                    player1_pokemon_id,
-                    player2_pokemon_id,
-                    player1_id,
-                    player2_id,
-                    first_player,
-                    player1_result,
-                    player2_result,
-                    battle_type
-                )
-                SELECT
-                    ?,
-                    COALESCE(MAX(battle_number), 0) + 1,
-                    ?,
-                    ?,
-                    ?,
-                    ?,
-                    ?,
-                    ?,
-                    ?,
-                    ?
-                FROM battles
-                WHERE battle_message_id = ?
-            """, (
-                battle_message_id,
-                player1_pokemon_id,
-                player2_pokemon_id,
-                player1_id,
-                player2_id,
-                first_player or None,
-                player1_result,
-                player2_result,
-                battle_type,
-                battle_message_id
-            ))
+        try:
+            created_ids = repo.create_battles(
+                message_id=battle_message_id,
+                player1_id=player1_id,
+                player2_id=player2_id,
+                rows=rows,
+                request_id=request_id,
+            )
+        except NotFoundError as error:
+            abort(400, description=str(error))
+        except ConflictError as error:
+            abort(409, description=str(error))
+        except ValueError as error:
+            abort(400, description=str(error))
 
-        conn.commit()
-        conn.close()
+        registered_param = ",".join(str(bid) for bid in created_ids)
+        return redirect(url_for("index", registered=registered_param))
 
-        return redirect("/")
-
+    messages = repo.list_messages()
     selected_message_id = request.args.get("message_id", type=int)
-    selected_message = next(
-        (message for message in messages if message["id"] == selected_message_id),
-        None,
+    selected_message = (
+        repo.get_message(selected_message_id)
+        if selected_message_id is not None
+        else None
     )
+    if selected_message is not None and not any(
+        m["id"] == selected_message["id"] for m in messages
+    ):
+        messages = [selected_message, *messages]
+
     initial_battles = []
     parsed_battle_count = 0
 
@@ -270,11 +247,11 @@ def battle():
 
         initial_battles = [
             {
-                **battle,
+                **battle_item,
                 "player1_id": player1_id,
                 "player2_id": player2_id,
             }
-            for battle in parsed_battles
+            for battle_item in parsed_battles
         ]
 
     if not initial_battles:
@@ -288,8 +265,6 @@ def battle():
             "player2_id": None,
         }]
 
-    conn.close()
-
     return render_template(
         "battle_form.html",
         pokemon=pokemon,
@@ -301,6 +276,7 @@ def battle():
         initial_battles=initial_battles,
         parsed_battle_count=parsed_battle_count,
         selected_message=selected_message,
+        request_id=str(uuid.uuid4()),
     )
 
 
@@ -310,52 +286,39 @@ def battle():
 
 @app.route("/battle-challenge", methods=["GET", "POST"])
 def battle_challenge():
-    conn = get_connection()
-    required_columns = {
-        row["name"] for row in conn.execute("PRAGMA table_info(battles)").fetchall()
-    }
-    if not {"match_id", "game_number"}.issubset(required_columns):
-        conn.close()
-        abort(503, description="DB移行が必要です。scripts/migrate_battle_challenges.py を実行してください。")
-
-    messages = [
-        message
-        for message in conn.execute("""
-            SELECT *
-            FROM battle_messages
-            ORDER BY id DESC
-        """).fetchall()
-        if is_battle_challenge_message(message["raw_content"])
-    ]
-    seasons = conn.execute("SELECT id, name FROM seasons ORDER BY id").fetchall()
-    pokemon = conn.execute("SELECT id, name FROM pokemon ORDER BY id").fetchall()
-    players = conn.execute("SELECT id, name FROM players ORDER BY name COLLATE NOCASE").fetchall()
+    repo = get_repo()
+    seasons = repo.list_seasons()
+    pokemon = repo.list_pokemon()
+    players = repo.list_players(order="name")
+    messages = repo.list_messages(challenge_only=True)
 
     selected_message_id = request.values.get("message_id", type=int)
-    selected_message = next(
-        (message for message in messages if message["id"] == selected_message_id),
-        None,
+    selected_message = (
+        repo.get_message(selected_message_id)
+        if selected_message_id is not None
+        else None
     )
+    if selected_message is not None and not is_battle_challenge_message(
+        selected_message.get("raw_content")
+    ):
+        selected_message = None
+    if selected_message is not None and not any(
+        m["id"] == selected_message["id"] for m in messages
+    ):
+        messages = [selected_message, *messages]
 
     if request.method == "POST":
         if selected_message is None:
-            conn.close()
             abort(400)
 
         raw_content = selected_message["raw_content"] or ""
         if not is_battle_challenge_message(raw_content):
-            conn.close()
             abort(400, description="バトルチャレンジを示す語句がメッセージにありません。")
         parsed_games = parse_tournament_games(raw_content)
         if len(parsed_games) > 3:
-            conn.close()
             abort(400, description="大会対戦は最大3ゲームです。元メッセージを確認してください。")
 
-        if conn.execute(
-            "SELECT 1 FROM battle_matches WHERE battle_message_id = ?",
-            (selected_message_id,),
-        ).fetchone():
-            conn.close()
+        if selected_message.get("match_id") is not None:
             abort(409, description="このメッセージの大会対戦は登録済みです。")
 
         season_id = request.form.get("season_id", type=int)
@@ -363,15 +326,12 @@ def battle_challenge():
         try:
             date.fromisoformat(match_date)
         except ValueError:
-            conn.close()
             abort(400, description="対戦日を入力してください。")
         if not any(season["id"] == season_id for season in seasons):
-            conn.close()
             abort(400, description="シーズンを選択してください。")
 
         player_id = request.form.get("player_id", type=int)
         if player_id is None or not any(player["id"] == player_id for player in players):
-            conn.close()
             abort(400, description="プレイヤー別の戦績に表示するため、投稿者を選択してください。")
 
         pokemon_ids = {item["id"] for item in pokemon}
@@ -388,19 +348,15 @@ def battle_challenge():
                 encountered_empty_game = True
                 continue
             if encountered_empty_game or not all(values):
-                conn.close()
                 abort(400, description="ゲームはGAME 1から順に、必要項目を入力してください。")
             if result not in ("win", "lose") or first_player not in ("", "1", "2"):
-                conn.close()
                 abort(400)
             try:
                 player1_pokemon_id = int(player1_pokemon)
                 player2_pokemon_id = int(player2_pokemon)
             except ValueError:
-                conn.close()
                 abort(400)
             if player1_pokemon_id not in pokemon_ids or player2_pokemon_id not in pokemon_ids:
-                conn.close()
                 abort(400, description="登録済みのポケモンを選択してください。")
 
             games.append({
@@ -411,42 +367,38 @@ def battle_challenge():
             })
 
         if not games:
-            conn.close()
             abort(400, description="少なくとも1ゲームを入力してください。")
 
-        wins = 0
-        losses = 0
-        for index, game in enumerate(games):
-            wins += game["player1_result"] == "win"
-            losses += game["player1_result"] == "lose"
-            if (wins == 2 or losses == 2) and index != len(games) - 1:
-                conn.close()
-                abort(400, description="シリーズ決着後のゲームは登録できません。")
-
         try:
-            with conn:
-                match_id = create_battle_match(
-                    conn,
-                    battle_message_id=selected_message_id,
-                    season_id=season_id,
-                    tournament_name=request.form.get("tournament_name", "").strip() or None,
-                    opponent=request.form.get("opponent", "").strip() or None,
-                    match_date=match_date,
-                    player_id=player_id,
-                    games=games,
-                )
-        except sqlite3.IntegrityError:
-            conn.close()
-            app.logger.exception("Failed to register Battle Challenge series")
-            abort(400, description="大会対戦を登録できませんでした。入力内容とDB移行状態を確認してください。")
-        except ValueError as error:
-            conn.close()
+            match_id = repo.create_battle_match(
+                battle_message_id=selected_message_id,
+                season_id=season_id,
+                tournament_name=request.form.get("tournament_name", "").strip() or None,
+                opponent=request.form.get("opponent", "").strip() or None,
+                match_date=match_date,
+                player_id=player_id,
+                games=games,
+            )
+        except DuplicateError as error:
+            abort(409, description=str(error))
+        except ConflictError as error:
+            abort(409, description=str(error))
+        except NotFoundError as error:
             abort(400, description=str(error))
+        except ValueError as error:
+            abort(400, description=str(error))
+        except RuntimeError as error:
+            abort(503, description=str(error))
 
-        conn.close()
-        return redirect(url_for("battle_challenge", message_id=selected_message_id, registered=match_id))
+        return redirect(
+            url_for("battle_challenge", message_id=selected_message_id, registered=match_id)
+        )
 
-    parsed_games = parse_tournament_games(selected_message["raw_content"] or "") if selected_message else []
+    parsed_games = (
+        parse_tournament_games(selected_message["raw_content"] or "")
+        if selected_message
+        else []
+    )
     initial_game_count = len(parsed_games)
     initial_games = parsed_games[:3]
     while len(initial_games) < 3:
@@ -458,13 +410,9 @@ def battle_challenge():
         })
 
     existing_match = None
-    if selected_message is not None:
-        existing_match = conn.execute(
-            "SELECT match_id FROM battle_matches WHERE battle_message_id = ?",
-            (selected_message_id,),
-        ).fetchone()
+    if selected_message is not None and selected_message.get("match_id") is not None:
+        existing_match = {"match_id": selected_message["match_id"]}
 
-    conn.close()
     return render_template(
         "battle_challenge_form.html",
         messages=messages,
@@ -484,51 +432,99 @@ def battle_challenge():
 
 
 # =========================
-# Player登録
+# Player登録・サブアカウント追加紐づけ
 # =========================
 
 @app.route("/player", methods=["GET", "POST"])
 def player():
-
-    conn = get_connection()
+    repo = get_repo()
 
     if request.method == "POST":
+        action = request.form.get("action", "create_player")
+        if action == "link_discord":
+            target_player_id = request.form.get("player_id", type=int)
+            discord_user_id = request.form.get("discord_user_id", "").strip()
+            label = request.form.get("label", "").strip() or None
+            if target_player_id is None or not discord_user_id:
+                abort(400, description="対象プレイヤーとDiscord User IDを入力してください。")
+            try:
+                repo.link_discord_account(
+                    player_id=target_player_id,
+                    discord_user_id=discord_user_id,
+                    label=label,
+                )
+            except DuplicateError as error:
+                abort(409, description=str(error))
+            except (NotFoundError, ValueError, NotImplementedError) as error:
+                abort(400, description=str(error))
+            return redirect(url_for("player"))
 
-        discord_user_id = request.form["discord_user_id"]
-        name = request.form["name"]
-        created_at = request.form["created_at"]
+        discord_user_id = request.form.get("discord_user_id", "").strip()
+        name = request.form.get("name", "").strip()
+        if not discord_user_id or not name:
+            abort(400, description="Discord User IDと名前を入力してください。")
+        try:
+            repo.create_player(discord_user_id=discord_user_id, name=name)
+        except DuplicateError as error:
+            abort(409, description=str(error))
+        except ValueError as error:
+            abort(400, description=str(error))
+        return redirect(url_for("player"))
 
-        conn.execute("""
-            INSERT INTO players (
-                discord_user_id,
-                name,
-                created_at
-            )
-            VALUES (?, ?, ?)
-        """, (
-            discord_user_id,
-            name,
-            created_at
-        ))
+    players = repo.list_players(order="id", include_accounts=True)
+    return render_template("player_form.html", players=players)
 
-        conn.commit()
-        conn.close()
 
-        return redirect("/player")
+# =========================
+# 論理削除（確認画面＋理由必須）
+# =========================
 
-    # 登録済みPlayer一覧
-    players = conn.execute("""
-        SELECT *
-        FROM players
-        ORDER BY id
-    """).fetchall()
+@app.route("/battle/<int:battle_id>/delete", methods=["GET", "POST"])
+def delete_battle_route(battle_id: int):
+    repo = get_repo()
+    target = repo.get_battle(battle_id)
+    if target is None:
+        abort(404, description="指定された対戦が見つかりません。")
+    if target.get("match_id") is not None:
+        return redirect(url_for("delete_match_route", match_id=target["match_id"]))
 
-    conn.close()
+    if request.method == "POST":
+        reason = request.form.get("reason", "").strip()
+        if not reason:
+            abort(400, description="削除理由を入力してください。")
+        try:
+            repo.delete_battle(battle_id, reason)
+        except NotFoundError as error:
+            abort(404, description=str(error))
+        except ValueError as error:
+            abort(400, description=str(error))
+        return redirect(url_for("index"))
 
-    return render_template(
-        "player_form.html",
-        players=players
-    )
+    return render_template("confirm_delete.html", kind="battle", target=target)
+
+
+@app.route("/match/<int:match_id>/delete", methods=["GET", "POST"])
+def delete_match_route(match_id: int):
+    repo = get_repo()
+    target = repo.get_match(match_id)
+    if target is None:
+        abort(404, description="指定された大会対戦が見つかりません。")
+
+    if request.method == "POST":
+        reason = request.form.get("reason", "").strip()
+        if not reason:
+            abort(400, description="削除理由を入力してください。")
+        try:
+            repo.delete_match(match_id, reason)
+        except NotFoundError as error:
+            abort(404, description=str(error))
+        except ConflictError as error:
+            abort(409, description=str(error))
+        except ValueError as error:
+            abort(400, description=str(error))
+        return redirect(url_for("index"))
+
+    return render_template("confirm_delete.html", kind="match", target=target)
 
 
 # =========================
@@ -537,67 +533,19 @@ def player():
 
 @app.route("/")
 def index():
-
-    conn = get_connection()
-
-    # Battle一覧
-    battles = conn.execute("""
-        SELECT
-            battles.id,
-            battles.battle_message_id,
-            battles.battle_number,
-
-            p1.name AS player1_pokemon,
-            p2.name AS player2_pokemon,
-
-            player1.name AS player1_name,
-            player2.name AS player2_name,
-
-            battles.first_player,
-
-            battles.player1_result,
-            battles.player2_result
-
-        FROM battles
-
-        JOIN pokemon AS p1
-            ON battles.player1_pokemon_id = p1.id
-
-        JOIN pokemon AS p2
-            ON battles.player2_pokemon_id = p2.id
-
-        LEFT JOIN players AS player1
-            ON battles.player1_id = player1.id
-
-        LEFT JOIN players AS player2
-            ON battles.player2_id = player2.id
-
-        WHERE battles.id IN (
-            SELECT id
-            FROM battles
-            ORDER BY id DESC
-            LIMIT 50
-        )
-
-        ORDER BY battles.id
-    """).fetchall()
-
-
-    # 最後に登録したBattle Message
-    latest_message = conn.execute("""
-        SELECT *
-        FROM battle_messages
-        ORDER BY id DESC
-        LIMIT 1
-    """).fetchone()
-
-
-    conn.close()
-
+    repo = get_repo()
+    registered_raw = request.args.get("registered", "")
+    include_ids = [
+        int(part)
+        for part in registered_raw.split(",")
+        if part.strip().isdigit()
+    ]
+    battles = repo.list_recent_battles(limit=50, include_ids=include_ids or None)
+    latest_message = repo.get_latest_message()
     return render_template(
         "insert_index.html",
         battles=battles,
-        latest_message=latest_message
+        latest_message=latest_message,
     )
 
 
@@ -605,5 +553,5 @@ if __name__ == "__main__":
     app.run(
         host="127.0.0.1",
         port=5000,
-        debug=True
+        debug=os.environ.get("PLAKORO_DEBUG") == "1",
     )

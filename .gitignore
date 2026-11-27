@@ -1,8 +1,13 @@
 .venv
 *bot-env
+.env
+.env.*
 plakoro_battle_result_bot.py
 app/__pycache__/
 data/pokemon.db.backup-*
-app/__pycache__/
+logs/
+migration_report*.json
+pokemon_rollback_*.db
+rollback_sidecar_*.json
 scripts/__pycache__/
 __pycache__

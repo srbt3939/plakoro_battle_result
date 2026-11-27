@@ -266,6 +266,10 @@
 
 <body>
 
+<p style="padding: 8px 14px; border-radius: 6px; font-weight: bold; background: {% if repo_is_dynamodb %}#fff3cd{% else %}#e7f2f5{% endif %};">
+    接続先：{{ repo_backend_label }}
+</p>
+
 <h1>Battle登録</h1>
 
 <p>
@@ -275,6 +279,7 @@
 </p>
 
 <form method="post">
+    <input type="hidden" name="request_id" value="{{ request_id }}">
 
     <!-- Battle Message -->
     <p>

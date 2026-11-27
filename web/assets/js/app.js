@@ -1,0 +1,1649 @@
+// =========================
+// グローバル変数
+// =========================
+
+let emojiData = null;
+const DATA_VERSION = "2026-11-10-pokemon-roster";
+
+const typeImageNames = {
+    "くさ": "grass",
+    "ほのお": "fire",
+    "みず": "water",
+    "かみなり": "electric",
+    "ちょう": "psychic",
+    "とう": "fighting",
+    "あく": "dark",
+    "はがね": "steel",
+    "ドラゴン": "dragon",
+    "そら": "flying",
+    "むしょく": "normal"
+};
+
+function formatPercentage(value) {
+    return Number(value || 0).toFixed(1);
+}
+
+
+// =========================
+// JSON読み込み
+// =========================
+
+async function loadJSON(file, season) {
+
+    const response = await fetch(
+        `data/${season}/${file}?v=${DATA_VERSION}`
+    );
+
+    return await response.json();
+}
+
+
+// =========================
+// emoji.json読み込み
+// =========================
+
+async function loadEmojiData() {
+    try {
+        const response = await fetch(`data/emoji.json?v=${DATA_VERSION}`);
+        if (response.ok) {
+            emojiData = await response.json();
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function loadAndRenderSeason(season, pageLoadedAt) {
+    const mainEl = document.querySelector("main");
+    try {
+        const data = await apiFetch(`/api/overview?scope=${encodeURIComponent(season)}`);
+
+        document.getElementById("total-battles").textContent = `${data.total_battles}試合`;
+
+        createRecentBattles(
+            data.recent_battles,
+            data.battle_trend.days,
+            pageLoadedAt
+        );
+
+        createPokemonRanking(
+            data.usage.pokemon,
+            data.pokemon_stats.pokemon
+        );
+
+        createFirstSecondRanking(
+            data.pokemon_stats.pokemon
+        );
+
+        createFirstSecondOverall(
+            data.pokemon_stats.pokemon
+        );
+
+        createMatchups(
+            data.matchups.matchups
+        );
+
+        setupMatchupFilter(
+            data.matchups.matchups
+        );
+    } catch (error) {
+        renderApiError(mainEl, error, () => loadAndRenderSeason(season, pageLoadedAt));
+    }
+}
+
+async function main() {
+    const pageLoadedAt = new Date();
+    const [_, meData] = await Promise.all([
+        loadEmojiData(),
+        initMemberBar("")
+    ]);
+    if (!meData && new URLSearchParams(window.location.search).get("auth_error") === "not_a_member") {
+        return;
+    }
+
+    const seasonSelect = document.getElementById("season-select");
+    const initialSeason = seasonSelect ? seasonSelect.value : "all";
+
+    await loadAndRenderSeason(initialSeason, pageLoadedAt);
+
+    if (seasonSelect) {
+        seasonSelect.addEventListener("change", () => {
+            loadAndRenderSeason(seasonSelect.value, pageLoadedAt);
+        });
+    }
+}
+
+
+function createRecentBattles(battles, trendDays, pageLoadedAt) {
+
+    const container = document.getElementById("recent-battles-carousel");
+    const dotsContainer = document.getElementById("recent-battles-dots");
+    const recent = [...battles]
+        .sort((a, b) => b.id - a.id)
+        .slice(0, 3)
+        .reverse();
+
+    container.innerHTML = `
+        <div class="carousel-slide recent-battle-list">
+            <h3>🕒 直近3試合の結果</h3>
+            ${recent.map(battle => formatRecentBattle(battle, battle.id)).join("") || "<p>試合データがありません。</p>"}
+        </div>
+        <div class="carousel-slide recent-trend-slide">
+            <h3>📈 直近2週間の試合数</h3>
+            <div class="trend-chart-container">
+                <canvas id="battle-trend-chart"></canvas>
+            </div>
+        </div>
+    `;
+
+    dotsContainer.innerHTML = ["直近3試合の結果", "直近2週間の試合数"]
+        .map((label, index) => `<button class="carousel-dot${index === 0 ? " is-active" : ""}" aria-label="${label}を表示" onclick="scrollRecentBattlesTo(${index})"></button>`)
+        .join("");
+
+    container.onscroll = () => updateRecentBattlesDot(Math.round(container.scrollLeft / container.clientWidth));
+    requestAnimationFrame(() => createBattleTrendChart(trendDays, pageLoadedAt));
+
+}
+
+
+function formatRecentBattle(battle, battleNumber) {
+
+    const player1First = battle.first_player === 1;
+    const playerHTML = (player, isFirst) => `
+        <div class="recent-battle-player ${player.result === "win" ? "is-win" : "is-lose"}">
+            <span class="recent-battle-result">${player.result === "win" ? "WIN" : "LOSE"}</span>
+            ${player.name ? `<span class="recent-battle-name">${player.name}</span>` : ""}
+            ${getPokemonIdentityHTML(player.pokemon, player.pokemon_id)}
+            <span class="pokemon-type">${getTypeImagesHTML([player.type1, player.type2].filter(Boolean))}</span>
+            <span class="recent-battle-order">${isFirst ? "先攻" : "後攻"}</span>
+        </div>`;
+
+    return `
+        <div class="recent-battle-entry">
+            <div class="recent-battle-number">第${battleNumber}戦</div>
+            <div class="recent-battle-players">
+                ${playerHTML(battle.player1, player1First)}
+                <span class="vs">VS</span>
+                ${playerHTML(battle.player2, !player1First)}
+            </div>
+        </div>`;
+
+}
+
+
+function updateRecentBattlesDot(index) {
+    document.querySelectorAll(".carousel-dot").forEach((dot, dotIndex) => {
+        dot.classList.toggle("is-active", dotIndex === index);
+    });
+}
+
+
+function scrollRecentBattlesTo(index) {
+    const container = document.getElementById("recent-battles-carousel");
+    container.scrollTo({ left: container.clientWidth * index, behavior: "smooth" });
+    updateRecentBattlesDot(index);
+}
+
+
+function moveRecentBattles(direction) {
+    const container = document.getElementById("recent-battles-carousel");
+    const currentIndex = Math.round(container.scrollLeft / container.clientWidth);
+    const maxIndex = container.children.length - 1;
+    scrollRecentBattlesTo(Math.max(0, Math.min(currentIndex + direction, maxIndex)));
+
+}
+
+
+// =========================
+// 直近2週間の試合数
+// =========================
+
+let battleTrendChart = null;
+
+function getTrendChartThemeColors() {
+    const isDark = document.documentElement.dataset.theme === "dark";
+    return {
+        borderColor: isDark ? "#56b4d3" : "#2f7892",
+        backgroundColor: isDark ? "rgba(86, 180, 211, 0.18)" : "rgba(47, 120, 146, 0.14)",
+        tickColor: isDark ? "#93a4af" : "#71808a",
+        gridColor: isDark ? "rgba(147, 164, 175, 0.16)" : "rgba(38, 50, 56, 0.08)"
+    };
+}
+
+function updateBattleTrendChartTheme() {
+    if (!battleTrendChart) {
+        return;
+    }
+    const colors = getTrendChartThemeColors();
+    const dataset = battleTrendChart.data.datasets[0];
+    if (dataset) {
+        dataset.borderColor = colors.borderColor;
+        dataset.backgroundColor = colors.backgroundColor;
+    }
+    if (battleTrendChart.options.scales?.x) {
+        battleTrendChart.options.scales.x.ticks.color = colors.tickColor;
+        battleTrendChart.options.scales.x.grid.color = colors.gridColor;
+    }
+    if (battleTrendChart.options.scales?.y) {
+        battleTrendChart.options.scales.y.ticks.color = colors.tickColor;
+        battleTrendChart.options.scales.y.grid.color = colors.gridColor;
+    }
+    battleTrendChart.update();
+}
+
+window.addEventListener("themechange", updateBattleTrendChartTheme);
+
+function createBattleTrendChart(days, pageLoadedAt) {
+
+    const trendCounts = new Map(
+        days.map(day => [day.date, day.battle_count])
+    );
+
+    const displayDays = Array.from({ length: 14 }, (_, index) => {
+        const date = new Date(pageLoadedAt);
+        date.setDate(pageLoadedAt.getDate() - (13 - index));
+
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const dayOfMonth = String(date.getDate()).padStart(2, "0");
+        const dateKey = `${year}-${month}-${dayOfMonth}`;
+
+        return {
+            date: dateKey,
+            battle_count: trendCounts.get(dateKey) || 0
+        };
+    });
+
+    const labels =
+        displayDays.map(
+            day => {
+                const [year, month, date] =
+                    day.date.split("-");
+
+                return `${Number(month)}/${Number(date)}`;
+            }
+        );
+
+    const data =
+        displayDays.map(
+            day => day.battle_count
+        );
+
+    const ctx =
+        document.getElementById(
+            "battle-trend-chart"
+        );
+
+    if (battleTrendChart) {
+        battleTrendChart.destroy();
+        battleTrendChart = null;
+    }
+
+    const colors = getTrendChartThemeColors();
+
+    battleTrendChart = new Chart(ctx, {
+
+        type: "line",
+
+        data: {
+
+            labels: labels,
+
+            datasets: [
+
+                {
+                    label: "試合数",
+                    data: data,
+                    borderColor: colors.borderColor,
+                    backgroundColor: colors.backgroundColor,
+                    fill: true,
+                    tension: 0.25,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                }
+
+            ]
+
+        },
+
+        options: {
+
+            responsive: true,
+            maintainAspectRatio: false,
+
+            scales: {
+
+                x: {
+                    ticks: {
+                        color: colors.tickColor
+                    },
+                    grid: {
+                        color: colors.gridColor
+                    }
+                },
+
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        precision: 0,
+                        color: colors.tickColor
+                    },
+                    grid: {
+                        color: colors.gridColor
+                    }
+                }
+
+            },
+
+            plugins: {
+
+                legend: {
+                    display: false
+                },
+
+                tooltip: {
+                    callbacks: {
+                        label: context =>
+                            `${context.raw}試合`
+                    }
+                }
+
+            }
+
+        }
+
+    });
+
+}
+
+
+// =========================
+// 使用率円グラフ
+// =========================
+
+function createUsageChart(pokemon) {
+
+    const labels =
+        pokemon.map(
+            p => p.name
+        );
+
+
+    const data =
+        pokemon.map(
+            p => p.usage_count
+        );
+
+
+    const ctx =
+        document
+            .getElementById(
+                "usage-chart"
+            );
+
+    if (!ctx) {
+        return;
+    }
+
+
+    new Chart(ctx, {
+
+        type: "pie",
+
+        data: {
+
+            labels: labels,
+
+            datasets: [
+
+                {
+                    data: data
+                }
+
+            ]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            plugins: {
+
+                legend: {
+
+                    position: "right"
+
+                },
+
+                tooltip: {
+
+                    callbacks: {
+
+                        label:
+                            function(context) {
+
+                                const total =
+                                    context.dataset
+                                        .data
+                                        .reduce(
+                                            (a, b) =>
+                                                a + b,
+                                            0
+                                        );
+
+                                const value =
+                                    context.raw;
+
+                                const rate =
+                                    value /
+                                    total *
+                                    100;
+
+                                return (
+                                    context.label +
+                                    ": " +
+                                    value +
+                                    "回 (" +
+                                    rate.toFixed(1) +
+                                    "%)"
+                                );
+
+                            }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    });
+
+}
+
+// =========================
+// ポケモンランキング
+// =========================
+
+let pokemonRankingData = [];
+
+let firstSecondRankingData = [];
+
+// 現在のソート項目（"first_win_rate" | "second_win_rate" | null）
+let firstSecondSortKey = null;
+
+// 現在のソート方向
+let firstSecondSortOrder = "desc";
+
+
+// 現在のソート項目
+let currentSortKey = "win_rate";
+
+// 現在のソート方向
+let currentSortOrder = "desc";
+
+
+// =========================
+// ランキング作成
+// =========================
+
+function createPokemonRanking(
+    usage,
+    stats
+) {
+
+    const ranking = usage.map(p => {
+
+        const stat =
+            stats.find(
+                s =>
+                    s.pokemon_id ===
+                    p.pokemon_id
+            );
+
+
+        return {
+
+            pokemon_id:
+                p.pokemon_id,
+
+            name:
+                p.name,
+
+            usage_count:
+                p.usage_count,
+
+            usage_rate:
+                p.usage_rate,
+
+            battles:
+                stat
+                    ? stat.total.battles
+                    : 0,
+
+            win_rate:
+                stat
+                    ? stat.total.win_rate
+                    : 0,
+
+            type1:
+                stat?.type1,
+
+            type2:
+                stat?.type2,
+
+            weaknesses:
+                stat?.weaknesses || [],
+
+            type_sort:
+                [stat?.type1, stat?.type2]
+                    .filter(Boolean)
+                    .join("/"),
+
+            weakness_sort:
+                (stat?.weaknesses || [])
+                    .join("/")
+
+        };
+
+    });
+
+
+    pokemonRankingData =
+        ranking;
+
+
+    // 初期表示
+    renderPokemonRanking();
+
+}
+
+
+// =========================
+// ソート変更
+// =========================
+
+function changeRankingSort(
+    sortKey
+) {
+
+    // 同じ項目をクリックした場合
+    // 昇順・降順を反転
+    if (
+        currentSortKey ===
+        sortKey
+    ) {
+
+        currentSortOrder =
+            currentSortOrder ===
+            "desc"
+                ? "asc"
+                : "desc";
+
+    }
+
+    // 別の項目をクリックした場合
+    else {
+
+        currentSortKey =
+            sortKey;
+
+        // 新しい項目は降順から
+        currentSortOrder =
+            "desc";
+
+    }
+
+
+    renderPokemonRanking();
+
+}
+
+
+// プルダウンからの並び替え変更
+// （選ぶたびに降順から開始する）
+function setRankingSort(
+    sortKey
+) {
+
+    currentSortKey =
+        sortKey;
+
+    currentSortOrder =
+        "desc";
+
+    renderPokemonRanking();
+
+}
+
+
+// =========================
+// ランキング表示
+// =========================
+
+function renderPokemonRanking() {
+
+    const container =
+        document.getElementById(
+            "pokemon-ranking"
+        );
+
+
+    // =========================
+    // ソート
+    // =========================
+
+    const ranking =
+        [...pokemonRankingData]
+            .filter(p => {
+
+                if (
+                    currentSortKey ===
+                    "win_rate"
+                ) {
+
+                    return p.battles >= 5;
+
+                }
+
+                return true;
+
+            })
+            .sort((a, b) => {
+
+                const valueA =
+                    a[currentSortKey];
+
+                const valueB =
+                    b[currentSortKey];
+
+
+                const isTextSort =
+                    currentSortKey === "type_sort" ||
+                    currentSortKey === "weakness_sort";
+
+                const comparison = isTextSort
+                    ? String(valueA).localeCompare(
+                        String(valueB),
+                        "ja"
+                    )
+                    : valueA - valueB;
+
+                return currentSortOrder === "desc"
+                    ? -comparison
+                    : comparison;
+
+            });
+
+    const maxUsageRate =
+        Math.max(
+            ...pokemonRankingData.map(
+                pokemon => pokemon.usage_rate
+            ),
+            0
+        );
+
+
+    // =========================
+    // 矢印
+    // =========================
+
+    const usageArrow =
+        currentSortKey ===
+        "usage_rate"
+
+            ? (
+                currentSortOrder ===
+                "desc"
+                    ? "▼"
+                    : "▲"
+            )
+
+            : "▽";
+
+
+    const winRateArrow =
+        currentSortKey ===
+        "win_rate"
+
+            ? (
+                currentSortOrder ===
+                "desc"
+                    ? "▼"
+                    : "▲"
+            )
+
+            : "▽";
+
+
+    const typeArrow =
+        currentSortKey === "type_sort"
+            ? (
+                currentSortOrder === "desc"
+                    ? "▼"
+                    : "▲"
+            )
+            : "▽";
+
+
+    const weaknessArrow =
+        currentSortKey === "weakness_sort"
+            ? (
+                currentSortOrder === "desc"
+                    ? "▼"
+                    : "▲"
+            )
+            : "▽";
+
+
+    // =========================
+    // ヘッダー
+    // =========================
+
+    container.innerHTML = `
+
+        <div class="pokemon-ranking-row header">
+
+            <span class="rank">
+                順位
+            </span>
+
+
+            <span class="pokemon-name">
+                ポケモン
+            </span>
+
+
+            <button
+                class="sort-button ranking-type-header${currentSortKey === "type_sort" ? " active" : ""}"
+                onclick="
+                    changeRankingSort(
+                        'type_sort'
+                    )
+                "
+            >
+                ${typeArrow}タイプ
+            </button>
+
+
+            <button
+                class="sort-button ranking-weakness-header${currentSortKey === "weakness_sort" ? " active" : ""}"
+                onclick="
+                    changeRankingSort(
+                        'weakness_sort'
+                    )
+                "
+            >
+                ${weaknessArrow}弱点
+            </button>
+
+
+            <span class="number">
+                使用数
+            </span>
+
+
+            <button
+                class="sort-button${currentSortKey === "usage_rate" ? " active" : ""}"
+                onclick="
+                    changeRankingSort(
+                        'usage_rate'
+                    )
+                "
+            >
+                ${usageArrow}使用率
+            </button>
+
+
+            <button
+                class="sort-button${currentSortKey === "win_rate" ? " active" : ""}"
+                onclick="
+                    changeRankingSort(
+                        'win_rate'
+                    )
+                "
+            >
+                ${winRateArrow}勝率
+            </button>
+
+        </div>
+
+
+        <div class="ranking-note">
+
+            ※ 勝率は5試合以上のポケモンを対象
+
+        </div>
+
+    `;
+
+
+    // =========================
+    // データ表示
+    // =========================
+
+    ranking.forEach(
+        (p, index) => {
+
+            // 勝率ソート時は
+            // 5試合未満を除外
+            if (
+                currentSortKey ===
+                    "win_rate" &&
+                p.battles < 5
+            ) {
+
+                return;
+
+            }
+
+
+            container.innerHTML += `
+
+                <div
+                    class="pokemon-ranking-row"
+                    style="--usage-rate: ${
+                        maxUsageRate > 0
+                            ? p.usage_rate / maxUsageRate * 100
+                            : 0
+                    }%"
+                >
+                    <span class="rank">
+
+                        ${index + 1}
+
+                    </span>
+
+
+                    <span class="pokemon-name">
+
+                        ${getPokemonIdentityHTML(
+                            p.name,
+                            p.pokemon_id
+                        )}
+
+                    </span>
+
+
+                    <span class="pokemon-type">
+
+                        ${getTypeImagesHTML(
+                            [p.type1, p.type2].filter(Boolean)
+                        )}
+
+                    </span>
+
+
+                    <span class="pokemon-weakness">
+
+                        ${getTypeImagesHTML(
+                            p.weaknesses
+                        )}
+
+                    </span>
+
+
+                    <span class="number">
+
+                        ${p.usage_count}
+
+                    </span>
+
+
+                    <span class="number">
+
+                        ${formatPercentage(p.usage_rate)}%
+
+                    </span>
+
+
+                    <span class="number">
+
+                        ${
+                            p.battles >= 5
+                                ? formatPercentage(p.win_rate) + "%"
+                                : "-"
+                        }
+
+                    </span>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    // プルダウンの表示を現在のソート状態に合わせる
+    // （見出しクリックで変更された場合もズレないように）
+    const sortSelect =
+        document.getElementById(
+            "ranking-sort-select"
+        );
+
+    if (sortSelect) {
+        sortSelect.value = currentSortKey;
+    }
+
+}
+
+
+// =========================
+// 先攻・後攻ランキング
+// =========================
+
+function createFirstSecondRanking(stats) {
+
+    firstSecondRankingData = stats;
+
+    renderFirstSecondRanking();
+
+}
+
+
+// =========================
+// 先攻・後攻ソート変更
+// =========================
+
+function changeFirstSecondSort(sortKey) {
+
+    if (
+        firstSecondSortKey ===
+        sortKey
+    ) {
+
+        firstSecondSortOrder =
+            firstSecondSortOrder ===
+            "desc"
+                ? "asc"
+                : "desc";
+
+    } else {
+
+        firstSecondSortKey =
+            sortKey;
+
+        firstSecondSortOrder =
+            "desc";
+
+    }
+
+
+    renderFirstSecondRanking();
+
+}
+
+
+// =========================
+// 先攻・後攻ランキング表示
+// =========================
+
+function renderFirstSecondRanking() {
+
+    const container =
+        document.getElementById(
+            "first-second-ranking"
+        );
+
+
+    // =========================
+    // ソート
+    // =========================
+
+    const stats =
+        firstSecondSortKey === null
+            ? firstSecondRankingData
+            : [...firstSecondRankingData].sort(
+                (a, b) => {
+
+                    const valueA =
+                        firstSecondSortKey === "first_win_rate"
+                            ? a.first_player.win_rate
+                            : a.second_player.win_rate;
+
+                    const valueB =
+                        firstSecondSortKey === "first_win_rate"
+                            ? b.first_player.win_rate
+                            : b.second_player.win_rate;
+
+
+                    const comparison =
+                        valueA - valueB;
+
+                    return firstSecondSortOrder === "desc"
+                        ? -comparison
+                        : comparison;
+
+                }
+            );
+
+
+    // =========================
+    // 矢印
+    // =========================
+
+    const firstArrow =
+        firstSecondSortKey ===
+        "first_win_rate"
+
+            ? (
+                firstSecondSortOrder ===
+                "desc"
+                    ? " ▼"
+                    : " ▲"
+            )
+
+            : "▽";
+
+
+    const secondArrow =
+        firstSecondSortKey ===
+        "second_win_rate"
+
+            ? (
+                firstSecondSortOrder ===
+                "desc"
+                    ? " ▼"
+                    : " ▲"
+            )
+
+            : "▽";
+
+
+    // =========================
+    // ヘッダー
+    // =========================
+
+    container.innerHTML = `
+
+        <div class="first-second-row header">
+
+            <strong>
+                ポケモン
+            </strong>
+
+            <strong class="ranking-type-header">
+                タイプ
+            </strong>
+
+            <strong class="ranking-weakness-header">
+                弱点
+            </strong>
+
+            <button
+                class="sort-button"
+                onclick="
+                    changeFirstSecondSort(
+                        'first_win_rate'
+                    )
+                "
+            >
+                先攻${firstArrow}
+            </button>
+
+            <button
+                class="sort-button"
+                onclick="
+                    changeFirstSecondSort(
+                        'second_win_rate'
+                    )
+                "
+            >
+                後攻${secondArrow}
+            </button>
+
+        </div>
+
+    `;
+
+
+    // =========================
+    // データ表示
+    // =========================
+
+    stats.forEach(p => {
+
+        container.innerHTML += `
+
+            <div class="first-second-row">
+
+                <span class="pokemon-name">
+                    ${getPokemonIdentityHTML(
+                        p.name,
+                        p.pokemon_id
+                    )}
+                </span>
+
+
+                <span class="pokemon-type">
+                    ${getTypeImagesHTML(
+                        [p.type1, p.type2].filter(Boolean)
+                    )}
+                </span>
+
+
+                <span class="pokemon-weakness">
+                    ${getTypeImagesHTML(
+                        p.weaknesses
+                    )}
+                </span>
+
+
+                <span>
+                    ${p.first_player.battles}戦
+                    ${p.first_player.wins}勝
+                    <br>
+                    ${formatPercentage(p.first_player.win_rate)}%
+                </span>
+
+
+                <span>
+                    ${p.second_player.battles}戦
+                    ${p.second_player.wins}勝
+                    <br>
+                    ${formatPercentage(p.second_player.win_rate)}%
+                </span>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+
+// =========================
+// 全体の先攻・後攻勝率
+// =========================
+
+function createFirstSecondOverall(stats) {
+
+    const totals = stats.reduce(
+        (result, pokemon) => {
+
+            result.first.battles += pokemon.first_player.battles;
+            result.first.wins += pokemon.first_player.wins;
+            result.second.battles += pokemon.second_player.battles;
+            result.second.wins += pokemon.second_player.wins;
+
+            return result;
+
+        },
+        {
+            first: { battles: 0, wins: 0 },
+            second: { battles: 0, wins: 0 }
+        }
+    );
+
+
+    const firstWinRate = totals.first.battles > 0
+        ? totals.first.wins / totals.first.battles * 100
+        : 0;
+
+    const secondWinRate = totals.second.battles > 0
+        ? totals.second.wins / totals.second.battles * 100
+        : 0;
+
+    const container = document.getElementById(
+        "first-second-overall"
+    );
+
+
+    container.innerHTML = `
+
+        <div class="matchup-row first-second-overall">
+
+            <span class="matchup-pokemon">
+                先攻
+                <br>
+                <span class="pokemon-rate">
+                    ${firstWinRate.toFixed(1)}%
+                </span>
+                <br>
+                <span class="pokemon-rate">
+                    ${totals.first.battles}戦 ${totals.first.wins}勝
+                </span>
+            </span>
+
+            <span class="vs">
+                VS
+            </span>
+
+            <span class="matchup-pokemon">
+                後攻
+                <br>
+                <span class="pokemon-rate">
+                    ${secondWinRate.toFixed(1)}%
+                </span>
+                <br>
+                <span class="pokemon-rate">
+                    ${totals.second.battles}戦 ${totals.second.wins}勝
+                </span>
+            </span>
+
+            <div
+                class="matchup-meter"
+                role="img"
+                aria-label="先攻 ${firstWinRate.toFixed(1)}%、後攻 ${secondWinRate.toFixed(1)}%"
+            >
+                <span
+                    class="matchup-meter-pokemon1"
+                    style="width: ${firstWinRate}%"
+                ></span>
+                <span
+                    class="matchup-meter-pokemon2"
+                    style="width: ${secondWinRate}%"
+                ></span>
+            </div>
+
+        </div>
+
+        <p class="first-second-note">
+            「不明」を除外して集計
+        </p>
+
+    `;
+
+}
+
+
+// =========================
+// 対戦成績フィルター
+// =========================
+
+function getPokemonId(pokemon) {
+
+    return pokemon?.pokemon_id ?? pokemon?.id;
+
+}
+
+
+function setupMatchupFilter(matchups) {
+
+    const select =
+        document.getElementById(
+            "matchup-pokemon"
+        );
+
+
+    // シーズン切り替え時に前回分の選択肢が残らないようリセット
+    select.innerHTML = `
+        <option value="">
+            すべてのポケモン
+        </option>
+    `;
+
+
+    // 登場するポケモンを取得
+    const pokemonMap = new Map();
+
+
+    matchups.forEach(m => {
+
+        pokemonMap.set(
+            getPokemonId(m.pokemon1),
+            m.pokemon1.name
+        );
+
+        pokemonMap.set(
+            getPokemonId(m.pokemon2),
+            m.pokemon2.name
+        );
+
+    });
+
+
+    // ポケモン名順
+    const pokemonList =
+        Array.from(
+            pokemonMap.entries()
+        ).sort(
+            (a, b) =>
+                a[1].localeCompare(
+                    b[1],
+                    "ja"
+                )
+        );
+
+
+    pokemonList.forEach(
+        ([id, name]) => {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+            option.value = id;
+
+            option.textContent = name;
+
+            select.appendChild(
+                option
+            );
+
+        }
+    );
+
+
+    // 選択変更時
+    // （onchangeへの代入により、シーズン切替のたびに
+    //   setupMatchupFilterが呼ばれても listener が重複登録されない）
+    select.onchange = function() {
+
+        createMatchups(
+            matchups,
+            this.value
+        );
+
+    };
+
+}
+
+
+// =========================
+// ヘルパー関数：ポケモンIDから絵文字情報取得
+// =========================
+
+function getEmojiByPokemonId(pokemonId) {
+
+    if (!emojiData || !emojiData.pokemon) {
+        return null;
+    }
+
+    return emojiData.pokemon.find(
+        p => p.id === pokemonId
+    );
+
+}
+
+
+// =========================
+// ヘルパー関数：ポケモン名と画像のHTML生成
+// =========================
+
+function getPokemonIdentityHTML(name, pokemonId) {
+
+    const emoji = getEmojiByPokemonId(
+        pokemonId
+    );
+
+    let pokemonImage = "";
+
+    if (emoji) {
+        const match = emoji.emoji.match(
+            /<:([^:]+):(\d+)>/
+        );
+
+        if (match) {
+            pokemonImage = `
+                <img
+                    src="assets/images/emoji_images/${match[2]}.webp"
+                    alt="${name}"
+                    class="pokemon-emoji"
+                    onerror="this.style.display='none'"
+                >
+            `;
+        }
+    }
+
+    const identityHTML = `
+        ${pokemonImage}
+        <span>${name}</span>
+    `;
+
+    return `<a class="pokemon-detail-link" href="characters/character.html?id=${encodeURIComponent(pokemonId)}">${identityHTML}</a>`;
+
+}
+
+
+function getPokemonDisplayHTML(name, pokemonId, details = {}) {
+
+    const types = [details.type1, details.type2]
+        .filter(Boolean);
+
+    const weaknesses = Array.isArray(details.weaknesses)
+        ? details.weaknesses
+        : [];
+
+    const typeHTML = getTypeImagesHTML(types);
+    const weaknessHTML = getTypeImagesHTML(weaknesses);
+
+    return `${getPokemonIdentityHTML(name, pokemonId)}${typeHTML ? `<span class="pokemon-meta">${typeHTML}</span>` : ""}${weaknessHTML ? `<span class="pokemon-meta"><span class="pokemon-meta-label">弱点：</span>${weaknessHTML}</span>` : ""}`;
+
+}
+
+
+function getTypeImagesHTML(types) {
+
+    return [...new Set(types)]
+        .map(type => {
+            const imageName = typeImageNames[type];
+
+            if (!imageName) {
+                return "";
+            }
+
+            return `
+                <span class="type-item">
+                    <img
+                        src="assets/images/type_images/${imageName}.webp"
+                        alt="${type}"
+                        class="type-emoji"
+                        onerror="this.style.display='none'"
+                    >
+                </span>
+            `;
+        })
+        .join("");
+
+}
+
+// =========================
+// 対戦成績
+// =========================
+
+function createMatchups(
+    matchups,
+    selectedPokemonId = ""
+) {
+
+    const container =
+        document.getElementById(
+            "matchup-list"
+        );
+
+
+    container.innerHTML = "";
+
+
+    let filtered =
+        matchups;
+
+
+    // =========================
+    // フィルター
+    // =========================
+
+    if (selectedPokemonId !== "") {
+
+        const id =
+            Number(
+                selectedPokemonId
+            );
+
+
+        filtered =
+            matchups.filter(m =>
+
+                getPokemonId(m.pokemon1) === id ||
+                getPokemonId(m.pokemon2) === id
+
+            );
+
+    }
+
+
+    // =========================
+    // 対戦数が多い順
+    // =========================
+
+    filtered =
+        [...filtered].sort(
+            (a, b) =>
+                b.battles -
+                a.battles
+        );
+
+
+    // =========================
+    // 表示
+    // =========================
+
+    filtered.forEach(m => {
+
+        let pokemon1 =
+            m.pokemon1;
+
+        let pokemon2 =
+            m.pokemon2;
+
+
+        let pokemon1WinRate =
+            m.pokemon1_win_rate;
+
+        let pokemon2WinRate =
+            m.pokemon2_win_rate;
+
+
+        // =========================
+        // 選択されたポケモンを
+        // 左側に固定
+        // =========================
+
+        if (
+            selectedPokemonId !== "" &&
+            String(getPokemonId(pokemon2)) ===
+                selectedPokemonId
+        ) {
+
+            pokemon1 =
+                m.pokemon2;
+
+            pokemon2 =
+                m.pokemon1;
+
+            pokemon1WinRate =
+                m.pokemon2_win_rate;
+
+            pokemon2WinRate =
+                m.pokemon1_win_rate;
+
+        }
+
+
+        const pokemon1IsLower =
+            pokemon1WinRate < pokemon2WinRate;
+
+        const pokemon2IsLower =
+            pokemon2WinRate < pokemon1WinRate;
+
+
+        container.innerHTML += `
+
+            <div class="matchup-row">
+
+                <span class="matchup-pokemon">
+
+                    <span class="pokemon-name-bold">${getPokemonDisplayHTML(
+                        pokemon1.name,
+                        pokemon1.id,
+                        pokemon1
+                    )}</span>
+
+                    <br>
+
+                    <span class="pokemon-rate">${formatPercentage(pokemon1WinRate)}%</span>
+
+                </span>
+
+
+                <span class="vs">
+
+                    VS
+
+                    <br>
+
+                    ${m.battles}戦
+
+                </span>
+
+
+                <span class="matchup-pokemon">
+
+                    <span class="pokemon-name-bold">${getPokemonDisplayHTML(
+                        pokemon2.name,
+                        pokemon2.id,
+                        pokemon2
+                    )}</span>
+
+                    <br>
+
+                    <span class="pokemon-rate">${formatPercentage(pokemon2WinRate)}%</span>
+
+                </span>
+
+
+                <div
+                    class="matchup-meter"
+                    role="img"
+                    aria-label="${pokemon1.name} ${formatPercentage(pokemon1WinRate)}%、${pokemon2.name} ${formatPercentage(pokemon2WinRate)}%"
+                >
+
+                    <span
+                        class="matchup-meter-pokemon1${pokemon1IsLower ? " is-lower" : ""}"
+                        style="width: ${pokemon1WinRate}%"
+                    ></span>
+
+                    <span
+                        class="matchup-meter-pokemon2${pokemon2IsLower ? " is-lower" : ""}"
+                        style="width: ${pokemon2WinRate}%"
+                    ></span>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+
+    // =========================
+    // 該当データなし
+    // =========================
+
+    if (filtered.length === 0) {
+
+        container.innerHTML = `
+
+            <p>
+                対戦データがありません。
+            </p>
+
+        `;
+
+    }
+
+}
+
+
+// =========================
+// 実行
+// =========================
+
+main();

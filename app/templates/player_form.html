@@ -3,35 +3,81 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Player登録</title>
+    <title>Player登録・Discord ID紐づけ</title>
+    <style>
+        .connection-banner {
+            padding: 8px 14px;
+            margin-bottom: 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            background: {% if repo_is_dynamodb %}#fff3cd{% else %}#e7f2f5{% endif %};
+            border: 1px solid {% if repo_is_dynamodb %}#ffecb5{% else %}#b6d8e2{% endif %};
+        }
+        .section-box {
+            padding: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #d5dfe4;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 
 <body>
 
-<h1>Player登録</h1>
+<div class="connection-banner">
+    接続先：{{ repo_backend_label }}
+</div>
 
-<form method="post">
+<h1>Player登録・Discord ID紐づけ</h1>
 
-    <p>
-        Discord user ID<br>
-        <input type="text" name="discord_user_id" required>
-    </p>
+<div class="section-box">
+    <h2>新規Player登録</h2>
+    <form method="post">
+        <input type="hidden" name="action" value="create_player">
+        <p>
+            Discord User ID<br>
+            <input type="text" name="discord_user_id" required>
+        </p>
+        <p>
+            Name<br>
+            <input type="text" name="name" required>
+        </p>
+        <button type="submit">
+            新規登録
+        </button>
+    </form>
+</div>
 
-    <p>
-        Name<br>
-        <input type="text" name="name" required>
-    </p>
-
-    <p>
-        Created At<br>
-        <input type="date" name="created_at" required>
-    </p>
-
-    <button type="submit">
-        登録
-    </button>
-
-</form>
+<div class="section-box">
+    <h2>既存プレイヤーへのDiscord ID追加（サブ垢・手元カメラ用など）</h2>
+    {% if repo_is_dynamodb %}
+    <form method="post">
+        <input type="hidden" name="action" value="link_discord">
+        <p>
+            対象プレイヤー<br>
+            <select name="player_id" required>
+                <option value="" disabled selected>プレイヤーを選択</option>
+                {% for p in players %}
+                <option value="{{ p.id }}">#{{ p.id }} {{ p.name }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <p>
+            追加するDiscord User ID<br>
+            <input type="text" name="discord_user_id" required>
+        </p>
+        <p>
+            メモ・ラベル（任意：例「手元カメラ用」）<br>
+            <input type="text" name="label" maxlength="50">
+        </p>
+        <button type="submit">
+            Discord IDを追加紐づけ
+        </button>
+    </form>
+    {% else %}
+    <p>※複数Discordアカウントの追加紐づけは、DynamoDB接続時（<code>PLAKORO_REPOSITORY=dynamodb</code>）に利用できます。</p>
+    {% endif %}
+</div>
 
 <h2>登録済みPlayer</h2>
 
@@ -39,7 +85,8 @@
 
     <tr>
         <th>ID</th>
-        <th>Discord User ID</th>
+        <th>代表Discord User ID</th>
+        <th>紐づく全Discord ID</th>
         <th>Name</th>
         <th>登録日</th>
     </tr>
@@ -48,16 +95,25 @@
 
     <tr>
         <td>{{ p.id }}</td>
-        <td>{{ p.discord_user_id }}</td>
+        <td>{{ p.discord_user_id or "-" }}</td>
+        <td>
+            {% if p.discord_accounts %}
+                {% for acc in p.discord_accounts %}
+                    <div>{{ acc.discord_user_id }}{% if acc.label %}（{{ acc.label }}）{% endif %}</div>
+                {% endfor %}
+            {% else %}
+                {{ p.discord_user_id or "-" }}
+            {% endif %}
+        </td>
         <td>{{ p.name }}</td>
-        <td>{{ p.created_at }}</td>
+        <td>{{ p.created_at or "-" }}</td>
     </tr>
 
     {% endfor %}
 
 </table>
 
-<a href="/">戻る</a>
+<p><a href="/">戻る</a></p>
 
 </body>
 </html>

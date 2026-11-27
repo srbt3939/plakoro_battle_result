@@ -37,6 +37,51 @@ def calculate_series_result(results: list[str]) -> tuple[str | None, int, int]:
     return None, player_wins, opponent_wins
 
 
+def prepare_battle_match(games: list[dict]) -> dict:
+    """Validate BO3 games and compute series result/scores without touching SQL."""
+    if not 1 <= len(games) <= 3:
+        raise ValueError("A Battle Challenge series must contain 1 to 3 games.")
+
+    normalized_games: list[dict] = []
+    for game in games:
+        result = game.get("player1_result")
+        if result not in ("win", "lose"):
+            raise ValueError("Each game result must be 'win' or 'lose'.")
+        first_player = game.get("first_player")
+        if first_player == "":
+            first_player = None
+        if first_player is not None:
+            first_player = int(first_player)
+            if first_player not in (1, 2):
+                raise ValueError("first_player must be 1, 2, or None.")
+        normalized_games.append({
+            "player1_pokemon_id": int(game["player1_pokemon_id"]),
+            "player2_pokemon_id": int(game["player2_pokemon_id"]),
+            "player1_result": result,
+            "player2_result": {"win": "lose", "lose": "win"}[result],
+            "first_player": first_player,
+        })
+
+    results = [game["player1_result"] for game in normalized_games]
+    match_result, player_score, opponent_score = calculate_series_result(results)
+    if player_score >= 2 or opponent_score >= 2:
+        decisive_game = next(
+            index
+            for index in range(len(results))
+            if results[:index + 1].count("win") >= 2
+            or results[:index + 1].count("lose") >= 2
+        )
+        if decisive_game != len(normalized_games) - 1:
+            raise ValueError("シリーズ決着後のゲームは登録できません。")
+
+    return {
+        "match_result": match_result,
+        "player_score": player_score,
+        "opponent_score": opponent_score,
+        "games": normalized_games,
+    }
+
+
 def save_battle_challenge_message(
     db_path: str,
     message_id: int | str,
@@ -72,20 +117,11 @@ def create_battle_match(
     player_id: int | None,
     games: list[dict],
 ) -> int:
-    if not 1 <= len(games) <= 3:
-        raise ValueError("A Battle Challenge series must contain 1 to 3 games.")
-
-    results = [game["player1_result"] for game in games]
-    match_result, player_score, opponent_score = calculate_series_result(results)
-    if player_score >= 2 or opponent_score >= 2:
-        decisive_game = next(
-            index
-            for index in range(len(results))
-            if results[:index + 1].count("win") >= 2
-            or results[:index + 1].count("lose") >= 2
-        )
-        if decisive_game != len(games) - 1:
-            raise ValueError("Games cannot be added after the series is decided.")
+    prepared = prepare_battle_match(games)
+    match_result = prepared["match_result"]
+    player_score = prepared["player_score"]
+    opponent_score = prepared["opponent_score"]
+    normalized_games = prepared["games"]
 
     cursor = conn.execute("""
         INSERT INTO battle_matches (
@@ -114,8 +150,7 @@ def create_battle_match(
         WHERE battle_message_id = ?
     """, (battle_message_id,)).fetchone()[0]
 
-    for game_number, game in enumerate(games, start=1):
-        result = game["player1_result"]
+    for game_number, game in enumerate(normalized_games, start=1):
         conn.execute("""
             INSERT INTO battles (
                 battle_message_id, battle_number, player1_id, player2_id,
@@ -130,8 +165,8 @@ def create_battle_match(
             game["player1_pokemon_id"],
             game["player2_pokemon_id"],
             game["first_player"],
-            result,
-            {"win": "lose", "lose": "win"}[result],
+            game["player1_result"],
+            game["player2_result"],
             match_id,
             game_number,
         ))

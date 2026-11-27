@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<title>ON PLA!戦績入力補助ツール</title>
+
+<script src="assets/js/theme.js"></script>
+
+<style>
+    :root {
+        color-scheme: light;
+        --bg: #f4f5f7;
+        --surface: #ffffff;
+        --surface-muted: #f1f2f4;
+        --surface-hover: #f5f5f5;
+        --text: #222222;
+        --muted: #666666;
+        --border: #dddddd;
+        --input-border: #cccccc;
+        --primary-bg: #222222;
+        --primary-text: #ffffff;
+        --notice-bg: #fff3cd;
+        --notice-text: #856404;
+        --notice-border: #ffeeba;
+        --status-bg: #eeeeee;
+        --placeholder-bg: #dddddd;
+        --placeholder-text: #999999;
+        --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+            color-scheme: dark;
+            --bg: #11171b;
+            --surface: #1a2329;
+            --surface-muted: #222e36;
+            --surface-hover: #293842;
+            --text: #e4ecef;
+            --muted: #93a4af;
+            --border: #2d3c46;
+            --input-border: #3b4d59;
+            --primary-bg: #2b7a96;
+            --primary-text: #ffffff;
+            --notice-bg: rgba(255, 193, 7, 0.14);
+            --notice-text: #ffd666;
+            --notice-border: rgba(255, 193, 7, 0.35);
+            --status-bg: #222e36;
+            --placeholder-bg: #2d3c46;
+            --placeholder-text: #93a4af;
+            --shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    :root[data-theme="dark"] {
+        color-scheme: dark;
+        --bg: #11171b;
+        --surface: #1a2329;
+        --surface-muted: #222e36;
+        --surface-hover: #293842;
+        --text: #e4ecef;
+        --muted: #93a4af;
+        --border: #2d3c46;
+        --input-border: #3b4d59;
+        --primary-bg: #2b7a96;
+        --primary-text: #ffffff;
+        --notice-bg: rgba(255, 193, 7, 0.14);
+        --notice-text: #ffd666;
+        --notice-border: rgba(255, 193, 7, 0.35);
+        --status-bg: #222e36;
+        --placeholder-bg: #2d3c46;
+        --placeholder-text: #93a4af;
+        --shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 20px;
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            sans-serif;
+    }
+
+    .home-button,
+    .theme-toggle-button {
+        position: fixed;
+        top: 20px;
+        z-index: 10;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: var(--surface);
+        color: var(--text);
+        font-size: 20px;
+        line-height: 1;
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow: var(--shadow);
+    }
+
+    .home-button {
+        left: 20px;
+        font-size: 24px;
+    }
+
+    .theme-toggle-button {
+        right: 20px;
+    }
+
+    .home-button:hover,
+    .theme-toggle-button:hover {
+        background: var(--surface-hover);
+    }
+
+    .home-button:focus-visible,
+    .theme-toggle-button:focus-visible {
+        outline: 3px solid #8ab4f8;
+        outline-offset: 2px;
+    }
+
+    .container {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    h1 {
+        text-align: center;
+        margin: 0 0 24px;
+    }
+
+    .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 20px;
+        margin-bottom: 16px;
+        box-shadow: var(--shadow);
+    }
+
+    .players {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    .battle-count {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+    }
+
+    .battle-card {
+        padding: 16px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+    }
+
+    .battle-card + .battle-card {
+        margin-top: 16px;
+    }
+
+    .battle-card h2 {
+        margin: 0 0 14px;
+        font-size: 18px;
+    }
+
+    .player-card {
+        border: 2px solid var(--border);
+        border-radius: 14px;
+        padding: 16px;
+    }
+
+    .player-card h2 {
+        margin: 0 0 14px;
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .player-card select {
+        width: 100%;
+        padding: 13px;
+        font-size: 16px;
+        color: var(--text);
+        border: 1px solid var(--input-border);
+        border-radius: 10px;
+        background: var(--surface);
+    }
+
+    .section-title {
+        font-weight: bold;
+        margin-bottom: 12px;
+    }
+
+    .button-group {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .button-group.two {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .choice-button {
+        padding: 14px 8px;
+        border: 2px solid var(--border);
+        border-radius: 10px;
+        background: var(--surface);
+        color: var(--text);
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .choice-button:hover {
+        background: var(--surface-hover);
+    }
+
+    .choice-button.selected {
+        background: var(--primary-bg);
+        color: var(--primary-text);
+        border-color: var(--primary-bg);
+    }
+
+    .generate-button {
+        width: 100%;
+        padding: 17px;
+        border: none;
+        border-radius: 12px;
+        background: var(--primary-bg);
+        color: var(--primary-text);
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .generate-button:active {
+        transform: scale(0.98);
+    }
+
+    .result {
+        display: none;
+    }
+
+    .result-text {
+        padding: 16px;
+        background: var(--surface-muted);
+        border-radius: 10px;
+        word-break: break-all;
+        font-family: monospace;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .copy-button {
+        width: 100%;
+        margin-top: 12px;
+        padding: 14px;
+        border: none;
+        border-radius: 10px;
+        background: #4caf50;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .copy-button:active {
+        transform: scale(0.98);
+    }
+
+    .notice {
+        margin-bottom: 16px;
+        padding: 16px;
+        border-radius: 10px;
+        background: var(--notice-bg);
+        color: var(--notice-text);
+        border: 1px solid var(--notice-border);
+        font-size: 15px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .status {
+        margin-bottom: 16px;
+        padding: 10px 14px;
+        border-radius: 10px;
+        background: var(--status-bg);
+        color: var(--muted);
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .preview-section {
+        display: none;
+    }
+
+    .preview-title {
+        font-weight: bold;
+        margin-bottom: 12px;
+    }
+
+    .emoji-preview {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 24px;
+        background: var(--surface-muted);
+        border-radius: 10px;
+        min-height: 80px;
+        flex-wrap: wrap;
+    }
+
+    .emoji-img {
+        height: 48px;
+        width: auto;
+        display: inline-block;
+    }
+
+    .emoji-placeholder {
+        height: 48px;
+        width: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--placeholder-bg);
+        border-radius: 6px;
+        font-size: 12px;
+        color: var(--placeholder-text);
+    }
+
+    @media (max-width: 600px) {
+        body {
+            padding: 12px;
+        }
+
+        .home-button,
+        .theme-toggle-button {
+            top: 12px;
+            width: 38px;
+            height: 38px;
+        }
+
+        .home-button {
+            left: 12px;
+            font-size: 20px;
+        }
+
+        .theme-toggle-button {
+            right: 12px;
+            font-size: 18px;
+        }
+
+        .players {
+            grid-template-columns: 1fr;
+        }
+
+        .battle-count {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        .card {
+            padding: 16px;
+        }
+
+        h1 {
+            margin-top: 44px;
+            font-size: 24px;
+            white-space: nowrap;
+        }
+
+        .emoji-preview {
+            gap: 8px;
+            padding: 16px;
+        }
+
+        .emoji-img {
+            height: 40px;
+        }
+
+        .emoji-placeholder {
+            height: 40px;
+            width: 40px;
+        }
+    }
+</style>
+
+
+</head>
+
+<body>
+
+<a
+    class="home-button"
+    href="index.html"
+    aria-label="ホームに戻る"
+    title="ホームに戻る"
+>⌂</a>
+
+<button
+    type="button"
+    class="theme-toggle-button"
+    data-theme-toggle
+    aria-label="ダークモードに切り替え"
+    title="ダークモードに切り替え"
+><span class="theme-toggle-icon" aria-hidden="true">🌙</span></button>
+
+<div class="container">
+
+
+<h1>ON PLA!戦績入力補助ツール</h1>
+
+<!-- <div class="status" id="status">
+    emoji.jsonを読み込んでいます...
+</div> -->
+
+
+<div class="card">
+    <div class="section-title">登録する試合数</div>
+    <div class="button-group battle-count" id="battleCount">
+        <button type="button" class="choice-button selected" data-count="1">1戦</button>
+        <button type="button" class="choice-button" data-count="2">2戦</button>
+        <button type="button" class="choice-button" data-count="3">3戦</button>
+        <button type="button" class="choice-button" data-count="4">4戦</button>
+        <button type="button" class="choice-button" data-count="5">5戦</button>
+    </div>
+</div>
+
+<div class="card">
+    <div class="section-title">試合内容</div>
+    <div id="battleInputs"></div>
+</div>
+
+
+<!-- =========================
+     生成
+========================== -->
+
+<div class="card">
+
+    <button
+        type="button"
+        class="generate-button"
+        id="generateButton">
+
+        戦績文字列をまとめて生成
+
+    </button>
+
+</div>
+
+
+<!-- =========================
+     プレビュー
+========================== -->
+
+<div
+    class="card result preview-section"
+    id="previewCard">
+
+    <div class="preview-title">
+        絵文字プレビュー
+    </div>
+
+    <div
+        class="emoji-preview"
+        id="emojiPreview">
+    </div>
+
+</div>
+
+
+<!-- =========================
+     結果
+========================== -->
+
+<div
+    class="card result"
+    id="resultCard">
+
+    <!-- 注意書き -->
+    <div class="notice">
+        ⬇️ 以下をDiscordにコピペしてください ⬇️
+    </div>
+
+    <div class="section-title">
+        Discord投稿用
+    </div>
+
+    <div
+        class="result-text"
+        id="resultText">
+    </div>
+
+    <button
+        type="button"
+        class="copy-button"
+        id="copyButton">
+
+        コピー
+
+    </button>
+
+</div>
+
+</div>
+
+<script>
+
+    /*
+     * =========================================
+     * データ
+     * =========================================
+     */
+
+    let data = null;
+
+    let battleCount = 1;
+
+
+    /*
+     * =========================================
+     * emoji.json 読み込み
+     * =========================================
+     */
+
+    async function loadData() {
+
+        try {
+
+            const response =
+                await fetch("data/emoji.json?v=2026-11-10-pokemon-roster");
+
+            if (!response.ok) {
+                throw new Error(
+                    "emoji.jsonの読み込みに失敗しました。"
+                );
+            }
+
+            data = await response.json();
+
+            /*
+             * データ構造チェック
+             */
+
+            if (!Array.isArray(data.pokemon)) {
+                throw new Error(
+                    "emoji.jsonのpokemonが配列ではありません。"
+                );
+            }
+
+            if (!data.symbols) {
+                throw new Error(
+                    "emoji.jsonにsymbolsがありません。"
+                );
+            }
+
+
+            renderBattleInputs();
+
+            const statusElement = document.getElementById("status");
+            if (statusElement) {
+                statusElement.textContent =
+                    `${data.pokemon.length}種類のポケモンを読み込みました。`;
+            }
+
+        } catch (error) {
+
+            console.error(error);
+
+            const statusElement = document.getElementById("status");
+            if (statusElement) {
+                statusElement.textContent =
+                    "emoji.jsonの読み込みに失敗しました。";
+            }
+
+            alert(error.message);
+
+        }
+
+    }
+
+
+    /*
+     * =========================================
+     * ポケモン選択肢作成
+     * =========================================
+     */
+
+    function pokemonOptions() {
+        return data.pokemon.map(pokemon =>
+            `<option value="${pokemon.id}">${pokemon.name}</option>`
+        ).join("");
+    }
+
+    function renderBattleInputs() {
+        const container = document.getElementById("battleInputs");
+        container.innerHTML = Array.from({ length: battleCount }, (_, index) => `
+            <section class="battle-card" data-battle-index="${index}">
+                <h2>第${index + 1}戦</h2>
+                <div class="players">
+                    <div class="player-card">
+                        <h2>自分</h2>
+                        <select data-field="player1Pokemon">
+                            <option value="">ポケモンを選択</option>
+                            ${pokemonOptions()}
+                        </select>
+                    </div>
+                    <div class="player-card">
+                        <h2>相手</h2>
+                        <select data-field="player2Pokemon">
+                            <option value="">ポケモンを選択</option>
+                            ${pokemonOptions()}
+                        </select>
+                    </div>
+                </div>
+                <div class="section-title">先攻のプレイヤー</div>
+                <div class="button-group">
+                    <button type="button" class="choice-button" data-field="firstPlayer" data-value="player1">自分</button>
+                    <button type="button" class="choice-button" data-field="firstPlayer" data-value="player2">相手</button>
+                    <button type="button" class="choice-button" data-field="firstPlayer" data-value="unknown">不明</button>
+                </div>
+                <div class="section-title">自分の勝敗</div>
+                <div class="button-group two">
+                    <button type="button" class="choice-button" data-field="player1Result" data-value="win">勝ち</button>
+                    <button type="button" class="choice-button" data-field="player1Result" data-value="lose">負け</button>
+                </div>
+            </section>
+        `).join("");
+    }
+
+
+    /*
+     * =========================================
+     * ポケモン取得
+     * =========================================
+     */
+
+    function getPokemon(id) {
+
+        return data.pokemon.find(
+            pokemon =>
+                String(pokemon.id) === String(id)
+        );
+
+    }
+
+
+    /*
+     * =========================================
+     * 絵文字IDマッピング作成
+     * =========================================
+     */
+
+    function createEmojiIdMap() {
+
+        const emojiIdMap = {};
+
+        /*
+         * ポケモンの絵文字
+         */
+
+        data.pokemon.forEach(pokemon => {
+
+            const match =
+                pokemon.emoji.match(
+                    /<:([^:]+):(\d+)>/
+                );
+
+            if (match) {
+
+                const emojiName = match[1];
+
+                const emojiId = match[2];
+
+                emojiIdMap[emojiId] = {
+                    name: emojiName,
+                    format: pokemon.emoji
+                };
+
+            }
+
+        });
+
+
+        /*
+         * シンボルの絵文字
+         */
+
+        Object.entries(data.symbols).forEach(
+            ([key, value]) => {
+
+                if (value) {
+
+                    const match =
+                        value.match(
+                            /<:([^:]+):(\d+)>/
+                        );
+
+                    if (match) {
+
+                        const emojiName =
+                            match[1];
+
+                        const emojiId =
+                            match[2];
+
+                        emojiIdMap[emojiId] = {
+                            name: emojiName,
+                            format: value
+                        };
+
+                    }
+
+                }
+
+            }
+        );
+
+        return emojiIdMap;
+
+    }
+
+
+    /*
+     * =========================================
+     * プレビュー更新
+     * =========================================
+     */
+
+    function updateEmojiPreview(resultText) {
+
+        const previewContainer =
+            document.getElementById(
+                "emojiPreview"
+            );
+
+        previewContainer.innerHTML = "";
+
+        /*
+         * Discordフォーマットの絵文字を抽出
+         */
+
+        const emojiRegex =
+            /<:([^:]+):(\d+)>/g;
+
+        let match;
+
+        let hasEmoji = false;
+
+        while ((match = emojiRegex.exec(resultText)) !== null) {
+
+            hasEmoji = true;
+
+            const emojiName = match[1];
+
+            const emojiId = match[2];
+
+            /*
+             * img要素を作成
+             */
+
+            const img = document.createElement(
+                "img"
+            );
+
+            img.className = "emoji-img";
+
+            img.src = `assets/images/emoji_images/${emojiId}.webp`;
+
+            img.alt = emojiName;
+
+            img.onerror = () => {
+
+                /*
+                 * 画像が見つからない場合
+                 */
+
+                const placeholder =
+                    document.createElement(
+                        "div"
+                    );
+
+                placeholder.className =
+                    "emoji-placeholder";
+
+                placeholder.textContent =
+                    "?";
+
+                placeholder.title =
+                    `${emojiName} (ID: ${emojiId})`;
+
+                img.replaceWith(
+                    placeholder
+                );
+
+            };
+
+            img.title =
+                `${emojiName} (ID: ${emojiId})`;
+
+            previewContainer.appendChild(img);
+
+        }
+
+        /*
+         * プレビューカードの表示/非表示
+         */
+
+        const previewCard =
+            document.getElementById(
+                "previewCard"
+            );
+
+        if (hasEmoji) {
+
+            previewCard.style.display = "block";
+
+        }
+
+        else {
+
+            previewCard.style.display = "none";
+
+        }
+
+    }
+
+
+    document.getElementById("battleCount").addEventListener("click", event => {
+        const button = event.target.closest("[data-count]");
+        if (!button) {
+            return;
+        }
+        battleCount = Number(button.dataset.count);
+        document.querySelectorAll("#battleCount .choice-button").forEach(item => {
+            item.classList.toggle("selected", item === button);
+        });
+        renderBattleInputs();
+    });
+
+    document.getElementById("battleInputs").addEventListener("click", event => {
+        const button = event.target.closest("[data-field][data-value]");
+        if (!button) {
+            return;
+        }
+        const card = button.closest("[data-battle-index]");
+        card.querySelectorAll(`[data-field="${button.dataset.field}"]`).forEach(item => {
+            item.classList.toggle("selected", item === button);
+        });
+    });
+
+
+    /*
+     * =========================================
+     * 戦績文字列生成
+     * =========================================
+     */
+
+    function generateBattleString() {
+
+        /*
+         * データ読み込み確認
+         */
+
+        if (!data) {
+
+            alert(
+                "emoji.jsonを読み込んでいます。"
+            );
+
+            return;
+
+        }
+
+
+        /*
+         * ポケモンID
+         */
+
+        const player1Id =
+            document.getElementById(
+                "player1Pokemon"
+            ).value;
+
+
+        const player2Id =
+            document.getElementById(
+                "player2Pokemon"
+            ).value;
+
+
+        /*
+         * 入力チェック
+         */
+
+        if (!player1Id) {
+
+            alert(
+                "自分のポケモンを選択してください。"
+            );
+
+            return;
+
+        }
+
+
+        if (!player2Id) {
+
+            alert(
+                "相手のポケモンを選択してください。"
+            );
+
+            return;
+
+        }
+
+
+        if (!firstPlayer) {
+
+            alert(
+                "先行プレイヤーを選択してください。"
+            );
+
+            return;
+
+        }
+
+
+        if (!player1Result) {
+
+            alert(
+                "自分の勝敗を選択してください。"
+            );
+
+            return;
+
+        }
+
+
+        /*
+         * ポケモン取得
+         */
+
+        const player1 =
+            getPokemon(player1Id);
+
+        const player2 =
+            getPokemon(player2Id);
+
+
+        if (!player1 || !player2) {
+
+            alert(
+                "ポケモンデータが見つかりません。"
+            );
+
+            return;
+
+        }
+
+
+        /*
+         * =====================================
+         * 相手の勝敗
+         * =====================================
+         *
+         * 2人対戦なので、
+         * 自分の勝敗から自動決定。
+         */
+
+        const player2Result =
+            player1Result === "win"
+                ? "lose"
+                : "win";
+
+
+        /*
+         * =====================================
+         * ポケモンと勝敗
+         * =====================================
+         *
+         * 常に自分が左側、相手が右側
+         */
+
+        const firstPokemon =
+            player1;
+
+        const secondPokemon =
+            player2;
+
+
+        /*
+         * =====================================
+         * symbolsから絵文字取得
+         * =====================================
+         */
+
+        const symbols =
+            data.symbols;
+
+
+        /*
+         * =====================================
+         * 先攻・後攻
+         * =====================================
+         *
+         * 自分（左側）と相手（右側）の
+         * 攻撃順序を示す
+         */
+
+        let firstSymbol;
+
+        let secondSymbol;
+
+
+        if (firstPlayer === "player1") {
+
+            /*
+             * 自分が先攻、相手が後攻
+             */
+
+            firstSymbol =
+                symbols.first;
+
+            secondSymbol =
+                symbols.second;
+
+        }
+
+        else if (firstPlayer === "player2") {
+
+            /*
+             * 自分が後攻、相手が先攻
+             */
+
+            firstSymbol =
+                symbols.second;
+
+            secondSymbol =
+                symbols.first;
+
+        }
+
+        else {
+
+            /*
+             * どちらが先攻か不明
+             */
+
+            firstSymbol =
+                symbols.unknown;
+
+            secondSymbol =
+                symbols.unknown;
+
+        }
+
+
+        /*
+         * 自分と相手の勝敗を1つの絵文字で表現
+         */
+
+        const battleResultSymbol =
+            player1Result === "win"
+                ? symbols["vs-win-lose"]
+                : symbols["vs-lose-win"];
+
+
+        /*
+         * =====================================
+         * Discord投稿文字列
+         * =====================================
+         *
+         * 構造：
+         *
+         * 先攻or後攻
+         * 自分のポケモン
+         * VS表記と戦績表記
+         * 相手のポケモン
+         * 先攻or後攻
+         *
+         */
+
+        const result =
+            `${firstSymbol}${firstPokemon.emoji}${battleResultSymbol}` +
+            `${secondPokemon.emoji}${secondSymbol}\n`;
+
+        
+        /*
+         * 結果表示
+         */
+
+        document
+            .getElementById("resultText")
+            .textContent = result;
+
+
+        document
+            .getElementById("resultCard")
+            .style.display = "block";
+
+
+        /*
+         * プレビュー更新
+         */
+
+        updateEmojiPreview(result);    
+
+    }
+
+
+    /*
+     * =========================================
+     * 生成ボタン
+     * =========================================
+     */
+
+    function generateMultiBattleString() {
+        if (!data) {
+            alert("emoji.jsonを読み込んでいます。");
+            return;
+        }
+
+        const symbols = data.symbols;
+        const results = [];
+
+        for (const card of document.querySelectorAll("[data-battle-index]")) {
+            const battleNumber = Number(card.dataset.battleIndex) + 1;
+            const player1Id = card.querySelector('[data-field="player1Pokemon"]').value;
+            const player2Id = card.querySelector('[data-field="player2Pokemon"]').value;
+            const firstButton = card.querySelector('[data-field="firstPlayer"].selected');
+            const resultButton = card.querySelector('[data-field="player1Result"].selected');
+
+            if (!player1Id || !player2Id) {
+                alert(`第${battleNumber}戦のポケモンを選択してください。`);
+                return;
+            }
+            if (!firstButton) {
+                alert(`第${battleNumber}戦の先攻プレイヤーを選択してください。`);
+                return;
+            }
+            if (!resultButton) {
+                alert(`第${battleNumber}戦の勝敗を選択してください。`);
+                return;
+            }
+
+            const player1 = getPokemon(player1Id);
+            const player2 = getPokemon(player2Id);
+            const firstSymbol = firstButton.dataset.value === "player1"
+                ? symbols.first
+                : firstButton.dataset.value === "player2" ? symbols.second : symbols.unknown;
+            const secondSymbol = firstButton.dataset.value === "unknown"
+                ? symbols.unknown
+                : firstButton.dataset.value === "player1" ? symbols.second : symbols.first;
+            const resultSymbol = resultButton.dataset.value === "win"
+                ? symbols["vs-win-lose"]
+                : symbols["vs-lose-win"];
+
+            results.push(
+                `${firstSymbol}${player1.emoji}${resultSymbol}${player2.emoji}${secondSymbol}`
+            );
+        }
+
+        const result = results.join("\n") + "\n";
+        document.getElementById("resultText").textContent = result;
+        document.getElementById("resultCard").style.display = "block";
+        updateEmojiPreview(result);
+    }
+
+    document
+        .getElementById("generateButton")
+        .addEventListener("click", generateMultiBattleString);
+
+
+    /*
+     * =========================================
+     * コピー
+     * =========================================
+     */
+
+    document
+        .getElementById("copyButton")
+        .addEventListener(
+            "click",
+            async () => {
+
+                const text =
+                    document
+                        .getElementById(
+                            "resultText"
+                        )
+                        .textContent;
+
+
+                try {
+
+                    await navigator.clipboard
+                        .writeText(text);
+
+
+                    const button =
+                        document.getElementById(
+                            "copyButton"
+                        );
+
+
+                    button.textContent =
+                        "コピーしました！";
+
+
+                    setTimeout(() => {
+
+                        button.textContent =
+                            "コピー";
+
+                    }, 1500);
+
+
+                } catch (error) {
+
+                    console.error(error);
+
+                    alert(
+                        "コピーに失敗しました。"
+                    );
+
+                }
+
+            }
+        );
+
+
+    /*
+     * =========================================
+     * 初期化
+     * =========================================
+     */
+
+    loadData();
+
+</script>
+
+</body>
+
+</html>
