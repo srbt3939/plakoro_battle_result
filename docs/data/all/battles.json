@@ -42227,6 +42227,635 @@
             "match_result": "lose",
             "player_score": 1,
             "opponent_score": 2
+        },
+        {
+            "id": 1320,
+            "battle_message_id": 411,
+            "battle_number": 1,
+            "player1": {
+                "id": 24,
+                "name": "Hinata",
+                "pokemon_id": 23,
+                "pokemon": "チルタリス",
+                "type1": "ひこう",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": 10,
+                "name": "こぼすけ",
+                "pokemon_id": 16,
+                "pokemon": "レックウザ",
+                "type1": "ドラゴン",
+                "type2": null,
+                "weaknesses": [
+                    "ドラゴン"
+                ],
+                "result": "lose"
+            },
+            "first_player": 1,
+            "battle_type": "normal",
+            "season_id": 3
+        },
+        {
+            "id": 1321,
+            "battle_message_id": 411,
+            "battle_number": 2,
+            "player1": {
+                "id": 24,
+                "name": "Hinata",
+                "pokemon_id": 23,
+                "pokemon": "チルタリス",
+                "type1": "ひこう",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": 10,
+                "name": "こぼすけ",
+                "pokemon_id": 16,
+                "pokemon": "レックウザ",
+                "type1": "ドラゴン",
+                "type2": null,
+                "weaknesses": [
+                    "ドラゴン"
+                ],
+                "result": "win"
+            },
+            "first_player": 2,
+            "battle_type": "normal",
+            "season_id": 3
+        },
+        {
+            "id": 1322,
+            "battle_message_id": 411,
+            "battle_number": 3,
+            "player1": {
+                "id": 24,
+                "name": "Hinata",
+                "pokemon_id": 21,
+                "pokemon": "カヌチャン",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": 10,
+                "name": "こぼすけ",
+                "pokemon_id": 23,
+                "pokemon": "チルタリス",
+                "type1": "ひこう",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
+                "result": "lose"
+            },
+            "first_player": 2,
+            "battle_type": "normal",
+            "season_id": 3
+        },
+        {
+            "id": 1323,
+            "battle_message_id": 411,
+            "battle_number": 4,
+            "player1": {
+                "id": 24,
+                "name": "Hinata",
+                "pokemon_id": 21,
+                "pokemon": "カヌチャン",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": 10,
+                "name": "こぼすけ",
+                "pokemon_id": 23,
+                "pokemon": "チルタリス",
+                "type1": "ひこう",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
+                "result": "lose"
+            },
+            "first_player": 1,
+            "battle_type": "normal",
+            "season_id": 3
+        },
+        {
+            "id": 1324,
+            "battle_message_id": 411,
+            "battle_number": 5,
+            "player1": {
+                "id": 24,
+                "name": "Hinata",
+                "pokemon_id": 8,
+                "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": 10,
+                "name": "こぼすけ",
+                "pokemon_id": 23,
+                "pokemon": "チルタリス",
+                "type1": "ひこう",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
+                "result": "lose"
+            },
+            "first_player": 2,
+            "battle_type": "normal",
+            "season_id": 3
+        },
+        {
+            "id": 1325,
+            "battle_message_id": 411,
+            "battle_number": 6,
+            "player1": {
+                "id": 24,
+                "name": "Hinata",
+                "pokemon_id": 8,
+                "pokemon": "イワーク",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": 10,
+                "name": "こぼすけ",
+                "pokemon_id": 23,
+                "pokemon": "チルタリス",
+                "type1": "ひこう",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
+                "result": "lose"
+            },
+            "first_player": 1,
+            "battle_type": "normal",
+            "season_id": 3
+        },
+        {
+            "id": 1326,
+            "battle_message_id": 412,
+            "battle_number": 1,
+            "player1": {
+                "id": 17,
+                "name": "ahiru",
+                "pokemon_id": 6,
+                "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": null,
+                "name": null,
+                "pokemon_id": 11,
+                "pokemon": "サンダー",
+                "type1": "かみなり",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
+                "result": "win"
+            },
+            "first_player": 2,
+            "battle_type": "challenge",
+            "season_id": 3,
+            "match_id": 5,
+            "game_number": 1,
+            "tournament_name": "バトチャレ",
+            "match_opponent": null,
+            "match_result": "lose",
+            "player_score": 1,
+            "opponent_score": 2
+        },
+        {
+            "id": 1327,
+            "battle_message_id": 412,
+            "battle_number": 2,
+            "player1": {
+                "id": 17,
+                "name": "ahiru",
+                "pokemon_id": 6,
+                "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": null,
+                "name": null,
+                "pokemon_id": 15,
+                "pokemon": "ルカリオ",
+                "type1": "とう",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
+                "result": "win"
+            },
+            "first_player": 2,
+            "battle_type": "challenge",
+            "season_id": 3,
+            "match_id": 5,
+            "game_number": 2,
+            "tournament_name": "バトチャレ",
+            "match_opponent": null,
+            "match_result": "lose",
+            "player_score": 1,
+            "opponent_score": 2
+        },
+        {
+            "id": 1328,
+            "battle_message_id": 412,
+            "battle_number": 3,
+            "player1": {
+                "id": 17,
+                "name": "ahiru",
+                "pokemon_id": 6,
+                "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": null,
+                "name": null,
+                "pokemon_id": 14,
+                "pokemon": "メタグロス",
+                "type1": "はがね",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
+                "result": "lose"
+            },
+            "first_player": 2,
+            "battle_type": "challenge",
+            "season_id": 3,
+            "match_id": 5,
+            "game_number": 3,
+            "tournament_name": "バトチャレ",
+            "match_opponent": null,
+            "match_result": "lose",
+            "player_score": 1,
+            "opponent_score": 2
+        },
+        {
+            "id": 1329,
+            "battle_message_id": 413,
+            "battle_number": 1,
+            "player1": {
+                "id": 5,
+                "name": "スリバチ",
+                "pokemon_id": 6,
+                "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": 24,
+                "name": "Hinata",
+                "pokemon_id": 16,
+                "pokemon": "レックウザ",
+                "type1": "ドラゴン",
+                "type2": null,
+                "weaknesses": [
+                    "ドラゴン"
+                ],
+                "result": "win"
+            },
+            "first_player": 1,
+            "battle_type": "normal",
+            "season_id": 3
+        },
+        {
+            "id": 1330,
+            "battle_message_id": 413,
+            "battle_number": 2,
+            "player1": {
+                "id": 5,
+                "name": "スリバチ",
+                "pokemon_id": 6,
+                "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": 24,
+                "name": "Hinata",
+                "pokemon_id": 16,
+                "pokemon": "レックウザ",
+                "type1": "ドラゴン",
+                "type2": null,
+                "weaknesses": [
+                    "ドラゴン"
+                ],
+                "result": "lose"
+            },
+            "first_player": 2,
+            "battle_type": "normal",
+            "season_id": 3
+        },
+        {
+            "id": 1331,
+            "battle_message_id": 413,
+            "battle_number": 3,
+            "player1": {
+                "id": 5,
+                "name": "スリバチ",
+                "pokemon_id": 6,
+                "pokemon": "ミュウ",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "あく"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": 24,
+                "name": "Hinata",
+                "pokemon_id": 16,
+                "pokemon": "レックウザ",
+                "type1": "ドラゴン",
+                "type2": null,
+                "weaknesses": [
+                    "ドラゴン"
+                ],
+                "result": "lose"
+            },
+            "first_player": 2,
+            "battle_type": "normal",
+            "season_id": 3
+        },
+        {
+            "id": 1332,
+            "battle_message_id": 413,
+            "battle_number": 4,
+            "player1": {
+                "id": 5,
+                "name": "スリバチ",
+                "pokemon_id": 17,
+                "pokemon": "ゲッコウガ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
+                "result": "win"
+            },
+            "player2": {
+                "id": 24,
+                "name": "Hinata",
+                "pokemon_id": 16,
+                "pokemon": "レックウザ",
+                "type1": "ドラゴン",
+                "type2": null,
+                "weaknesses": [
+                    "ドラゴン"
+                ],
+                "result": "lose"
+            },
+            "first_player": 1,
+            "battle_type": "normal",
+            "season_id": 3
+        },
+        {
+            "id": 1333,
+            "battle_message_id": 413,
+            "battle_number": 5,
+            "player1": {
+                "id": 5,
+                "name": "スリバチ",
+                "pokemon_id": 17,
+                "pokemon": "ゲッコウガ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": 24,
+                "name": "Hinata",
+                "pokemon_id": 16,
+                "pokemon": "レックウザ",
+                "type1": "ドラゴン",
+                "type2": null,
+                "weaknesses": [
+                    "ドラゴン"
+                ],
+                "result": "win"
+            },
+            "first_player": 2,
+            "battle_type": "normal",
+            "season_id": 3
+        },
+        {
+            "id": 1334,
+            "battle_message_id": 413,
+            "battle_number": 6,
+            "player1": {
+                "id": 5,
+                "name": "スリバチ",
+                "pokemon_id": 17,
+                "pokemon": "ゲッコウガ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": 24,
+                "name": "Hinata",
+                "pokemon_id": 16,
+                "pokemon": "レックウザ",
+                "type1": "ドラゴン",
+                "type2": null,
+                "weaknesses": [
+                    "ドラゴン"
+                ],
+                "result": "win"
+            },
+            "first_player": 1,
+            "battle_type": "normal",
+            "season_id": 3
+        },
+        {
+            "id": 1335,
+            "battle_message_id": 413,
+            "battle_number": 7,
+            "player1": {
+                "id": 5,
+                "name": "スリバチ",
+                "pokemon_id": 17,
+                "pokemon": "ゲッコウガ",
+                "type1": "みず",
+                "type2": null,
+                "weaknesses": [
+                    "くさ"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": 24,
+                "name": "Hinata",
+                "pokemon_id": 16,
+                "pokemon": "レックウザ",
+                "type1": "ドラゴン",
+                "type2": null,
+                "weaknesses": [
+                    "ドラゴン"
+                ],
+                "result": "win"
+            },
+            "first_player": 2,
+            "battle_type": "normal",
+            "season_id": 3
+        },
+        {
+            "id": 1336,
+            "battle_message_id": 414,
+            "battle_number": 1,
+            "player1": {
+                "id": null,
+                "name": null,
+                "pokemon_id": 18,
+                "pokemon": "ボスゴドラ",
+                "type1": "はがね",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": 25,
+                "name": "Buster Wolf",
+                "pokemon_id": 23,
+                "pokemon": "チルタリス",
+                "type1": "ひこう",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
+                "result": "win"
+            },
+            "first_player": 1,
+            "battle_type": "normal",
+            "season_id": 3
+        },
+        {
+            "id": 1337,
+            "battle_message_id": 414,
+            "battle_number": 2,
+            "player1": {
+                "id": null,
+                "name": null,
+                "pokemon_id": 18,
+                "pokemon": "ボスゴドラ",
+                "type1": "はがね",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": 25,
+                "name": "Buster Wolf",
+                "pokemon_id": 23,
+                "pokemon": "チルタリス",
+                "type1": "ひこう",
+                "type2": null,
+                "weaknesses": [
+                    "みず"
+                ],
+                "result": "win"
+            },
+            "first_player": 1,
+            "battle_type": "normal",
+            "season_id": 3
+        },
+        {
+            "id": 1338,
+            "battle_message_id": 414,
+            "battle_number": 3,
+            "player1": {
+                "id": null,
+                "name": null,
+                "pokemon_id": 18,
+                "pokemon": "ボスゴドラ",
+                "type1": "はがね",
+                "type2": null,
+                "weaknesses": [
+                    "とう"
+                ],
+                "result": "lose"
+            },
+            "player2": {
+                "id": 25,
+                "name": "Buster Wolf",
+                "pokemon_id": 21,
+                "pokemon": "カヌチャン",
+                "type1": "ちょう",
+                "type2": null,
+                "weaknesses": [
+                    "ほのお"
+                ],
+                "result": "win"
+            },
+            "first_player": 2,
+            "battle_type": "normal",
+            "season_id": 3
         }
     ]
 }

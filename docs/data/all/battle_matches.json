@@ -1,6 +1,126 @@
 {
     "matches": [
         {
+            "match_id": 5,
+            "match_type": "battle_challenge",
+            "tournament_name": "バトチャレ",
+            "opponent": null,
+            "match_date": "2026-11-23",
+            "match_result": "lose",
+            "player_score": 1,
+            "opponent_score": 2,
+            "season_id": 3,
+            "player": {
+                "id": 17,
+                "name": "ahiru"
+            },
+            "battle_message_id": 412,
+            "games": [
+                {
+                    "id": 1326,
+                    "battle_message_id": 412,
+                    "battle_number": 1,
+                    "game_number": 1,
+                    "battle_type": "challenge",
+                    "match_id": 5,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 17,
+                        "name": "ahiru",
+                        "pokemon_id": 6,
+                        "pokemon": "ミュウ",
+                        "type1": "ちょう",
+                        "type2": null,
+                        "weaknesses": [
+                            "あく"
+                        ],
+                        "result": "lose"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 11,
+                        "pokemon": "サンダー",
+                        "type1": "かみなり",
+                        "type2": null,
+                        "weaknesses": [
+                            "とう"
+                        ],
+                        "result": "win"
+                    },
+                    "first_player": 2
+                },
+                {
+                    "id": 1327,
+                    "battle_message_id": 412,
+                    "battle_number": 2,
+                    "game_number": 2,
+                    "battle_type": "challenge",
+                    "match_id": 5,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 17,
+                        "name": "ahiru",
+                        "pokemon_id": 6,
+                        "pokemon": "ミュウ",
+                        "type1": "ちょう",
+                        "type2": null,
+                        "weaknesses": [
+                            "あく"
+                        ],
+                        "result": "lose"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 15,
+                        "pokemon": "ルカリオ",
+                        "type1": "とう",
+                        "type2": null,
+                        "weaknesses": [
+                            "ほのお"
+                        ],
+                        "result": "win"
+                    },
+                    "first_player": 2
+                },
+                {
+                    "id": 1328,
+                    "battle_message_id": 412,
+                    "battle_number": 3,
+                    "game_number": 3,
+                    "battle_type": "challenge",
+                    "match_id": 5,
+                    "season_id": 3,
+                    "player1": {
+                        "id": 17,
+                        "name": "ahiru",
+                        "pokemon_id": 6,
+                        "pokemon": "ミュウ",
+                        "type1": "ちょう",
+                        "type2": null,
+                        "weaknesses": [
+                            "あく"
+                        ],
+                        "result": "win"
+                    },
+                    "player2": {
+                        "id": null,
+                        "name": null,
+                        "pokemon_id": 14,
+                        "pokemon": "メタグロス",
+                        "type1": "はがね",
+                        "type2": null,
+                        "weaknesses": [
+                            "ほのお"
+                        ],
+                        "result": "lose"
+                    },
+                    "first_player": 2
+                }
+            ]
+        },
+        {
             "match_id": 4,
             "match_type": "battle_challenge",
             "tournament_name": "バトチャレ（YS京都店）",
