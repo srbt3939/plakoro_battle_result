@@ -729,7 +729,7 @@
         {
             "pokemon_id": 23,
             "name": "チルタリス",
-            "type1": "ひこう",
+            "type1": "そら",
             "type2": null,
             "weaknesses": [
                 "みず"
